@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	29%{?dist}
+Release:	28%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -452,9 +452,6 @@ fi
 %endif
 
 %changelog
-* Fri Mar 16 2018 pjones <pjones@redhat.com> - 1:2.02-29
-- Rebased to newer upstream for fedora-28
-
 * Fri Mar 16 2018 Peter Jones <pjones@redhat.com> - 2.02-28
 - Install kernel-install scripts. (javierm)
 - Add grub2-switch-to-blscfg
