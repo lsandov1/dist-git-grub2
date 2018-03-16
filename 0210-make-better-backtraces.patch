@@ -1,4 +1,4 @@
-From 0c858bc10a124de21d20e0523e69565bfed4df3b Mon Sep 17 00:00:00 2001
+From fe56f63c69beec5448db49884b389ff3392fcf7c Mon Sep 17 00:00:00 2001
 From: Peter Jones <pjones@redhat.com>
 Date: Mon, 6 Nov 2017 18:31:56 -0500
 Subject: [PATCH 210/216] make better backtraces
@@ -9,7 +9,7 @@ Signed-off-by: Peter Jones <pjones@redhat.com>
  grub-core/{lib => commands}/backtrace.c |   2 +-
  grub-core/gdb/cstub.c                   |   1 -
  grub-core/kern/arm64/backtrace.c        |  75 ++++++++++++++++++++
- grub-core/kern/backtrace.c              |  83 ++++++++++++++++++++++
+ grub-core/kern/backtrace.c              |  95 +++++++++++++++++++++++++
  grub-core/kern/dl.c                     |  45 ++++++++++++
  grub-core/kern/i386/backtrace.c         | 120 ++++++++++++++++++++++++++++++++
  grub-core/kern/i386/pc/init.c           |   4 +-
@@ -28,7 +28,7 @@ Signed-off-by: Peter Jones <pjones@redhat.com>
  grub-core/kern/ia64/efi/startup.S       |   3 +-
  grub-core/kern/sparc64/ieee1275/crt0.S  |   3 +-
  grub-core/Makefile.am                   |   1 +
- 23 files changed, 370 insertions(+), 166 deletions(-)
+ 23 files changed, 382 insertions(+), 166 deletions(-)
  rename grub-core/{lib => commands}/backtrace.c (98%)
  create mode 100644 grub-core/kern/arm64/backtrace.c
  create mode 100644 grub-core/kern/backtrace.c
@@ -109,7 +109,7 @@ index b64acd70fee..99281472d36 100644
  
 diff --git a/grub-core/kern/arm64/backtrace.c b/grub-core/kern/arm64/backtrace.c
 new file mode 100644
-index 00000000000..a4af6e4e006
+index 00000000000..70de1b29414
 --- /dev/null
 +++ b/grub-core/kern/arm64/backtrace.c
 @@ -0,0 +1,75 @@
@@ -140,12 +140,12 @@ index 00000000000..a4af6e4e006
 +#include <grub/backtrace.h>
 +
 +void
-+grub_backtrace_pointer (void *frame, unsigned long skip)
++grub_backtrace_pointer (void *frame, unsigned int skip)
 +{
 +  do
 +    {
 +      const char *name = NULL;
-+      char *addr;
++      char *addr = NULL;
 +
 +      void *ret = __builtin_return_address (skip);
 +      frame = __builtin_frame_address (skip);
@@ -181,7 +181,7 @@ index 00000000000..a4af6e4e006
 +extern grub_uint64_t _data;
 +
 +void
-+grub_backtrace_arch (unsigned long skip)
++grub_backtrace_arch (unsigned int skip)
 +{
 +  grub_printf ("Backtrace (.text %p .data %p):\n",
 +	       (void *)_text, (void *)_data);
@@ -190,10 +190,10 @@ index 00000000000..a4af6e4e006
 +}
 diff --git a/grub-core/kern/backtrace.c b/grub-core/kern/backtrace.c
 new file mode 100644
-index 00000000000..363b0e7e766
+index 00000000000..bd6a783f6d0
 --- /dev/null
 +++ b/grub-core/kern/backtrace.c
-@@ -0,0 +1,83 @@
+@@ -0,0 +1,95 @@
 +/*
 + *  GRUB  --  GRand Unified Bootloader
 + *  Copyright (C) 2009  Free Software Foundation, Inc.
@@ -252,27 +252,39 @@ index 00000000000..363b0e7e766
 +    grub_printf ("%p", addr);
 +}
 +
++static void
++grub_backtrace_pointer_default (void *frame __attribute__((__unused__)),
++				unsigned int skip __attribute__((__unused__)))
++{
++  return;
++}
++
++void
++grub_backtrace_pointer (void *frame, unsigned int skip)
++     __attribute__((__weak__,
++		    __alias__(("grub_backtrace_pointer_default"))));
++
 +void
 +grub_backtrace_print_address (void *addr)
 +     __attribute__((__weak__,
 +		    __alias__(("grub_backtrace_print_address_default"))));
 +
 +static void
-+grub_backtrace_arch_default(unsigned long skip)
++grub_backtrace_arch_default(unsigned int skip)
 +{
 +  grub_backtrace_pointer(__builtin_frame_address(0), skip + 1);
 +}
 +
-+void grub_backtrace_arch (unsigned long skip)
++void grub_backtrace_arch (unsigned int skip)
 +     __attribute__((__weak__, __alias__(("grub_backtrace_arch_default"))));
 +
-+void grub_backtrace (unsigned long skip)
++void grub_backtrace (unsigned int skip)
 +{
 +  grub_backtrace_arch(skip + 1);
 +}
 +
 +void grub_debug_backtrace (const char * const debug,
-+			   unsigned long skip)
++			   unsigned int skip)
 +{
 +  if (grub_debug_enabled (debug))
 +    grub_backtrace (skip + 1);
@@ -342,7 +354,7 @@ index 621070918d4..5028d157c46 100644
         i++, s = (Elf_Shdr *) ((char *) s + e->e_shentsize))
 diff --git a/grub-core/kern/i386/backtrace.c b/grub-core/kern/i386/backtrace.c
 new file mode 100644
-index 00000000000..75db596a167
+index 00000000000..60a6abfe93f
 --- /dev/null
 +++ b/grub-core/kern/i386/backtrace.c
 @@ -0,0 +1,120 @@
@@ -375,7 +387,7 @@ index 00000000000..75db596a167
 +#define MAX_STACK_FRAME 102400
 +
 +void
-+grub_backtrace_pointer (void *frame, unsigned long skip)
++grub_backtrace_pointer (void *frame, unsigned int skip)
 +{
 +  void **ebp = (void **)frame;
 +  unsigned long x = 0;
@@ -444,7 +456,7 @@ index 00000000000..75db596a167
 +extern unsigned long _data;
 +
 +void
-+grub_backtrace_arch (unsigned long skip)
++grub_backtrace_arch (unsigned int skip)
 +{
 +  grub_printf ("Backtrace (.text %p .data %p):\n",
 +	       (void *)_text, (void *)_data);
@@ -708,7 +720,7 @@ index c67273db3ae..00000000000
 -}
 -
 diff --git a/include/grub/backtrace.h b/include/grub/backtrace.h
-index 395519762f0..759918ebefd 100644
+index 395519762f0..275cf85e2d3 100644
 --- a/include/grub/backtrace.h
 +++ b/include/grub/backtrace.h
 @@ -19,8 +19,14 @@
@@ -721,10 +733,10 @@ index 395519762f0..759918ebefd 100644
 +#include <grub/types.h>
 +
 +void EXPORT_FUNC(grub_debug_backtrace) (const char * const debug,
-+					unsigned long skip);
-+void EXPORT_FUNC(grub_backtrace) (unsigned long skip);
-+void grub_backtrace_arch (unsigned long skip);
-+void grub_backtrace_pointer (void *ptr, unsigned long skip);
++					unsigned int skip);
++void EXPORT_FUNC(grub_backtrace) (unsigned int skip);
++void grub_backtrace_arch (unsigned int skip);
++void grub_backtrace_pointer (void *ptr, unsigned int skip);
  void grub_backtrace_print_address (void *addr);
  
  #endif

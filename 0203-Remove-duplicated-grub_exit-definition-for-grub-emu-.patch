@@ -1,4 +1,4 @@
-From 5ee3b4f17f20848f8cddff1313fbd99048b46036 Mon Sep 17 00:00:00 2001
+From 206697fab4e803807a83f1f7f330d3d009aba2fd Mon Sep 17 00:00:00 2001
 From: Javier Martinez Canillas <javierm@redhat.com>
 Date: Tue, 6 Feb 2018 11:02:09 +0100
 Subject: [PATCH 203/216] Remove duplicated grub_exit() definition for grub-emu

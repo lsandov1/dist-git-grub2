@@ -1,0 +1,57 @@
+From 3fa7a272a55df6ac6fe0108ee1d47b4f7a4d6456 Mon Sep 17 00:00:00 2001
+From: Peter Jones <pjones@redhat.com>
+Date: Fri, 16 Mar 2018 14:59:21 -0400
+Subject: [PATCH 216/216] static
+
+---
+ util/grub-mkconfig_lib.in | 34 ++++++++++++++++++++++++++++++++++
+ 1 file changed, 34 insertions(+)
+
+diff --git a/util/grub-mkconfig_lib.in b/util/grub-mkconfig_lib.in
+index 70dc8d57e92..693340f6912 100644
+--- a/util/grub-mkconfig_lib.in
++++ b/util/grub-mkconfig_lib.in
+@@ -128,6 +128,40 @@ EOF
+   fi
+ }
+ 
++add_device_modules ()
++{
++  local device=$1 && shift
++
++  old_ifs="$IFS"
++  IFS='
++'
++  partmap="`"${grub_probe}" --device ${device} --target=partmap`"
++  for module in ${partmap} ; do
++    case "${module}" in
++      netbsd | openbsd)
++        echo "insmod part_bsd";;
++      *)
++        echo "insmod part_${module}";;
++    esac
++  done
++
++  # Abstraction modules aren't auto-loaded.
++  abstraction="`"${grub_probe}" --device ${device} --target=abstraction`"
++  for module in ${abstraction} ; do
++    echo "insmod ${module}"
++  done
++
++  fs="`"${grub_probe}" --device ${device} --target=fs`"
++  for module in ${fs} ; do
++    echo "insmod ${module}"
++  done
++}
++
++get_device_uuid ()
++{
++
++}
++
+ prepare_grub_to_access_device ()
+ {
+   local device=$1 && shift
+-- 
+2.15.0
+
