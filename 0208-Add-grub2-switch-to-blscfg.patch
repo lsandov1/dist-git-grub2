@@ -1,7 +1,7 @@
 From 4db80106d593b4af6ba76d885e900b65a8e58868 Mon Sep 17 00:00:00 2001
 From: Peter Jones <pjones@redhat.com>
 Date: Thu, 15 Mar 2018 14:12:40 -0400
-Subject: [PATCH 208/215] Add grub2-switch-to-blscfg
+Subject: [PATCH 208/216] Add grub2-switch-to-blscfg
 
 Signed-off-by: Peter Jones <pjones@redhat.com>
 ---

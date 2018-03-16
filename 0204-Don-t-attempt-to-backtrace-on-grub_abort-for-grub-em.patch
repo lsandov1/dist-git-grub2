@@ -1,7 +1,7 @@
 From a0029e01e10b5077c88aa56b12314ace5e9c3e4e Mon Sep 17 00:00:00 2001
 From: Javier Martinez Canillas <javierm@redhat.com>
 Date: Tue, 6 Feb 2018 11:16:28 +0100
-Subject: [PATCH 204/215] Don't attempt to backtrace on grub_abort() for
+Subject: [PATCH 204/216] Don't attempt to backtrace on grub_abort() for
  grub-emu
 
 The emu platform doesn't have a grub_backtrace() implementation, so this

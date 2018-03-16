@@ -1,7 +1,7 @@
-From 3bc207ca33d89282116932a951ddefdc9c2fc1cd Mon Sep 17 00:00:00 2001
+From 08303ac0f3431062651f1d556641ea54009da207 Mon Sep 17 00:00:00 2001
 From: Peter Jones <pjones@redhat.com>
 Date: Fri, 16 Mar 2018 13:28:57 -0400
-Subject: [PATCH 212/215] Work around some minor include path weirdnesses
+Subject: [PATCH 212/216] Work around some minor include path weirdnesses
 
 Signed-off-by: Peter Jones <pjones@redhat.com>
 ---

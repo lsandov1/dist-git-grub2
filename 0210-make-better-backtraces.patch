@@ -1,7 +1,7 @@
-From f13f45bf974917112907e46854c0571b66c484bf Mon Sep 17 00:00:00 2001
+From 0c858bc10a124de21d20e0523e69565bfed4df3b Mon Sep 17 00:00:00 2001
 From: Peter Jones <pjones@redhat.com>
 Date: Mon, 6 Nov 2017 18:31:56 -0500
-Subject: [PATCH 210/215] make better backtraces
+Subject: [PATCH 210/216] make better backtraces
 
 Signed-off-by: Peter Jones <pjones@redhat.com>
 ---
@@ -13,6 +13,7 @@ Signed-off-by: Peter Jones <pjones@redhat.com>
  grub-core/kern/dl.c                     |  45 ++++++++++++
  grub-core/kern/i386/backtrace.c         | 120 ++++++++++++++++++++++++++++++++
  grub-core/kern/i386/pc/init.c           |   4 +-
+ grub-core/kern/ieee1275/init.c          |   1 -
  grub-core/kern/misc.c                   |  13 ++--
  grub-core/kern/mm.c                     |   6 +-
  grub-core/lib/arm64/backtrace.c         |  62 -----------------
@@ -27,7 +28,7 @@ Signed-off-by: Peter Jones <pjones@redhat.com>
  grub-core/kern/ia64/efi/startup.S       |   3 +-
  grub-core/kern/sparc64/ieee1275/crt0.S  |   3 +-
  grub-core/Makefile.am                   |   1 +
- 22 files changed, 370 insertions(+), 165 deletions(-)
+ 23 files changed, 370 insertions(+), 166 deletions(-)
  rename grub-core/{lib => commands}/backtrace.c (98%)
  create mode 100644 grub-core/kern/arm64/backtrace.c
  create mode 100644 grub-core/kern/backtrace.c
@@ -487,6 +488,18 @@ index 27bc68b8a53..b51d0abfa6e 100644
  
    /* Initialize the console as early as possible.  */
    grub_console_init ();
+diff --git a/grub-core/kern/ieee1275/init.c b/grub-core/kern/ieee1275/init.c
+index 4dfa41a37d5..6eda8c1f353 100644
+--- a/grub-core/kern/ieee1275/init.c
++++ b/grub-core/kern/ieee1275/init.c
+@@ -60,7 +60,6 @@
+ #define HEAP_MAX_ADDR		(unsigned long) (32 * 1024 * 1024)
+ #endif
+ 
+-extern char _start[];
+ extern char _end[];
+ 
+ #ifdef __sparc__
 diff --git a/grub-core/kern/misc.c b/grub-core/kern/misc.c
 index e758ab3416d..5c2d2039d0b 100644
 --- a/grub-core/kern/misc.c
