@@ -1,4 +1,4 @@
-From 1954221a4b99a4f83500b4a52e41e68b7ca7c4cc Mon Sep 17 00:00:00 2001
+From 775dacceb8acc4036737080040f592f48daeb6e8 Mon Sep 17 00:00:00 2001
 From: Peter Jones <pjones@redhat.com>
 Date: Mon, 6 Nov 2017 18:31:56 -0500
 Subject: [PATCH 210/216] make better backtraces
@@ -8,16 +8,16 @@ Signed-off-by: Peter Jones <pjones@redhat.com>
  grub-core/Makefile.core.def             |  15 ++--
  grub-core/{lib => commands}/backtrace.c |   2 +-
  grub-core/gdb/cstub.c                   |   1 -
- grub-core/kern/arm64/backtrace.c        |  75 ++++++++++++++++++++
+ grub-core/kern/arm64/backtrace.c        |  94 +++++++++++++++++++++++++
  grub-core/kern/backtrace.c              |  95 +++++++++++++++++++++++++
  grub-core/kern/dl.c                     |  45 ++++++++++++
- grub-core/kern/i386/backtrace.c         | 120 ++++++++++++++++++++++++++++++++
+ grub-core/kern/i386/backtrace.c         | 121 ++++++++++++++++++++++++++++++++
  grub-core/kern/i386/pc/init.c           |   4 +-
  grub-core/kern/ieee1275/init.c          |   1 -
  grub-core/kern/misc.c                   |  13 ++--
  grub-core/kern/mm.c                     |   6 +-
- grub-core/lib/arm64/backtrace.c         |  62 -----------------
- grub-core/lib/i386/backtrace.c          |  78 ---------------------
+ grub-core/lib/arm64/backtrace.c         |  62 ----------------
+ grub-core/lib/i386/backtrace.c          |  78 --------------------
  include/grub/backtrace.h                |  10 ++-
  include/grub/dl.h                       |   2 +
  include/grub/kernel.h                   |   3 +
@@ -28,7 +28,7 @@ Signed-off-by: Peter Jones <pjones@redhat.com>
  grub-core/kern/ia64/efi/startup.S       |   3 +-
  grub-core/kern/sparc64/ieee1275/crt0.S  |   3 +-
  grub-core/Makefile.am                   |   1 +
- 23 files changed, 382 insertions(+), 166 deletions(-)
+ 23 files changed, 402 insertions(+), 166 deletions(-)
  rename grub-core/{lib => commands}/backtrace.c (98%)
  create mode 100644 grub-core/kern/arm64/backtrace.c
  create mode 100644 grub-core/kern/backtrace.c
@@ -109,10 +109,10 @@ index b64acd70fee..99281472d36 100644
  
 diff --git a/grub-core/kern/arm64/backtrace.c b/grub-core/kern/arm64/backtrace.c
 new file mode 100644
-index 00000000000..70de1b29414
+index 00000000000..019c6fdfef2
 --- /dev/null
 +++ b/grub-core/kern/arm64/backtrace.c
-@@ -0,0 +1,75 @@
+@@ -0,0 +1,94 @@
 +/*
 + *  GRUB  --  GRand Unified Bootloader
 + *  Copyright (C) 2009  Free Software Foundation, Inc.
@@ -139,34 +139,53 @@ index 00000000000..70de1b29414
 +#include <grub/term.h>
 +#include <grub/backtrace.h>
 +
++#define MAX_STACK_FRAME 102400
++
++struct fplr
++{
++  void *lr;
++  struct fplr *fp;
++};
++
 +void
 +grub_backtrace_pointer (void *frame, unsigned int skip)
 +{
-+  do
++  unsigned int x = 0;
++  struct fplr *fplr = (struct fplr *)frame;
++
++  while (fplr)
 +    {
 +      const char *name = NULL;
 +      char *addr = NULL;
 +
-+      void *ret = __builtin_return_address (skip);
-+      frame = __builtin_frame_address (skip);
-+      if (ret)
-+	ret = __builtin_extract_return_addr (ret);
++      grub_dprintf("backtrace", "fp is %p next_fp is %p\n",
++		   fplr, fplr->fp);
 +
-+      grub_dprintf ("backtrace", "frame address:%p return address:%p\n", frame, ret);
-+      if (!ret)
-+	break;
++      if (x >= skip)
++	{
++	  name = grub_get_symbol_by_addr (fplr->lr, 1);
++	  if (name)
++	    addr = grub_resolve_symbol (name);
++	  grub_backtrace_print_address (fplr->lr);
 +
-+      name = grub_get_symbol_by_addr (ret, 1);
-+      if (name)
-+	addr = grub_resolve_symbol (name);
-+      grub_backtrace_print_address (ret);
++	  if (addr && addr != fplr->lr)
++	    grub_printf (" %s() %p+%p \n", name ? name : "unknown", addr,
++			 (void *)((grub_uint64_t)fplr->lr - (grub_uint64_t)addr));
++	  else
++	    grub_printf(" %s() %p \n", name ? name : "unknown", addr);
 +
-+      if (addr && addr != ret)
-+	grub_printf (" %s() %p+%p \n", name ? name : "unknown", addr,
-+		     (char *)((char *)ret - addr));
-+      else
-+	grub_printf(" %s() %p \n", name ? name : "unknown", addr);
-+    } while (frame);
++	}
++
++      x += 1;
++
++      if (fplr->fp < fplr ||
++	  (grub_uint64_t)fplr->fp - (grub_uint64_t)fplr > MAX_STACK_FRAME ||
++	  fplr->fp == fplr)
++	{
++	  break;
++	}
++      fplr = fplr->fp;
++    }
 +}
 +
 +asm ("\t.global \"_text\"\n"
@@ -186,7 +205,7 @@ index 00000000000..70de1b29414
 +  grub_printf ("Backtrace (.text %p .data %p):\n",
 +	       (void *)_text, (void *)_data);
 +  skip += 1;
-+  grub_backtrace_pointer(__builtin_frame_address(skip), skip);
++  grub_backtrace_pointer(__builtin_frame_address(0), skip);
 +}
 diff --git a/grub-core/kern/backtrace.c b/grub-core/kern/backtrace.c
 new file mode 100644
@@ -354,10 +373,10 @@ index 621070918d4..5028d157c46 100644
         i++, s = (Elf_Shdr *) ((char *) s + e->e_shentsize))
 diff --git a/grub-core/kern/i386/backtrace.c b/grub-core/kern/i386/backtrace.c
 new file mode 100644
-index 00000000000..f3bb839e1d7
+index 00000000000..c4f7e3f0e90
 --- /dev/null
 +++ b/grub-core/kern/i386/backtrace.c
-@@ -0,0 +1,120 @@
+@@ -0,0 +1,121 @@
 +/*
 + *  GRUB  --  GRand Unified Bootloader
 + *  Copyright (C) 2009  Free Software Foundation, Inc.
@@ -463,7 +482,8 @@ index 00000000000..f3bb839e1d7
 +  skip += 1;
 +#if defined (__x86_64__)
 +  asm volatile ("movq %%rbp, %%rdi\n"
-+		"movl %0, %%rsi\n"
++		"movq 0, %%rsi\n"
++		"movl %0, %%esi\n"
 +		"call " EXT_C("grub_backtrace_pointer")
 +		:
 +		: "r" (skip));
