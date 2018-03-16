@@ -1,4 +1,4 @@
-From 62ba456cc91cbc31ab16a075057459f71bb73524 Mon Sep 17 00:00:00 2001
+From d94879fe76b6b8199afda00c76eafcce4769e1ba Mon Sep 17 00:00:00 2001
 From: Peter Jones <pjones@redhat.com>
 Date: Sun, 28 Jun 2015 13:09:58 -0400
 Subject: [PATCH 214/216] Add grub_qdprintf() - grub_dprintf() without the

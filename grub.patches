@@ -213,4 +213,3 @@ Patch0212: 0212-Work-around-some-minor-include-path-weirdnesses.patch
 Patch0213: 0213-Make-it-possible-to-enabled-build-id-sha1.patch
 Patch0214: 0214-Add-grub_qdprintf-grub_dprintf-without-the-file-line.patch
 Patch0215: 0215-Make-a-gdb-dprintf-that-tells-us-load-addresses.patch
-Patch0216: 0216-static.patch

@@ -1,4 +1,4 @@
-From fe56f63c69beec5448db49884b389ff3392fcf7c Mon Sep 17 00:00:00 2001
+From 1954221a4b99a4f83500b4a52e41e68b7ca7c4cc Mon Sep 17 00:00:00 2001
 From: Peter Jones <pjones@redhat.com>
 Date: Mon, 6 Nov 2017 18:31:56 -0500
 Subject: [PATCH 210/216] make better backtraces
@@ -354,7 +354,7 @@ index 621070918d4..5028d157c46 100644
         i++, s = (Elf_Shdr *) ((char *) s + e->e_shentsize))
 diff --git a/grub-core/kern/i386/backtrace.c b/grub-core/kern/i386/backtrace.c
 new file mode 100644
-index 00000000000..60a6abfe93f
+index 00000000000..f3bb839e1d7
 --- /dev/null
 +++ b/grub-core/kern/i386/backtrace.c
 @@ -0,0 +1,120 @@
@@ -463,7 +463,7 @@ index 00000000000..60a6abfe93f
 +  skip += 1;
 +#if defined (__x86_64__)
 +  asm volatile ("movq %%rbp, %%rdi\n"
-+		"movq %0, %%rsi\n"
++		"movl %0, %%rsi\n"
 +		"call " EXT_C("grub_backtrace_pointer")
 +		:
 +		: "r" (skip));
