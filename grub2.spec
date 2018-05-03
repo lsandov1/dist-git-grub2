@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	18%{?dist}
+Release:	35%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -21,21 +21,12 @@ Source4:	http://unifoundry.com/unifont-5.1.20080820.pcf.gz
 Source5:	theme.tar.bz2
 Source6:	gitignore
 Source8:	strtoull_test.c
+Source9:	20-grub.install
 
 %include %{SOURCE1}
 
 # generate with do-rebase
 %include %{SOURCE2}
-
-# And these are:
-# git checkout debuginfo
-# git format-patch fedora-23..
-Patch10001:	10001-Put-the-correct-.file-directives-in-our-.S-files.patch
-Patch10002:	10002-Make-it-possible-to-enabled-build-id-sha1.patch
-#Patch10003:	10003-Don-t-tell-the-compiler-to-do-annoying-things-with-.patch
-Patch10004:	10004-Add-grub_qdprintf-grub_dprintf-without-the-file-lin.patch
-Patch10005:	10005-Make-a-gdb-dprintf-that-tells-us-load-addresses.patch
-#Patch10006:	10006-Try-it-in-gentpl-again.patch
 
 BuildRequires:	flex bison binutils python
 BuildRequires:	ncurses-devel xz-devel bzip2-devel
@@ -211,6 +202,13 @@ cat << EOF > ${RPM_BUILD_ROOT}%{_sysconfdir}/prelink.conf.d/grub2.conf
 -b /usr/sbin/grub2-sparc64-setup
 EOF
 
+# Install kernel-install scripts
+install -d -m 0755 %{buildroot}%{_prefix}/lib/kernel/install.d/
+install -D -m 0755 -t %{buildroot}%{_prefix}/lib/kernel/install.d/ %{SOURCE9}
+install -d -m 0755 %{buildroot}%{_sysconfdir}/kernel/install.d/
+install -m 0644 /dev/null %{buildroot}%{_sysconfdir}/kernel/install.d/20-grubby.install
+install -m 0644 /dev/null %{buildroot}%{_sysconfdir}/kernel/install.d/90-loaderentry.install
+
 # Don't run debuginfo on all the grub modules and whatnot; it just
 # rejects them, complains, and slows down extraction.
 %global finddebugroot "%{_builddir}/%{?buildsubdir}/debug"
@@ -231,9 +229,6 @@ EOF
 	%{nil}
 
 %undefine buildsubdir
-
-%clean
-rm -rf $RPM_BUILD_ROOT
 
 %pre tools
 if [ -f /boot/grub2/user.cfg ]; then
@@ -306,6 +301,9 @@ fi
 %dir %{_datarootdir}/grub/themes/
 %exclude %{_datarootdir}/grub/themes/*
 %attr(0700,root,root) %dir %{_sysconfdir}/grub.d
+%{_prefix}/lib/kernel/install.d/20-grub.install
+%{_sysconfdir}/kernel/install.d/20-grubby.install
+%{_sysconfdir}/kernel/install.d/90-loaderentry.install
 %dir %{_datarootdir}/grub
 %exclude %{_datarootdir}/grub/*
 %dir /boot/%{name}
@@ -314,7 +312,7 @@ fi
 %exclude /boot/%{name}/themes/system/*
 %attr(0700,root,root) %dir /boot/grub2
 %exclude /boot/grub2/*
-%dir %attr(0755,root,root) /boot/efi/EFI/%{efidir}
+%dir %attr(0700,root,root) /boot/efi/EFI/%{efidir}
 %exclude /boot/efi/EFI/%{efidir}/*
 %license COPYING
 %ghost %config(noreplace) /boot/grub2/grubenv
@@ -360,6 +358,7 @@ fi
 %exclude %{_datarootdir}/grub/*.h
 %{_datarootdir}/bash-completion/completions/grub
 %{_sbindir}/%{name}-mkconfig
+%{_sbindir}/%{name}-switch-to-blscfg
 %{_sbindir}/%{name}-probe
 %{_sbindir}/%{name}-rpm-sort
 %{_sbindir}/%{name}-reboot
@@ -454,6 +453,83 @@ fi
 %endif
 
 %changelog
+* Tue Apr 24 2018 Peter Jones <pjones@redhat.com> - 2.02-35
+- A couple of fixes needed by Fedora Atomic - javierm
+
+* Mon Apr 23 2018 Peter Jones <pjones@redhat.com> - 2.02-34
+- Put the os-prober dep back in - we need to change test plans and criteria
+  before it can go.
+  Resolves: rhbz#1569411
+
+* Wed Apr 11 2018 Peter Jones <pjones@redhat.com> - 2.02-33
+- Work around some issues with older automake found in CentOS.
+- Make multiple initramfs images work in BLS.
+
+* Wed Apr 11 2018 Javier Martinez Canillas <javierm@redhat.com> - 2.02-32
+- Make 20-grub.install to generate debug BLS when MAKEDEBUG is set.
+
+* Fri Apr 06 2018 Peter Jones <pjones@redhat.com> - 2.02-31
+- Pull in some TPM fixes I missed.
+
+* Fri Apr 06 2018 Peter Jones <pjones@redhat.com> - 2.02-30
+- Enable TPM measurements
+- Set the default boot entry to the first entry when we're using BLS.
+
+* Tue Apr 03 2018 Peter Jones <pjones@redhat.com> - 2.02-29
+- Fix for BLS paths on BIOS / non-UEFI (javierm)
+
+* Fri Mar 16 2018 Peter Jones <pjones@redhat.com> - 2.02-28
+- Install kernel-install scripts. (javierm)
+- Add grub2-switch-to-blscfg
+
+* Tue Mar 06 2018 Peter Jones <pjones@redhat.com> - 2.02-27
+- Build the blscfg module in on EFI builds.
+
+* Wed Feb 28 2018 Peter Jones <pjones@redhat.com> - 2.02-26
+- Try to fix things for new compiler madness.
+  I really don't know why gcc decided __attribute__((packed)) on a "typedef
+  struct" should imply __attribute__((align (1))) and that it should have a
+  warning that it does so.  The obvious behavior would be to keep the alignment
+  of the first element unless it's used in another object or type that /also/
+  hask the packed attribute.  Why should it change the default alignment at
+  all?
+- Merge in the BLS patches Javier and I wrote.
+- Attempt to fix pmtimer initialization failures to not be super duper slow.
+
+* Fri Feb 09 2018 Igor Gnatenko <ignatenkobrain@fedoraproject.org>
+- Escape macros in %%changelog
+
+* Tue Jan 23 2018 Peter Jones <pjones@redhat.com> - 2.02-24
+- Fix a merge error from 2.02-21 that affected kernel loading on Aarch64.
+  Related: rhbz#1519311
+  Related: rhbz#1506704
+  Related: rhbz#1502312
+
+* Fri Jan 19 2018 Peter Jones <pjones@redhat.com> - 2.02-23
+- Only nerf annobin, not -fstack-crash-protection.
+- Fix a conflict on /boot/efi directory permissions between -cdboot and the
+  normal bootloader.
+
+* Thu Jan 18 2018 Peter Jones <pjones@redhat.com> - 2.02-22
+- Nerf some gcc 7.2.1-6 'features' that cause grub to crash on start.
+
+* Thu Jan 18 2018 Peter Jones <pjones@redhat.com> - 2.02-21
+- Fix grub2-efi-modules provides/obsoletes generation
+  Resolves: rhbz#1506704
+- *Also* build grub-efi-ia32{,-*,!-modules} packages for i686 builds
+  Resolves: rhbz#1502312
+- Make everything under /boot/efi be mode 0700, since that's what FAT will
+  show anyway.
+
+* Wed Jan 17 2018 Peter Jones <pjones@redhat.com> - 2.02-20
+- Update to newer upstream for F28
+- Pull in patches for Apollo Lake hardware
+  Resolves: rhbz#1519311
+
+* Tue Oct 24 2017 Peter Jones <pjones@redhat.com> - 2.02-19
+- Handle xen module loading (somewhat) better
+  Resolves: rhbz#1486002
+
 * Wed Sep 20 2017 Peter Jones <pjones@redhat.com> - 2.02-18
 - Make grub2-efi-aa64 provide grub2
   Resolves: rhbz#1491045
@@ -914,8 +990,8 @@ fi
   update README.Fedora (#734090)
   fix comments for the hack for upgrading from grub2 < 1.99-4
   fix sed syntax error preventing use of $RPM_OPT_FLAGS (#704820)
-  make /etc/grub2*.cfg %config(noreplace)
-  make grub.cfg %ghost - an empty file is of no use anyway
+  make /etc/grub2*.cfg %%config(noreplace)
+  make grub.cfg %%ghost - an empty file is of no use anyway
   create /etc/default/grub more like anaconda would create it (#678453)
   don't create rescue entries by default - grubby will not maintain them anyway
   set GRUB_SAVEDEFAULT=true so saved defaults works (rbhz#732058)
@@ -951,7 +1027,7 @@ fi
 - Fix upgrades from grub2 < 1.99-4 (#735259)
 
 * Fri Sep 02 2011 Peter Jones <pjones@redhat.com> - 1.99-4
-- Don't do sysadminny things in %preun or %post ever. (#735259)
+- Don't do sysadminny things in %%preun or %%post ever. (#735259)
 - Actually include the changelog in this build (sorry about -3)
 
 * Thu Sep 01 2011 Peter Jones <pjones@redhat.com> - 1.99-2
