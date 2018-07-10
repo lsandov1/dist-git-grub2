@@ -29,7 +29,7 @@ Source9:	20-grub.install
 %include %{SOURCE2}
 
 BuildRequires:  gcc
-BuildRequires:	flex bison binutils python
+BuildRequires:	flex bison binutils python3
 BuildRequires:	ncurses-devel xz-devel bzip2-devel
 BuildRequires:	freetype-devel libusb-devel
 BuildRequires:	rpm-devel
