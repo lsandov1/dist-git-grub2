@@ -1,13 +1,48 @@
-From 1263543c5038d016553b783146043398cc4f78c0 Mon Sep 17 00:00:00 2001
+From 02ab32de226fd6e89cbca77aaa6c09f1d78b5f1d Mon Sep 17 00:00:00 2001
 From: Peter Jones <pjones@redhat.com>
 Date: Tue, 10 Jul 2018 16:54:02 -0400
 Subject: [PATCH] Force gentply.py to use python3
 
 Signed-off-by: Peter Jones <pjones@redhat.com>
 ---
- gentpl.py | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ autogen.sh           | 4 ++--
+ conf/Makefile.common | 4 ++--
+ gentpl.py            | 2 +-
+ 3 files changed, 5 insertions(+), 5 deletions(-)
 
+diff --git a/autogen.sh b/autogen.sh
+index 7537561ad0d..557913130db 100755
+--- a/autogen.sh
++++ b/autogen.sh
+@@ -2,8 +2,8 @@
+ 
+ set -e
+ 
+-# Set ${PYTHON} to plain 'python' if not set already
+-: ${PYTHON:=python}
++# Set ${PYTHON} to 'python3' if not set already
++: ${PYTHON:=python3}
+ 
+ export LC_COLLATE=C
+ unset LC_ALL
+diff --git a/conf/Makefile.common b/conf/Makefile.common
+index d2fedeaa3a5..3d21ed54031 100644
+--- a/conf/Makefile.common
++++ b/conf/Makefile.common
+@@ -128,11 +128,11 @@ BUILT_SOURCES =
+ 
+ .PRECIOUS: $(top_srcdir)/Makefile.util.am
+ $(top_srcdir)/Makefile.util.am: $(top_srcdir)/gentpl.py $(top_srcdir)/Makefile.util.def $(top_srcdir)/Makefile.utilgcry.def
+-	python $^ > $@.new || (rm -f $@.new; exit 1)
++	python3 $^ > $@.new || (rm -f $@.new; exit 1)
+ 	mv $@.new $@
+ 
+ .PRECIOUS: $(top_srcdir)/grub-core/Makefile.core.am
+ $(top_srcdir)/grub-core/Makefile.core.am: $(top_srcdir)/gentpl.py $(top_srcdir)/grub-core/Makefile.core.def $(top_srcdir)/grub-core/Makefile.gcry.def
+ 	if [ "x$$GRUB_CONTRIB" != x ]; then echo "You need to run ./autogen.sh manually." >&2; exit 1; fi
+-	python $^ > $@.new || (rm -f $@.new; exit 1)
++	python3 $^ > $@.new || (rm -f $@.new; exit 1)
+ 	mv $@.new $@
 diff --git a/gentpl.py b/gentpl.py
 index bf8439fa743..6ab9eb3af71 100644
 --- a/gentpl.py
@@ -18,3 +53,6 @@ index bf8439fa743..6ab9eb3af71 100644
  #  GRUB  --  GRand Unified Bootloader
  #  Copyright (C) 2010,2011,2012,2013  Free Software Foundation, Inc.
  #
+-- 
+2.17.1
+
