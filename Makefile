@@ -23,10 +23,10 @@ push :
 	git push
 
 scratch:
-	rhpkg build --scratch --target ${RHELVER}-candidate
+	rhpkg build --scratch --target rhel-${RHELVER}-candidate
 
 release:
-	rhpkg build --target ${RHELVER}-candidate-pesign
+	rhpkg build --target rhel-${RHELVER}-candidate-pesign
 
 rebase:
 	./do-rebase --nocommit fedora-${FEDVER} ${REPO}
