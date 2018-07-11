@@ -22,8 +22,13 @@ all:
 push :
 	git push
 
-scratch:
-	rhpkg build --scratch --target rhel-${RHELVER}-candidate
+srpm:
+	@rm -vf *.src.rpm
+	rhpkg srpm
+
+scratch: srpm
+	brew build --scratch rhel-${RHELVER}-candidate $(wildcard *.src.rpm)
+
 
 release:
 	rhpkg build --target rhel-${RHELVER}-candidate-pesign
@@ -34,7 +39,9 @@ rebase:
 rpmspec:
 	rpmspec -D "_sourcedir $(shell pwd)" -P grub2.spec
 
-mockbuild:
-	rhpkg mockbuild
+local prep mockbuild compile :
+	rhpkg $@
+
+.PHONY: all push srpm scratch release rebase rpmspec local prep mockbuild compile
 
 # vim:ft=make
