@@ -23,7 +23,7 @@ Source6:	gitignore
 Source8:	strtoull_test.c
 Source9:	20-grub.install
 
-Source10:	10375-Force-everything-to-use-python3.patch
+Source10:	Force-everything-to-use-python3.patch
 
 %include %{SOURCE1}
 
