@@ -280,7 +280,7 @@ git init							\
 echo '![[:digit:]][[:digit:]]_*.in' > util/grub.d/.gitignore	\
 echo '!*.[[:digit:]]' > util/.gitignore				\
 echo '!config.h' > include/grub/emu/.gitignore			\
-sed -i 's/python\([^3]\),python3\1,g' autogen.sh		\
+sed -i 's,python\([^3]\),python3\1,g' autogen.sh		\
 ./autogen.sh							\
 git config user.email "%{name}-owner@fedoraproject.org"		\
 git config user.name "Fedora Ninjas"				\
