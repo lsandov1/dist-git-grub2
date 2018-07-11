@@ -136,7 +136,6 @@ This subpackage provides tools for support of all platforms.
 %endif
 
 %prep
-patch -p1 < %{SOURCE10}
 %do_common_setup
 %if 0%{with_efi_arch}
 mkdir grub-%{grubefiarch}-%{tarversion}

@@ -34,4 +34,7 @@ rebase:
 rpmspec:
 	rpmspec -D "_sourcedir $(shell pwd)" -P grub2.spec
 
+mockbuild:
+	rhpkg mockbuild
+
 # vim:ft=make
