@@ -1,8 +1,8 @@
-From 542cb6426ff8418208a75bd5fa2693812763e006 Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Peter Jones <pjones@redhat.com>
 Date: Wed, 11 Jul 2018 13:48:48 -0400
-Subject: [PATCH 378/380] Disable multiboot, multiboot2, and linux16 modules on
- EFI builds.
+Subject: [PATCH] Disable multiboot, multiboot2, and linux16 modules on EFI
+ builds.
 
 Signed-off-by: Peter Jones <pjones@redhat.com>
 ---
@@ -40,6 +40,3 @@ index 3b022555c46..81509b86a0d 100644
  };
  
  module = {
--- 
-2.17.1
-

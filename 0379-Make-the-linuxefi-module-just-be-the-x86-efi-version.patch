@@ -1,4 +1,4 @@
-From d4d1b60297a12f256ef27c7454ac508434d68af7 Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Peter Jones <pjones@redhat.com>
 Date: Wed, 11 Jul 2018 13:49:17 -0400
 Subject: [PATCH] Make the linuxefi module just be the x86 efi version of linux

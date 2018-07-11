@@ -1,7 +1,7 @@
-From 2fb1d1f257c3e17639c40a44feaf48824ede7ed9 Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Peter Jones <pjones@redhat.com>
 Date: Wed, 11 Jul 2018 13:43:34 -0400
-Subject: [PATCH 376/380] gentpl: add 'pc' firmware type
+Subject: [PATCH] gentpl: add 'pc' firmware type
 
 Signed-off-by: Peter Jones <pjones@redhat.com>
 ---
@@ -20,6 +20,3 @@ index a8cd540550f..baac6a2af69 100644
  GROUPS["efi"]  = [ "i386_efi", "x86_64_efi", "ia64_efi", "arm_efi", "arm64_efi" ]
  GROUPS["ieee1275"]   = [ "i386_ieee1275", "sparc64_ieee1275", "powerpc_ieee1275" ]
  GROUPS["uboot"] = [ "arm_uboot" ]
--- 
-2.17.1
-
