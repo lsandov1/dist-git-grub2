@@ -1,27 +1,28 @@
-From 02ab32de226fd6e89cbca77aaa6c09f1d78b5f1d Mon Sep 17 00:00:00 2001
+From 7f407362d018c4e505d24c8875a1e2333a90b6ba Mon Sep 17 00:00:00 2001
 From: Peter Jones <pjones@redhat.com>
 Date: Tue, 10 Jul 2018 16:54:02 -0400
 Subject: [PATCH] Force gentply.py to use python3
 
 Signed-off-by: Peter Jones <pjones@redhat.com>
 ---
- autogen.sh           | 4 ++--
+ autogen.sh           | 5 +++--
  conf/Makefile.common | 4 ++--
  gentpl.py            | 2 +-
- 3 files changed, 5 insertions(+), 5 deletions(-)
+ 3 files changed, 6 insertions(+), 5 deletions(-)
 
 diff --git a/autogen.sh b/autogen.sh
-index 7537561ad0d..557913130db 100755
+index 7537561ad0d..04a2e153ca7 100755
 --- a/autogen.sh
 +++ b/autogen.sh
-@@ -2,8 +2,8 @@
+@@ -2,8 +2,9 @@
  
  set -e
  
 -# Set ${PYTHON} to plain 'python' if not set already
 -: ${PYTHON:=python}
 +# Set ${PYTHON} to 'python3' if not set already
-+: ${PYTHON:=python3}
++# : ${PYTHON:=python3}
++PYTHON=python3
  
  export LC_COLLATE=C
  unset LC_ALL
