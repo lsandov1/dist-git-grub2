@@ -23,6 +23,8 @@ Source6:	gitignore
 Source8:	strtoull_test.c
 Source9:	20-grub.install
 
+Source10:	10375-Force-everything-to-use-python3.patch
+
 %include %{SOURCE1}
 
 # generate with do-rebase
@@ -134,6 +136,7 @@ This subpackage provides tools for support of all platforms.
 %endif
 
 %prep
+patch -p1 < %{SOURCE10}
 %do_common_setup
 %if 0%{with_efi_arch}
 mkdir grub-%{grubefiarch}-%{tarversion}

@@ -31,4 +31,7 @@ release:
 rebase:
 	./do-rebase --nocommit fedora-${FEDVER} ${REPO}
 
+rpmspec:
+	rpmspec -D "_sourcedir $(shell pwd)" -P grub2.spec
+
 # vim:ft=make
