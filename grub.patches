@@ -386,3 +386,4 @@ Patch0385: 0385-blscfg-remove-NULL-guards-around-grub_free.patch
 Patch0386: 0386-blscfg-fix-filename-in-no-linux-key-error.patch
 Patch0387: 0387-blscfg-don-t-leak-bls_entry.filename.patch
 Patch0388: 0388-blscfg-fix-compilation-on-EFI-and-EMU.patch
+Patch0389: 0389-Fix-our-linuxefi-linux-command-reunion.patch

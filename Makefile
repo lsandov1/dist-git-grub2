@@ -39,6 +39,9 @@ rebase:
 rpmspec:
 	rpmspec -D "_sourcedir $(shell pwd)" -P grub2.spec
 
+rebuild: srpm
+	rpmbuild --rebuild $(SOURCES)
+
 local prep mockbuild compile :
 	rhpkg $@
 

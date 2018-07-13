@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	38%{?dist}
+Release:	39%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -458,8 +458,11 @@ fi
 %endif
 
 %changelog
-* Tue Jul 10 2018 pjones <pjones@redhat.com> - 1:2.02-38
-- Rebased to newer upstream for fedora-29
+* Tue Jul 10 2018 pjones <pjones@redhat.com> - 2.02-39
+- Fix our linuxefi/linux command reunion.
+
+* Tue Jul 10 2018 pjones <pjones@redhat.com> - 2.02-38
+- Rebased to newer upstream for RHEL-8
 
 * Wed May 16 2018 Peter Jones <pjones@redhat.com> - 2.02-37
 - Fixups to work with gcc 8
