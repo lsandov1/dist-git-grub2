@@ -41,6 +41,8 @@ BuildRequires:	freetype-devel gettext-devel git
 BuildRequires:	texinfo
 BuildRequires:	dejavu-sans-fonts
 BuildRequires:	help2man
+# For %%_userunitdir macro
+BuildRequires:	systemd
 %ifarch %{efi_arch}
 BuildRequires:	pesign >= 0.99-8
 %endif
@@ -212,6 +214,20 @@ install -D -m 0755 -t %{buildroot}%{_prefix}/lib/kernel/install.d/ %{SOURCE9}
 install -d -m 0755 %{buildroot}%{_sysconfdir}/kernel/install.d/
 install -m 0644 /dev/null %{buildroot}%{_sysconfdir}/kernel/install.d/20-grubby.install
 install -m 0644 /dev/null %{buildroot}%{_sysconfdir}/kernel/install.d/90-loaderentry.install
+# Install grub2-set-bootflag polkit policy
+install -D -m 0755 -t %{buildroot}%{_datadir}/polkit-1/actions \
+	docs/org.gnu.grub.policy
+# Install systemd user service to set the boot_success flag
+install -D -m 0755 -t %{buildroot}%{_userunitdir} \
+	docs/grub-boot-success.{timer,service}
+install -d -m 0755 %{buildroot}%{_userunitdir}/timers.target.wants
+ln -s ../grub-boot-success.timer \
+	%{buildroot}%{_userunitdir}/timers.target.wants
+# Install systemd system-update unit to set boot_indeterminate for offline-upd
+install -D -m 0755 -t %{buildroot}%{_unitdir} docs/grub-boot-indeterminate.service
+install -d -m 0755 %{buildroot}%{_unitdir}/system-update.target.wants
+ln -s ../grub-boot-indeterminate.service \
+	%{buildroot}%{_unitdir}/system-update.target.wants
 
 # Don't run debuginfo on all the grub modules and whatnot; it just
 # rejects them, complains, and slows down extraction.
@@ -356,6 +372,12 @@ fi
 %attr(0644,root,root) %ghost %config(noreplace) %{_sysconfdir}/default/grub
 %config %{_sysconfdir}/grub.d/??_*
 %{_sysconfdir}/grub.d/README
+%{_datadir}/polkit-1/actions/org.gnu.grub.policy
+%{_userunitdir}/grub-boot-success.timer
+%{_userunitdir}/grub-boot-success.service
+%{_userunitdir}/timers.target.wants
+%{_unitdir}/grub-boot-indeterminate.service
+%{_unitdir}/system-update.target.wants
 %{_infodir}/%{name}*
 %{_datarootdir}/grub/*
 %{_sbindir}/%{name}-install
@@ -457,7 +479,10 @@ fi
 %{expand:%define_legacy_variant_files %%{legacy_package_arch} %%{grublegacyarch}}
 %endif
 
-%changelog
+* Mon Jul 16 2018 Hans de Goede <hdegoede@redhat.com>
+- Make the user session automatically set the boot_success grubenv flag
+- Make offline-updates increment the boot_indeterminate grubenv variable
+
 * Fri Jul 13 2018 Peter Jones <pjones@redhat.com> - 2.02-40
 - Revert broken moduledir fix in this tree as well.
 
