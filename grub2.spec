@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	40%{?dist}
+Release:	41%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -478,6 +478,10 @@ fi
 %if 0%{with_legacy_arch}
 %{expand:%define_legacy_variant_files %%{legacy_package_arch} %%{grublegacyarch}}
 %endif
+
+%changelog
+* Mon Jul 16 2018 pjones <pjones@redhat.com> - 2.02-41
+- Pull in newer sb patches that do a better job with config file writing
 
 * Mon Jul 16 2018 Hans de Goede <hdegoede@redhat.com>
 - Make the user session automatically set the boot_success grubenv flag
