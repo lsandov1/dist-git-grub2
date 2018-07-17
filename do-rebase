@@ -83,7 +83,7 @@ set -- "${savedargs[@]}"
 if [ -z "${releasever}" -a $# -gt 0 ]; then
 	releasever=$1
 	shift
-else
+elif [ -z "${releasever}" ]; then
 	dist=$(git status | grep "On branch" | cut -d\  -f3-)
 	if [ -z "$dist" ]; then
 		echo "Could not figure out distro release version" 1>&2
@@ -139,6 +139,8 @@ elif othergit remote show -n rhboot | grep -q "URL: github$" ; then
 		echo "Could not add remote: rhboot" 1>&2
 		exit 1
 	fi
+else
+	othergit remote set-url rhboot ${gitrepo}
 fi
 
 othergit fetch rhboot

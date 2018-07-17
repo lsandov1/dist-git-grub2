@@ -17,18 +17,28 @@ ifeq ($(FEDVER),)
 override FEDVER = 29
 endif
 
+ARCH ?=
+ifneq ($(ARCH),)
+override ARCH := $(foreach x,$(ARCH), --arch-override=$(x))
+endif
+
+# this is wacky because just using wildcard gets the list from before clean
+# happens.
+SOURCES ?= $(shell ls *.src.rpm)
+
 all:
 
 push :
 	git push
 
-srpm:
+clean :
 	@rm -vf *.src.rpm
+
+srpm:
 	rhpkg srpm
 
 scratch: srpm
-	brew build --scratch rhel-${RHELVER}-candidate $(wildcard *.src.rpm)
-
+	brew build --scratch ${ARCH} rhel-${RHELVER}-candidate $(SOURCES)
 
 release:
 	rhpkg build --target rhel-${RHELVER}-candidate-pesign
@@ -45,6 +55,6 @@ rebuild: srpm
 local prep mockbuild compile :
 	rhpkg $@
 
-.PHONY: all push srpm scratch release rebase rpmspec local prep mockbuild compile
+.PHONY: all push srpm scratch release rebase rpmspec local prep mockbuild compile clean
 
 # vim:ft=make
