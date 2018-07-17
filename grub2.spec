@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	41%{?dist}
+Release:	42%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -480,6 +480,11 @@ fi
 %endif
 
 %changelog
+* Tue Jul 17 2018 Peter Jones <pjones@redhat.com> - 2.02-42
+- Fix some minor BLS issues
+- Rework the FDT module linking to make aarch64 build and boot right
+  Resolves: rhbz#1601835
+
 * Mon Jul 16 2018 pjones <pjones@redhat.com> - 2.02-41
 - Pull in newer sb patches that do a better job with config file writing
 
