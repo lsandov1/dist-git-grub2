@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	42%{?dist}
+Release:	44%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -17,13 +17,12 @@ Source0:	ftp://alpha.gnu.org/gnu/grub/grub-%{tarversion}.tar.xz
 #Source0:	ftp://ftp.gnu.org/gnu/grub/grub-%%{tarversion}.tar.xz
 Source1:	grub.macros
 Source2:	grub.patches
+Source3:	release-to-master.patch
 Source4:	http://unifoundry.com/unifont-5.1.20080820.pcf.gz
 Source5:	theme.tar.bz2
 Source6:	gitignore
 Source8:	strtoull_test.c
 Source9:	20-grub.install
-
-Source10:	Force-everything-to-use-python3.patch
 
 %include %{SOURCE1}
 
@@ -141,23 +140,30 @@ This subpackage provides tools for support of all platforms.
 %do_common_setup
 %if 0%{with_efi_arch}
 mkdir grub-%{grubefiarch}-%{tarversion}
+grep -A100000 '# stuff "make" creates' .gitignore > grub-%{grubefiarch}-%{tarversion}/.gitignore
 cp %{SOURCE4} grub-%{grubefiarch}-%{tarversion}/unifont.pcf.gz
+git add grub-%{grubefiarch}-%{tarversion}
 %endif
 %if 0%{with_alt_efi_arch}
 mkdir grub-%{grubaltefiarch}-%{tarversion}
+grep -A100000 '# stuff "make" creates' .gitignore > grub-%{grubaltefiarch}-%{tarversion}/.gitignore
 cp %{SOURCE4} grub-%{grubaltefiarch}-%{tarversion}/unifont.pcf.gz
+git add grub-%{grubaltefiarch}-%{tarversion}
 %endif
 %if 0%{with_legacy_arch}
 mkdir grub-%{grublegacyarch}-%{tarversion}
+grep -A100000 '# stuff "make" creates' .gitignore > grub-%{grublegacyarch}-%{tarversion}/.gitignore
 cp %{SOURCE4} grub-%{grublegacyarch}-%{tarversion}/unifont.pcf.gz
+git add grub-%{grublegacyarch}-%{tarversion}
 %endif
+git commit -m "After making subdirs"
 
 %build
 %if 0%{with_efi_arch}
-%{expand:%do_primary_efi_build %%{grubefiarch} %%{grubefiname} %%{grubeficdname} %%{_target_platform} %%{efi_cflags}}
+%{expand:%do_primary_efi_build %%{grubefiarch} %%{grubefiname} %%{grubeficdname} %%{_target_platform} %%{efi_target_cflags} %%{efi_host_cflags}}
 %endif
 %if 0%{with_alt_efi_arch}
-%{expand:%do_alt_efi_build %%{grubaltefiarch} %%{grubaltefiname} %%{grubalteficdname} %%{_alt_target_platform} %%{alt_efi_cflags}}
+%{expand:%do_alt_efi_build %%{grubaltefiarch} %%{grubaltefiname} %%{grubalteficdname} %%{_alt_target_platform} %%{alt_efi_target_cflags} %%{alt_efi_host_cflags}}
 %endif
 %if 0%{with_legacy_arch}
 %{expand:%do_legacy_build %%{grublegacyarch}}
@@ -480,6 +486,12 @@ fi
 %endif
 
 %changelog
+* Thu Aug 09 2018 Peter Jones <pjones@redhat.com> - 2.02-44
+- Rebased to newer upstream for fedora-29
+
+* Thu Aug 09 2018 pjones <pjones@redhat.com> - 1:2.02-43
+- Rebased to newer upstream for fedora-29
+
 * Tue Jul 17 2018 Peter Jones <pjones@redhat.com> - 2.02-42
 - Fix some minor BLS issues
 - Rework the FDT module linking to make aarch64 build and boot right
