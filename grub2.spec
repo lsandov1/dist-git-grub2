@@ -31,7 +31,7 @@ Source10:	Force-everything-to-use-python3.patch
 %include %{SOURCE2}
 
 BuildRequires:	gcc efi-srpm-macros
-BuildRequires:	flex bison binutils python3
+BuildRequires:	flex bison binutils python3-devel
 BuildRequires:	ncurses-devel xz-devel bzip2-devel
 BuildRequires:	freetype-devel libusb-devel
 BuildRequires:	rpm-devel
