@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	44%{?dist}
+Release:	45%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -486,6 +486,10 @@ fi
 %endif
 
 %changelog
+* Tue Aug 14 2018 Peter Jones <pjones@redhat.com> - 2.02-45
+- Fix a typo in /etc/grub.d/01_fallback_counting
+  Resolves: rhbz#1615954
+
 * Thu Aug 09 2018 Peter Jones <pjones@redhat.com> - 2.02-44
 - Rebased to newer upstream for fedora-29
 
