@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	45%{?dist}
+Release:	46%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -486,6 +486,10 @@ fi
 %endif
 
 %changelog
+* Mon Aug 27 2018 Peter Jones <pjones@redhat.com> - 2.02-46
+- Better memory allocation for kernel/initramfs on aarch64
+  Resolves: rhbz#1620954
+
 * Tue Aug 14 2018 Peter Jones <pjones@redhat.com> - 2.02-45
 - Fix a typo in /etc/grub.d/01_fallback_counting
   Resolves: rhbz#1615954
