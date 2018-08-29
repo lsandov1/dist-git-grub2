@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	46%{?dist}
+Release:	47%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -486,6 +486,13 @@ fi
 %endif
 
 %changelog
+* Wed Sep 12 2018 Peter Jones <pjones@redhat.com> - 2.02-47
+- BLS fixes from the F29 tree
+  - Use /boot/loader/entries as BLS dir also on EFI systems
+  - Make 20-grub.install to exit if there is no machine ID set
+  - More fixes for BLS
+  Resolves: rhbz#1620954
+
 * Mon Aug 27 2018 Peter Jones <pjones@redhat.com> - 2.02-46
 - Better memory allocation for kernel/initramfs on aarch64
   Resolves: rhbz#1620954
