@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	47%{?dist}
+Release:	48%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -486,6 +486,12 @@ fi
 %endif
 
 %changelog
+* Fri Sep 14 2018 Peter Jones <pjones@redhat.com> - 2.02-48
+- Go back to forcing all allocations on x86_64 to be 32-bit, as many UEFI
+  implementations seem to have drivers with DMA issues for addresses
+  above 4GB.
+  Resolves: rhbz#1628346
+
 * Wed Sep 12 2018 Peter Jones <pjones@redhat.com> - 2.02-47
 - BLS fixes from the F29 tree
   - Use /boot/loader/entries as BLS dir also on EFI systems

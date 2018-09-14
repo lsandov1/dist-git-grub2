@@ -232,4 +232,3 @@ Patch0231: 0231-Make-linux_arm_kernel_header.hdr_offset-be-at-the-ri.patch
 Patch0232: 0232-Mark-some-unused-stuff-unused.patch
 Patch0233: 0233-Make-grub_error-more-verbose.patch
 Patch0234: 0234-arm-arm64-loader-Better-memory-allocation-and-error-.patch
-Patch0235: 0235-Fix-GRUB_EFI_MAX_USABLE_ADDRESS-to-be-64-bit-on-x86_.patch
