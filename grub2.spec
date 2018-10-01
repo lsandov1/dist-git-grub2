@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	49%{?dist}
+Release:	50%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -299,6 +299,10 @@ if [ "$1" = 1 ]; then
 	/sbin/install-info --info-dir=%{_infodir} %{_infodir}/%{name}-dev.info.gz || :
 fi
 
+if [ "$1" = 2 ]; then
+	/sbin/grub2-switch-to-blscfg --backup-suffix=.rpmsave &>/dev/null || :
+fi
+
 %triggerun -- grub2 < 1:1.99-4
 # grub2 < 1.99-4 removed a number of essential files in postun. To fix upgrades
 # from the affected grub2 packages, we first back up the files in triggerun and
@@ -498,6 +502,16 @@ fi
 %endif
 
 %changelog
+* Mon Oct 01 2018 pjones <pjones@redhat.com> - 1:2.02-50
+- Disable TPM (again) on BIOS; it really does not work reliably.
+  Resolves: rhbz#1579835
+- Make blscfg module loadable on other grub2 builds
+  Resolves: rhbz#1633646
+- Include blscfg module on ppc builds
+  Related: rhbz#1633646
+- Fix rpmdiff complaints about execstack
+  Related: rhbz#1633646
+
 * Mon Sep 24 2018 Peter Jones <pjones@redhat.com> - 2.02-49
 - Add an installkernel script for BLS configurations
   Related: rhbz#1619344

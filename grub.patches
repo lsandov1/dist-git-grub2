@@ -232,3 +232,8 @@ Patch0231: 0231-Make-linux_arm_kernel_header.hdr_offset-be-at-the-ri.patch
 Patch0232: 0232-Mark-some-unused-stuff-unused.patch
 Patch0233: 0233-Make-grub_error-more-verbose.patch
 Patch0234: 0234-arm-arm64-loader-Better-memory-allocation-and-error-.patch
+Patch0235: 0235-drop-TPM-support-for-legacy-BIOS.patch
+Patch0236: 0236-Move-quicksort-function-from-kernel.exec-to-the-blsc.patch
+Patch0237: 0237-Include-blscfg-module-for-powerpc-ieee1275.patch
+Patch0238: 0238-grub-switch-to-blscfg-copy-blscfg-module-for-legacy-.patch
+Patch0239: 0239-Fix-getroot.c-s-trampolines.patch
