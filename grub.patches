@@ -237,3 +237,5 @@ Patch0236: 0236-Move-quicksort-function-from-kernel.exec-to-the-blsc.patch
 Patch0237: 0237-Include-blscfg-module-for-powerpc-ieee1275.patch
 Patch0238: 0238-grub-switch-to-blscfg-copy-blscfg-module-for-legacy-.patch
 Patch0239: 0239-Fix-getroot.c-s-trampolines.patch
+Patch0240: 0240-add-10_linux_bls-grub.d-snippet-to-generate-menu-ent.patch
+Patch0241: 0241-Fix-syntax-issues-in-01_fallback_counting.in.patch

@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	50%{?dist}
+Release:	51%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -25,6 +25,7 @@ Source8:	strtoull_test.c
 Source9:	20-grub.install
 Source10:	installkernel-bls
 Source11:	installkernel.in
+Source12:	99-grub-mkconfig.install
 
 %include %{SOURCE1}
 
@@ -194,6 +195,7 @@ rm -fr $RPM_BUILD_ROOT
 %if 0%{with_legacy_arch}
 %{expand:%do_legacy_install %%{grublegacyarch} %%{alt_grub_target_name} 0%{with_efi_arch}}
 %endif
+
 rm -f $RPM_BUILD_ROOT%{_infodir}/dir
 ln -s %{name}-set-password ${RPM_BUILD_ROOT}/%{_sbindir}/%{name}-setpassword
 echo '.so man8/%{name}-set-password.8' > ${RPM_BUILD_ROOT}/%{_datadir}/man/man8/%{name}-setpassword.8
@@ -220,6 +222,7 @@ EOF
 # Install kernel-install scripts
 install -d -m 0755 %{buildroot}%{_prefix}/lib/kernel/install.d/
 install -D -m 0755 -t %{buildroot}%{_prefix}/lib/kernel/install.d/ %{SOURCE9}
+install -D -m 0755 -t %{buildroot}%{_prefix}/lib/kernel/install.d/ %{SOURCE12}
 install -d -m 0755 %{buildroot}%{_sysconfdir}/kernel/install.d/
 install -m 0644 /dev/null %{buildroot}%{_sysconfdir}/kernel/install.d/20-grubby.install
 install -m 0644 /dev/null %{buildroot}%{_sysconfdir}/kernel/install.d/90-loaderentry.install
@@ -343,6 +346,7 @@ fi
 %{_prefix}/lib/kernel/install.d/20-grub.install
 %{_sysconfdir}/kernel/install.d/20-grubby.install
 %{_sysconfdir}/kernel/install.d/90-loaderentry.install
+%{_prefix}/lib/kernel/install.d/99-grub-mkconfig.install
 %dir %{_libexecdir}/installkernel
 %{_libexecdir}/installkernel/installkernel-bls
 %attr(0755,root,root) %{_sbindir}/installkernel
@@ -393,6 +397,11 @@ fi
 %files tools
 %attr(0644,root,root) %ghost %config(noreplace) %{_sysconfdir}/default/grub
 %config %{_sysconfdir}/grub.d/??_*
+%ifarch ppc64 ppc64le
+%exclude %{_sysconfdir}/grub.d/10_linux
+%else
+%exclude %{_sysconfdir}/grub.d/10_linux_bls
+%endif
 %{_sysconfdir}/grub.d/README
 %{_datadir}/polkit-1/actions/org.gnu.grub.policy
 %{_userunitdir}/grub-boot-success.timer
@@ -502,6 +511,12 @@ fi
 %endif
 
 %changelog
+* Thu Oct 04 2018 Javier Martinez Canillas <javierm@redhat.com> - 2.02-51
+- add 10_linux_bls grub.d snippet to generate menu entries from BLS files
+  Resolves: rhbz#1636013
+- Fix syntax issues in 01_fallback_counting.in
+  Resolves: rhbz#1615954
+
 * Mon Oct 01 2018 pjones <pjones@redhat.com> - 1:2.02-50
 - Disable TPM (again) on BIOS; it really does not work reliably.
   Resolves: rhbz#1579835
