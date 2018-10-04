@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	51%{?dist}
+Release:	52%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -511,6 +511,10 @@ fi
 %endif
 
 %changelog
+* Thu Oct 04 2018 Peter Jones <pjones@redhat.com> - 2.02-52
+- Remove 01_fallback_counting entirely until we can sort its issues out.
+  Resolves: rhbz#1615954
+
 * Thu Oct 04 2018 Javier Martinez Canillas <javierm@redhat.com> - 2.02-51
 - add 10_linux_bls grub.d snippet to generate menu entries from BLS files
   Resolves: rhbz#1636013

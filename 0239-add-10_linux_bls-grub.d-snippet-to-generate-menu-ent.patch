@@ -20,10 +20,10 @@ Signed-off-by: Javier Martinez Canillas <javierm@redhat.com>
  create mode 100644 util/grub.d/10_linux_bls.in
 
 diff --git a/Makefile.util.def b/Makefile.util.def
-index c8cb91308d9..eca3dfa753f 100644
+index cba4d500198..08cc98ddb8b 100644
 --- a/Makefile.util.def
 +++ b/Makefile.util.def
-@@ -508,6 +508,13 @@ script = {
+@@ -502,6 +502,13 @@ script = {
    condition = COND_HOST_LINUX;
  };
  
