@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	52%{?dist}
+Release:	53%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -511,6 +511,10 @@ fi
 %endif
 
 %changelog
+* Fri Oct 05 2018 Javier Martinez Canillas <javierm@redhat.com> - 2.02-53
+- Only set kernelopts in grubenv if it wasn't set before
+  Resolves: rhbz#1636466
+
 * Thu Oct 04 2018 Peter Jones <pjones@redhat.com> - 2.02-52
 - Remove 01_fallback_counting entirely until we can sort its issues out.
   Resolves: rhbz#1615954

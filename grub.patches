@@ -237,3 +237,4 @@ Patch0236: 0236-Include-blscfg-module-for-powerpc-ieee1275.patch
 Patch0237: 0237-grub-switch-to-blscfg-copy-blscfg-module-for-legacy-.patch
 Patch0238: 0238-Fix-getroot.c-s-trampolines.patch
 Patch0239: 0239-add-10_linux_bls-grub.d-snippet-to-generate-menu-ent.patch
+Patch0240: 0240-Only-set-kernelopts-in-grubenv-if-it-wasn-t-set-befo.patch
