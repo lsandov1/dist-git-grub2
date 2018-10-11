@@ -26,6 +26,8 @@ Source9:	20-grub.install
 Source10:	installkernel-bls
 Source11:	installkernel.in
 Source12:	99-grub-mkconfig.install
+Source13:	securebootca.cer
+Source14:	secureboot.cer
 
 %include %{SOURCE1}
 
@@ -164,10 +166,10 @@ git commit -m "After making subdirs"
 
 %build
 %if 0%{with_efi_arch}
-%{expand:%do_primary_efi_build %%{grubefiarch} %%{grubefiname} %%{grubeficdname} %%{_target_platform} %%{efi_target_cflags} %%{efi_host_cflags}}
+%{expand:%do_primary_efi_build %%{grubefiarch} %%{grubefiname} %%{grubeficdname} %%{_target_platform} %%{efi_target_cflags} %%{efi_host_cflags} %{SOURCE13} %{SOURCE14} redhatsecureboot301}
 %endif
 %if 0%{with_alt_efi_arch}
-%{expand:%do_alt_efi_build %%{grubaltefiarch} %%{grubaltefiname} %%{grubalteficdname} %%{_alt_target_platform} %%{alt_efi_target_cflags} %%{alt_efi_host_cflags}}
+%{expand:%do_alt_efi_build %%{grubaltefiarch} %%{grubaltefiname} %%{grubalteficdname} %%{_alt_target_platform} %%{alt_efi_target_cflags} %%{alt_efi_host_cflags} %{SOURCE13} %{SOURCE14} redhatsecureboot301}
 %endif
 %if 0%{with_legacy_arch}
 %{expand:%do_legacy_build %%{grublegacyarch}}

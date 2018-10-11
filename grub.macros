@@ -377,14 +377,14 @@ GRUB_MODULES="	all_video boot blscfg btrfs			\\\
 		search_label serial sleep syslinuxcfg test tftp	\\\
 		video xfs"					\
 GRUB_MODULES+=%{platform_modules}				\
-%{expand:%%{mkimage %{1} %{2} %{3} %{4}}}			\
+%{expand:%%{mkimage %{1} %{2} %{3} %{4} %{5} %{6} %{7}}}	\
 %{nil}
 
 %define do_primary_efi_build()					\
 cd grub-%{1}-%{tarversion}					\
 %{expand:%%do_efi_configure %%{4} %%{5} %%{6}}			\
 %do_efi_build_all						\
-%{expand:%%do_efi_build_images %{grub_target_name} %{2} %{3} ./ } \
+%{expand:%%do_efi_build_images %{grub_target_name} %{2} %{3} ./ %{6} %{7} %{8}} \
 cd ..								\
 %{nil}
 
@@ -393,7 +393,7 @@ cd grub-%{1}-%{tarversion}					\
 %{expand:%%do_efi_configure %%{4} %%{5} %%{6}}			\
 %do_efi_build_modules						\
 %{expand:%%do_efi_link_utils %{grubefiarch}}			\
-%{expand:%%do_efi_build_images %{alt_grub_target_name} %{2} %{3} ../grub-%{grubefiarch}-%{tarversion}/ } \
+%{expand:%%do_efi_build_images %{alt_grub_target_name} %{2} %{3} ../grub-%{grubefiarch}-%{tarversion}/ %{6} %{7} %{8}} \
 cd ..								\
 %{nil}
 
