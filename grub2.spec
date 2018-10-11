@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	53%{?dist}
+Release:	54%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -511,6 +511,12 @@ fi
 %endif
 
 %changelog
+* Thu Oct 11 2018 Peter Jones <pjones@redhat.com> - 2.02-54
+- kernel-install: Remove existing initramfs if it's older than the kernel
+  Resolves: rhbz#1638405
+- Update the saved entry correctly after a kernel install
+  Resolves: rhbz#1638117
+
 * Fri Oct 05 2018 Javier Martinez Canillas <javierm@redhat.com> - 2.02-53
 - Only set kernelopts in grubenv if it wasn't set before
   Resolves: rhbz#1636466
