@@ -11,7 +11,7 @@ Signed-off-by: Peter Jones <pjones@redhat.com>
  1 file changed, 11 insertions(+)
 
 diff --git a/grub-core/commands/blscfg.c b/grub-core/commands/blscfg.c
-index bec5a9ffe3e..b7f6caa9d7e 100644
+index bec5a9ffe3e..3847572dabd 100644
 --- a/grub-core/commands/blscfg.c
 +++ b/grub-core/commands/blscfg.c
 @@ -575,6 +575,7 @@ static void create_entry (struct bls_entry *entry)
@@ -31,7 +31,7 @@ index bec5a9ffe3e..b7f6caa9d7e 100644
 +   */
 +  do
 +    {
-+      dotconf = strstr(dotconf, ".conf");
++      dotconf = grub_strstr(dotconf, ".conf");
 +    } while (dotconf != NULL && dotconf[5] != '\0');
 +  if (dotconf)
 +    dotconf[0] = '\0';
