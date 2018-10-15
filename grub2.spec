@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	54%{?dist}
+Release:	55%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -513,6 +513,10 @@ fi
 %endif
 
 %changelog
+* Mon Oct 15 2018 Peter Jones <pjones@redhat.com> - 2.02-55
+- blscfg: sort everything with rpm *package* comparison
+  Related: rhbz#1638103
+
 * Thu Oct 11 2018 Peter Jones <pjones@redhat.com> - 2.02-54
 - kernel-install: Remove existing initramfs if it's older than the kernel
   Resolves: rhbz#1638405
