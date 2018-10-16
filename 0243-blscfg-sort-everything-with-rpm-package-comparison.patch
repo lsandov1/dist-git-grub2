@@ -1,4 +1,4 @@
-From aebba2f4fcfd810ecdd075263b2a2b400138b90d Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Peter Jones <pjones@redhat.com>
 Date: Mon, 15 Oct 2018 15:08:33 -0400
 Subject: [PATCH] blscfg: sort everything with rpm *package* comparison
@@ -10,7 +10,7 @@ Related: rhbz#1638103
 
 Signed-off-by: Peter Jones <pjones@redhat.com>
 ---
- grub-core/commands/blscfg.c | 118 +++++++++++++++++++++++++++++++++---
+ grub-core/commands/blscfg.c | 118 ++++++++++++++++++++++++++++++++++++++++----
  1 file changed, 108 insertions(+), 10 deletions(-)
 
 diff --git a/grub-core/commands/blscfg.c b/grub-core/commands/blscfg.c
@@ -159,6 +159,3 @@ index 3847572dabd..347128c9ddd 100644
  }
  
  struct read_entry_info {
--- 
-2.17.1
-

@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	55%{?dist}
+Release:	56%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -513,6 +513,12 @@ fi
 %endif
 
 %changelog
+* Tue Oct 16 2018 Peter Jones <pjones@redhat.com> - 2.02-56
+- Rebuild for signing
+  Resolves: rhbz#1625565
+- blscfg: Make 10_linux_bls sort the same way as well
+  Related: rhbz#1638103
+
 * Mon Oct 15 2018 Peter Jones <pjones@redhat.com> - 2.02-55
 - blscfg: sort everything with rpm *package* comparison
   Related: rhbz#1638103

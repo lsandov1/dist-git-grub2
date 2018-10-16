@@ -241,3 +241,4 @@ Patch0240: 0240-Only-set-kernelopts-in-grubenv-if-it-wasn-t-set-befo.patch
 Patch0241: 0241-blscfg-don-t-include-.conf-at-the-end-of-our-id.patch
 Patch0242: 0242-grub-get-kernel-settings-expose-some-more-config-var.patch
 Patch0243: 0243-blscfg-sort-everything-with-rpm-package-comparison.patch
+Patch0244: 0244-10_linux_bls-use-grub2-rpm-sort-instead-of-ls-vr-to-.patch
