@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	56%{?dist}
+Release:	57%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -513,6 +513,10 @@ fi
 %endif
 
 %changelog
+* Wed Oct 19 2018 Javier Martinez Canillas <javierm@redhat.com> - 2.02-57
+- don't set saved_entry on grub2-mkconfig
+  Resolves: rhbz#1636466
+
 * Tue Oct 16 2018 Peter Jones <pjones@redhat.com> - 2.02-56
 - Rebuild for signing
   Resolves: rhbz#1625565
