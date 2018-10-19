@@ -242,4 +242,8 @@ Patch0241: 0241-blscfg-don-t-include-.conf-at-the-end-of-our-id.patch
 Patch0242: 0242-grub-get-kernel-settings-expose-some-more-config-var.patch
 Patch0243: 0243-blscfg-sort-everything-with-rpm-package-comparison.patch
 Patch0244: 0244-10_linux_bls-use-grub2-rpm-sort-instead-of-ls-vr-to-.patch
-Patch0245: 0245--don-t-set-saved_entry-on-grub2-mkconfig.patch
+Patch0245: 0245-don-t-set-saved_entry-on-grub2-mkconfig.patch
+Patch0246: 0246-grub-switch-to-blscfg-use-debug-instead-of-debug-as-.patch
+Patch0247: 0247-Make-blscfg-debug-messages-more-useful.patch
+Patch0248: 0248-Make-grub_strtoul-end-pointer-have-the-right-constif.patch
+Patch0249: 0249-Fix-menu-entry-selection-based-on-ID-and-title.patch

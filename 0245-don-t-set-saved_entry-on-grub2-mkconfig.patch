@@ -1,4 +1,4 @@
-From 582a9dc28ad0ecc5b4205f61315993a367807b15 Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Javier Martinez Canillas <javierm@redhat.com>
 Date: Fri, 19 Oct 2018 14:42:41 +0200
 Subject: [PATCH] don't set saved_entry on grub2-mkconfig
@@ -17,7 +17,7 @@ Signed-off-by: Javier Martinez Canillas <javierm@redhat.com>
  2 files changed, 2 deletions(-)
 
 diff --git a/util/grub.d/10_linux.in b/util/grub.d/10_linux.in
-index 01e66e5fc740..b54d2774a7da 100644
+index 01e66e5fc74..b54d2774a7d 100644
 --- a/util/grub.d/10_linux.in
 +++ b/util/grub.d/10_linux.in
 @@ -165,7 +165,6 @@ if [ -s \$prefix/grubenv ]; then
@@ -29,7 +29,7 @@ index 01e66e5fc740..b54d2774a7da 100644
  	${grub_editenv} - set kernelopts="root=${linux_root_device_thisversion} ro ${args}"
      fi
 diff --git a/util/grub.d/10_linux_bls.in b/util/grub.d/10_linux_bls.in
-index 1bc97f298985..8745e598d0eb 100644
+index 1bc97f29898..8745e598d0e 100644
 --- a/util/grub.d/10_linux_bls.in
 +++ b/util/grub.d/10_linux_bls.in
 @@ -212,7 +212,6 @@ linux_entry ()
@@ -40,6 +40,3 @@ index 1bc97f298985..8745e598d0eb 100644
      if ! grub2-editenv - list | grep -q kernelopts; then
  	${grub_editenv} - set kernelopts="root=${linux_root_device_thisversion} ro ${args}"
      fi
--- 
-2.19.0
-

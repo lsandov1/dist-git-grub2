@@ -513,7 +513,11 @@ fi
 %endif
 
 %changelog
-* Wed Oct 19 2018 Javier Martinez Canillas <javierm@redhat.com> - 2.02-57
+* Fri Oct 19 2018 Peter Jones <pjones@redhat.com> - 2.02-57
+- Fix menu entry selection based on ID and title
+  Resolves: rhbz#1640979
+
+* Fri Oct 19 2018 Javier Martinez Canillas <javierm@redhat.com>
 - don't set saved_entry on grub2-mkconfig
   Resolves: rhbz#1636466
 
