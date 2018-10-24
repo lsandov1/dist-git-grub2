@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	57%{?dist}
+Release:	58%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -513,6 +513,10 @@ fi
 %endif
 
 %changelog
+* Wed Oct 24 2018 Javier Martinez Canillas <javierm@redhat.com> - 2.02-58
+- Don't unconditionally set default entry when installing debug kernels
+  Resolves: rhbz#1636346
+
 * Fri Oct 19 2018 Peter Jones <pjones@redhat.com> - 2.02-57
 - Fix menu entry selection based on ID and title
   Resolves: rhbz#1640979
