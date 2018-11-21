@@ -247,3 +247,5 @@ Patch0246: 0246-grub-switch-to-blscfg-use-debug-instead-of-debug-as-.patch
 Patch0247: 0247-Make-blscfg-debug-messages-more-useful.patch
 Patch0248: 0248-Make-grub_strtoul-end-pointer-have-the-right-constif.patch
 Patch0249: 0249-Fix-menu-entry-selection-based-on-ID-and-title.patch
+Patch0250: 0250-Remove-quotes-when-reading-ID-value-from-etc-os-rele.patch
+Patch0251: 0251-blscfg-expand-grub_users-before-passing-to-grub_norm.patch

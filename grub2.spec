@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	59%{?dist}
+Release:	60%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -502,6 +502,12 @@ fi
 %endif
 
 %changelog
+* Wed Nov 21 2018 Javier Martinez Canillas <javierm@redhat.com> - 2.02-60
+- Remove quotes when reading ID value from /etc/os-release
+  Related: rhbz#1650706
+- blscfg: expand grub_users before passing to grub_normal_add_menu_entry()
+  Resolves: rhbz#1650706
+
 * Thu Nov 08 2018 Javier Martinez Canillas <javierm@redhat.com> - 2.02-59
 - Remove installkernel-bls script
   Related: rhbz#1647721
