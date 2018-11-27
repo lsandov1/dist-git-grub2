@@ -15,10 +15,10 @@ Signed-off-by: Ken Lin <ken.lin@hpe.com>
  2 files changed, 46 insertions(+), 27 deletions(-)
 
 diff --git a/grub-core/net/drivers/efi/efinet.c b/grub-core/net/drivers/efi/efinet.c
-index da90f0f40ce..ac58e3e82cf 100644
+index bf4b465f632..ee430623032 100644
 --- a/grub-core/net/drivers/efi/efinet.c
 +++ b/grub-core/net/drivers/efi/efinet.c
-@@ -493,6 +493,8 @@ grub_efi_net_config_real (grub_efi_handle_t hnd, char **device,
+@@ -483,6 +483,8 @@ grub_efi_net_config_real (grub_efi_handle_t hnd, char **device,
  	  grub_print_error ();
  	if (device && path)
  	  grub_dprintf ("efinet", "device: `%s' path: `%s'\n", *device, *path);

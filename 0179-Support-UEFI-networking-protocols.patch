@@ -233,7 +233,7 @@ index a2a732ffc0d..4d36fe31177 100644
  	      grub_printf ("/UnknownMessaging(%x)", (unsigned) subtype);
  	      break;
 diff --git a/grub-core/net/drivers/efi/efinet.c b/grub-core/net/drivers/efi/efinet.c
-index c25a68161b8..56305f46a3d 100644
+index 36f4f5d8d12..6e9cd5d8fa3 100644
 --- a/grub-core/net/drivers/efi/efinet.c
 +++ b/grub-core/net/drivers/efi/efinet.c
 @@ -28,6 +28,7 @@
@@ -244,7 +244,7 @@ index c25a68161b8..56305f46a3d 100644
  
  GRUB_MOD_LICENSE ("GPLv3+");
  
-@@ -572,6 +573,17 @@ grub_efinet_create_dhcp_ack_from_device_path (grub_efi_device_path_t *dp, int *u
+@@ -562,6 +563,17 @@ grub_efinet_create_dhcp_ack_from_device_path (grub_efi_device_path_t *dp, int *u
  
    ldp = grub_efi_find_last_device_path (ddp);
  
@@ -262,7 +262,7 @@ index c25a68161b8..56305f46a3d 100644
    if (GRUB_EFI_DEVICE_PATH_TYPE (ldp) != GRUB_EFI_MESSAGING_DEVICE_PATH_TYPE
        || (GRUB_EFI_DEVICE_PATH_SUBTYPE (ldp) != GRUB_EFI_IPV4_DEVICE_PATH_SUBTYPE
            && GRUB_EFI_DEVICE_PATH_SUBTYPE (ldp) != GRUB_EFI_IPV6_DEVICE_PATH_SUBTYPE))
-@@ -844,6 +856,7 @@ grub_efi_net_config_real (grub_efi_handle_t hnd, char **device,
+@@ -834,6 +846,7 @@ grub_efi_net_config_real (grub_efi_handle_t hnd, char **device,
  	if (GRUB_EFI_DEVICE_PATH_TYPE (ldp) != GRUB_EFI_MESSAGING_DEVICE_PATH_TYPE
  	    || (GRUB_EFI_DEVICE_PATH_SUBTYPE (ldp) != GRUB_EFI_IPV4_DEVICE_PATH_SUBTYPE
  		&& GRUB_EFI_DEVICE_PATH_SUBTYPE (ldp) != GRUB_EFI_IPV6_DEVICE_PATH_SUBTYPE
@@ -270,7 +270,7 @@ index c25a68161b8..56305f46a3d 100644
  		&& GRUB_EFI_DEVICE_PATH_SUBTYPE (ldp) != GRUB_EFI_URI_DEVICE_PATH_SUBTYPE))
  	  continue;
  	dup_dp = grub_efi_duplicate_device_path (dp);
-@@ -858,6 +871,15 @@ grub_efi_net_config_real (grub_efi_handle_t hnd, char **device,
+@@ -848,6 +861,15 @@ grub_efi_net_config_real (grub_efi_handle_t hnd, char **device,
  	    dup_ldp->length = sizeof (*dup_ldp);
  	  }
  
@@ -286,7 +286,7 @@ index c25a68161b8..56305f46a3d 100644
  	dup_ldp = grub_efi_find_last_device_path (dup_dp);
  	dup_ldp->type = GRUB_EFI_END_DEVICE_PATH_TYPE;
  	dup_ldp->subtype = GRUB_EFI_END_ENTIRE_DEVICE_PATH_SUBTYPE;
-@@ -929,6 +951,9 @@ grub_efi_net_config_real (grub_efi_handle_t hnd, char **device,
+@@ -919,6 +941,9 @@ grub_efi_net_config_real (grub_efi_handle_t hnd, char **device,
  
  GRUB_MOD_INIT(efinet)
  {
@@ -296,7 +296,7 @@ index c25a68161b8..56305f46a3d 100644
    grub_efinet_findcards ();
    grub_efi_net_config = grub_efi_net_config_real;
  }
-@@ -940,5 +965,7 @@ GRUB_MOD_FINI(efinet)
+@@ -930,5 +955,7 @@ GRUB_MOD_FINI(efinet)
    FOR_NET_CARDS_SAFE (card, next) 
      if (card->driver == &efidriver)
        grub_net_card_unregister (card);

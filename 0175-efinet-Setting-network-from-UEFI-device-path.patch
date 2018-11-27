@@ -32,7 +32,7 @@ Signed-off-by: Ken Lin <ken.lin@hpe.com>
  2 files changed, 280 insertions(+), 15 deletions(-)
 
 diff --git a/grub-core/net/drivers/efi/efinet.c b/grub-core/net/drivers/efi/efinet.c
-index ac58e3e82cf..431b72916b6 100644
+index ee430623032..aba905062eb 100644
 --- a/grub-core/net/drivers/efi/efinet.c
 +++ b/grub-core/net/drivers/efi/efinet.c
 @@ -27,6 +27,7 @@
@@ -43,7 +43,7 @@ index ac58e3e82cf..431b72916b6 100644
  
  GRUB_MOD_LICENSE ("GPLv3+");
  
-@@ -412,6 +413,227 @@ grub_efinet_findcards (void)
+@@ -402,6 +403,227 @@ grub_efinet_findcards (void)
      }
  }
  
@@ -271,7 +271,7 @@ index ac58e3e82cf..431b72916b6 100644
  static void
  grub_efi_net_config_real (grub_efi_handle_t hnd, char **device,
  			  char **path)
-@@ -427,7 +649,11 @@ grub_efi_net_config_real (grub_efi_handle_t hnd, char **device,
+@@ -417,7 +639,11 @@ grub_efi_net_config_real (grub_efi_handle_t hnd, char **device,
    {
      grub_efi_device_path_t *cdp;
      struct grub_efi_pxe *pxe;
@@ -284,7 +284,7 @@ index ac58e3e82cf..431b72916b6 100644
  
      if (card->driver != &efidriver)
        continue;
-@@ -454,11 +680,21 @@ grub_efi_net_config_real (grub_efi_handle_t hnd, char **device,
+@@ -444,11 +670,21 @@ grub_efi_net_config_real (grub_efi_handle_t hnd, char **device,
           */
  	if (GRUB_EFI_DEVICE_PATH_TYPE (ldp) != GRUB_EFI_MESSAGING_DEVICE_PATH_TYPE
  	    || (GRUB_EFI_DEVICE_PATH_SUBTYPE (ldp) != GRUB_EFI_IPV4_DEVICE_PATH_SUBTYPE
@@ -307,7 +307,7 @@ index ac58e3e82cf..431b72916b6 100644
  	dup_ldp = grub_efi_find_last_device_path (dup_dp);
  	dup_ldp->type = GRUB_EFI_END_DEVICE_PATH_TYPE;
  	dup_ldp->subtype = GRUB_EFI_END_ENTIRE_DEVICE_PATH_SUBTYPE;
-@@ -471,23 +707,37 @@ grub_efi_net_config_real (grub_efi_handle_t hnd, char **device,
+@@ -461,23 +697,37 @@ grub_efi_net_config_real (grub_efi_handle_t hnd, char **device,
  
      pxe = grub_efi_open_protocol (hnd, &pxe_io_guid,
  				  GRUB_EFI_OPEN_PROTOCOL_GET_PROTOCOL);
@@ -356,7 +356,7 @@ index ac58e3e82cf..431b72916b6 100644
  					    1, device, path);
  	if (grub_errno)
  	  grub_print_error ();
-@@ -501,11 +751,15 @@ grub_efi_net_config_real (grub_efi_handle_t hnd, char **device,
+@@ -491,11 +741,15 @@ grub_efi_net_config_real (grub_efi_handle_t hnd, char **device,
  	grub_dprintf ("efinet", "using ipv4 and dhcp\n");
  	grub_net_configure_by_dhcp_ack (card->name, card, 0,
  					(struct grub_net_bootp_packet *)

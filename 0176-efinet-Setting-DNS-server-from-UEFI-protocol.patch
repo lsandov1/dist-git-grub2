@@ -33,7 +33,7 @@ Signed-off-by: Ken Lin <ken.lin@hpe.com>
  2 files changed, 239 insertions(+)
 
 diff --git a/grub-core/net/drivers/efi/efinet.c b/grub-core/net/drivers/efi/efinet.c
-index 431b72916b6..c25a68161b8 100644
+index aba905062eb..36f4f5d8d12 100644
 --- a/grub-core/net/drivers/efi/efinet.c
 +++ b/grub-core/net/drivers/efi/efinet.c
 @@ -34,6 +34,8 @@ GRUB_MOD_LICENSE ("GPLv3+");
@@ -45,7 +45,7 @@ index 431b72916b6..c25a68161b8 100644
  
  static grub_err_t
  send_card_buffer (struct grub_net_card *dev,
-@@ -413,6 +415,125 @@ grub_efinet_findcards (void)
+@@ -403,6 +405,125 @@ grub_efinet_findcards (void)
      }
  }
  
@@ -171,7 +171,7 @@ index 431b72916b6..c25a68161b8 100644
  static struct grub_net_buff *
  grub_efinet_create_dhcp_ack_from_device_path (grub_efi_device_path_t *dp, int *use_ipv6)
  {
-@@ -471,6 +592,8 @@ grub_efinet_create_dhcp_ack_from_device_path (grub_efi_device_path_t *dp, int *u
+@@ -461,6 +582,8 @@ grub_efinet_create_dhcp_ack_from_device_path (grub_efi_device_path_t *dp, int *u
        grub_efi_ipv4_device_path_t *ipv4 = (grub_efi_ipv4_device_path_t *) ldp;
        struct grub_net_bootp_packet *bp;
        grub_uint8_t *ptr;
@@ -180,7 +180,7 @@ index 431b72916b6..c25a68161b8 100644
  
        bp = (struct grub_net_bootp_packet *) nb->tail;
        err = grub_netbuff_put (nb, sizeof (*bp) + 4);
-@@ -532,6 +655,25 @@ grub_efinet_create_dhcp_ack_from_device_path (grub_efi_device_path_t *dp, int *u
+@@ -522,6 +645,25 @@ grub_efinet_create_dhcp_ack_from_device_path (grub_efi_device_path_t *dp, int *u
        *ptr++ = sizeof ("HTTPClient") - 1;
        grub_memcpy (ptr, "HTTPClient", sizeof ("HTTPClient") - 1);
  
@@ -206,7 +206,7 @@ index 431b72916b6..c25a68161b8 100644
        ptr = nb->tail;
        err = grub_netbuff_put (nb, 1);
        if (err)
-@@ -564,6 +706,8 @@ grub_efinet_create_dhcp_ack_from_device_path (grub_efi_device_path_t *dp, int *u
+@@ -554,6 +696,8 @@ grub_efinet_create_dhcp_ack_from_device_path (grub_efi_device_path_t *dp, int *u
        struct grub_net_dhcp6_option *opt;
        struct grub_net_dhcp6_option_iana *iana;
        struct grub_net_dhcp6_option_iaaddr *iaaddr;
@@ -215,7 +215,7 @@ index 431b72916b6..c25a68161b8 100644
  
        d6p = (struct grub_net_dhcp6_packet *)nb->tail;
        err = grub_netbuff_put (nb, sizeof(*d6p));
-@@ -627,6 +771,25 @@ grub_efinet_create_dhcp_ack_from_device_path (grub_efi_device_path_t *dp, int *u
+@@ -617,6 +761,25 @@ grub_efinet_create_dhcp_ack_from_device_path (grub_efi_device_path_t *dp, int *u
        opt->len = grub_cpu_to_be16 (uri_len);
        grub_memcpy (opt->data, uri_dp->uri, uri_len);
  

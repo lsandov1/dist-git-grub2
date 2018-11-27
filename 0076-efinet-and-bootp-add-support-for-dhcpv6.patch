@@ -206,7 +206,7 @@ index f03eeab2fb4..da3e454466b 100644
  grub_net_process_dhcp (struct grub_net_buff *nb,
  		       struct grub_net_card *card)
 diff --git a/grub-core/net/drivers/efi/efinet.c b/grub-core/net/drivers/efi/efinet.c
-index a3ce4c67cce..329024b6f2c 100644
+index 68acb351333..9f2090db671 100644
 --- a/grub-core/net/drivers/efi/efinet.c
 +++ b/grub-core/net/drivers/efi/efinet.c
 @@ -18,11 +18,15 @@
@@ -225,7 +225,7 @@ index a3ce4c67cce..329024b6f2c 100644
  
  GRUB_MOD_LICENSE ("GPLv3+");
  
-@@ -409,7 +413,7 @@ grub_efi_net_config_real (grub_efi_handle_t hnd, char **device,
+@@ -399,7 +403,7 @@ grub_efi_net_config_real (grub_efi_handle_t hnd, char **device,
  			  char **path)
  {
    struct grub_net_card *card;
@@ -234,7 +234,7 @@ index a3ce4c67cce..329024b6f2c 100644
  
    dp = grub_efi_get_device_path (hnd);
    if (! dp)
-@@ -420,16 +424,22 @@ grub_efi_net_config_real (grub_efi_handle_t hnd, char **device,
+@@ -410,16 +414,22 @@ grub_efi_net_config_real (grub_efi_handle_t hnd, char **device,
      grub_efi_device_path_t *cdp;
      struct grub_efi_pxe *pxe;
      struct grub_efi_pxe_mode *pxe_mode;
@@ -258,7 +258,7 @@ index a3ce4c67cce..329024b6f2c 100644
  	int match;
  
  	/* EDK2 UEFI PXE driver creates pseudo devices with type IPv4/IPv6
-@@ -438,7 +448,6 @@ grub_efi_net_config_real (grub_efi_handle_t hnd, char **device,
+@@ -428,7 +438,6 @@ grub_efi_net_config_real (grub_efi_handle_t hnd, char **device,
  	   devices. We skip them when enumerating cards, so here we need to
  	   find matching MAC device.
           */
@@ -266,7 +266,7 @@ index a3ce4c67cce..329024b6f2c 100644
  	if (GRUB_EFI_DEVICE_PATH_TYPE (ldp) != GRUB_EFI_MESSAGING_DEVICE_PATH_TYPE
  	    || (GRUB_EFI_DEVICE_PATH_SUBTYPE (ldp) != GRUB_EFI_IPV4_DEVICE_PATH_SUBTYPE
  		&& GRUB_EFI_DEVICE_PATH_SUBTYPE (ldp) != GRUB_EFI_IPV6_DEVICE_PATH_SUBTYPE))
-@@ -455,16 +464,46 @@ grub_efi_net_config_real (grub_efi_handle_t hnd, char **device,
+@@ -445,16 +454,46 @@ grub_efi_net_config_real (grub_efi_handle_t hnd, char **device,
  	if (!match)
  	  continue;
        }
