@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	61%{?dist}
+Release:	62%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -502,6 +502,12 @@ fi
 %endif
 
 %changelog
+* Fri Nov 30 2018 Javier Martinez Canillas <javierm@redhat.com> - 2.02-62
+- Drop "Be more aggro about actually using the *configured* network device."
+  Resolves: rhbz#1654388
+- Fix menu entry selection based on title
+  Resolves: rhbz#1654936
+
 * Tue Nov 27 2018 Javier Martinez Canillas <javierm@redhat.com> - 2.02-61
 - Drop buggy downstream patch "efinet: retransmit if our device is busy"
   Resolves: rhbz#1649048
