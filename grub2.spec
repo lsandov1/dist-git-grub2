@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	62%{?dist}
+Release:	63%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -502,6 +502,12 @@ fi
 %endif
 
 %changelog
+* Tue Dec 04 2018 Javier Martinez Canillas <javierm@redhat.com> - 2.02-63
+- BLS files should only be copied by grub-switch-to-blscfg if BLS isn't set
+  Related: rhbz#1638117
+- Fix get_entry_number() wrongly dereferencing the tail pointer
+  Resolves: rhbz#1654936
+
 * Fri Nov 30 2018 Javier Martinez Canillas <javierm@redhat.com> - 2.02-62
 - Drop "Be more aggro about actually using the *configured* network device."
   Resolves: rhbz#1654388
