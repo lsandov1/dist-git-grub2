@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	63%{?dist}
+Release:	64%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -226,9 +226,6 @@ install -D -m 0755 -t %{buildroot}%{_prefix}/lib/kernel/install.d/ %{SOURCE12}
 install -d -m 0755 %{buildroot}%{_sysconfdir}/kernel/install.d/
 install -m 0644 /dev/null %{buildroot}%{_sysconfdir}/kernel/install.d/20-grubby.install
 install -m 0644 /dev/null %{buildroot}%{_sysconfdir}/kernel/install.d/90-loaderentry.install
-# Install grub2-set-bootflag polkit policy
-install -D -m 0755 -t %{buildroot}%{_datadir}/polkit-1/actions \
-	docs/org.gnu.grub.policy
 # Install systemd user service to set the boot_success flag
 install -D -m 0755 -t %{buildroot}%{_userunitdir} \
 	docs/grub-boot-success.{timer,service}
@@ -365,7 +362,7 @@ fi
 %files tools-minimal
 %{_sysconfdir}/prelink.conf.d/grub2.conf
 %{_sbindir}/%{name}-get-kernel-settings
-%{_sbindir}/%{name}-set-bootflag
+%attr(4755, root, root) %{_sbindir}/%{name}-set-bootflag
 %{_sbindir}/%{name}-set-default
 %{_sbindir}/%{name}-set*password
 %{_bindir}/%{name}-editenv
@@ -394,7 +391,6 @@ fi
 %exclude %{_sysconfdir}/grub.d/10_linux_bls
 %endif
 %{_sysconfdir}/grub.d/README
-%{_datadir}/polkit-1/actions/org.gnu.grub.policy
 %{_userunitdir}/grub-boot-success.timer
 %{_userunitdir}/grub-boot-success.service
 %{_userunitdir}/timers.target.wants
@@ -502,6 +498,12 @@ fi
 %endif
 
 %changelog
+* Tue Dec 11 2018 Javier Martinez Canillas <javierm@redhat.com> - 2.02-64
+- Make grub2-mkconfig to honour GRUB_CMDLINE_LINUX in /etc/default/grub
+  Resolves: rhbz#1637875
+- docs: Stop using polkit / pkexec for grub-boot-success.timer / service
+  Resolves: rhbz#1655687
+
 * Tue Dec 04 2018 Javier Martinez Canillas <javierm@redhat.com> - 2.02-63
 - BLS files should only be copied by grub-switch-to-blscfg if BLS isn't set
   Related: rhbz#1638117
