@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	64%{?dist}
+Release:	65%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -498,6 +498,11 @@ fi
 %endif
 
 %changelog
+* Mon Dec 17 2018 Peter Jones <pjones@redhat.com> - 2.02-65
+- Don't build the grub2-efi-ia32-* packages on i686; it causes multilib
+  errors and we don't ship the result anyway.
+  Related: rhbz#1637875
+
 * Tue Dec 11 2018 Javier Martinez Canillas <javierm@redhat.com> - 2.02-64
 - Make grub2-mkconfig to honour GRUB_CMDLINE_LINUX in /etc/default/grub
   Resolves: rhbz#1637875
