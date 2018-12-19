@@ -255,3 +255,4 @@ Patch0254: 0254-Fix-get_entry_number-wrongly-dereferencing-the-tail-.patch
 Patch0255: 0255-Make-grub2-mkconfig-to-honour-GRUB_CMDLINE_LINUX-in-.patch
 Patch0256: 0256-grub-boot-success.timer-Add-a-few-Conditions-for-run.patch
 Patch0257: 0257-docs-Stop-using-polkit-pkexec-for-grub-boot-success..patch
+Patch0258: 0258-Fix-the-looking-up-grub.cfg-XXX-while-tftp-booting.patch

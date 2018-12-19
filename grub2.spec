@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	65%{?dist}
+Release:	66%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -498,6 +498,10 @@ fi
 %endif
 
 %changelog
+* Wed Dec 19 2018 Javier Martinez Canillas <javierm@redhat.com> - 2.02-66
+- Fix grub.cfg-XXX look up when booting over TFTP
+  Resolves: rhbz#1658500
+
 * Mon Dec 17 2018 Peter Jones <pjones@redhat.com> - 2.02-65
 - Don't build the grub2-efi-ia32-* packages on i686; it causes multilib
   errors and we don't ship the result anyway.
