@@ -258,3 +258,6 @@ Patch0257: 0257-docs-Stop-using-polkit-pkexec-for-grub-boot-success..patch
 Patch0258: 0258-Fix-the-looking-up-grub.cfg-XXX-while-tftp-booting.patch
 Patch0259: 0259-HTTP-boot-strncmp-returns-0-on-equal.patch
 Patch0260: 0260-Don-t-duplicate-net-name-string-if-not-needed.patch
+Patch0261: 0261-Try-to-set-fPIE-and-friends-on-libgnu.a.patch
+Patch0262: 0262-blscfg-fallback-to-default_kernelopts-if-BLS-option-.patch
+Patch0263: 0263-Remove-bogus-load_env-after-blscfg-command-in-10_lin.patch

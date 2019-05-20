@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	67%{?dist}
+Release:	68%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -498,6 +498,14 @@ fi
 %endif
 
 %changelog
+* Mon May 20 2019 Javier Martinez Canillas <javierm@redhat.com> - 2.02-68
+- Avoid grub2-efi package to overwrite existing /boot/grub2/grubenv file
+  Resolves: rhbz#1680572
+- Try to set -fPIE and friends on libgnu.a (pjones)
+- blscfg: fallback to default_kernelopts if BLS option field isn't set
+  Related: rhbz#1680572
+- Remove bogus load_env after blscfg command in 10_linux
+
 * Mon Apr 29 2019 Javier Martinez Canillas <javierm@redhat.com> - 2.02-67
 - Fix failure to request grub.cfg over HTTP
   Resolves: rhbz#1490991
