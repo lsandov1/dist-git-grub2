@@ -421,9 +421,11 @@ cd ..								\
 cd grub-%{1}-%{tarversion}					\
 %configure							\\\
 	%{cc_equals}						\\\
-	HOST_CFLAGS="%{legacy_host_cflags} -I$(pwd)"		\\\
-	HOST_LDFLAGS="${legacy_host_cflags}"			\\\
-	TARGET_CFLAGS="%{legacy_target_cflags} -I$(pwd)"	\\\
+	HOST_CFLAGS="%{legacy_host_cflags}"			\\\
+	HOST_CPPFLAGS="-I$(pwd)"				\\\
+	HOST_LDFLAGS="%{legacy_host_cflags}"			\\\
+	TARGET_CFLAGS="%{legacy_target_cflags}"			\\\
+	TARGET_CPPFLAGS="-I$(pwd)"				\\\
 	TARGET_LDFLAGS="%{legacy_target_ldflags}"		\\\
 	--with-platform=%{platform}				\\\
 	--with-utils=host					\\\
