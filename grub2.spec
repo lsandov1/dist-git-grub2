@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	73%{?dist}
+Release:	74%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -498,6 +498,10 @@ fi
 %endif
 
 %changelog
+* Tue Jun 04 2019 Sergio Durigan Junior <sergiodj@redhat.com> - 2.02-74
+- Use '-g' instead of '-g3' when compiling grub2.
+  Related: rhbz#1653961
+
 * Wed May 29 2019 Peter Jones <pjones@redhat.com> - 2.02-73
 - Rebuild once again to try to get rpmdiff happy.
   Related: rhbz#1653961
