@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	74%{?dist}
+Release:	75%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -498,6 +498,10 @@ fi
 %endif
 
 %changelog
+* Wed Jun 19 2019 Javier Martinez Canillas <javierm@redhat.com> - 2.02-75
+- Fix setting default entry on ppc64le when using OPAL
+  Resolves: rhbz#1721815
+
 * Tue Jun 04 2019 Sergio Durigan Junior <sergiodj@redhat.com> - 2.02-74
 - Use '-g' instead of '-g3' when compiling grub2.
   Related: rhbz#1653961
