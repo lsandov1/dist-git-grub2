@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	75%{?dist}
+Release:	76%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -498,6 +498,10 @@ fi
 %endif
 
 %changelog
+* Fri Aug 09 2019 Javier Martinez Canillas <javierm@redhat.com> - 2.02-76
+- Include regexp module in EFI builds
+  Resolves: rhbz#1737670
+
 * Wed Jun 19 2019 Javier Martinez Canillas <javierm@redhat.com> - 2.02-75
 - Fix setting default entry on ppc64le when using OPAL
   Resolves: rhbz#1721815
