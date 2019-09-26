@@ -262,3 +262,4 @@ Patch0261: 0261-Try-to-set-fPIE-and-friends-on-libgnu.a.patch
 Patch0262: 0262-blscfg-fallback-to-default_kernelopts-if-BLS-option-.patch
 Patch0263: 0263-Remove-bogus-load_env-after-blscfg-command-in-10_lin.patch
 Patch0264: 0264-10_linux_bls-use-to-separate-id-argument-due-a-Petit.patch
+Patch0265: 0265-10_linux_bls-don-t-add-users-option-to-generated-men.patch
