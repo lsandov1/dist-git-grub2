@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	79%{?dist}
+Release:	80%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -498,6 +498,16 @@ fi
 %endif
 
 %changelog
+* Thu Nov 28 2019 Javier Martinez Canillas <javierm@redhat.com> - 2.02-80
+- Fix PRIxGRUB_EFI_STATUS definition
+  Related: rhbz#1761811
+- TPM: Print messages if measuraments fail as debug instead of error
+  Resolves: rhbz#1761811
+- unix/platform: Initialize variable to fix grub-install on UEFI system
+  Resolves: rhbz#1768689
+- blscfg: add a space char when appending fields for variable expansion
+  Resolves: rhbz#1669252
+
 * Fri Nov 22 2019 Javier Martinez Canillas <javierm@redhat.com> - 2.02-79
 - grub-set-bootflag: Write new env to tmpfile and then rename (hdegoede)
   Resolves: CVE-2019-14865
