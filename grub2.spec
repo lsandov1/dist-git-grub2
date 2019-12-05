@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	80%{?dist}
+Release:	81%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -498,6 +498,10 @@ fi
 %endif
 
 %changelog
+* Thu Dec 05 2019 Javier Martinez Canillas <javierm@redhat.com> - 2.02-81
+- Another fix for blscfg variable expansion support
+  Related: rhbz#1669252
+
 * Thu Nov 28 2019 Javier Martinez Canillas <javierm@redhat.com> - 2.02-80
 - Fix PRIxGRUB_EFI_STATUS definition
   Related: rhbz#1761811
