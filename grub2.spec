@@ -9,7 +9,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.04
-Release:	9%{?dist}
+Release:	10%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -338,8 +338,6 @@ rm -r /boot/grub2.tmp/ || :
 %files common -f grub.lang
 %dir %{_libdir}/grub/
 %dir %{_datarootdir}/grub/
-%dir %{_datarootdir}/grub/themes/
-%exclude %{_datarootdir}/grub/themes/*
 %attr(0700,root,root) %dir %{_sysconfdir}/grub.d
 %{_prefix}/lib/kernel/install.d/20-grub.install
 %{_prefix}/lib/kernel/install.d/99-grub-mkconfig.install
@@ -348,7 +346,6 @@ rm -r /boot/grub2.tmp/ || :
 %dir /boot/%{name}
 %dir /boot/%{name}/themes/
 %dir /boot/%{name}/themes/system
-%exclude /boot/%{name}/themes/system/*
 %attr(0700,root,root) %dir /boot/grub2
 %exclude /boot/grub2/*
 %dir %attr(0700,root,root) %{efi_esp_dir}
@@ -512,6 +509,10 @@ rm -r /boot/grub2.tmp/ || :
 %endif
 
 %changelog
+* Tue Mar 17 2020 Javier Martinez Canillas <javierm@redhat.com> - 2.04-10
+- Fix for entries having an empty initrd command and HTTP boot issues
+  Resolves: rhbz#1806022
+
 * Thu Jan 16 2020 Javier Martinez Canillas <javierm@redhat.com> - 2.04-9
 - Add riscv64 support to grub.macros and RISC-V build fixes (davidlt)
 - blscfg: Always use the root variable to search for BLS snippets

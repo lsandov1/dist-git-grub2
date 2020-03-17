@@ -157,7 +157,7 @@ Patch0156: 0156-x86-efi-Allow-initrd-params-cmdline-allocations-abov.patch
 Patch0157: 0157-Fix-getroot.c-s-trampolines.patch
 Patch0158: 0158-Do-not-allow-stack-trampolines-anywhere.patch
 Patch0159: 0159-Reimplement-boot_counter.patch
-Patch0160: 0160-Make-grub_strtoul-end-pointer-have-the-right-constif.patch
+Patch0160: 0160-Make-grub_strtol-end-pointers-have-safer-const-quali.patch
 Patch0161: 0161-Fix-menu-entry-selection-based-on-ID-and-title.patch
 Patch0162: 0162-Make-the-menu-entry-users-option-argument-to-be-opti.patch
 Patch0163: 0163-Add-efi-export-env-and-efi-load-env-commands.patch
@@ -196,3 +196,9 @@ Patch0195: 0195-RISC-V-Add-__clzdi2-symbol.patch
 Patch0196: 0196-grub-install-Define-default-platform-for-RISC-V.patch
 Patch0197: 0197-blscfg-Always-use-the-root-variable-to-search-for-BL.patch
 Patch0198: 0198-bootstrap.conf-Force-autogen.sh-to-use-python3.patch
+Patch0199: 0199-efi-http-Export-fw-http-_path-variables-to-make-them.patch
+Patch0200: 0200-efi-http-Enclose-literal-IPv6-addresses-in-square-br.patch
+Patch0201: 0201-efi-net-Allow-to-specify-a-port-number-in-addresses.patch
+Patch0202: 0202-efi-ip4_config-Improve-check-to-detect-literal-IPv6-.patch
+Patch0203: 0203-efi-net-Print-a-debug-message-if-parsing-the-address.patch
+Patch0204: 0204-blscfg-return-NULL-instead-of-a-zero-length-array-in.patch
