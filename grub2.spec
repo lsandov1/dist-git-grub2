@@ -9,7 +9,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.04
-Release:	10%{?dist}
+Release:	11%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -509,6 +509,10 @@ rm -r /boot/grub2.tmp/ || :
 %endif
 
 %changelog
+* Thu Mar 26 2020 Javier Martinez Canillas <javierm@redhat.com> - 2.04-11
+- grub-switch-to-blscfg: Update grub2 binary in ESP for OSTree systems
+  Related: rhbz#1751272
+
 * Tue Mar 17 2020 Javier Martinez Canillas <javierm@redhat.com> - 2.04-10
 - Fix for entries having an empty initrd command and HTTP boot issues
   Resolves: rhbz#1806022

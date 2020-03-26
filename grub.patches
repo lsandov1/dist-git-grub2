@@ -202,3 +202,4 @@ Patch0201: 0201-efi-net-Allow-to-specify-a-port-number-in-addresses.patch
 Patch0202: 0202-efi-ip4_config-Improve-check-to-detect-literal-IPv6-.patch
 Patch0203: 0203-efi-net-Print-a-debug-message-if-parsing-the-address.patch
 Patch0204: 0204-blscfg-return-NULL-instead-of-a-zero-length-array-in.patch
+Patch0205: 0205-grub-switch-to-blscfg-Update-grub2-binary-in-ESP-for.patch
