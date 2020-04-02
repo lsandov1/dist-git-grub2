@@ -13,10 +13,25 @@ if [[ -e /sys/hypervisor/type ]] && grep -q "^xen$" /sys/hypervisor/type; then
 fi
 
 ARCH=$(uname -m)
-# Older ppc64le OPAL firmware don't have BLS support so grub2-mkconfig has to
-# be run to generate a GRUB config file that contains menuentry commands.
-if [[ $ARCH = "ppc64le" ]]; then
-    RUN_MKCONFIG=true
+# Older ppc64le OPAL firmware (petitboot version < 1.8.0) don't have BLS support
+# so grub2-mkconfig has to be run to generate a config with menuentry commands.
+if [[ $ARCH = "ppc64le" ]] && [ -d /sys/firmware/opal ]; then
+
+    petitboot_path="/sys/firmware/devicetree/base/ibm,firmware-versions/petitboot"
+
+    if test -e ${petitboot_path}; then
+        read -a petitboot_version < ${petitboot_path}
+        petitboot_version="$(echo ${petitboot_version//v})"
+        major_version="$(echo ${petitboot_version} | cut -d . -f1)"
+        minor_version="$(echo ${petitboot_version} | cut -d . -f2)"
+
+        if test -z ${petitboot_version} || test ${major_version} -lt 1 || \
+           test ${major_version} -eq 1 -a ${minor_version} -lt 8; then
+            RUN_MKCONFIG=true
+        fi
+    else
+        RUN_MKCONFIG=true
+    fi
 fi
 
 if [[ $DISABLE_BLS = "true" ]]; then

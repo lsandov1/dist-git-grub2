@@ -203,3 +203,5 @@ Patch0202: 0202-efi-ip4_config-Improve-check-to-detect-literal-IPv6-.patch
 Patch0203: 0203-efi-net-Print-a-debug-message-if-parsing-the-address.patch
 Patch0204: 0204-blscfg-return-NULL-instead-of-a-zero-length-array-in.patch
 Patch0205: 0205-grub-switch-to-blscfg-Update-grub2-binary-in-ESP-for.patch
+Patch0206: 0206-grub-switch-to-blscfg-Only-mark-GRUB-as-BLS-supporte.patch
+Patch0207: 0207-10_linux.in-Merge-logic-from-10_linux_bls-and-drop-t.patch

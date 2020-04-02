@@ -9,7 +9,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.04
-Release:	11%{?dist}
+Release:	12%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -387,11 +387,6 @@ rm -r /boot/grub2.tmp/ || :
 %files tools
 %attr(0644,root,root) %ghost %config(noreplace) %{_sysconfdir}/default/grub
 %config %{_sysconfdir}/grub.d/??_*
-%ifarch ppc64 ppc64le
-%exclude %{_sysconfdir}/grub.d/10_linux
-%else
-%exclude %{_sysconfdir}/grub.d/10_linux_bls
-%endif
 %{_sysconfdir}/grub.d/README
 %{_userunitdir}/grub-boot-success.timer
 %{_userunitdir}/grub-boot-success.service
@@ -509,6 +504,9 @@ rm -r /boot/grub2.tmp/ || :
 %endif
 
 %changelog
+* Thu Apr 02 2020 Javier Martinez Canillas <javierm@redhat.com> - 2.04-12
+- Merge 10_linux_bls logic into 10_linux and avoid issues if blsdir is set
+
 * Thu Mar 26 2020 Javier Martinez Canillas <javierm@redhat.com> - 2.04-11
 - grub-switch-to-blscfg: Update grub2 binary in ESP for OSTree systems
   Related: rhbz#1751272
