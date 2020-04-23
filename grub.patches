@@ -207,3 +207,4 @@ Patch0206: 0206-grub-switch-to-blscfg-Only-mark-GRUB-as-BLS-supporte.patch
 Patch0207: 0207-10_linux.in-Merge-logic-from-10_linux_bls-and-drop-t.patch
 Patch0208: 0208-grub-switch-to-blscfg-Use-install-to-copy-GRUB-binar.patch
 Patch0209: 0209-10_linux.in-Enable-BLS-configuration-if-new-kernel-p.patch
+Patch0210: 0210-efi-Set-image-base-address-before-jumping-to-the-PE-.patch

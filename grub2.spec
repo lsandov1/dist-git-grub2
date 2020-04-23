@@ -9,7 +9,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.04
-Release:	13%{?dist}
+Release:	14%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -504,6 +504,10 @@ rm -r /boot/grub2.tmp/ || :
 %endif
 
 %changelog
+* Thu Apr 23 2020 Javier Martinez Canillas <javierm@redhat.com> - 2.04-14
+- efi: Set image base address before jumping to the PE/COFF entry point
+  Resolves: rhbz#1825411
+
 * Thu Apr 16 2020 Javier Martinez Canillas <javierm@redhat.com> - 2.04-13
 - Make the grub-switch-to-blscfg and 10_linux scripts more robust
 
