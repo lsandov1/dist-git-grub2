@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	81%{?dist}
+Release:	82%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -498,6 +498,19 @@ fi
 %endif
 
 %changelog
+* Mon Apr 27 2020 Javier Martinez Canillas <javierm@redhat.com> - 2.02-82
+- Drop "Disable multiboot, multiboot2, and linux16 modules on EFI builds"
+  Resolves: rhbz#1779480
+- efi/http: Export {fw,http}_path variables to make them global
+  Resolves: rhbz#1811561
+- efi/http: Enclose literal IPv6 addresses in square brackets
+- efi/net: Allow to specify a port number in addresses
+- efi/ip4_config: Improve check to detect literal IPv6 addresses
+- efi/net: Print a debug message if parsing the address fails
+  Resolves: rhbz#1811560
+- Set image base address before jumping to the PE/COFF entry point
+  Resolves: rhbz#1819624
+
 * Thu Dec 05 2019 Javier Martinez Canillas <javierm@redhat.com> - 2.02-81
 - Another fix for blscfg variable expansion support
   Related: rhbz#1669252
