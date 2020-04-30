@@ -208,3 +208,5 @@ Patch0207: 0207-10_linux.in-Merge-logic-from-10_linux_bls-and-drop-t.patch
 Patch0208: 0208-grub-switch-to-blscfg-Use-install-to-copy-GRUB-binar.patch
 Patch0209: 0209-10_linux.in-Enable-BLS-configuration-if-new-kernel-p.patch
 Patch0210: 0210-efi-Set-image-base-address-before-jumping-to-the-PE-.patch
+Patch0211: 0211-blscfg-Lookup-default_kernelopts-variable-as-fallbac.patch
+Patch0212: 0212-10_linux.in-fix-early-exit-due-error-when-reading-pe.patch

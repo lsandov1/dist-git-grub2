@@ -9,7 +9,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.04
-Release:	14%{?dist}
+Release:	15%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -504,6 +504,12 @@ rm -r /boot/grub2.tmp/ || :
 %endif
 
 %changelog
+* Thu Apr 30 2020 Javier Martinez Canillas <javierm@redhat.com> - 2.04-15
+- blscfg: Lookup default_kernelopts variable as fallback for options
+  Related: rhbz#1765297
+- 10_linux.in: fix early exit due error when reading petitboot version
+  Resolves: rhbz#1827397
+
 * Thu Apr 23 2020 Javier Martinez Canillas <javierm@redhat.com> - 2.04-14
 - efi: Set image base address before jumping to the PE/COFF entry point
   Resolves: rhbz#1825411
