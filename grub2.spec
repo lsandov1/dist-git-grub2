@@ -9,7 +9,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.04
-Release:	16%{?dist}
+Release:	17%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -504,6 +504,9 @@ rm -r /boot/grub2.tmp/ || :
 %endif
 
 %changelog
+* Wed May 13 2020 Javier Martinez Canillas <javierm@redhat.com> - 2.04-17
+- Store cmdline in BLS snippets instead of using a grubenv variable
+
 * Tue May 12 2020 Javier Martinez Canillas <javierm@redhat.com> - 2.04-16
 - Fix a segfault in grub2-editenv when attempting to shrink a variable
 

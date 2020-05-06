@@ -24,6 +24,7 @@ BLS_DIR="/boot/loader/entries"
 mkbls() {
     local kernelver=$1 && shift
     local datetime=$1 && shift
+    local kernelopts=$1 && shift
 
     local debugname=""
     local debugid=""
@@ -42,7 +43,7 @@ title ${NAME} (${kernelver}) ${VERSION}${debugname}
 version ${kernelver}${debugid}
 linux /vmlinuz-${kernelver}
 initrd /initramfs-${kernelver}.img
-options \$kernelopts
+options ${kernelopts}
 grub_users \$grub_users
 grub_arg --unrestricted
 grub_class kernel${flavor}
@@ -77,19 +78,29 @@ case "$COMMAND" in
         fi
 
         if [[ "x${GRUB_ENABLE_BLSCFG}" = "xtrue" ]] || [[ ! -f /sbin/new-kernel-pkg ]]; then
+            if [[ -f /etc/kernel/cmdline ]]; then
+                read -r -d '' -a BOOT_OPTIONS < /etc/kernel/cmdline
+            elif [[ -f /usr/lib/kernel/cmdline ]]; then
+                read -r -d '' -a BOOT_OPTIONS < /usr/lib/kernel/cmdline
+            else
+                declare -a BOOT_OPTIONS
+
+                read -r -d '' -a line < /proc/cmdline
+                for i in "${line[@]}"; do
+                    [[ "${i#initrd=*}" != "$i" ]] && continue
+                    [[ "${i#BOOT_IMAGE=*}" != "$i" ]] && continue
+                    BOOT_OPTIONS+=("$i")
+                done
+            fi
+
             eval "$(grub2-get-kernel-settings)" || true
             [[ -d "$BLS_DIR" ]] || mkdir -m 0700 -p "$BLS_DIR"
             BLS_ID="${MACHINE_ID}-${KERNEL_VERSION}"
             BLS_TARGET="${BLS_DIR}/${BLS_ID}.conf"
-            if [[ -f "${KERNEL_DIR}/bls.conf" ]]; then
-                cp -aT "${KERNEL_DIR}/bls.conf" "${BLS_TARGET}" || exit $?
-            else
-                mkbls "${KERNEL_VERSION}" \
-                    "$(date -u +%Y%m%d%H%M%S -d "$(stat -c '%y' "${KERNEL_DIR}")")" \
-                    >"${BLS_TARGET}"
-            fi
-            command -v restorecon &>/dev/null && \
-                restorecon -R "${BLS_TARGET}"
+            mkbls "${KERNEL_VERSION}" \
+		  "$(date -u +%Y%m%d%H%M%S -d "$(stat -c '%y' "${KERNEL_DIR}")")" \
+                  "${BOOT_OPTIONS[*]}" >"${BLS_TARGET}"
+            command -v restorecon &>/dev/null && restorecon -R "${BLS_TARGET}"
 
             LINUX="$(grep '^linux[ \t]' "${BLS_TARGET}" | sed -e 's,^linux[ \t]*,,')"
             INITRD="$(grep '^initrd[ \t]' "${BLS_TARGET}" | sed -e 's,^initrd[ \t]*,,')"
@@ -111,14 +122,12 @@ case "$COMMAND" in
             fi
 
             if [ "x$GRUB_LINUX_MAKE_DEBUG" = "xtrue" ]; then
-                ARCH="$(uname -m)"
-                BLS_DEBUG_ID="$(echo ${BLS_ID} | sed -e "s/${KERNEL_VERSION}/${KERNEL_VERSION}~debug/")"
                 BLS_DEBUG="$(echo ${BLS_TARGET} | sed -e "s/${KERNEL_VERSION}/${KERNEL_VERSION}~debug/")"
                 cp -aT  "${BLS_TARGET}" "${BLS_DEBUG}"
                 TITLE="$(grep '^title[ \t]' "${BLS_DEBUG}" | sed -e 's/^title[ \t]*//')"
+                OPTIONS="$(echo "${BOOT_OPTIONS[*]} ${GRUB_CMDLINE_LINUX_DEBUG}" | sed -e 's/\//\\\//g')"
                 sed -i -e "s/^title.*/title ${TITLE}${GRUB_LINUX_DEBUG_TITLE_POSTFIX}/" "${BLS_DEBUG}"
-                sed -i -e "s/^id.*/id ${BLS_DEBUG_ID}/" "${BLS_DEBUG}"
-                sed -i -e "s/^options.*/options \$kernelopts ${GRUB_CMDLINE_LINUX_DEBUG}/" "${BLS_DEBUG}"
+                sed -i -e "s/^options.*/options ${OPTIONS}/" "${BLS_DEBUG}"
                 if [ -n "$NEWDEFAULT" -a "x$GRUB_DEFAULT_TO_DEBUG" = "xtrue" ]; then
                     NEWDEFAULT="${BLS_DEBUG_ID}"
                 fi
@@ -145,7 +154,6 @@ case "$COMMAND" in
     remove)
 
         if [[ "x${GRUB_ENABLE_BLSCFG}" = "xtrue" ]] || [[ ! -f /sbin/new-kernel-pkg ]]; then
-            ARCH="$(uname -m)"
             BLS_TARGET="${BLS_DIR}/${MACHINE_ID}-${KERNEL_VERSION}.conf"
             BLS_DEBUG="$(echo ${BLS_TARGET} | sed -e "s/${KERNEL_VERSION}/${KERNEL_VERSION}~debug/")"
             rm -f "${BLS_TARGET}" "${BLS_DEBUG}"
