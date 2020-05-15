@@ -9,7 +9,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.04
-Release:	17%{?dist}
+Release:	18%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -504,6 +504,10 @@ rm -r /boot/grub2.tmp/ || :
 %endif
 
 %changelog
+* Thu May 14 2020 Adam Williamson <awilliam@redhat.com> - 2.04-18
+- 10_linux.in: restore existence check in `get_sorted_bls`
+  Resolves: rhbz#1836020
+
 * Wed May 13 2020 Javier Martinez Canillas <javierm@redhat.com> - 2.04-17
 - Store cmdline in BLS snippets instead of using a grubenv variable
 
