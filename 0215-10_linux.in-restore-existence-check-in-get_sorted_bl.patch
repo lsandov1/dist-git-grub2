@@ -1,8 +1,7 @@
-From 0cff1b8b056f408c0dd9f8e5f8071ea9f6193c6e Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Adam Williamson <awilliam@redhat.com>
 Date: Thu, 14 May 2020 17:52:53 -0700
-Subject: [PATCH 215/215] 10_linux.in: restore existence check in
- `get_sorted_bls`
+Subject: [PATCH] 10_linux.in: restore existence check in `get_sorted_bls`
 
 This is necessary to handle `/boot/loader/entries` not existing
 at all (or possibly existing but being empty - not sure about
@@ -18,7 +17,7 @@ Signed-off-by: Adam Williamson <awilliam@redhat.com>
  1 file changed, 3 insertions(+)
 
 diff --git a/util/grub.d/10_linux.in b/util/grub.d/10_linux.in
-index 80299ecaf..519e2d9e6 100644
+index 80299ecaf00..519e2d9e616 100644
 --- a/util/grub.d/10_linux.in
 +++ b/util/grub.d/10_linux.in
 @@ -141,6 +141,9 @@ get_sorted_bls()
@@ -31,6 +30,3 @@ index 80299ecaf..519e2d9e6 100644
          bls="${bls%.conf}"
          bls="${bls##*/}"
          echo "${bls}"
--- 
-2.26.2
-
