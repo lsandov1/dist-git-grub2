@@ -214,3 +214,4 @@ Patch0213: 0213-envblk-Fix-buffer-overrun-when-attempting-to-shrink-.patch
 Patch0214: 0214-10_linux.in-Store-cmdline-in-BLS-snippets-instead-of.patch
 Patch0215: 0215-10_linux.in-restore-existence-check-in-get_sorted_bl.patch
 Patch0216: 0216-tpm-Don-t-propagate-TPM-measurement-errors-to-the-ve.patch
+Patch0217: 0217-tpm-Enable-module-for-all-EFI-platforms.patch
