@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	82%{?dist}
+Release:	83%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -498,6 +498,10 @@ fi
 %endif
 
 %changelog
+* Mon May 18 2020 Javier Martinez Canillas <javierm@redhat.com> - 2.02-83
+- Fix a segfault in grub2-editenv when attempting to shrink a variable
+  Resolves: rhbz#1761496
+
 * Mon Apr 27 2020 Javier Martinez Canillas <javierm@redhat.com> - 2.02-82
 - Drop "Disable multiboot, multiboot2, and linux16 modules on EFI builds"
   Resolves: rhbz#1779480
