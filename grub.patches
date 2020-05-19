@@ -275,3 +275,6 @@ Patch0274: 0274-efi-ip4_config-Improve-check-to-detect-literal-IPv6-.patch
 Patch0275: 0275-efi-net-Print-a-debug-message-if-parsing-the-address.patch
 Patch0276: 0276-efi-Set-image-base-address-before-jumping-to-the-PE-.patch
 Patch0277: 0277-envblk-Fix-buffer-overrun-when-attempting-to-shrink-.patch
+Patch0278: 0278-Reimplement-boot_counter.patch
+Patch0279: 0279-grub.d-Split-out-boot-success-reset-from-menu-auto-h.patch
+Patch0280: 0280-grub.d-Fix-boot_indeterminate-getting-set-on-boot_su.patch
