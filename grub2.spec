@@ -9,7 +9,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.04
-Release:	20%{?dist}
+Release:	21%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -504,6 +504,10 @@ rm -r /boot/grub2.tmp/ || :
 %endif
 
 %changelog
+* Wed May 20 2020 Javier Martinez Canillas <javierm@redhat.com> - 2.04-21
+- Don't update BLS files that aren't managed by GRUB scripts
+  Resolves: rhbz#1837783
+
 * Mon May 18 2020 Javier Martinez Canillas <javierm@redhat.com> - 2.04-20
 - Only enable the tpm module for EFI platforms
 
