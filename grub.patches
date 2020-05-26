@@ -216,3 +216,4 @@ Patch0215: 0215-10_linux.in-restore-existence-check-in-get_sorted_bl.patch
 Patch0216: 0216-tpm-Don-t-propagate-TPM-measurement-errors-to-the-ve.patch
 Patch0217: 0217-tpm-Enable-module-for-all-EFI-platforms.patch
 Patch0218: 0218-10_linux.in-Don-t-update-BLS-files-that-aren-t-manag.patch
+Patch0219: 0219-x86-efi-Reduce-maximum-bounce-buffer-size-to-16-MiB.patch
