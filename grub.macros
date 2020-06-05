@@ -496,6 +496,9 @@ ln -sf ..%{efi_esp_dir}/grub.cfg				\\\
 	$RPM_BUILD_ROOT%{_sysconfdir}/%{name}-efi.cfg		\
 install -m 700 %{2} $RPM_BUILD_ROOT%{efi_esp_dir}/%{2}		\
 install -m 700 %{3} $RPM_BUILD_ROOT%{efi_esp_dir}/%{3}		\
+%ifarch %{arm}							\
+install -D -m 700 %{2} $RPM_BUILD_ROOT%{efi_esp_boot}/BOOTARM.EFI \
+%endif								\
 install -D -m 700 unicode.pf2					\\\
 	$RPM_BUILD_ROOT%{efi_esp_dir}/fonts/unicode.pf2		\
 ${RPM_BUILD_ROOT}/%{_bindir}/%{name}-editenv			\\\
@@ -590,6 +593,9 @@ touch ${RPM_BUILD_ROOT}/boot/%{name}/grub.cfg			\
 %defattr(0700,root,root,-)					\
 %config(noreplace) %{_sysconfdir}/%{name}-efi.cfg		\
 %attr(0700,root,root)%{efi_esp_dir}/%{2}			\
+%ifarch %{arm}							\
+%attr(0700,root,root)%{efi_esp_boot}/BOOTARM.EFI		\
+%endif								\
 %dir %attr(0700,root,root)%{efi_esp_dir}/fonts			\
 %dir %attr(0700,root,root)/boot/loader/entries			\
 %ghost %config(noreplace) %attr(0700,root,root)%{efi_esp_dir}/grub.cfg	\
