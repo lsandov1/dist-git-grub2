@@ -9,7 +9,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.04
-Release:	23%{?dist}
+Release:	24%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -504,6 +504,10 @@ rm -r /boot/grub2.tmp/ || :
 %endif
 
 %changelog
+* Mon Jun 08 2020 Javier Martinez Canillas <javierm@redhat.com> - 2.04-24
+- http: Prepend prefix when the HTTP path is relative as done in efi/http
+- Fix build with rpm-4.16 (thierry.vignaud)
+
 * Fri Jun 05 2020 Javier Martinez Canillas <javierm@redhat.com> - 2.04-23
 - Install GRUB as \EFI\BOOT\BOOTARM.EFI in armv7hl
 
