@@ -9,7 +9,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.04
-Release:	25%{?dist}
+Release:	26%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -182,6 +182,11 @@ git add grub-emu-%{tarversion}
 git commit -m "After making subdirs"
 
 %build
+# This package calls binutils components directly and would need to pass
+# in flags to enable the LTO plugins
+# Disable LTO
+%define _lto_cflags %{nil}
+
 %if 0%{with_efi_arch}
 %{expand:%do_primary_efi_build %%{grubefiarch} %%{grubefiname} %%{grubeficdname} %%{_target_platform} %%{efi_target_cflags} %%{efi_host_cflags}}
 %endif
@@ -504,6 +509,9 @@ rm -r /boot/grub2.tmp/ || :
 %endif
 
 %changelog
+* Tue Jun 30 2020 Jeff Law <law@redhat.com> - 2.04-26
+Disable LTO
+
 * Thu Jun 18 2020 Javier Martinez Canillas <javierm@redhat.com> - 2.04-25
 - Only mark GRUB as BLS supported in OSTree systems with a boot partition
 
