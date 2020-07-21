@@ -1,3 +1,8 @@
+# This package calls binutils components directly and would need to pass
+# in flags to enable the LTO plugins
+# Disable LTO
+%global _lto_cflags %{nil}
+
 %undefine _hardened_build
 
 %global tarversion 2.04
@@ -182,11 +187,6 @@ git add grub-emu-%{tarversion}
 git commit -m "After making subdirs"
 
 %build
-# This package calls binutils components directly and would need to pass
-# in flags to enable the LTO plugins
-# Disable LTO
-%define _lto_cflags %{nil}
-
 %if 0%{with_efi_arch}
 %{expand:%do_primary_efi_build %%{grubefiarch} %%{grubefiname} %%{grubeficdname} %%{_target_platform} %%{efi_target_cflags} %%{efi_host_cflags}}
 %endif
