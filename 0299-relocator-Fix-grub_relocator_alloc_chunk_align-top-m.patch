@@ -1,7 +1,7 @@
 From b02e7d07f1aebb8eec042390688ddffe7570976e Mon Sep 17 00:00:00 2001
 From: Alexey Makhalov <amakhalov@vmware.com>
 Date: Fri, 17 Jul 2020 05:17:26 +0000
-Subject: [PATCH 299/306] relocator: Fix grub_relocator_alloc_chunk_align() top
+Subject: [PATCH 299/309] relocator: Fix grub_relocator_alloc_chunk_align() top
  memory allocation
 
 Current implementation of grub_relocator_alloc_chunk_align()

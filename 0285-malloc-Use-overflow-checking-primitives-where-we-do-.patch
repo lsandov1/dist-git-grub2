@@ -1,7 +1,7 @@
 From 24977ce89cde4be8f69a9f2a2827aed5f84ea842 Mon Sep 17 00:00:00 2001
 From: Peter Jones <pjones@redhat.com>
 Date: Mon, 15 Jun 2020 12:28:27 -0400
-Subject: [PATCH 285/306] malloc: Use overflow checking primitives where we do
+Subject: [PATCH 285/309] malloc: Use overflow checking primitives where we do
  complex allocations
 
 This attempts to fix the places where we do the following where

@@ -301,6 +301,9 @@ Patch0300: 0300-hfsplus-fix-two-more-overflows.patch
 Patch0301: 0301-lvm-fix-two-more-potential-data-dependent-alloc-over.patch
 Patch0302: 0302-emu-make-grub_free-NULL-safe.patch
 Patch0303: 0303-efi-fix-some-malformed-device-path-arithmetic-errors.patch
-Patch0304: 0304-efi-dhcp-fix-some-allocation-error-checking.patch
-Patch0305: 0305-efi-http-fix-some-allocation-error-checking.patch
-Patch0306: 0306-efi-ip-46-_config.c-fix-some-potential-allocation-ov.patch
+Patch0304: 0304-Fix-a-regression-caused-by-efi-fix-some-malformed-de.patch
+Patch0305: 0305-update-safemath-with-fallback-code-for-gcc-older-tha.patch
+Patch0306: 0306-efi-Fix-use-after-free-in-halt-reboot-path.patch
+Patch0307: 0307-efi-dhcp-fix-some-allocation-error-checking.patch
+Patch0308: 0308-efi-http-fix-some-allocation-error-checking.patch
+Patch0309: 0309-efi-ip-46-_config.c-fix-some-potential-allocation-ov.patch

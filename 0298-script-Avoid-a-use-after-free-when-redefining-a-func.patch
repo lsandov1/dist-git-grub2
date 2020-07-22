@@ -1,7 +1,7 @@
 From 0765c54b18ace46aba32b1d81d57ad65bbcde36b Mon Sep 17 00:00:00 2001
 From: Chris Coulson <chris.coulson@canonical.com>
 Date: Fri, 10 Jul 2020 14:41:45 +0100
-Subject: [PATCH 298/306] script: Avoid a use-after-free when redefining a
+Subject: [PATCH 298/309] script: Avoid a use-after-free when redefining a
  function during execution
 
 Defining a new function with the same name as a previously defined

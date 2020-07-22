@@ -1,7 +1,7 @@
 From 7511aaa154e575cbc7617857e0ef3754370a96ca Mon Sep 17 00:00:00 2001
 From: Alexey Makhalov <amakhalov@vmware.com>
 Date: Wed, 8 Jul 2020 01:44:38 +0000
-Subject: [PATCH 296/306] relocator: Protect grub_relocator_alloc_chunk_align()
+Subject: [PATCH 296/309] relocator: Protect grub_relocator_alloc_chunk_align()
  max_addr against integer underflow
 
 This commit introduces integer underflow mitigation in max_addr calculation
