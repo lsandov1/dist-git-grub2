@@ -1,7 +1,7 @@
-From 5927e3d4506a343cffa474076a8a8b0149c16768 Mon Sep 17 00:00:00 2001
+From 583a48bca23f7c4e0d691f0e6d065dac61bbfca1 Mon Sep 17 00:00:00 2001
 From: Alexey Makhalov <amakhalov@vmware.com>
 Date: Wed, 8 Jul 2020 20:41:56 +0000
-Subject: [PATCH 288/309] gfxmenu: Fix double free in load_image()
+Subject: [PATCH 288/313] gfxmenu: Fix double free in load_image()
 
 self->bitmap should be zeroed after free. Otherwise, there is a chance
 to double free (USE_AFTER_FREE) it later in rescale_image().

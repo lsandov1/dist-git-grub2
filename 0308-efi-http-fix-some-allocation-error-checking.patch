@@ -1,7 +1,7 @@
-From b465f975ca51440ee7e61484f56bc629c952ec70 Mon Sep 17 00:00:00 2001
+From 4436316229bc5b46016d61215b709ec434f4e0d3 Mon Sep 17 00:00:00 2001
 From: Peter Jones <pjones@redhat.com>
 Date: Sun, 19 Jul 2020 17:14:15 -0400
-Subject: [PATCH 308/309] efi+http: fix some allocation error checking.
+Subject: [PATCH 308/313] efi+http: fix some allocation error checking.
 
 Signed-off-by: Peter Jones <pjones@redhat.com>
 ---

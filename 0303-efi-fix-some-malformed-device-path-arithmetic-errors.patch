@@ -1,7 +1,7 @@
-From 4bc0e8a890fb4575b7b8cd075b61d78c3b3ad740 Mon Sep 17 00:00:00 2001
+From 3ca105b5d77e292517091da4777484068848da6d Mon Sep 17 00:00:00 2001
 From: Peter Jones <pjones@redhat.com>
 Date: Sun, 19 Jul 2020 16:53:27 -0400
-Subject: [PATCH 303/309] efi: fix some malformed device path arithmetic
+Subject: [PATCH 303/313] efi: fix some malformed device path arithmetic
  errors.
 
 Several places we take the length of a device path and subtract 4 from

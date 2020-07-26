@@ -1,7 +1,7 @@
-From 8d3baade27802ffa08fdb99681f61ccdfeb9733b Mon Sep 17 00:00:00 2001
+From 778ddaeac8a8a821f6844ec8b8c404d0e437991f Mon Sep 17 00:00:00 2001
 From: Peter Jones <pjones@redhat.com>
 Date: Mon, 15 Jun 2020 12:26:01 -0400
-Subject: [PATCH 284/309] calloc: Use calloc() at most places
+Subject: [PATCH 284/313] calloc: Use calloc() at most places
 
 This modifies most of the places we do some form of:
 

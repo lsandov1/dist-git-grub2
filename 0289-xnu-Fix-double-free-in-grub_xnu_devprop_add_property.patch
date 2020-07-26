@@ -1,7 +1,7 @@
-From 72a7015bbf6339949dd5daf7ee70e94d9d708643 Mon Sep 17 00:00:00 2001
+From 301523f584d9aa624424c68ab3f085a9b7eca417 Mon Sep 17 00:00:00 2001
 From: Alexey Makhalov <amakhalov@vmware.com>
 Date: Wed, 8 Jul 2020 21:30:43 +0000
-Subject: [PATCH 289/309] xnu: Fix double free in
+Subject: [PATCH 289/313] xnu: Fix double free in
  grub_xnu_devprop_add_property()
 
 grub_xnu_devprop_add_property() should not free utf8 and utf16 as it get

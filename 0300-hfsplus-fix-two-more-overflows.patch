@@ -1,7 +1,7 @@
-From 4c585994ae3d1841897d41c2bf2ba8b7862ab091 Mon Sep 17 00:00:00 2001
+From 3a60f2bfd8ab98484a7d8ba52748795f7b225ddc Mon Sep 17 00:00:00 2001
 From: Peter Jones <pjones@redhat.com>
 Date: Sun, 19 Jul 2020 14:43:31 -0400
-Subject: [PATCH 300/309] hfsplus: fix two more overflows
+Subject: [PATCH 300/313] hfsplus: fix two more overflows
 
 Both node->size and node->namelen come from the supplied filesystem,
 which may be user-supplied.  We can't trust them for the math unless we

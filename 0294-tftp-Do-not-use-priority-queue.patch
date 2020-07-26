@@ -1,7 +1,7 @@
-From 4ad27d50043be6d811330f9ef9b242c894d0379c Mon Sep 17 00:00:00 2001
+From 0ecb57c7bc38cb5de4a1b23909203a3331f5c84b Mon Sep 17 00:00:00 2001
 From: Alexey Makhalov <amakhalov@vmware.com>
 Date: Thu, 9 Jul 2020 08:10:40 +0000
-Subject: [PATCH 294/309] tftp: Do not use priority queue
+Subject: [PATCH 294/313] tftp: Do not use priority queue
 
 There is not need to reassemble the order of blocks. Per RFC 1350,
 server must wait for the ACK, before sending next block. Data packets

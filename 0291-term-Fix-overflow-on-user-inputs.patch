@@ -1,7 +1,7 @@
-From 1d478f37b2469cf7bebd26104f75b5608893923e Mon Sep 17 00:00:00 2001
+From 6df814d4f43a47ffe2b354b9fa683ed4022fa5f1 Mon Sep 17 00:00:00 2001
 From: Konrad Rzeszutek Wilk <konrad.wilk@oracle.com>
 Date: Tue, 7 Jul 2020 15:12:25 -0400
-Subject: [PATCH 291/309] term: Fix overflow on user inputs
+Subject: [PATCH 291/313] term: Fix overflow on user inputs
 
 This requires a very weird input from the serial interface but can cause
 an overflow in input_buf (keys) overwriting the next variable (npending)

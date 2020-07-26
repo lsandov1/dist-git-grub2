@@ -1,7 +1,7 @@
 From 0bde74dcdf9de128317a28796e2690f92214db0d Mon Sep 17 00:00:00 2001
 From: Peter Jones <pjones@redhat.com>
 Date: Wed, 15 Apr 2020 15:45:02 -0400
-Subject: [PATCH 281/309] yylex: Make lexer fatal errors actually be fatal
+Subject: [PATCH 281/313] yylex: Make lexer fatal errors actually be fatal
 
 When presented with a command that can't be tokenized to anything
 smaller than YYLMAX characters, the parser calls YY_FATAL_ERROR(errmsg),

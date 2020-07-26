@@ -1,7 +1,7 @@
-From ff178261c156993c3c965a59dd1ed1b467b10889 Mon Sep 17 00:00:00 2001
+From c37e76df9c58c3f170e838c42527ef8544bf4468 Mon Sep 17 00:00:00 2001
 From: Peter Jones <pjones@redhat.com>
 Date: Sat, 4 Jul 2020 12:25:09 -0400
-Subject: [PATCH 286/309] iso9660: Don't leak memory on realloc() failures
+Subject: [PATCH 286/313] iso9660: Don't leak memory on realloc() failures
 
 Signed-off-by: Peter Jones <pjones@redhat.com>
 Reviewed-by: Daniel Kiper <daniel.kiper@oracle.com>

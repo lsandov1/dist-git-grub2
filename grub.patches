@@ -307,3 +307,7 @@ Patch0306: 0306-efi-Fix-use-after-free-in-halt-reboot-path.patch
 Patch0307: 0307-efi-dhcp-fix-some-allocation-error-checking.patch
 Patch0308: 0308-efi-http-fix-some-allocation-error-checking.patch
 Patch0309: 0309-efi-ip-46-_config.c-fix-some-potential-allocation-ov.patch
+Patch0310: 0310-Fix-up-some-types-for-gcc-4.8-compat-safemath.h.patch
+Patch0311: 0311-efilinux-Fix-integer-overflows-in-grub_cmd_initrd.patch
+Patch0312: 0312-linux-loader-avoid-overflow-on-initrd-size-calculati.patch
+Patch0313: 0313-linuxefi-fail-kernel-validation-without-shim-protoco.patch

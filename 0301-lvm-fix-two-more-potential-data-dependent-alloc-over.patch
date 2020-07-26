@@ -1,7 +1,7 @@
-From e97072ba976d7a7dd5e04b4e63a4ce8ebd01f7ab Mon Sep 17 00:00:00 2001
+From 5c219ca7ec3b481573309245e3b7399c2f19a99c Mon Sep 17 00:00:00 2001
 From: Peter Jones <pjones@redhat.com>
 Date: Sun, 19 Jul 2020 15:48:20 -0400
-Subject: [PATCH 301/309] lvm: fix two more potential data-dependent alloc
+Subject: [PATCH 301/313] lvm: fix two more potential data-dependent alloc
  overflows
 
 It appears to be possible to make a (possibly invalid) lvm PV with a
