@@ -1,7 +1,7 @@
 From 832189364ee0c85a94f670952c951252e54d3d1c Mon Sep 17 00:00:00 2001
 From: Peter Jones <pjones@redhat.com>
 Date: Mon, 15 Jun 2020 12:15:29 -0400
-Subject: [PATCH 283/313] calloc: Make sure we always have an overflow-checking
+Subject: [PATCH 283/314] calloc: Make sure we always have an overflow-checking
  calloc() available
 
 This tries to make sure that everywhere in this source tree, we always have

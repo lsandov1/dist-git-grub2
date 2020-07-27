@@ -1,7 +1,7 @@
 From 0bfbb0c63ccc73d8508d1a402f53f9f6a64de903 Mon Sep 17 00:00:00 2001
 From: Alexander Burmashev <alexander.burmashev@oracle.com>
 Date: Wed, 22 Jul 2020 06:04:38 -0700
-Subject: [PATCH 305/313] update safemath with fallback code for gcc older than
+Subject: [PATCH 305/314] update safemath with fallback code for gcc older than
  5.1
 
 The code used in the header was taken from linux kernel commit

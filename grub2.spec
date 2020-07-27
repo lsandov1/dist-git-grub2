@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	86%{?dist}
+Release:	87%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -500,6 +500,10 @@ fi
 %endif
 
 %changelog
+* Mon Jul 27 2020 Peter Jones <pjones@redhat.com> - 2.02-87
+- Couple more late fixes.
+  Resolves: CVE-2020-15705
+
 * Sun Jul 26 2020 Peter Jones <pjones@redhat.com> - 2.02-86
 - Couple more late fixes.
   Resolves: CVE-2020-10713
