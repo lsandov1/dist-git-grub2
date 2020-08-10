@@ -14,7 +14,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.04
-Release:	26%{?dist}
+Release:	27%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -509,8 +509,20 @@ rm -r /boot/grub2.tmp/ || :
 %endif
 
 %changelog
+* Mon Aug 10 2020 Peter Jones <pjones@redhat.com> - 2.04-27
+- Attempt to enable dual-signing in f33
+- "Minor" bug fixes.  For f33:
+  Resolves: CVE-2020-10713
+  Resolves: CVE-2020-14308
+  Resolves: CVE-2020-14309
+  Resolves: CVE-2020-14310
+  Resolves: CVE-2020-14311
+  Resolves: CVE-2020-15705
+  Resolves: CVE-2020-15706
+  Resolves: CVE-2020-15707
+
 * Tue Jun 30 2020 Jeff Law <law@redhat.com> - 2.04-26
-Disable LTO
+- Disable LTO
 
 * Thu Jun 18 2020 Javier Martinez Canillas <javierm@redhat.com> - 2.04-25
 - Only mark GRUB as BLS supported in OSTree systems with a boot partition
