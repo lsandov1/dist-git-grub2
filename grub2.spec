@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	87%{?dist}
+Release:	88%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -500,6 +500,10 @@ fi
 %endif
 
 %changelog
+* Tue Aug 11 2020 Javier Martinez Canillas <javierm@redhat.com> - 2.02-88
+- Fix a legacy BIOS boot issue when a using config file shared with EFI
+  Resolves: rhbz#1850193
+
 * Mon Jul 27 2020 Peter Jones <pjones@redhat.com> - 2.02-87
 - Couple more late fixes.
   Resolves: CVE-2020-15705
