@@ -14,7 +14,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.04
-Release:	27%{?dist}
+Release:	28%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -263,8 +263,11 @@ ln -s ../grub-boot-success.timer \
 # Install systemd system-update unit to set boot_indeterminate for offline-upd
 install -D -m 0755 -t %{buildroot}%{_unitdir} docs/grub-boot-indeterminate.service
 install -d -m 0755 %{buildroot}%{_unitdir}/system-update.target.wants
+install -d -m 0755 %{buildroot}%{_unitdir}/reboot.target.wants
 ln -s ../grub-boot-indeterminate.service \
 	%{buildroot}%{_unitdir}/system-update.target.wants
+ln -s ../grub2-systemd-integration.service \
+	%{buildroot}%{_unitdir}/reboot.target.wants
 
 # Don't run debuginfo on all the grub modules and whatnot; it just
 # rejects them, complains, and slows down extraction.
@@ -398,6 +401,9 @@ rm -r /boot/grub2.tmp/ || :
 %{_userunitdir}/timers.target.wants
 %{_unitdir}/grub-boot-indeterminate.service
 %{_unitdir}/system-update.target.wants
+%{_unitdir}/%{name}-systemd-integration.service
+%{_unitdir}/reboot.target.wants
+%{_unitdir}/systemd-logind.service.d
 %{_infodir}/%{name}*
 %{_datarootdir}/grub/*
 %{_sbindir}/%{name}-install
@@ -413,6 +419,7 @@ rm -r /boot/grub2.tmp/ || :
 %{_bindir}/%{name}-mkimage
 %{_bindir}/%{name}-mkrelpath
 %{_bindir}/%{name}-script-check
+%{_libexecdir}/%{name}
 %{_datadir}/man/man?/*
 
 # exclude man pages from tools-extra
@@ -509,6 +516,10 @@ rm -r /boot/grub2.tmp/ || :
 %endif
 
 %changelog
+* Wed Aug 12 2020 Javier Martinez Canillas <javierm@redhat.com> - 2.04-28
+- Add support for "systemctl reboot --boot-loader-menu=xx" (hdegoede)
+  Related: rhbz#1857389
+
 * Mon Aug 10 2020 Peter Jones <pjones@redhat.com> - 2.04-27
 - Attempt to enable dual-signing in f33
 - "Minor" bug fixes.  For f33:
