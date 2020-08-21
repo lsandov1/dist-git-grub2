@@ -14,7 +14,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.04
-Release:	28%{?dist}
+Release:	29%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -516,6 +516,10 @@ rm -r /boot/grub2.tmp/ || :
 %endif
 
 %changelog
+* Fri Aug 21 2020 Javier Martinez Canillas <javierm@redhat.com> - 2.04-29
+- Fix TFTP timeouts when trying to fetch files larger than 65535 KiB
+  Resolves: rhbz#1869335
+
 * Wed Aug 12 2020 Javier Martinez Canillas <javierm@redhat.com> - 2.04-28
 - Add support for "systemctl reboot --boot-loader-menu=xx" (hdegoede)
   Related: rhbz#1857389

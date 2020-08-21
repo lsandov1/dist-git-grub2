@@ -35,7 +35,7 @@ Upstream-commit-id: 8316694c4f7
  1 file changed, 50 insertions(+), 112 deletions(-)
 
 diff --git a/grub-core/net/tftp.c b/grub-core/net/tftp.c
-index e267af354f4..c2df3d7f6ab 100644
+index 4920c3a9783..22badd74316 100644
 --- a/grub-core/net/tftp.c
 +++ b/grub-core/net/tftp.c
 @@ -25,7 +25,6 @@
@@ -233,7 +233,7 @@ index e267af354f4..c2df3d7f6ab 100644
 -      return grub_errno;
 -    }
 -
-   grub_dprintf("tftp", "resolving address for %s\n", file->device->net->server);
+   grub_dprintf ("tftp", "resolving address for %s\n", file->device->net->server);
    err = grub_net_resolve_address (file->device->net->server, &addr);
    if (err)
 @@ -410,7 +353,6 @@ tftp_open (struct grub_file *file, const char *filename)
@@ -247,7 +247,7 @@ index e267af354f4..c2df3d7f6ab 100644
 @@ -422,7 +364,6 @@ tftp_open (struct grub_file *file, const char *filename)
    if (!data->sock)
      {
-       grub_dprintf("tftp", "connection failed\n");
+       grub_dprintf ("tftp", "connection failed\n");
 -      destroy_pq (data);
        grub_free (data);
        return grub_errno;
