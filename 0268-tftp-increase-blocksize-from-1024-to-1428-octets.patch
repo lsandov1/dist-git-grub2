@@ -1,24 +1,27 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Javier Martinez Canillas <javierm@redhat.com>
 Date: Thu, 20 Aug 2020 13:19:00 +0200
-Subject: [PATCH] tftp: increase blocksize from 1024 to 2048 octets
+Subject: [PATCH] tftp: increase blocksize from 1024 to 1428 octets
 
 The RFC2348 [0] defines how the TFTP Blocksize Option should be negotiated
 between the client and the server. GRUB just hardcodes this to 1024, which
-limits the maximum file size to be fetched to 65535 KiB, since the block
-number is stored in a 16-bit field.
+limits the maximum file size to be downloaded to 67107840 byes, since the
+block number is stored in a 16-bit field.
 
 This limit is a problem when attempting to fetch large files (i.e: initrd
 images) because the block number will overflow, and GRUB will never ack a
 packet. This causes a timeout when trying to download the file over TFTP.
 
 Since the TFTP support in GRUB is used primarily to fetch the kernel and
-initrd images, let's bump the blocksize to 2048 which would allow to get
-files twice as large than the current limit.
+initrd images, let's bump the blocksize to 1428 which would allow to get
+larger files.
+
+The value of 1428 is chosen to increase the maximum file size limit, while
+avoiding IP packet fragmentation which could be a problem in some networks.
 
 The TFTP support should be improved to define the blocksize dynamically
 instead of hardcoding it, but until that happens is better to use a value
-that at least allows to fetch a kernel and initrd image with the size that
+that at least allows to fetch kernel and initrd images with the sizes that
 are present in the install media that is used for network booting.
 
 [0]: https://tools.ietf.org/html/rfc2348
@@ -31,7 +34,7 @@ Signed-off-by: Javier Martinez Canillas <javierm@redhat.com>
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/grub-core/net/tftp.c b/grub-core/net/tftp.c
-index 22badd74316..816050bca43 100644
+index 22badd74316..43920885411 100644
 --- a/grub-core/net/tftp.c
 +++ b/grub-core/net/tftp.c
 @@ -322,9 +322,9 @@ tftp_open (struct grub_file *file, const char *filename)
@@ -41,9 +44,9 @@ index 22badd74316..816050bca43 100644
 -  grub_strcpy (rrq, "1024");
 -  rrqlen += grub_strlen ("1024") + 1;
 -  rrq += grub_strlen ("1024") + 1;
-+  grub_strcpy (rrq, "2048");
-+  rrqlen += grub_strlen ("2048") + 1;
-+  rrq += grub_strlen ("2048") + 1;
++  grub_strcpy (rrq, "1428");
++  rrqlen += grub_strlen ("1428") + 1;
++  rrq += grub_strlen ("1428") + 1;
  
    grub_strcpy (rrq, "tsize");
    rrqlen += grub_strlen ("tsize") + 1;
