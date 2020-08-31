@@ -265,4 +265,4 @@ Patch0264: 0264-Fix-const-char-pointers-in-grub-core-net-efi-pxe.c.patch
 Patch0265: 0265-Fix-const-char-pointers-in-grub-core-net-url.c.patch
 Patch0266: 0266-Add-systemd-integration-scripts-to-make-systemctl-re.patch
 Patch0267: 0267-systemd-integration.sh-Also-set-old-menu_show_once-g.patch
-Patch0268: 0268-tftp-increase-blocksize-from-1024-to-1428-octets.patch
+Patch0268: 0268-tftp-roll-over-block-counter-to-prevent-timeouts-wit.patch

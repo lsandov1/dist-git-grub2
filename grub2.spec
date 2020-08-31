@@ -14,7 +14,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.04
-Release:	30%{?dist}
+Release:	31%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -516,6 +516,10 @@ rm -r /boot/grub2.tmp/ || :
 %endif
 
 %changelog
+* Mon Aug 31 2020 Javier Martinez Canillas <javierm@redhat.com> - 2.04-31
+- Roll over TFTP block counter to prevent timeouts with data packets
+  Resolves: rhbz#1869335
+
 * Fri Aug 21 2020 Javier Martinez Canillas <javierm@redhat.com> - 2.04-30
 - Set TFTP blocksize to 1428 instead of 2048 to avoid IP fragmentation
   Resolves: rhbz#1869335
