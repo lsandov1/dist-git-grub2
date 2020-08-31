@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	89%{?dist}
+Release:	90%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -500,6 +500,10 @@ fi
 %endif
 
 %changelog
+* Mon Aug 31 2020 Javier Martinez Canillas <javierm@redhat.com> - 2.02-90
+- Roll over TFTP block counter to prevent timeouts with data packets
+  Resolves: rhbz#1871034
+
 * Fri Aug 21 2020 Javier Martinez Canillas <javierm@redhat.com> - 2.02-89
 - Fix TFTP timeouts when trying to fetch files larger than 65535 KiB
   Resolves: rhbz#1871034
