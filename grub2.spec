@@ -40,7 +40,7 @@ BuildRequires:	ncurses-devel xz-devel bzip2-devel
 BuildRequires:	freetype-devel libusb-devel
 BuildRequires:	fuse-devel
 BuildRequires:	rpm-devel rpm-libs
-BuildRequires:	autoconf automake autogen device-mapper-devel
+BuildRequires:	autoconf automake device-mapper-devel
 BuildRequires:	freetype-devel gettext-devel git
 BuildRequires:	texinfo
 BuildRequires:	dejavu-sans-fonts
