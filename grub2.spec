@@ -351,7 +351,7 @@ fi
 %dir %attr(0700,root,root) %{efi_esp_dir}
 %exclude %{efi_esp_dir}/*
 %license COPYING
-%ghost %config(noreplace) /boot/grub2/grubenv
+%ghost %config(noreplace) %verify(not size mode md5 mtime) /boot/grub2/grubenv
 %doc INSTALL
 %doc NEWS
 %doc README
