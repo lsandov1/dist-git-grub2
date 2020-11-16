@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	90%{?dist}
+Release:	91%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -500,6 +500,14 @@ fi
 %endif
 
 %changelog
+* Mon Nov 16 2020 Javier Martinez Canillas <javierm@redhat.com> - 2.02-91
+- Fix tps-rpmtest failing due /boot/grub2/grubenv attributes mismatch
+  Resolves: rhbz#1813959
+- Include in EFI build the modules needed for LUKS support
+  Resolves: rhbz#1873725
+- Fix keyboards that report IBM PC AT scan codes
+  Resolves: rhbz#1897587
+
 * Mon Aug 31 2020 Javier Martinez Canillas <javierm@redhat.com> - 2.02-90
 - Roll over TFTP block counter to prevent timeouts with data packets
   Resolves: rhbz#1871034
