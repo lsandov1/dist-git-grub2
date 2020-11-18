@@ -389,6 +389,7 @@ GRUB_MODULES="	all_video boot blscfg btrfs			\\\
 		cat configfile cryptodisk			\\\
 		echo efi_netfs efifwsetup efinet ext2		\\\
 		fat font gcry_rijndael gcry_rsa gcry_serpent	\\\
+		gcry_sha256 gcry_twofish gcry_whirlpool		\\\
 		gfxmenu gfxterm gzio				\\\
 		halt hfsplus http increment iso9660 jpeg	\\\
 		loadenv loopback linux lvm lsefi lsefimmap luks	\\\
