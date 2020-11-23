@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	91%{?dist}
+Release:	92%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -500,6 +500,12 @@ fi
 %endif
 
 %changelog
+* Mon Nov 23 2020 Jan Hlavac <jhlavac@redhat.com> - 2.02-92
+- grub2-install: disable support for EFI platforms
+  Resolves: rhbz#1737444
+- Include a few more modules to EFI build needed for LUKS support (javierm)
+  Related: rhbz#1873725
+
 * Mon Nov 16 2020 Javier Martinez Canillas <javierm@redhat.com> - 2.02-91
 - Fix tps-rpmtest failing due /boot/grub2/grubenv attributes mismatch
   Resolves: rhbz#1813959
