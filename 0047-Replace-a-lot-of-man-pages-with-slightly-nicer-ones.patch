@@ -44,7 +44,7 @@ Replace a bunch of machine generated ones with ones that look nicer.
  util/grub-file.1                  | 165 ++++++++++++++++++++++++++++++++++++++
  util/grub-fstest.1                |  99 +++++++++++++++++++++++
  util/grub-glue-efi.1              |  31 +++++++
- util/grub-install.8               | 129 +++++++++++++++++++++++++++++
+ util/grub-install.8               | 128 +++++++++++++++++++++++++++++
  util/grub-kbdcomp.1               |  19 +++++
  util/grub-macbless.1              |  22 +++++
  util/grub-menulst2cfg.1           |  12 +++
@@ -943,7 +943,7 @@ new file mode 100644
 index 00000000000..76272a39d2e
 --- /dev/null
 +++ b/util/grub-install.8
-@@ -0,0 +1,129 @@
+@@ -0,0 +1,128 @@
 +.TH GRUB-INSTALL 1 "Wed Feb 26 2014"
 +.SH NAME
 +\fBgrub-install\fR \(em Install GRUB on a device.
@@ -1060,12 +1060,11 @@ index 00000000000..76272a39d2e
 +
 +.TP
 +\fB--bootloader-id\fR=\fIID\fR
-+Use \fIID\fR as the bootloader ID.  This opption is only available on the EFI target platform.
++Use \fIID\fR as the bootloader ID.  This option is only available on the EFI target platform.
 +
 +.TP
 +\fB--efi-directory\fR=\fIDIR\fR
-+Use \fIDIR\fR as the EFI System Partition root.  This opption is only available on the EFI ta
-+rget platform.
++Use \fIDIR\fR as the EFI System Partition root.  This option is only available on the EFI target platform.
 +
 +.TP
 +\fIINSTALL_DEVICE\fR
