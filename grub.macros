@@ -112,7 +112,7 @@
 %ifarch aarch64 %{arm}
 %global platform_modules " "
 %else
-%global platform_modules " backtrace chain usb usbserial_common usbserial_pl2303 usbserial_ftdi usbserial_usbdebug "
+%global platform_modules " backtrace chain usb usbserial_common usbserial_pl2303 usbserial_ftdi usbserial_usbdebug keylayouts at_keyboard "
 %endif
 
 %ifarch aarch64 %{arm}
@@ -344,6 +344,8 @@ PYTHON=python3 ./autogen.sh					\
 	--with-grubdir=%{name}					\\\
 	--program-transform-name=s,grub,%{name},		\\\
 	--disable-grub-mount					\\\
+	--with-debug-timestamps					\\\
+	--enable-boot-time					\\\
 	--disable-werror || ( cat config.log ; exit 1 )		\
 git add .							\
 git commit -m "After efi configure"				\
@@ -436,6 +438,8 @@ cd grub-%{1}-%{tarversion}					\
 	--with-grubdir=%{name}					\\\
 	--program-transform-name=s,grub,%{name},		\\\
 	--disable-grub-mount					\\\
+	--with-debug-timestamps					\\\
+	--enable-boot-time					\\\
 	--disable-werror || ( cat config.log ; exit 1 )		\
 git add .							\
 git commit -m "After legacy configure"				\

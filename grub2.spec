@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	92%{?dist}
+Release:	93%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -500,6 +500,18 @@ fi
 %endif
 
 %changelog
+* Mon Dec 14 2020 Javier Martinez Canillas <javierm@redhat.com> - 2.02-93
+- add keylayouts and at_keyboard modules to UEFI Grub2 (rmetrich)
+  Related rhbz#1897587
+- at_keyboard: use set 1 when keyboard is in Translate mode (rmetrich)
+  Resolves: rhbz#1897587
+- add GRUB enhanced debugging features (rmetrich)
+  Resolves: rhbz#1776249
+- ieee1275: Avoiding many unecessary open/close (diegodo)
+  Resolves: rhbz#1862632
+- ieee1275: device mapper and fibre channel discovery support (diegodo)
+  Resolves: rhbz#1873724
+
 * Mon Nov 23 2020 Jan Hlavac <jhlavac@redhat.com> - 2.02-92
 - grub2-install: disable support for EFI platforms
   Resolves: rhbz#1737444

@@ -315,5 +315,13 @@ Patch0314: 0314-linux-Fix-integer-overflows-in-initrd-size-handling.patch
 Patch0315: 0315-blscfg-Always-look-for-BLS-snippets-in-the-root-devi.patch
 Patch0316: 0316-blscfg-Don-t-hardcode-an-env-var-as-fallback-for-the.patch
 Patch0317: 0317-tftp-roll-over-block-counter-to-prevent-timeouts-wit.patch
-Patch0318: 0318-at_keyboard-Fix-keyboards-that-report-IBM-PC-AT-scan.patch
+Patch0318: 0318-at_keyboard-use-set-1-when-keyboard-is-in-Translate-.patch
 Patch0319: 0319-grub-install-disable-support-for-EFI-platforms.patch
+Patch0320: 0320-New-with-debug-timestamps-configure-flag-to-prepend-.patch
+Patch0321: 0321-Added-debug-statements-to-grub_disk_open-and-grub_di.patch
+Patch0322: 0322-Introduce-function-grub_debug_is_enabled-void-return.patch
+Patch0323: 0323-Don-t-clear-screen-when-debugging-is-enabled.patch
+Patch0324: 0324-grub_file_-instrumentation-new-file-debug-tag.patch
+Patch0325: 0325-ieee1275-Avoiding-many-unecessary-open-close.patch
+Patch0326: 0326-ieee1275-powerpc-implements-fibre-channel-discovery-.patch
+Patch0327: 0327-ieee1275-powerpc-enables-device-mapper-discovery.patch
