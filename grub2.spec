@@ -233,6 +233,7 @@ rm -vf ${RPM_BUILD_ROOT}/%{_bindir}/%{name}-render-label
 rm -vf ${RPM_BUILD_ROOT}/%{_sbindir}/%{name}-bios-setup
 rm -vf ${RPM_BUILD_ROOT}/%{_sbindir}/%{name}-macbless
 %endif
+%{expand:%%do_install_protected_file %{name}-tools-minimal}
 
 %find_lang grub
 
@@ -375,6 +376,7 @@ rm -r /boot/grub2.tmp/ || :
 %{_bindir}/%{name}-editenv
 %{_bindir}/%{name}-mkpasswd-pbkdf2
 %{_bindir}/%{name}-mount
+%attr(0644,root,root) %config(noreplace) /etc/dnf/protected.d/%{name}-tools-minimal.conf
 
 %{_datadir}/man/man3/%{name}-get-kernel-settings*
 %{_datadir}/man/man8/%{name}-set-default*
