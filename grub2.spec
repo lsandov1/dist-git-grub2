@@ -358,7 +358,7 @@ rm -r /boot/grub2.tmp/ || :
 %exclude /boot/grub2/*
 %dir %attr(0700,root,root) %{efi_esp_dir}
 %exclude %{efi_esp_dir}/*
-%ghost %config(noreplace) /boot/grub2/grubenv
+%ghost %config(noreplace) %verify(not size mode md5 mtime) /boot/grub2/grubenv
 %license COPYING
 %doc THANKS
 %doc docs/grub.html
