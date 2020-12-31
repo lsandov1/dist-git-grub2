@@ -64,7 +64,7 @@ Replace a bunch of machine generated ones with ones that look nicer.
  util/grub-script-check.1          |  21 +++++
  util/grub-set-default.8           |  21 +++++
  util/grub-sparc64-setup.8         |  12 +++
- 59 files changed, 1319 insertions(+), 147 deletions(-)
+ 59 files changed, 1318 insertions(+), 147 deletions(-)
  delete mode 100644 docs/man/grub-bios-setup.h2m
  delete mode 100644 docs/man/grub-editenv.h2m
  delete mode 100644 docs/man/grub-emu.h2m
@@ -940,7 +940,7 @@ index 00000000000..72bd555d577
 +.BR "info grub"
 diff --git a/util/grub-install.8 b/util/grub-install.8
 new file mode 100644
-index 00000000000..76272a39d2e
+index 00000000000..1db89e94b3b
 --- /dev/null
 +++ b/util/grub-install.8
 @@ -0,0 +1,128 @@

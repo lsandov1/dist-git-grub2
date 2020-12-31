@@ -14,7 +14,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.04
-Release:	32%{?dist}
+Release:	33%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -518,6 +518,15 @@ rm -r /boot/grub2.tmp/ || :
 %endif
 
 %changelog
+* Thu Dec 31 2020 Javier Martinez Canillas <javierm@redhat.com> - 2.04-33
+- Add DNF protected.d fragments for GRUB packages
+  Resolves: rhbz#1874541
+ - Include keylayouts and at_keyboard modules in EFI builds
+ - Add GRUB enhanced debugging features
+ - ieee1275: Avoiding many unecessary open/close
+ - ieee1275: device mapper and fibre channel discovery support
+ - Fix tps-rpmtest failing due /boot/grub2/grubenv attributes mismatch
+
 * Thu Nov 12 2020 Peter Hazenberg <fedoraproject@haas-en-berg.nl> - 2.04-32
 - Fixed some typos in grub-install.8 man page
 

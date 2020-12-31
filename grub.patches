@@ -266,3 +266,13 @@ Patch0265: 0265-Fix-const-char-pointers-in-grub-core-net-url.c.patch
 Patch0266: 0266-Add-systemd-integration-scripts-to-make-systemctl-re.patch
 Patch0267: 0267-systemd-integration.sh-Also-set-old-menu_show_once-g.patch
 Patch0268: 0268-tftp-roll-over-block-counter-to-prevent-timeouts-wit.patch
+Patch0269: 0269-grub-install-disable-support-for-EFI-platforms.patch
+Patch0270: 0270-New-with-debug-timestamps-configure-flag-to-prepend-.patch
+Patch0271: 0271-Added-debug-statements-to-grub_disk_open-and-grub_di.patch
+Patch0272: 0272-Introduce-function-grub_debug_is_enabled-void-return.patch
+Patch0273: 0273-Don-t-clear-screen-when-debugging-is-enabled.patch
+Patch0274: 0274-grub_file_-instrumentation-new-file-debug-tag.patch
+Patch0275: 0275-ieee1275-Avoiding-many-unecessary-open-close.patch
+Patch0276: 0276-ieee1275-powerpc-implements-fibre-channel-discovery-.patch
+Patch0277: 0277-ieee1275-powerpc-enables-device-mapper-discovery.patch
+Patch0278: 0278-btrfs-Add-support-for-new-RAID1C34-profiles.patch
