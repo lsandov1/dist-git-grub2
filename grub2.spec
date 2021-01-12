@@ -14,7 +14,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.04
-Release:	31%{?dist}.2
+Release:	34%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -40,7 +40,7 @@ BuildRequires:	ncurses-devel xz-devel bzip2-devel
 BuildRequires:	freetype-devel libusb-devel
 BuildRequires:	fuse-devel
 BuildRequires:	rpm-devel rpm-libs
-BuildRequires:	autoconf automake autogen device-mapper-devel
+BuildRequires:	autoconf automake device-mapper-devel
 BuildRequires:	freetype-devel gettext-devel git
 BuildRequires:	texinfo
 BuildRequires:	dejavu-sans-fonts
@@ -233,6 +233,7 @@ rm -vf ${RPM_BUILD_ROOT}/%{_bindir}/%{name}-render-label
 rm -vf ${RPM_BUILD_ROOT}/%{_sbindir}/%{name}-bios-setup
 rm -vf ${RPM_BUILD_ROOT}/%{_sbindir}/%{name}-macbless
 %endif
+%{expand:%%do_install_protected_file %{name}-tools-minimal}
 
 %find_lang grub
 
@@ -358,7 +359,7 @@ rm -r /boot/grub2.tmp/ || :
 %exclude /boot/grub2/*
 %dir %attr(0700,root,root) %{efi_esp_dir}
 %exclude %{efi_esp_dir}/*
-%ghost %config(noreplace) /boot/grub2/grubenv
+%ghost %config(noreplace) %verify(not size mode md5 mtime) /boot/grub2/grubenv
 %license COPYING
 %doc THANKS
 %doc docs/grub.html
@@ -375,6 +376,7 @@ rm -r /boot/grub2.tmp/ || :
 %{_bindir}/%{name}-editenv
 %{_bindir}/%{name}-mkpasswd-pbkdf2
 %{_bindir}/%{name}-mount
+%attr(0644,root,root) %config(noreplace) /etc/dnf/protected.d/%{name}-tools-minimal.conf
 
 %{_datadir}/man/man3/%{name}-get-kernel-settings*
 %{_datadir}/man/man8/%{name}-set-default*
@@ -516,6 +518,21 @@ rm -r /boot/grub2.tmp/ || :
 %endif
 
 %changelog
+* Tue Jan 12 2021 Javier Martinez Canillas <javierm@redhat.com> - 2.04-34
+- at_keyboard: use set 1 when keyboard is in Translate mode (rmetrich)
+
+* Thu Dec 31 2020 Javier Martinez Canillas <javierm@redhat.com> - 2.04-33
+- Add DNF protected.d fragments for GRUB packages
+  Resolves: rhbz#1874541
+ - Include keylayouts and at_keyboard modules in EFI builds
+ - Add GRUB enhanced debugging features
+ - ieee1275: Avoiding many unecessary open/close
+ - ieee1275: device mapper and fibre channel discovery support
+ - Fix tps-rpmtest failing due /boot/grub2/grubenv attributes mismatch
+
+* Thu Nov 12 2020 Peter Hazenberg <fedoraproject@haas-en-berg.nl> - 2.04-32
+- Fixed some typos in grub-install.8 man page
+
 * Mon Aug 31 2020 Javier Martinez Canillas <javierm@redhat.com> - 2.04-31
 - Roll over TFTP block counter to prevent timeouts with data packets
   Resolves: rhbz#1869335
@@ -916,7 +933,7 @@ rm -r /boot/grub2.tmp/ || :
   Resolves: rhbz#1624532
 
 * Thu Aug 30 2018 Peter Jones <pjones@redhat.com> - 2.02-53
-- Fix AArch64 machines with no RAM latched lower than 1GB 
+- Fix AArch64 machines with no RAM latched lower than 1GB
   Resolves: rhbz#1615969
 - Set http_path and http_url when HTTP booting
 - Hopefully slightly better error reporting in some cases

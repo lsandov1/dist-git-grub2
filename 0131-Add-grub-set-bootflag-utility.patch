@@ -265,7 +265,7 @@ index 00000000000..5d8fcba21aa
 +OnActiveSec=2min
 diff --git a/util/grub-set-bootflag.1 b/util/grub-set-bootflag.1
 new file mode 100644
-index 00000000000..57801da22a0
+index 00000000000..f121226b416
 --- /dev/null
 +++ b/util/grub-set-bootflag.1
 @@ -0,0 +1,20 @@
@@ -284,7 +284,7 @@ index 00000000000..57801da22a0
 +.TP
 +\fBBOOTFLAG\fR
 +.RS 7
-+Bootflag to set, one of \fIboot_success\fR or \fIshow_menu_once\fR.
++Bootflag to set, one of \fIboot_success\fR or \fImenu_show_once\fR.
 +.RE
 +
 +.SH SEE ALSO
