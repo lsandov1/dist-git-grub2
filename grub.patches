@@ -276,3 +276,4 @@ Patch0275: 0275-ieee1275-Avoiding-many-unecessary-open-close.patch
 Patch0276: 0276-ieee1275-powerpc-implements-fibre-channel-discovery-.patch
 Patch0277: 0277-ieee1275-powerpc-enables-device-mapper-discovery.patch
 Patch0278: 0278-btrfs-Add-support-for-new-RAID1C34-profiles.patch
+Patch0279: 0279-at_keyboard-use-set-1-when-keyboard-is-in-Translate-.patch

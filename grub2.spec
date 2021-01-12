@@ -14,7 +14,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.04
-Release:	33%{?dist}
+Release:	34%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -518,6 +518,9 @@ rm -r /boot/grub2.tmp/ || :
 %endif
 
 %changelog
+* Tue Jan 12 2021 Javier Martinez Canillas <javierm@redhat.com> - 2.04-34
+- at_keyboard: use set 1 when keyboard is in Translate mode (rmetrich)
+
 * Thu Dec 31 2020 Javier Martinez Canillas <javierm@redhat.com> - 2.04-33
 - Add DNF protected.d fragments for GRUB packages
   Resolves: rhbz#1874541
