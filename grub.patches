@@ -325,3 +325,4 @@ Patch0324: 0324-grub_file_-instrumentation-new-file-debug-tag.patch
 Patch0325: 0325-ieee1275-Avoiding-many-unecessary-open-close.patch
 Patch0326: 0326-ieee1275-powerpc-implements-fibre-channel-discovery-.patch
 Patch0327: 0327-ieee1275-powerpc-enables-device-mapper-discovery.patch
+Patch0328: 0328-Add-at_keyboard_fallback_set-var-to-force-the-set-ma.patch

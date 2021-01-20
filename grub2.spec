@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	93%{?dist}
+Release:	94%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -500,9 +500,13 @@ fi
 %endif
 
 %changelog
+* Wed Jan 20 2021 Renaud Métrich <rmetrich@redhat.com> - 2.02-94
+- Add 'at_keyboard_fallback_set' var to force the set manually
+- Related: rhbz#1897587
+
 * Mon Dec 14 2020 Javier Martinez Canillas <javierm@redhat.com> - 2.02-93
 - add keylayouts and at_keyboard modules to UEFI Grub2 (rmetrich)
-  Related rhbz#1897587
+  Related: rhbz#1897587
 - at_keyboard: use set 1 when keyboard is in Translate mode (rmetrich)
   Resolves: rhbz#1897587
 - add GRUB enhanced debugging features (rmetrich)
