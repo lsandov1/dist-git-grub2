@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	94%{?dist}
+Release:	95%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -500,6 +500,10 @@ fi
 %endif
 
 %changelog
+* Tue Jan 26 2021 Javier Martinez Canillas <javierm@redhat.com> - 2.02-95
+- Add appended signatures support for ppc64le LPAR Secure Boot (daxtens)
+  Resolves: rhbz#1853410
+
 * Wed Jan 20 2021 Renaud Métrich <rmetrich@redhat.com> - 2.02-94
 - Add 'at_keyboard_fallback_set' var to force the set manually
 - Related: rhbz#1897587
