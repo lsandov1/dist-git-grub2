@@ -24,6 +24,7 @@
 		-e 's/--param=ssp-buffer-size=4//g'		\\\
 		-e 's/-mregparm=3/-mregparm=4/g'		\\\
 		-e 's/-fexceptions//g'				\\\
+		-e 's/-fcf-protection//g'			\\\
 		-e 's/-fasynchronous-unwind-tables//g'		\\\
 		-e 's/^/ -fno-strict-aliasing /'		\\\
 		%{nil}
