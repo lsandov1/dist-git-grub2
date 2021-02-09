@@ -405,7 +405,7 @@ rm -f %{1}.conf							\
 %define do_efi_build_images()					\
 GRUB_MODULES="	all_video boot blscfg btrfs			\\\
 		cat configfile cryptodisk			\\\
-		echo efi_netfs efifwsetup efinet ext2		\\\
+		echo efi_netfs efifwsetup efinet ext2 f2fs	\\\
 		fat font gcry_rijndael gcry_rsa gcry_serpent 	\\\
 		gcry_sha256 gcry_twofish gcry_whirlpool   	\\\
 		gfxmenu gfxterm gzio				\\\
