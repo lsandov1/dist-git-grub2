@@ -14,7 +14,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.04
-Release:	34%{?dist}
+Release:	35%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -518,6 +518,14 @@ rm -r /boot/grub2.tmp/ || :
 %endif
 
 %changelog
+* Mon Feb 08 2021 Javier Martinez Canillas <javierm@redhat.com> - 2.04-35
+- Remove -fcf-protection compiler flag to allow i386 builds (law)
+  Related: rhbz#1915452
+- Unify GRUB configuration file location across all platforms
+  Related: rhbz#1918817
+- Add 'at_keyboard_fallback_set' var to force the set manually (rmetrich)
+- Add appended signatures support for ppc64le LPAR Secure Boot (daxtens)
+
 * Tue Jan 12 2021 Javier Martinez Canillas <javierm@redhat.com> - 2.04-34
 - at_keyboard: use set 1 when keyboard is in Translate mode (rmetrich)
 

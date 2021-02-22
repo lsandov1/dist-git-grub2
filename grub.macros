@@ -24,6 +24,7 @@
 		-e 's/--param=ssp-buffer-size=4//g'		\\\
 		-e 's/-mregparm=3/-mregparm=4/g'		\\\
 		-e 's/-fexceptions//g'				\\\
+		-e 's/-fcf-protection//g'			\\\
 		-e 's/-fasynchronous-unwind-tables//g'		\\\
 		-e 's/^/ -fno-strict-aliasing /'		\\\
 		%{nil}
@@ -505,8 +506,7 @@ if [ -f $RPM_BUILD_ROOT%{_infodir}/grub-dev.info ]; then	\
 	rm -f $RPM_BUILD_ROOT%{_infodir}/grub-dev.info		\
 fi								\
 find $RPM_BUILD_ROOT -iname "*.module" -exec chmod a-x {} '\;'	\
-touch $RPM_BUILD_ROOT%{efi_esp_dir}/grub.cfg			\
-ln -sf ..%{efi_esp_dir}/grub.cfg				\\\
+ln -s ../boot/%{name}/grub.cfg					\\\
 	$RPM_BUILD_ROOT%{_sysconfdir}/%{name}-efi.cfg		\
 install -m 700 %{2} $RPM_BUILD_ROOT%{efi_esp_dir}/%{2}		\
 install -m 700 %{3} $RPM_BUILD_ROOT%{efi_esp_dir}/%{3}		\
@@ -516,9 +516,7 @@ install -D -m 700 %{2} $RPM_BUILD_ROOT%{efi_esp_boot}/BOOTARM.EFI \
 install -D -m 700 unicode.pf2					\\\
 	$RPM_BUILD_ROOT%{efi_esp_dir}/fonts/unicode.pf2		\
 ${RPM_BUILD_ROOT}/%{_bindir}/%{name}-editenv			\\\
-	${RPM_BUILD_ROOT}%{efi_esp_dir}/grubenv create		\
-ln -sf ../efi/EFI/%{efi_vendor}/grubenv				\\\
-	$RPM_BUILD_ROOT/boot/grub2/grubenv			\
+		${RPM_BUILD_ROOT}/boot/%{name}/grubenv create	\
 %{expand:%%do_install_protected_file %{name}-%{package_arch}}	\
 cd ..								\
 %{nil}
@@ -532,8 +530,6 @@ fi								\
 if [ -f $RPM_BUILD_ROOT%{_infodir}/grub-dev.info ]; then	\
 	rm -f $RPM_BUILD_ROOT%{_infodir}/grub-dev.info		\
 fi								\
-ln -s ../boot/%{name}/grub.cfg					\\\
-	${RPM_BUILD_ROOT}%{_sysconfdir}/grub2.cfg		\
 if [ -f $RPM_BUILD_ROOT/%{_libdir}/grub/%{1}/grub2.chrp ]; then \
 	mv $RPM_BUILD_ROOT/%{_libdir}/grub/%{1}/grub2.chrp	\\\
 	   $RPM_BUILD_ROOT/%{_libdir}/grub/%{1}/grub.chrp	\
@@ -582,6 +578,8 @@ touch ${RPM_BUILD_ROOT}%{_sysconfdir}/default/grub		\
 ln -sf ../default/grub						\\\
 	${RPM_BUILD_ROOT}%{_sysconfdir}/sysconfig/grub		\
 touch ${RPM_BUILD_ROOT}/boot/%{name}/grub.cfg			\
+ln -s ../boot/%{name}/grub.cfg					\\\
+	${RPM_BUILD_ROOT}%{_sysconfdir}/grub2.cfg		\
 %{nil}
 
 %define define_legacy_variant_files()				\
@@ -608,6 +606,7 @@ touch ${RPM_BUILD_ROOT}/boot/%{name}/grub.cfg			\
 %define define_efi_variant_files()				\
 %{expand:%%files %{1}}						\
 %defattr(0700,root,root,-)					\
+%config(noreplace) %{_sysconfdir}/%{name}.cfg			\
 %config(noreplace) %{_sysconfdir}/%{name}-efi.cfg		\
 %attr(0700,root,root)%{efi_esp_dir}/%{2}			\
 %ifarch %{arm}							\
@@ -615,9 +614,9 @@ touch ${RPM_BUILD_ROOT}/boot/%{name}/grub.cfg			\
 %endif								\
 %dir %attr(0700,root,root)%{efi_esp_dir}/fonts			\
 %dir %attr(0700,root,root)/boot/loader/entries			\
+%ghost %config(noreplace) /boot/%{name}/grub.cfg		\
 %ghost %config(noreplace) %attr(0700,root,root)%{efi_esp_dir}/grub.cfg	\
 %config(noreplace) %verify(not size mode md5 mtime) /boot/grub2/grubenv	\
-%ghost %config(noreplace) %attr(0700,root,root)%{efi_esp_dir}/grubenv	\
 %attr(0644,root,root) %config(noreplace) /etc/dnf/protected.d/%{name}-%{1}.conf \
 %{expand:%if 0%{?without_efi_modules}				\
 %exclude %{_libdir}/grub/%{6}					\
