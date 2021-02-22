@@ -14,7 +14,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.04
-Release:	35%{?dist}
+Release:	36%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -547,6 +547,12 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Mon Feb 22 2021 Javier Martinez Canillas <javierm@redhat.com> - 2.04-36
+- Switch EFI users to new unified config
+  Resolves: rhbz#1918817
+- Fix ESC key no longer showing the menu
+  Resolves: rhbz#1928595
+
 * Mon Feb 08 2021 Javier Martinez Canillas <javierm@redhat.com> - 2.04-35
 - Remove -fcf-protection compiler flag to allow i386 builds (law)
   Related: rhbz#1915452

@@ -92,10 +92,10 @@ index 1fbc942254a..6efe58ce8b2 100644
    cmd_trust =
      grub_register_command ("trust_certificate", grub_cmd_trust,
 diff --git a/grub-core/kern/ieee1275/init.c b/grub-core/kern/ieee1275/init.c
-index d84fba44d10..9ffc7919da8 100644
+index 937c1bc44cb..5df2e0efae7 100644
 --- a/grub-core/kern/ieee1275/init.c
 +++ b/grub-core/kern/ieee1275/init.c
-@@ -269,6 +269,30 @@ grub_parse_cmdline (void)
+@@ -271,6 +271,30 @@ grub_parse_cmdline (void)
      }
  }
  
@@ -126,7 +126,7 @@ index d84fba44d10..9ffc7919da8 100644
  grub_addr_t grub_modbase;
  
  void
-@@ -294,6 +318,8 @@ grub_machine_init (void)
+@@ -296,6 +320,8 @@ grub_machine_init (void)
  #else
    grub_install_get_time_ms (grub_rtc_get_time_ms);
  #endif
