@@ -344,6 +344,35 @@ mv -f /boot/grub2.tmp/*.mod \
       /boot/grub2/ &&
 rm -r /boot/grub2.tmp/ || :
 
+%posttrans common
+set -eu
+
+EFI_HOME=/boot/efi/EFI/fedora
+GRUB_HOME=/boot/grub2
+
+if grep -q "configfile" ${EFI_HOME}/grub.cfg; then
+    exit 0 # already unified, nothing to do
+fi
+
+# create a stub grub2 config in EFI
+BOOT_DEVICE=$(df -P /boot | awk 'END{print $1}')
+BOOT_UUID=$(blkid -s UUID -o value "${BOOT_DEVICE}")
+GRUB_DIR=$(grub2-mkrelpath ${GRUB_HOME})
+
+cat << EOF > ${EFI_HOME}/grub.cfg.stb
+search --no-floppy --fs-uuid --set=dev ${BOOT_UUID}
+set prefix=(\$dev)${GRUB_DIR}
+export \$prefix
+configfile \$prefix/grub.cfg
+EOF
+
+cp -av ${EFI_HOME}/grubenv ${EFI_HOME}/grubenv.rpmsave
+mv --force ${EFI_HOME}/grubenv ${GRUB_HOME}/grubenv
+
+cp -av ${EFI_HOME}/grub.cfg ${EFI_HOME}/grub.cfg.rpmsave
+cp -av ${EFI_HOME}/grub.cfg ${GRUB_HOME}/
+mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
+
 %files common -f grub.lang
 %dir %{_libdir}/grub/
 %dir %{_datarootdir}/grub/
