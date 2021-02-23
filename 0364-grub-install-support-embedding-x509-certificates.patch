@@ -95,7 +95,7 @@ index 561e671ff34..fa6b65347ea 100644
    while (dc--)
      grub_install_pop_module ();
 diff --git a/util/grub-mkimage.c b/util/grub-mkimage.c
-index 9cc767088d3..b05fb827656 100644
+index 65a015d8a04..394d2dc5fc9 100644
 --- a/util/grub-mkimage.c
 +++ b/util/grub-mkimage.c
 @@ -75,7 +75,8 @@ static struct argp_option options[] = {

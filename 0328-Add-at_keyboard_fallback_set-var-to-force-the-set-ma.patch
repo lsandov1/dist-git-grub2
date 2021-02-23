@@ -25,11 +25,11 @@ solution":
 - http://www-ug.eecg.toronto.edu/msl/nios_devices/datasheets/PS2%20Keyboard%20Protocol.htm
 - http://www.s100computers.com/My%20System%20Pages/MSDOS%20Board/PC%20Keyboard.pdf
 ---
- grub-core/term/at_keyboard.c | 127 ++++++++++++++++++++++++++++++++++---------
- 1 file changed, 101 insertions(+), 26 deletions(-)
+ grub-core/term/at_keyboard.c | 121 ++++++++++++++++++++++++++++++++++---------
+ 1 file changed, 96 insertions(+), 25 deletions(-)
 
 diff --git a/grub-core/term/at_keyboard.c b/grub-core/term/at_keyboard.c
-index 69d99b61df5..e7d51b249ad 100644
+index 69d99b61df5..c805cccbdde 100644
 --- a/grub-core/term/at_keyboard.c
 +++ b/grub-core/term/at_keyboard.c
 @@ -31,6 +31,7 @@ GRUB_MOD_LICENSE ("GPLv3+");
@@ -71,26 +71,22 @@ index 69d99b61df5..e7d51b249ad 100644
  static int
  write_mode (int mode)
  {
-@@ -113,11 +131,17 @@ write_mode (int mode)
+@@ -113,11 +131,14 @@ write_mode (int mode)
      {
        grub_uint8_t ack;
        keyboard_controller_wait_until_ready ();
 +      grub_dprintf ("atkeyb", "write_mode: sending 0xf0\n");
        grub_outb (0xf0, KEYBOARD_REG_DATA);
-+      ack = wait_ack ();
-+      grub_dprintf ("atkeyb", "write_mode: wait_ack() returned 0x%x\n", ack);
-+      if (ack != GRUB_AT_ACK)
-+	continue;
        keyboard_controller_wait_until_ready ();
 +      grub_dprintf ("atkeyb", "write_mode: sending mode %d\n", mode);
        grub_outb (mode, KEYBOARD_REG_DATA);
--      keyboard_controller_wait_until_ready ();
+       keyboard_controller_wait_until_ready ();
        ack = wait_ack ();
 +      grub_dprintf ("atkeyb", "write_mode: wait_ack() returned 0x%x\n", ack);
        if (ack == GRUB_AT_NACK)
  	continue;
        if (ack == GRUB_AT_ACK)
-@@ -125,6 +149,9 @@ write_mode (int mode)
+@@ -125,6 +146,9 @@ write_mode (int mode)
        return 0;
      }
  
@@ -100,7 +96,7 @@ index 69d99b61df5..e7d51b249ad 100644
    return (i != GRUB_AT_TRIES);
  }
  
-@@ -132,31 +159,66 @@ static int
+@@ -132,31 +156,66 @@ static int
  query_mode (void)
  {
    grub_uint8_t ret;
@@ -187,7 +183,7 @@ index 69d99b61df5..e7d51b249ad 100644
    return 0;
  }
  
-@@ -165,14 +227,25 @@ set_scancodes (void)
+@@ -165,14 +224,25 @@ set_scancodes (void)
  {
    /* You must have visited computer museum. Keyboard without scancode set
       knowledge. Assume XT. */
@@ -217,15 +213,7 @@ index 69d99b61df5..e7d51b249ad 100644
    if ((grub_keyboard_controller_orig & KEYBOARD_AT_TRANSLATE) == KEYBOARD_AT_TRANSLATE) {
      grub_dprintf ("atkeyb", "queried set is %d but keyboard in Translate mode, so actually in set 1\n", grub_keyboard_orig_set);
      ps2_state.current_set = 1;
-@@ -229,6 +302,7 @@ grub_at_keyboard_is_alive (void)
- 
-   if (KEYBOARD_COMMAND_ISREADY (grub_inb (KEYBOARD_REG_STATUS)))
-     {
-+      grub_dprintf ("atkeyb", "grub_at_keyboard_is_alive: controller mode before self-test: 0x%x\n", grub_keyboard_controller_read());
-       grub_outb (0xaa, KEYBOARD_REG_STATUS);
-       ping_sent = 1;
-     }
-@@ -261,6 +335,7 @@ grub_at_keyboard_getkey (struct grub_term_input *term __attribute__ ((unused)))
+@@ -261,6 +331,7 @@ grub_at_keyboard_getkey (struct grub_term_input *term __attribute__ ((unused)))
  static void
  grub_keyboard_controller_init (void)
  {
@@ -233,7 +221,7 @@ index 69d99b61df5..e7d51b249ad 100644
    ps2_state.at_keyboard_status = 0;
    /* Drain input buffer. */
    while (1)
-@@ -282,6 +357,7 @@ grub_keyboard_controller_init (void)
+@@ -282,6 +353,7 @@ grub_keyboard_controller_init (void)
    grub_keyboard_controller_orig = grub_keyboard_controller_read ();
    grub_dprintf ("atkeyb", "grub_keyboard_controller_orig = 0x%x\n", grub_keyboard_controller_orig);
    grub_keyboard_orig_set = query_mode ();
@@ -241,7 +229,7 @@ index 69d99b61df5..e7d51b249ad 100644
  #endif
    set_scancodes ();
    keyboard_controller_led (ps2_state.led_status);
-@@ -329,7 +405,6 @@ grub_at_restore_hw (void)
+@@ -329,7 +401,6 @@ grub_at_restore_hw (void)
    return GRUB_ERR_NONE;
  }
  

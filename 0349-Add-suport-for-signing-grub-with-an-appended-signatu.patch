@@ -106,14 +106,14 @@ index cf993c059ad..561e671ff34 100644
      grub_install_pop_module ();
  }
 diff --git a/util/grub-mkimage.c b/util/grub-mkimage.c
-index 98d24cc06ea..9cc767088d3 100644
+index 98d24cc06ea..65a015d8a04 100644
 --- a/util/grub-mkimage.c
 +++ b/util/grub-mkimage.c
 @@ -82,6 +82,7 @@ static struct argp_option options[] = {
    {"format",  'O', N_("FORMAT"), 0, 0, 0},
    {"compression",  'C', "(xz|none|auto)", 0, N_("choose the compression to use for core image"), 0},
    {"verbose",     'v', 0,      0, N_("print verbose messages."), 0},
-+  {"appended-signature-size", 's', N_("SIZE"), 0, N_("Add a note segment reserving SIZE bytes for an appended signature"), 0},
++  {"appended-signature-size", 'S', N_("SIZE"), 0, N_("Add a note segment reserving SIZE bytes for an appended signature"), 0},
    { 0, 0, 0, 0, 0, 0 }
  };
  
@@ -137,7 +137,7 @@ index 98d24cc06ea..9cc767088d3 100644
        arguments->note = 1;
        break;
  
-+    case 's':
++    case 'S':
 +      grub_errno = 0;
 +      arguments->appsig_size = grub_strtol(arg, &end, 10);
 +      if (grub_errno)
