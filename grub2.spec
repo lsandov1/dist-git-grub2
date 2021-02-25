@@ -14,7 +14,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.04
-Release:	36%{?dist}
+Release:	37%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -551,6 +551,10 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Thu Feb 25 2021 Javier Martinez Canillas <javierm@redhat.com> - 2.04-37
+- Don't attempt to unify if there is no grub.cfg on EFI (gicmo)
+  Resolves: rhbz#1933085
+
 * Mon Feb 22 2021 Javier Martinez Canillas <javierm@redhat.com> - 2.04-36
 - Switch EFI users to new unified config
   Resolves: rhbz#1918817
