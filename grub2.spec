@@ -350,6 +350,10 @@ set -eu
 EFI_HOME=/boot/efi/EFI/fedora
 GRUB_HOME=/boot/grub2
 
+if test ! -f ${EFI_HOME}/grub.cfg; then
+   exit 0 # nothing to unify, nothing to do
+fi
+
 if grep -q "configfile" ${EFI_HOME}/grub.cfg; then
     exit 0 # already unified, nothing to do
 fi
@@ -366,11 +370,11 @@ export \$prefix
 configfile \$prefix/grub.cfg
 EOF
 
-cp -av ${EFI_HOME}/grubenv ${EFI_HOME}/grubenv.rpmsave
+cp -a ${EFI_HOME}/grubenv ${EFI_HOME}/grubenv.rpmsave
 mv --force ${EFI_HOME}/grubenv ${GRUB_HOME}/grubenv
 
-cp -av ${EFI_HOME}/grub.cfg ${EFI_HOME}/grub.cfg.rpmsave
-cp -av ${EFI_HOME}/grub.cfg ${GRUB_HOME}/
+cp -a ${EFI_HOME}/grub.cfg ${EFI_HOME}/grub.cfg.rpmsave
+cp -a ${EFI_HOME}/grub.cfg ${GRUB_HOME}/
 mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 
 %files common -f grub.lang
