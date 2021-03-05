@@ -14,7 +14,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.04
-Release:	37%{?dist}
+Release:	38%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -551,6 +551,9 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Fri Mar 05 2021 Javier Martinez Canillas <javierm@redhat.com> - 2.04-38
+- Fix keyboards that report IBM PC AT scan codes (rmetrich)
+
 * Thu Feb 25 2021 Javier Martinez Canillas <javierm@redhat.com> - 2.04-37
 - Don't attempt to unify if there is no grub.cfg on EFI (gicmo)
   Resolves: rhbz#1933085
