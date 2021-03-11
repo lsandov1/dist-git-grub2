@@ -301,3 +301,4 @@ Patch0300: 0300-appended-signatures-documentation.patch
 Patch0301: 0301-ieee1275-link-appended-signature-enforcement-to-ibm-.patch
 Patch0302: 0302-at_keyboard-use-set-1-when-keyboard-is-in-Translate-.patch
 Patch0303: 0303-Add-at_keyboard_fallback_set-var-to-force-the-set-ma.patch
+Patch0304: 0304-10_linux.in-Check-if-petitboot-sysfs-has-a-valid-ver.patch

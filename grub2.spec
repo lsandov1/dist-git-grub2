@@ -14,7 +14,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.04
-Release:	38%{?dist}
+Release:	39%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -551,6 +551,10 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Thu Mar 11 2021 Javier Martinez Canillas <javierm@redhat.com> - 2.04-39
+- Fix config file generation failing due invalid petitboot version value
+  Resolves: rhbz#1921479
+
 * Fri Mar 05 2021 Javier Martinez Canillas <javierm@redhat.com> - 2.04-38
 - Fix keyboards that report IBM PC AT scan codes (rmetrich)
 
