@@ -5,7 +5,7 @@
 
 %undefine _hardened_build
 
-%global tarversion 2.04
+%global tarversion 2.06~rc1
 %undefine _missing_build_ids_terminate_build
 %global _configure_gnuconfig_hack 0
 
@@ -13,8 +13,8 @@
 
 Name:		grub2
 Epoch:		1
-Version:	2.04
-Release:	39%{?dist}
+Version:	2.06~rc1
+Release:	1%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -31,6 +31,7 @@ Source8:	bootstrap.conf
 Source9:	strtoull_test.c
 Source10:	20-grub.install
 Source11:	grub.patches
+Source12:	sbat.csv.in
 
 %include %{SOURCE1}
 
@@ -164,6 +165,8 @@ This subpackage provides the GRUB user-space emulation modules.
 mkdir grub-%{grubefiarch}-%{tarversion}
 grep -A100000 '# stuff "make" creates' .gitignore > grub-%{grubefiarch}-%{tarversion}/.gitignore
 cp %{SOURCE4} grub-%{grubefiarch}-%{tarversion}/unifont.pcf.gz
+sed -e "s,@@VERSION@@,%{version},g" -e "s,@@VERSION_RELEASE@@,%{version}-%{release},g" \
+    %{SOURCE12} > grub-%{grubefiarch}-%{tarversion}/sbat.csv
 git add grub-%{grubefiarch}-%{tarversion}
 %endif
 %if 0%{with_alt_efi_arch}
@@ -551,6 +554,16 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Fri Mar 12 2021 Javier Martinez Canillas <javierm@redhat.com> - 2.06~rc1-1
+- Update to 2.06~rc1 to fix a bunch of CVEs
+  Resolves: CVE-2020-14372
+  Resolves: CVE-2020-25632
+  Resolves: CVE-2020-25647
+  Resolves: CVE-2020-27749
+  Resolves: CVE-2020-27779
+  Resolves: CVE-2021-20225
+  Resolves: CVE-2021-20233
+
 * Thu Mar 11 2021 Javier Martinez Canillas <javierm@redhat.com> - 2.04-39
 - Fix config file generation failing due invalid petitboot version value
   Resolves: rhbz#1921479

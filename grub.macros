@@ -333,8 +333,6 @@ git commit -a -q -m "%{tarversion} baseline."			\
 #git commit -a -q -m "%{tarversion} master."			\
 git am --whitespace=nowarn %%{patches} </dev/null		\
 ./bootstrap							\
-git add .							\
-git commit -a -q -m "bootstrap"					\
 %{nil}
 
 %define do_efi_configure()					\
@@ -382,9 +380,11 @@ rm -f %{1}.conf							\
 %ifarch x86_64 aarch64 %{arm} riscv64
 %define mkimage()						\
 %{4}./grub-mkimage -O %{1} -o %{2}.orig				\\\
-	-p /EFI/%{efi_vendor} -d grub-core ${GRUB_MODULES}	\
+	-p /EFI/%{efi_vendor} -d grub-core ${GRUB_MODULES}	\\\
+	--sbat %{4}./sbat.csv					\
 %{4}./grub-mkimage -O %{1} -o %{3}.orig				\\\
-	-p /EFI/BOOT -d grub-core ${GRUB_MODULES}		\
+	-p /EFI/BOOT -d grub-core ${GRUB_MODULES}		\\\
+	--sbat %{4}./sbat.csv					\
 %{expand:%%define ___pesign_client_cert %{?___pesign_client_cert}%{!?___pesign_client_cert:%{__pesign_client_cert}}} \
 %{?__pesign_client_cert:%{expand:%%define __pesign_client_cert %{___pesign_client_cert}}} \
 %{expand:%%{pesign -s -i %%{2}.orig -o %%{2}.onesig -a %%{5} -c %%{6} -n %%{7}}}	\
