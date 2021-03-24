@@ -14,7 +14,7 @@ Signed-off-by: Javier Martinez Canillas <javierm@redhat.com>
 Signed-off-by: Will Thompson <wjt@endlessm.com>
 ---
  grub-core/Makefile.core.def    |   11 +
- grub-core/commands/blscfg.c    | 1171 ++++++++++++++++++++++++++++++++++++++++
+ grub-core/commands/blscfg.c    | 1177 ++++++++++++++++++++++++++++++++++++++++
  grub-core/commands/legacycfg.c |    5 +-
  grub-core/commands/loadenv.c   |   77 +--
  grub-core/commands/menuentry.c |   20 +-
@@ -23,7 +23,7 @@ Signed-off-by: Will Thompson <wjt@endlessm.com>
  include/grub/compiler.h        |    2 +
  include/grub/menu.h            |   13 +
  include/grub/normal.h          |    2 +-
- 10 files changed, 1318 insertions(+), 82 deletions(-)
+ 10 files changed, 1324 insertions(+), 82 deletions(-)
  create mode 100644 grub-core/commands/blscfg.c
  create mode 100644 grub-core/commands/loadenv.h
 
@@ -58,10 +58,10 @@ index c865a08b027..c15e91943b9 100644
  
 diff --git a/grub-core/commands/blscfg.c b/grub-core/commands/blscfg.c
 new file mode 100644
-index 00000000000..ab35c75443a
+index 00000000000..e907a6a5d28
 --- /dev/null
 +++ b/grub-core/commands/blscfg.c
-@@ -0,0 +1,1171 @@
+@@ -0,0 +1,1177 @@
 +/*-*- Mode: C; c-basic-offset: 2; indent-tabs-mode: t -*-*/
 +
 +/* bls.c - implementation of the boot loader spec */
@@ -678,25 +678,29 @@ index 00000000000..ab35c75443a
 +
 +static char *field_append(bool is_var, char *buffer, const char *start, const char *end)
 +{
-+  char *temp = grub_strndup(start, end - start + 1);
-+  const char *field = temp;
++  char *tmp = grub_strndup(start, end - start + 1);
++  const char *field = tmp;
++  int term = is_var ? 2 : 1;
 +
 +  if (is_var) {
-+    field = grub_env_get (temp);
++    field = grub_env_get (tmp);
 +    if (!field)
 +      return buffer;
 +  }
 +
 +  if (!buffer)
-+    buffer = grub_zalloc (grub_strlen(field) + 1);
++    buffer = grub_zalloc (grub_strlen(field) + term);
 +  else
-+    buffer = grub_realloc (buffer, grub_strlen(buffer) + grub_strlen(field) + 1);
++    buffer = grub_realloc (buffer, grub_strlen(buffer) + grub_strlen(field) + term);
 +
 +  if (!buffer)
 +    return NULL;
 +
-+  grub_stpcpy (buffer + grub_strlen(buffer), field);
-+  grub_stpcpy (buffer + grub_strlen(buffer), " ");
++  tmp = buffer + grub_strlen(buffer);
++  tmp = grub_stpcpy (tmp, field);
++
++  if (is_var)
++      tmp = grub_stpcpy (tmp, " ");
 +
 +  return buffer;
 +}
@@ -726,6 +730,8 @@ index 00000000000..ab35c75443a
 +	buffer = field_append(is_var, buffer, start, end);
 +	is_var = false;
 +	start = value;
++	if (*start == ' ')
++	  start++;
 +      }
 +    }
 +

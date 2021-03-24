@@ -464,6 +464,9 @@ cd ..								\
 cd grub-emu-%{tarversion}					\
 %configure							\\\
 	%{cc_equals}						\\\
+	HOST_CFLAGS="%{legacy_host_cflags}"			\\\
+	HOST_CPPFLAGS="-I$(pwd)"				\\\
+	HOST_LDFLAGS="%{legacy_host_ldflags}"			\\\
 	--with-platform=emu					\\\
 	--with-grubdir=%{name}					\\\
 	--program-transform-name=s,grub,%{name},		\\\

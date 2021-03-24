@@ -14,7 +14,7 @@ Signed-off-by: Peter Jones <pjones@redhat.com>
  2 files changed, 71 insertions(+), 21 deletions(-)
 
 diff --git a/grub-core/kern/main.c b/grub-core/kern/main.c
-index d1de9fa6873..1c540fc8c26 100644
+index 48058d983ce..4ec3f5e4d33 100644
 --- a/grub-core/kern/main.c
 +++ b/grub-core/kern/main.c
 @@ -131,11 +131,19 @@ grub_set_prefix_and_root (void)

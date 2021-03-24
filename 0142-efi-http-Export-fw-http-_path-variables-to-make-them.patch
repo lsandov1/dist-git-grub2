@@ -25,7 +25,7 @@ Signed-off-by: Javier Martinez Canillas <javierm@redhat.com>
  2 files changed, 2 insertions(+)
 
 diff --git a/grub-core/kern/main.c b/grub-core/kern/main.c
-index 1c540fc8c26..b573be6650d 100644
+index 4ec3f5e4d33..0285e95a2bb 100644
 --- a/grub-core/kern/main.c
 +++ b/grub-core/kern/main.c
 @@ -143,6 +143,7 @@ grub_set_prefix_and_root (void)

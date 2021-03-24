@@ -24,9 +24,9 @@ Signed-off-by: Javier Martinez Canillas <javierm@redhat.com>
 ---
  util/grub-mkconfig.8      |   4 +
  util/grub-mkconfig.in     |   9 +-
- util/grub-mkconfig_lib.in |  20 ++++-
+ util/grub-mkconfig_lib.in |  22 ++++-
  util/grub.d/10_linux.in   | 223 +++++++++++++++++++++++++++++++++++++++++++++-
- 4 files changed, 251 insertions(+), 5 deletions(-)
+ 4 files changed, 252 insertions(+), 6 deletions(-)
 
 diff --git a/util/grub-mkconfig.8 b/util/grub-mkconfig.8
 index a2d1f577b9b..434fa4deda4 100644
@@ -84,7 +84,7 @@ index e671ce68aec..1a70b7ea056 100644
  if test "x${grub_cfg}" != "x"; then
    rm -f "${grub_cfg}.new"
 diff --git a/util/grub-mkconfig_lib.in b/util/grub-mkconfig_lib.in
-index fafeac95061..4e6534a41f6 100644
+index fafeac95061..d8bb4069360 100644
 --- a/util/grub-mkconfig_lib.in
 +++ b/util/grub-mkconfig_lib.in
 @@ -30,6 +30,9 @@ fi
@@ -117,7 +117,7 @@ index fafeac95061..4e6534a41f6 100644
    old_ifs="$IFS"
    IFS='
  '
-@@ -161,15 +175,15 @@ prepare_grub_to_access_device ()
+@@ -161,18 +175,18 @@ prepare_grub_to_access_device ()
    # otherwise set root as per value in device.map.
    fs_hint="`"${grub_probe}" --device $@ --target=compatibility_hint`"
    if [ "x$fs_hint" != x ]; then
@@ -135,7 +135,11 @@ index fafeac95061..4e6534a41f6 100644
 +      echo "  search --no-floppy --fs-uuid --set=${device_variable} ${fs_uuid}"
        echo "fi"
      else
-       echo "search --no-floppy --fs-uuid --set=root ${fs_uuid}"
+-      echo "search --no-floppy --fs-uuid --set=root ${fs_uuid}"
++      echo "search --no-floppy --fs-uuid --set=${device_variable} ${fs_uuid}"
+     fi
+   fi
+   IFS="$old_ifs"
 diff --git a/util/grub.d/10_linux.in b/util/grub.d/10_linux.in
 index cbfaca34cc7..68adb55d893 100644
 --- a/util/grub.d/10_linux.in

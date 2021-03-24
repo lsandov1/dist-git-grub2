@@ -8,10 +8,11 @@ happens so quickly it looks like something is wrong and isn't
 very appealing.
 ---
  grub-core/gettext/gettext.c       | 25 +++++--------------------
+ grub-core/kern/main.c             |  5 -----
  grub-core/boot/i386/pc/boot.S     |  3 ---
  grub-core/boot/i386/pc/diskboot.S |  5 -----
  util/grub.d/10_linux.in           |  7 -------
- 4 files changed, 5 insertions(+), 35 deletions(-)
+ 5 files changed, 5 insertions(+), 40 deletions(-)
 
 diff --git a/grub-core/gettext/gettext.c b/grub-core/gettext/gettext.c
 index 4d02e62c109..84d520cd494 100644
@@ -95,6 +96,22 @@ index 4d02e62c109..84d520cd494 100644
  
    grub_register_variable_hook ("locale_dir", NULL, read_main);
    grub_register_variable_hook ("secondary_locale_dir", NULL, read_secondary);
+diff --git a/grub-core/kern/main.c b/grub-core/kern/main.c
+index d1de9fa6873..48058d983ce 100644
+--- a/grub-core/kern/main.c
++++ b/grub-core/kern/main.c
+@@ -269,11 +269,6 @@ grub_main (void)
+ 
+   grub_boot_time ("After machine init.");
+ 
+-  /* Hello.  */
+-  grub_setcolorstate (GRUB_TERM_COLOR_HIGHLIGHT);
+-  grub_printf ("Welcome to GRUB!\n\n");
+-  grub_setcolorstate (GRUB_TERM_COLOR_STANDARD);
+-
+   /* Init verifiers API. */
+   grub_verifiers_init ();
+ 
 diff --git a/grub-core/boot/i386/pc/boot.S b/grub-core/boot/i386/pc/boot.S
 index 2bd0b2d2866..ea167fe1206 100644
 --- a/grub-core/boot/i386/pc/boot.S
