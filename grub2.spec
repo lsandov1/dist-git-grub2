@@ -14,7 +14,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06~rc1
-Release:	2%{?dist}
+Release:	3%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -362,8 +362,7 @@ if grep -q "configfile" ${EFI_HOME}/grub.cfg; then
 fi
 
 # create a stub grub2 config in EFI
-BOOT_DEVICE=$(df -P /boot | awk 'END{print $1}')
-BOOT_UUID=$(blkid -s UUID -o value "${BOOT_DEVICE}")
+BOOT_UUID=$(grub2-probe --target=fs_uuid ${GRUB_HOME})
 GRUB_DIR=$(grub2-mkrelpath ${GRUB_HOME})
 
 cat << EOF > ${EFI_HOME}/grub.cfg.stb
@@ -373,8 +372,10 @@ export \$prefix
 configfile \$prefix/grub.cfg
 EOF
 
-cp -a ${EFI_HOME}/grubenv ${EFI_HOME}/grubenv.rpmsave
-mv --force ${EFI_HOME}/grubenv ${GRUB_HOME}/grubenv
+if test -f ${EFI_HOME}/grubenv; then
+    cp -a ${EFI_HOME}/grubenv ${EFI_HOME}/grubenv.rpmsave
+    mv --force ${EFI_HOME}/grubenv ${GRUB_HOME}/grubenv
+fi
 
 cp -a ${EFI_HOME}/grub.cfg ${EFI_HOME}/grub.cfg.rpmsave
 cp -a ${EFI_HOME}/grub.cfg ${GRUB_HOME}/
@@ -554,6 +555,9 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Thu Mar 25 2021 Javier Martinez Canillas <javierm@redhat.com> - 2.06~rc1-3
+- Prevent %%posttrans scriptlet to fail if grubenv isn't present in the ESP
+
 * Wed Mar 24 2021 Javier Martinez Canillas <javierm@redhat.com> - 2.06~rc1-2
 - Fix a couple of merge mistakes made when rebasing to 2.06~rc1
   Resolves: rhbz#1940524
