@@ -5,7 +5,7 @@
 
 %undefine _hardened_build
 
-%global tarversion 2.04
+%global tarversion 2.06~rc1
 %undefine _missing_build_ids_terminate_build
 %global _configure_gnuconfig_hack 0
 
@@ -13,8 +13,8 @@
 
 Name:		grub2
 Epoch:		1
-Version:	2.04
-Release:	35%{?dist}
+Version:	2.06~rc1
+Release:	3%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -31,6 +31,7 @@ Source8:	bootstrap.conf
 Source9:	strtoull_test.c
 Source10:	20-grub.install
 Source11:	grub.patches
+Source12:	sbat.csv.in
 
 %include %{SOURCE1}
 
@@ -164,6 +165,8 @@ This subpackage provides the GRUB user-space emulation modules.
 mkdir grub-%{grubefiarch}-%{tarversion}
 grep -A100000 '# stuff "make" creates' .gitignore > grub-%{grubefiarch}-%{tarversion}/.gitignore
 cp %{SOURCE4} grub-%{grubefiarch}-%{tarversion}/unifont.pcf.gz
+sed -e "s,@@VERSION@@,%{version},g" -e "s,@@VERSION_RELEASE@@,%{version}-%{release},g" \
+    %{SOURCE12} > grub-%{grubefiarch}-%{tarversion}/sbat.csv
 git add grub-%{grubefiarch}-%{tarversion}
 %endif
 %if 0%{with_alt_efi_arch}
@@ -344,6 +347,40 @@ mv -f /boot/grub2.tmp/*.mod \
       /boot/grub2/ &&
 rm -r /boot/grub2.tmp/ || :
 
+%posttrans common
+set -eu
+
+EFI_HOME=/boot/efi/EFI/fedora
+GRUB_HOME=/boot/grub2
+
+if test ! -f ${EFI_HOME}/grub.cfg; then
+   exit 0 # nothing to unify, nothing to do
+fi
+
+if grep -q "configfile" ${EFI_HOME}/grub.cfg; then
+    exit 0 # already unified, nothing to do
+fi
+
+# create a stub grub2 config in EFI
+BOOT_UUID=$(grub2-probe --target=fs_uuid ${GRUB_HOME})
+GRUB_DIR=$(grub2-mkrelpath ${GRUB_HOME})
+
+cat << EOF > ${EFI_HOME}/grub.cfg.stb
+search --no-floppy --fs-uuid --set=dev ${BOOT_UUID}
+set prefix=(\$dev)${GRUB_DIR}
+export \$prefix
+configfile \$prefix/grub.cfg
+EOF
+
+if test -f ${EFI_HOME}/grubenv; then
+    cp -a ${EFI_HOME}/grubenv ${EFI_HOME}/grubenv.rpmsave
+    mv --force ${EFI_HOME}/grubenv ${GRUB_HOME}/grubenv
+fi
+
+cp -a ${EFI_HOME}/grub.cfg ${EFI_HOME}/grub.cfg.rpmsave
+cp -a ${EFI_HOME}/grub.cfg ${GRUB_HOME}/
+mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
+
 %files common -f grub.lang
 %dir %{_libdir}/grub/
 %dir %{_datarootdir}/grub/
@@ -518,6 +555,40 @@ rm -r /boot/grub2.tmp/ || :
 %endif
 
 %changelog
+* Thu Mar 25 2021 Javier Martinez Canillas <javierm@redhat.com> - 2.06~rc1-3
+- Prevent %%posttrans scriptlet to fail if grubenv isn't present in the ESP
+
+* Wed Mar 24 2021 Javier Martinez Canillas <javierm@redhat.com> - 2.06~rc1-2
+- Fix a couple of merge mistakes made when rebasing to 2.06~rc1
+  Resolves: rhbz#1940524
+
+* Fri Mar 12 2021 Javier Martinez Canillas <javierm@redhat.com> - 2.06~rc1-1
+- Update to 2.06~rc1 to fix a bunch of CVEs
+  Resolves: CVE-2020-14372
+  Resolves: CVE-2020-25632
+  Resolves: CVE-2020-25647
+  Resolves: CVE-2020-27749
+  Resolves: CVE-2020-27779
+  Resolves: CVE-2021-20225
+  Resolves: CVE-2021-20233
+
+* Thu Mar 11 2021 Javier Martinez Canillas <javierm@redhat.com> - 2.04-39
+- Fix config file generation failing due invalid petitboot version value
+  Resolves: rhbz#1921479
+
+* Fri Mar 05 2021 Javier Martinez Canillas <javierm@redhat.com> - 2.04-38
+- Fix keyboards that report IBM PC AT scan codes (rmetrich)
+
+* Thu Feb 25 2021 Javier Martinez Canillas <javierm@redhat.com> - 2.04-37
+- Don't attempt to unify if there is no grub.cfg on EFI (gicmo)
+  Resolves: rhbz#1933085
+
+* Mon Feb 22 2021 Javier Martinez Canillas <javierm@redhat.com> - 2.04-36
+- Switch EFI users to new unified config
+  Resolves: rhbz#1918817
+- Fix ESC key no longer showing the menu
+  Resolves: rhbz#1928595
+
 * Mon Feb 08 2021 Javier Martinez Canillas <javierm@redhat.com> - 2.04-35
 - Remove -fcf-protection compiler flag to allow i386 builds (law)
   Related: rhbz#1915452
