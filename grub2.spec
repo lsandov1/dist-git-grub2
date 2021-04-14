@@ -14,7 +14,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06~rc1
-Release:	4%{?dist}
+Release:	5%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -555,6 +555,9 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Wed Apr 14 2021 Javier Martinez Canillas <javierm@redhat.com> - 2.06~rc1-5
+- Add XFS bigtime support (cmaiolino)
+
 * Mon Apr 12 2021 Javier Martinez Canillas <javierm@redhat.com> - 2.06~rc1-4
 - Add again 20_linux_xen script fix that got dropped by mistake
   Resolves: rhbz#1858364
