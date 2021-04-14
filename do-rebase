@@ -160,14 +160,14 @@ git rm -q 0*.patch
 #othergit diff --full-index --binary $diff_ops grub-2.04..refs/remotes/rhboot/master > release-to-master.patch
 #git add release-to-master.patch
 
-fedpkg sources
+centpkg sources
 curl -L https://github.com/rhboot/gnulib/archive/fixes.tar.gz > gnulib-fixes.tar.gz.new
 if cmp -s gnulib-fixes.tar.gz gnulib-fixes.tar.gz.new; then
     rm gnulib-fixes.tar.gz.new
 else
     mv gnulib-fixes.tar.gz.new gnulib-fixes.tar.gz
     sed -i -e '/gnulib-/d' sources
-    fedpkg upload gnulib-fixes.tar.gz
+    centpkg upload gnulib-fixes.tar.gz
     git add sources
 fi
 
@@ -182,7 +182,7 @@ fi
 git add 0*.patch grub2.spec grub.patches
 if [[ ${commit} -eq 1 ]] ; then
   if [ -z "$amend" ]; then
-    fedpkg commit -s -c
+    centpkg commit -s -c
   else
     git commit --amend
   fi
