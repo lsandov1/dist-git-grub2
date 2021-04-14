@@ -14,7 +14,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06~rc1
-Release:	5%{?dist}
+Release:	6%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -555,6 +555,10 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Wed Apr 14 2021 Javier Martinez Canillas <javierm@redhat.com> - 2.06~rc1-6
+- Add XFS bigtime support (cmaiolino)
+  Resolves: rhbz#1940165
+
 * Tue Apr 13 2021 Javier Martinez Canillas <javierm@redhat.com> - 2.06~rc1-5
 - Use RHEL distro SBAT data also for CentOS Stream
   Related: rhbz#1947696
