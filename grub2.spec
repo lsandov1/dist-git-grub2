@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	100%{?dist}
+Release:	101%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -503,6 +503,10 @@ fi
 %endif
 
 %changelog
+* Fri Apr 23 2021 Javier Martinez Canillas <javierm@redhat.com> - 2.02-101
+- Find and claim more memory for ieee1275 (dja)
+  Related: rhbz#1853410
+
 * Fri Apr 23 2021 Javier Martinez Canillas <javierm@redhat.com> - 2.02-100
 - Sync with the latest content of the rhel-8.4.0 branch
   Resolves: rhbz#1952840
