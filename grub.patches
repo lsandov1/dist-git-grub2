@@ -196,3 +196,6 @@ Patch0195: 0195-Revert-templates-Properly-disable-the-os-prober-by-d.patch
 Patch0196: 0196-Revert-templates-Disable-the-os-prober-by-default.patch
 Patch0197: 0197-fs-xfs-Add-bigtime-support-for-xfs-driver.patch
 Patch0198: 0198-fs-Use-64bit-type-for-filesystem-timestamp.patch
+Patch0199: 0199-ieee1275-drop-HEAP_MAX_ADDR-HEAP_MIN_SIZE.patch
+Patch0200: 0200-ieee1275-claim-more-memory.patch
+Patch0201: 0201-ieee1275-request-memory-with-ibm-client-architecture.patch

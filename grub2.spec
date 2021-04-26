@@ -14,7 +14,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06~rc1
-Release:	6%{?dist}
+Release:	7%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -555,6 +555,10 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Mon Apr 26 2021 Javier Martinez Canillas <javierm@redhat.com> - 2.06~rc1-7
+- Find and claim more memory for ieee1275 (dja)
+  Resolves: rhbz#1873860
+
 * Wed Apr 14 2021 Javier Martinez Canillas <javierm@redhat.com> - 2.06~rc1-6
 - Add XFS bigtime support (cmaiolino)
   Resolves: rhbz#1940165
