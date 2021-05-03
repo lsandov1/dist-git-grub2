@@ -199,3 +199,4 @@ Patch0198: 0198-fs-Use-64bit-type-for-filesystem-timestamp.patch
 Patch0199: 0199-ieee1275-drop-HEAP_MAX_ADDR-HEAP_MIN_SIZE.patch
 Patch0200: 0200-ieee1275-claim-more-memory.patch
 Patch0201: 0201-ieee1275-request-memory-with-ibm-client-architecture.patch
+Patch0202: 0202-xfs-Include-needsrepair-in-the-supported-incompat-fe.patch
