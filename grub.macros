@@ -425,7 +425,7 @@ if [ -x /usr/bin/rpm-sign ]; then				\
 	rpm-sign --key %{5}					\\\
 		 --lkmsign empty.unsigned			\\\
 		 --output empty.signed				\
-	APPENDED_SIG_SIZE=$(stat -c '%s' empty.signed$) 	\
+	APPENDED_SIG_SIZE="$(stat -c '%s' empty.signed)"	\
 	rm empty.{un,}signed					\
 fi								\
 # FIXME: using this prefix is fragile, must be done properly	\
