@@ -481,3 +481,4 @@ Patch0480: 0480-efi-net-Fix-malformed-device-path-arithmetic-errors-.patch
 Patch0481: 0481-ieee1275-drop-HEAP_MAX_ADDR-HEAP_MIN_SIZE.patch
 Patch0482: 0482-ieee1275-claim-more-memory.patch
 Patch0483: 0483-ieee1275-request-memory-with-ibm-client-architecture.patch
+Patch0484: 0484-appendedsig-x509-Also-handle-the-Extended-Key-Usage-.patch
