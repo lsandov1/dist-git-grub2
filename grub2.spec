@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	102%{?dist}
+Release:	103%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -523,6 +523,10 @@ fi
 %endif
 
 %changelog
+* Mon May 17 2021 Javier Martinez Canillas <javierm@redhat.com> - 2.02-103
+- Fix boot failures in ppc64le caused by storage race condition (diegodo)
+  Resolves: rhbz#1942152
+
 * Tue May 11 2021 Javier Martinez Canillas <javierm@redhat.com> - 2.02-102
 - Build and sign powerpc-ieee1275 images
   Related: rhbz#1899864
