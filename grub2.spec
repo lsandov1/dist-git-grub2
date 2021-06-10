@@ -354,7 +354,7 @@ EFI_HOME=%{efi_esp_dir}
 GRUB_HOME=/boot/grub2
 
 if test ! -f ${EFI_HOME}/grub.cfg; then
-   exit 0 # nothing to unify, nothing to do
+   grub2-mkconfig -o ${EFI_HOME}/grub.cfg
 fi
 
 if grep -q "configfile" ${EFI_HOME}/grub.cfg; then
