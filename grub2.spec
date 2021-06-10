@@ -350,7 +350,7 @@ rm -r /boot/grub2.tmp/ || :
 %posttrans common
 set -eu
 
-EFI_HOME=/boot/efi/EFI/fedora
+EFI_HOME=%{efi_esp_dir}
 GRUB_HOME=/boot/grub2
 
 if test ! -f ${EFI_HOME}/grub.cfg; then
