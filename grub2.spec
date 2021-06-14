@@ -5,7 +5,7 @@
 
 %undefine _hardened_build
 
-%global tarversion 2.06~rc1
+%global tarversion 2.06
 %undefine _missing_build_ids_terminate_build
 %global _configure_gnuconfig_hack 0
 
@@ -13,8 +13,8 @@
 
 Name:		grub2
 Epoch:		1
-Version:	2.06~rc1
-Release:	7%{?dist}
+Version:	2.06
+Release:	1%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -555,6 +555,9 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Mon Jun 14 2021 Javier Martinez Canillas <javierm@redhat.com> - 2.06-1
+- Update to 2.06 final release and ton of fixes
+
 * Mon May 03 2021 Javier Martinez Canillas <javierm@redhat.com> - 2.06~rc1-7
 - Add XFS needsrepair support
 
