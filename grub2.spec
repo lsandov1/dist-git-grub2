@@ -14,7 +14,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -81,6 +81,7 @@ hardware devices.\
 Summary:	grub2 common layout
 BuildArch:	noarch
 Conflicts:	grubby < 8.40-18
+Requires(post): util-linux
 
 %description common
 This package provides some directories which are required by various grub2
@@ -352,9 +353,15 @@ set -eu
 
 EFI_HOME=%{efi_esp_dir}
 GRUB_HOME=/boot/grub2
+ESP_PATH=/boot/efi
+
+if ! mountpoint -q ${ESP_PATH}; then
+    exit 0 # no ESP mounted, nothing to do
+fi
 
 if test ! -f ${EFI_HOME}/grub.cfg; then
-   grub2-mkconfig -o ${EFI_HOME}/grub.cfg
+    # there's no config in ESP, create one
+    grub2-mkconfig -o ${EFI_HOME}/grub.cfg
 fi
 
 if grep -q "configfile" ${EFI_HOME}/grub.cfg; then
@@ -555,6 +562,9 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Tue Jun 15 2021 Javier Martinez Canillas <javierm@redhat.com> - 2.06-2
+- Only try to generate a config if the ESP is mounted
+
 * Mon Jun 14 2021 Javier Martinez Canillas <javierm@redhat.com> - 2.06-1
 - Update to 2.06 final release and ton of fixes
 
