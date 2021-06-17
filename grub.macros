@@ -411,7 +411,7 @@ GRUB_MODULES="	all_video boot blscfg btrfs			\\\
 		gfxmenu gfxterm gzio				\\\
 		halt hfsplus http increment iso9660 jpeg	\\\
 		loadenv loopback linux lvm lsefi lsefimmap luks	\\\
-		mdraid09 mdraid1x minicmd net			\\\
+		luks2 mdraid09 mdraid1x minicmd net		\\\
 		normal part_apple part_msdos part_gpt		\\\
 		password_pbkdf2 pgp png reboot			\\\
 		regexp search search_fs_uuid search_fs_file	\\\
