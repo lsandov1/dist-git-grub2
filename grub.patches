@@ -200,3 +200,4 @@ Patch0199: 0199-ieee1275-drop-HEAP_MAX_ADDR-HEAP_MIN_SIZE.patch
 Patch0200: 0200-ieee1275-claim-more-memory.patch
 Patch0201: 0201-ieee1275-request-memory-with-ibm-client-architecture.patch
 Patch0202: 0202-xfs-Include-needsrepair-in-the-supported-incompat-fe.patch
+Patch0203: 0203-Don-t-update-the-cmdline-when-generating-legacy-menu.patch
