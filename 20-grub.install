@@ -46,7 +46,7 @@ initrd /initramfs-${kernelver}.img
 options ${kernelopts}
 grub_users \$grub_users
 grub_arg --unrestricted
-grub_class kernel${flavor}
+grub_class ${ID}
 EOF
 }
 
