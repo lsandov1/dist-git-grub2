@@ -241,19 +241,6 @@ rm -vf ${RPM_BUILD_ROOT}/%{_sbindir}/%{name}-macbless
 
 %find_lang grub
 
-# Make selinux happy with exec stack binaries.
-mkdir ${RPM_BUILD_ROOT}%{_sysconfdir}/prelink.conf.d/
-cat << EOF > ${RPM_BUILD_ROOT}%{_sysconfdir}/prelink.conf.d/grub2.conf
-# these have execstack, and break under selinux
--b /usr/bin/grub2-script-check
--b /usr/bin/grub2-mkrelpath
--b /usr/bin/grub2-mount
--b /usr/bin/grub2-fstest
--b /usr/sbin/grub2-bios-setup
--b /usr/sbin/grub2-probe
--b /usr/sbin/grub2-sparc64-setup
-EOF
-
 # Install kernel-install scripts
 install -d -m 0755 %{buildroot}%{_prefix}/lib/kernel/install.d/
 install -D -m 0755 -t %{buildroot}%{_prefix}/lib/kernel/install.d/ %{SOURCE10}
@@ -411,7 +398,6 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %doc docs/font_char_metrics.png
 
 %files tools-minimal
-%{_sysconfdir}/prelink.conf.d/grub2.conf
 %{_sbindir}/%{name}-get-kernel-settings
 %{_sbindir}/%{name}-probe
 %attr(4755, root, root) %{_sbindir}/%{name}-set-bootflag
