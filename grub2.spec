@@ -258,7 +258,7 @@ install -d -m 0755 %{buildroot}%{_unitdir}/system-update.target.wants
 install -d -m 0755 %{buildroot}%{_unitdir}/reboot.target.wants
 ln -s ../grub-boot-indeterminate.service \
 	%{buildroot}%{_unitdir}/system-update.target.wants
-ln -s ../grub2-systemd-integration.service \
+ln -s ../%{name}-systemd-integration.service \
 	%{buildroot}%{_unitdir}/reboot.target.wants
 
 # Don't run debuginfo on all the grub modules and whatnot; it just
@@ -283,9 +283,9 @@ ln -s ../grub2-systemd-integration.service \
 %undefine buildsubdir
 
 %pre tools
-if [ -f /boot/grub2/user.cfg ]; then
-    if grep -q '^GRUB_PASSWORD=' /boot/grub2/user.cfg ; then
-	sed -i 's/^GRUB_PASSWORD=/GRUB2_PASSWORD=/' /boot/grub2/user.cfg
+if [ -f /boot/%{name}/user.cfg ]; then
+    if grep -q '^GRUB_PASSWORD=' /boot/%{name}/user.cfg ; then
+	sed -i 's/^GRUB_PASSWORD=/GRUB2_PASSWORD=/' /boot/%{name}/user.cfg
     fi
 elif [ -f %{efi_esp_dir}/user.cfg ]; then
     if grep -q '^GRUB_PASSWORD=' %{efi_esp_dir}/user.cfg ; then
@@ -301,12 +301,12 @@ elif [ -f /etc/grub.d/01_users ] && \
 		sed 's/^password_pbkdf2 root \(.*\)$/GRUB2_PASSWORD=\1/' \
 	    > %{efi_esp_dir}/user.cfg
     fi
-    if [ -f /boot/grub2/grub.cfg ]; then
-	install -m 0600 /dev/null /boot/grub2/user.cfg
-	chmod 0600 /boot/grub2/user.cfg
+    if [ -f /boot/%{name}/grub.cfg ]; then
+	install -m 0600 /dev/null /boot/%{name}/user.cfg
+	chmod 0600 /boot/%{name}/user.cfg
 	grep '^password_pbkdf2 root' /etc/grub.d/01_users | \
 		sed 's/^password_pbkdf2 root \(.*\)$/GRUB2_PASSWORD=\1/' \
-	    > /boot/grub2/user.cfg
+	    > /boot/%{name}/user.cfg
     fi
 fi
 
@@ -314,7 +314,7 @@ fi
 set -eu
 
 EFI_HOME=%{efi_esp_dir}
-GRUB_HOME=/boot/grub2
+GRUB_HOME=/boot/%{name}
 ESP_PATH=/boot/efi
 
 if ! mountpoint -q ${ESP_PATH}; then
@@ -331,8 +331,8 @@ if grep -q "configfile" ${EFI_HOME}/grub.cfg; then
 fi
 
 # create a stub grub2 config in EFI
-BOOT_UUID=$(grub2-probe --target=fs_uuid ${GRUB_HOME})
-GRUB_DIR=$(grub2-mkrelpath ${GRUB_HOME})
+BOOT_UUID=$(%{name}-probe --target=fs_uuid ${GRUB_HOME})
+GRUB_DIR=$(%{name}-mkrelpath ${GRUB_HOME})
 
 cat << EOF > ${EFI_HOME}/grub.cfg.stb
 search --no-floppy --fs-uuid --set=dev ${BOOT_UUID}
@@ -361,11 +361,11 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %dir /boot/%{name}
 %dir /boot/%{name}/themes/
 %dir /boot/%{name}/themes/system
-%attr(0700,root,root) %dir /boot/grub2
-%exclude /boot/grub2/*
+%attr(0700,root,root) %dir /boot/%{name}
+%exclude /boot/%{name}/*
 %dir %attr(0700,root,root) %{efi_esp_dir}
 %exclude %{efi_esp_dir}/*
-%ghost %config(noreplace) %verify(not size mode md5 mtime) /boot/grub2/grubenv
+%ghost %config(noreplace) %verify(not size mode md5 mtime) /boot/%{name}/grubenv
 %license COPYING
 %doc THANKS
 %doc docs/grub.html
