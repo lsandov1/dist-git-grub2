@@ -23,7 +23,7 @@ Source0:	https://ftp.gnu.org/gnu/grub/grub-%{tarversion}.tar.xz
 Source1:	grub.macros
 Source2:	gnulib-%{gnulibversion}.tar.gz
 Source3:	99-grub-mkconfig.install
-Source4:	http://unifoundry.com/unifont-5.1.20080820.pcf.gz
+Source4:	http://unifoundry.com/pub/unifont/unifont-13.0.06/font-builds/unifont-13.0.06.pcf.gz
 Source5:	theme.tar.bz2
 Source6:	gitignore
 Source7:	bootstrap

@@ -1,7 +1,7 @@
 grub-*.tar.?z
 *.rpm
 clog
-/unifont-5.1.20080820.pcf.gz
+/unifont-*.pcf.?z
 /theme.tar.bz2
 kojilogs
 /grub-*/
