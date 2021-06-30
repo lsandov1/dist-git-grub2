@@ -112,7 +112,12 @@ case "$COMMAND" in
 
             LINUX="$(grep '^linux[ \t]' "${BLS_TARGET}" | sed -e 's,^linux[ \t]*,,')"
             INITRD="$(grep '^initrd[ \t]' "${BLS_TARGET}" | sed -e 's,^initrd[ \t]*,,')"
-            LINUX_RELPATH="$(grub2-mkrelpath /boot${LINUX})"
+            if [[ "$(grub2-probe --device $(grub2-probe --target=device /) --target=fs)" == "btrfs" &&
+		      "${SUSE_BTRFS_SNAPSHOT_BOOTING}" == "true" ]]; then
+                LINUX_RELPATH="$(grub2-mkrelpath -r /boot${LINUX})"
+            else
+                LINUX_RELPATH="$(grub2-mkrelpath /boot${LINUX})"
+            fi
             BOOTPREFIX="$(dirname ${LINUX_RELPATH})"
             ROOTPREFIX="$(dirname "/boot${LINUX}")"
 
