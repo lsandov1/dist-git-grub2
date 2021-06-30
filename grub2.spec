@@ -310,31 +310,6 @@ elif [ -f /etc/grub.d/01_users ] && \
     fi
 fi
 
-%triggerun -- grub2 < 1:1.99-4
-# grub2 < 1.99-4 removed a number of essential files in postun. To fix upgrades
-# from the affected grub2 packages, we first back up the files in triggerun and
-# later restore them in triggerpostun.
-# https://bugzilla.redhat.com/show_bug.cgi?id=735259
-
-# Back up the files before uninstalling old grub2
-mkdir -p /boot/grub2.tmp &&
-mv -f /boot/grub2/*.mod \
-      /boot/grub2/*.img \
-      /boot/grub2/*.lst \
-      /boot/grub2/device.map \
-      /boot/grub2.tmp/ || :
-
-%triggerpostun -- grub2 < 1:1.99-4
-# ... and restore the files.
-test ! -f /boot/grub2/device.map &&
-test -d /boot/grub2.tmp &&
-mv -f /boot/grub2.tmp/*.mod \
-      /boot/grub2.tmp/*.img \
-      /boot/grub2.tmp/*.lst \
-      /boot/grub2.tmp/device.map \
-      /boot/grub2/ &&
-rm -r /boot/grub2.tmp/ || :
-
 %posttrans common
 set -eu
 
