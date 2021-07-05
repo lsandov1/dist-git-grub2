@@ -206,3 +206,10 @@ Patch0205: 0205-Don-t-check-for-rpmvercmp-in-librpm.patch
 Patch0206: 0206-Allow-chainloading-EFI-apps-from-loop-mounts.patch
 Patch0207: 0207-efinet-Add-DHCP-proxy-support.patch
 Patch0208: 0208-fs-ext2-Ignore-checksum-seed-incompat-feature.patch
+Patch0209: 0209-Don-t-update-the-cmdline-when-generating-legacy-menu.patch
+Patch0210: 0210-Suppress-gettext-error-message.patch
+Patch0211: 0211-grub-boot-success.timer-Only-run-if-not-in-a-contain.patch
+Patch0212: 0212-grub-set-password-Always-use-boot-grub2-user.cfg-as-.patch
+Patch0213: 0213-Remove-outdated-URL-for-BLS-document.patch
+Patch0214: 0214-templates-Check-for-EFI-at-runtime-instead-of-config.patch
+Patch0215: 0215-efi-Print-an-error-if-boot-to-firmware-setup-is-not-.patch

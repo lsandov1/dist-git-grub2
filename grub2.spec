@@ -14,7 +14,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	2%{?dist}
+Release:	3%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -523,6 +523,37 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Tue Jul 06 2021 Javier Martinez Canillas <javierm@redhat.com> - 2.06-3
+- Add luks2 to GRUB_MODULES
+- 20-grub-install: Create a symvers.gz symbolic link
+- 20-grub-install: Always use fedora as the boot entry --class
+  Resolves: rhbz#1957014
+- grub.macros: Install font in /boot/grub2 instead of the ESP
+  Resolves: rhbz#1739762
+- grub.macros: Use consistent file mode for legacy and EFI
+  Resolves: rhbz#1965794
+- Drop grub2 prelink configuration
+  Resolves: rhbz#1659675
+- Remove triggers needed to upgrade from legacy GRUB
+- Don't harcode grub2 in the spec file
+- Update to unifont-13.0.06
+  Resolves: rhbz#1939125
+- 20-grub-install: Use relative paths for btrfs in BLS snippets
+  Resolves: rhbz#1906191
+- Don't update the cmdline when generating legacy menuentry commands
+- Suppress gettext error message
+  Resolves: rhbz#1592124
+- grub-boot-success.timer: Only run if not in a container
+  Resolves: rhbz#1914571
+- grub-set-password: Always use /boot/grub2/user.cfg as password default
+  Resolves: rhbz#1955294
+- Remove outdated URL for BLS document
+  Resolves: rhbz#1926453
+- templates: Check for EFI at runtime instead of config generation time
+  Resolves: rhbz#1823864
+- efi: Print an error if boot to firmware setup is not supported
+  Resolves: rhbz#1823864
+
 * Tue Jun 15 2021 Javier Martinez Canillas <javierm@redhat.com> - 2.06-2
 - Only try to generate a config if the ESP is mounted
 
