@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	104%{?dist}
+Release:	105%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -523,6 +523,10 @@ fi
 %endif
 
 %changelog
+* Thu Jul 22 2021 Javier Martinez Canillas <javierm@redhat.com> - 2.02-105
+- Discover the device to read the config from as a fallback
+  Related: rhbz#1899864
+
 * Mon Jun 21 2021 Javier Martinez Canillas <javierm@redhat.com> - 2.02-104
 - 20-grub-install: Create a symvers.gz symbolic link
   Resolves: rhbz#1919125

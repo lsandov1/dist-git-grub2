@@ -430,7 +430,7 @@ if [ -x /usr/bin/rpm-sign ]; then				\
 fi								\
 # FIXME: using this prefix is fragile, must be done properly	\
 ./grub-mkimage -O %{1} -o %{2}.orig				\\\
-	-p '(,msdos2)/grub2' -d grub-core			\\\
+	-p '/grub2' -d grub-core				\\\
 	-x %{3} -x %{4}						\\\
 	--appended-signature-size ${APPENDED_SIG_SIZE}		\\\
 	${GRUB_MODULES}						\
