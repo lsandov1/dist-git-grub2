@@ -213,3 +213,4 @@ Patch0212: 0212-grub-set-password-Always-use-boot-grub2-user.cfg-as-.patch
 Patch0213: 0213-Remove-outdated-URL-for-BLS-document.patch
 Patch0214: 0214-templates-Check-for-EFI-at-runtime-instead-of-config.patch
 Patch0215: 0215-efi-Print-an-error-if-boot-to-firmware-setup-is-not-.patch
+Patch0216: 0216-arm64-Fix-EFI-loader-kernel-image-allocation.patch
