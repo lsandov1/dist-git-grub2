@@ -18,7 +18,7 @@
 	sed							\\\
 		-e 's/-O. //g'					\\\
 		-e 's/-fplugin=annobin //g'			\\\
-		-e 's,-specs=/usr/lib/rpm/redhat/redhat-annobin-cc1 ,,g' \\\
+		-e 's,-specs=[[:alnum:]/_-]*annobin[[:alnum:]_-]* ,,g' \\\
 		-e 's/-fstack-protector[[:alpha:]-]\\+//g'	\\\
 		-e 's/-Wp,-D_FORTIFY_SOURCE=[[:digit:]]\\+//g'	\\\
 		-e 's/--param=ssp-buffer-size=4//g'		\\\
@@ -49,6 +49,7 @@
 
 %global ldflags_sed						\\\
 	sed							\\\
+		-e 's,-specs=[[:alnum:]/_-]*annobin[[:alnum:]_-]* ,,g' \\\
 		-e 's/^$//'					\\\
 		%{nil}
 
