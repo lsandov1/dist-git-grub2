@@ -14,7 +14,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	4%{?dist}
+Release:	5%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -523,6 +523,9 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Mon Aug 30 2021 Javier Martinez Canillas <javierm@redhat.com> - 2.06-5
+- A few fixes for ppc64le LPAR Secure Boot support
+
 * Tue Aug 24 2021 Peter Jones <pjones@redhat.com> - 2.06-4
 - Fix aarch64 kernel alignment.
 - Fix annobin regexp on ppc64le

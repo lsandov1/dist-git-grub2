@@ -214,3 +214,6 @@ Patch0213: 0213-Remove-outdated-URL-for-BLS-document.patch
 Patch0214: 0214-templates-Check-for-EFI-at-runtime-instead-of-config.patch
 Patch0215: 0215-efi-Print-an-error-if-boot-to-firmware-setup-is-not-.patch
 Patch0216: 0216-arm64-Fix-EFI-loader-kernel-image-allocation.patch
+Patch0217: 0217-normal-main-Discover-the-device-to-read-the-config-f.patch
+Patch0218: 0218-powerpc-adjust-setting-of-prefix-for-signed-binary-c.patch
+Patch0219: 0219-powerpc-fix-prefix-signed-grub-special-case-for-Powe.patch
