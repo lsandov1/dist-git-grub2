@@ -18,7 +18,7 @@
 	sed							\\\
 		-e 's/-O. //g'					\\\
 		-e 's/-fplugin=annobin //g'			\\\
-		-e 's,-specs=/usr/lib/rpm/redhat/redhat-annobin-cc1 ,,g' \\\
+		-e 's,-specs=[[:alnum:]/_-]*annobin[[:alnum:]_-]* ,,g' \\\
 		-e 's/-fstack-protector[[:alpha:]-]\\+//g'	\\\
 		-e 's/-Wp,-D_FORTIFY_SOURCE=[[:digit:]]\\+//g'	\\\
 		-e 's/--param=ssp-buffer-size=4//g'		\\\
@@ -49,6 +49,7 @@
 
 %global ldflags_sed						\\\
 	sed							\\\
+		-e 's,-specs=[[:alnum:]/_-]*annobin[[:alnum:]_-]* ,,g' \\\
 		-e 's/^$//'					\\\
 		%{nil}
 
@@ -389,7 +390,7 @@ rm -f %{1}.conf							\
 %{?__pesign_client_cert:%{expand:%%define __pesign_client_cert %{___pesign_client_cert}}} \
 %{expand:%%{pesign -s -i %%{2}.orig -o %%{2}.onesig -a %%{5} -c %%{6} -n %%{7}}}	\
 %{expand:%%{pesign -s -i %%{3}.orig -o %%{3}.onesig -a %%{5} -c %%{6} -n %%{7}}}	\
-%{expand:%%define __pesign_client_cert grub2-signer} \
+%{expand:%%define __pesign_client_cert %{name}-signer} \
 %{expand:%%{pesign -s -i %%{2}.onesig -o %%{2} -a %%{5} -c %%{6} -n %%{7}}}	\
 %{expand:%%{pesign -s -i %%{3}.onesig -o %%{3} -a %%{5} -c %%{6} -n %%{7}}}	\
 %{nil}
@@ -405,13 +406,13 @@ rm -f %{1}.conf							\
 %define do_efi_build_images()					\
 GRUB_MODULES="	all_video boot blscfg btrfs			\\\
 		cat configfile cryptodisk			\\\
-		echo efi_netfs efifwsetup efinet ext2		\\\
+		echo efi_netfs efifwsetup efinet ext2 f2fs	\\\
 		fat font gcry_rijndael gcry_rsa gcry_serpent 	\\\
 		gcry_sha256 gcry_twofish gcry_whirlpool   	\\\
 		gfxmenu gfxterm gzio				\\\
 		halt hfsplus http increment iso9660 jpeg	\\\
 		loadenv loopback linux lvm lsefi lsefimmap luks	\\\
-		mdraid09 mdraid1x minicmd net			\\\
+		luks2 mdraid09 mdraid1x minicmd net		\\\
 		normal part_apple part_msdos part_gpt		\\\
 		password_pbkdf2 pgp png reboot			\\\
 		regexp search search_fs_uuid search_fs_file	\\\
@@ -517,7 +518,7 @@ install -m 700 %{3} $RPM_BUILD_ROOT%{efi_esp_dir}/%{3}		\
 install -D -m 700 %{2} $RPM_BUILD_ROOT%{efi_esp_boot}/BOOTARM.EFI \
 %endif								\
 install -D -m 700 unicode.pf2					\\\
-	$RPM_BUILD_ROOT%{efi_esp_dir}/fonts/unicode.pf2		\
+	${RPM_BUILD_ROOT}/boot/%{name}/fonts/unicode.pf2		\
 ${RPM_BUILD_ROOT}/%{_bindir}/%{name}-editenv			\\\
 		${RPM_BUILD_ROOT}/boot/%{name}/grubenv create	\
 %{expand:%%do_install_protected_file %{name}-%{package_arch}}	\
@@ -533,9 +534,9 @@ fi								\
 if [ -f $RPM_BUILD_ROOT%{_infodir}/grub-dev.info ]; then	\
 	rm -f $RPM_BUILD_ROOT%{_infodir}/grub-dev.info		\
 fi								\
-if [ -f $RPM_BUILD_ROOT/%{_libdir}/grub/%{1}/grub2.chrp ]; then \
-	mv $RPM_BUILD_ROOT/%{_libdir}/grub/%{1}/grub2.chrp	\\\
-	   $RPM_BUILD_ROOT/%{_libdir}/grub/%{1}/grub.chrp	\
+if [ -f $RPM_BUILD_ROOT/%{_libdir}/grub/%{1}/%{name}.chrp ]; then \
+	mv $RPM_BUILD_ROOT/%{_libdir}/grub/%{1}/%{name}.chrp	\\\
+	   $RPM_BUILD_ROOT/%{_libdir}/grub/%{1}/%{name}.chrp	\
 fi								\
 if [ %{3} -eq 0 ]; then						\
 	${RPM_BUILD_ROOT}/%{_bindir}/%{name}-editenv		\\\
@@ -554,8 +555,8 @@ fi								\
 if [ -f $RPM_BUILD_ROOT%{_infodir}/grub-dev.info ]; then	\
 	rm -f $RPM_BUILD_ROOT%{_infodir}/grub-dev.info		\
 fi								\
-if [ -f $RPM_BUILD_ROOT/%{_libdir}/grub/%{1}/grub2.chrp ]; then \
-	mv $RPM_BUILD_ROOT/%{_libdir}/grub/%{1}/grub2.chrp	\\\
+if [ -f $RPM_BUILD_ROOT/%{_libdir}/grub/%{1}/%{name}.chrp ]; then \
+	mv $RPM_BUILD_ROOT/%{_libdir}/grub/%{1}/%{name}.chrp	\\\
 	   $RPM_BUILD_ROOT/%{_libdir}/grub/%{1}/grub.chrp	\
 fi								\
 cd ..								\
@@ -572,7 +573,7 @@ cp docs/grub.info $RPM_BUILD_ROOT%{_infodir}/%{name}.info	\
 cp docs/grub-dev.info						\\\
 	$RPM_BUILD_ROOT%{_infodir}/%{name}-dev.info		\
 install -d -m 0700 ${RPM_BUILD_ROOT}%{efi_esp_dir}/		\
-install -d -m 0700 ${RPM_BUILD_ROOT}/boot/grub2/		\
+install -d -m 0700 ${RPM_BUILD_ROOT}/boot/%{name}/		\
 install -d -m 0700 ${RPM_BUILD_ROOT}/boot/loader/entries	\
 install -d -m 0700 ${RPM_BUILD_ROOT}/boot/%{name}/themes/system	\
 install -d -m 0700 ${RPM_BUILD_ROOT}%{_sysconfdir}/default	\
@@ -582,7 +583,7 @@ ln -sf ../default/grub						\\\
 	${RPM_BUILD_ROOT}%{_sysconfdir}/sysconfig/grub		\
 touch ${RPM_BUILD_ROOT}/boot/%{name}/grub.cfg			\
 ln -s ../boot/%{name}/grub.cfg					\\\
-	${RPM_BUILD_ROOT}%{_sysconfdir}/grub2.cfg		\
+	${RPM_BUILD_ROOT}%{_sysconfdir}/%{name}.cfg		\
 %{nil}
 
 %define define_legacy_variant_files()				\
@@ -608,18 +609,18 @@ ln -s ../boot/%{name}/grub.cfg					\\\
 
 %define define_efi_variant_files()				\
 %{expand:%%files %{1}}						\
-%defattr(0700,root,root,-)					\
+%defattr(-,root,root,-)						\
 %config(noreplace) %{_sysconfdir}/%{name}.cfg			\
 %config(noreplace) %{_sysconfdir}/%{name}-efi.cfg		\
 %attr(0700,root,root)%{efi_esp_dir}/%{2}			\
 %ifarch %{arm}							\
 %attr(0700,root,root)%{efi_esp_boot}/BOOTARM.EFI		\
 %endif								\
-%dir %attr(0700,root,root)%{efi_esp_dir}/fonts			\
+%attr(0700,root,root)/boot/%{name}/fonts			\
 %dir %attr(0700,root,root)/boot/loader/entries			\
 %ghost %config(noreplace) /boot/%{name}/grub.cfg		\
 %ghost %config(noreplace) %attr(0700,root,root)%{efi_esp_dir}/grub.cfg	\
-%config(noreplace) %verify(not size mode md5 mtime) /boot/grub2/grubenv	\
+%config(noreplace) %verify(not size mode md5 mtime) /boot/%{name}/grubenv	\
 %attr(0644,root,root) %config(noreplace) /etc/dnf/protected.d/%{name}-%{1}.conf \
 %{expand:%if 0%{?without_efi_modules}				\
 %exclude %{_libdir}/grub/%{6}					\
@@ -635,7 +636,7 @@ ln -s ../boot/%{name}/grub.cfg					\\\
 %endif}								\
 								\
 %{expand:%%files %{1}-cdboot}					\
-%defattr(0700,root,root,-)					\
+%defattr(-,root,root,-)						\
 %attr(0700,root,root)%{efi_esp_dir}/%{3}			\
-%attr(0700,root,root)%{efi_esp_dir}/fonts			\
+%attr(0700,root,root)/boot/%{name}/fonts			\
 %{nil}

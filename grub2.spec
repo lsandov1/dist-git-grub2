@@ -5,7 +5,7 @@
 
 %undefine _hardened_build
 
-%global tarversion 2.06~rc1
+%global tarversion 2.06
 %undefine _missing_build_ids_terminate_build
 %global _configure_gnuconfig_hack 0
 
@@ -13,8 +13,8 @@
 
 Name:		grub2
 Epoch:		1
-Version:	2.06~rc1
-Release:	9%{?dist}
+Version:	2.06
+Release:	1%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -23,7 +23,7 @@ Source0:	https://ftp.gnu.org/gnu/grub/grub-%{tarversion}.tar.xz
 Source1:	grub.macros
 Source2:	gnulib-%{gnulibversion}.tar.gz
 Source3:	99-grub-mkconfig.install
-Source4:	http://unifoundry.com/unifont-5.1.20080820.pcf.gz
+Source4:	http://unifoundry.com/pub/unifont/unifont-13.0.06/font-builds/unifont-13.0.06.pcf.gz
 Source5:	theme.tar.bz2
 Source6:	gitignore
 Source7:	bootstrap
@@ -81,6 +81,7 @@ hardware devices.\
 Summary:	grub2 common layout
 BuildArch:	noarch
 Conflicts:	grubby < 8.40-18
+Requires(post): util-linux
 
 %description common
 This package provides some directories which are required by various grub2
@@ -240,19 +241,6 @@ rm -vf ${RPM_BUILD_ROOT}/%{_sbindir}/%{name}-macbless
 
 %find_lang grub
 
-# Make selinux happy with exec stack binaries.
-mkdir ${RPM_BUILD_ROOT}%{_sysconfdir}/prelink.conf.d/
-cat << EOF > ${RPM_BUILD_ROOT}%{_sysconfdir}/prelink.conf.d/grub2.conf
-# these have execstack, and break under selinux
--b /usr/bin/grub2-script-check
--b /usr/bin/grub2-mkrelpath
--b /usr/bin/grub2-mount
--b /usr/bin/grub2-fstest
--b /usr/sbin/grub2-bios-setup
--b /usr/sbin/grub2-probe
--b /usr/sbin/grub2-sparc64-setup
-EOF
-
 # Install kernel-install scripts
 install -d -m 0755 %{buildroot}%{_prefix}/lib/kernel/install.d/
 install -D -m 0755 -t %{buildroot}%{_prefix}/lib/kernel/install.d/ %{SOURCE10}
@@ -270,7 +258,7 @@ install -d -m 0755 %{buildroot}%{_unitdir}/system-update.target.wants
 install -d -m 0755 %{buildroot}%{_unitdir}/reboot.target.wants
 ln -s ../grub-boot-indeterminate.service \
 	%{buildroot}%{_unitdir}/system-update.target.wants
-ln -s ../grub2-systemd-integration.service \
+ln -s ../%{name}-systemd-integration.service \
 	%{buildroot}%{_unitdir}/reboot.target.wants
 
 # Don't run debuginfo on all the grub modules and whatnot; it just
@@ -295,9 +283,9 @@ ln -s ../grub2-systemd-integration.service \
 %undefine buildsubdir
 
 %pre tools
-if [ -f /boot/grub2/user.cfg ]; then
-    if grep -q '^GRUB_PASSWORD=' /boot/grub2/user.cfg ; then
-	sed -i 's/^GRUB_PASSWORD=/GRUB2_PASSWORD=/' /boot/grub2/user.cfg
+if [ -f /boot/%{name}/user.cfg ]; then
+    if grep -q '^GRUB_PASSWORD=' /boot/%{name}/user.cfg ; then
+	sed -i 's/^GRUB_PASSWORD=/GRUB2_PASSWORD=/' /boot/%{name}/user.cfg
     fi
 elif [ -f %{efi_esp_dir}/user.cfg ]; then
     if grep -q '^GRUB_PASSWORD=' %{efi_esp_dir}/user.cfg ; then
@@ -313,48 +301,29 @@ elif [ -f /etc/grub.d/01_users ] && \
 		sed 's/^password_pbkdf2 root \(.*\)$/GRUB2_PASSWORD=\1/' \
 	    > %{efi_esp_dir}/user.cfg
     fi
-    if [ -f /boot/grub2/grub.cfg ]; then
-	install -m 0600 /dev/null /boot/grub2/user.cfg
-	chmod 0600 /boot/grub2/user.cfg
+    if [ -f /boot/%{name}/grub.cfg ]; then
+	install -m 0600 /dev/null /boot/%{name}/user.cfg
+	chmod 0600 /boot/%{name}/user.cfg
 	grep '^password_pbkdf2 root' /etc/grub.d/01_users | \
 		sed 's/^password_pbkdf2 root \(.*\)$/GRUB2_PASSWORD=\1/' \
-	    > /boot/grub2/user.cfg
+	    > /boot/%{name}/user.cfg
     fi
 fi
-
-%triggerun -- grub2 < 1:1.99-4
-# grub2 < 1.99-4 removed a number of essential files in postun. To fix upgrades
-# from the affected grub2 packages, we first back up the files in triggerun and
-# later restore them in triggerpostun.
-# https://bugzilla.redhat.com/show_bug.cgi?id=735259
-
-# Back up the files before uninstalling old grub2
-mkdir -p /boot/grub2.tmp &&
-mv -f /boot/grub2/*.mod \
-      /boot/grub2/*.img \
-      /boot/grub2/*.lst \
-      /boot/grub2/device.map \
-      /boot/grub2.tmp/ || :
-
-%triggerpostun -- grub2 < 1:1.99-4
-# ... and restore the files.
-test ! -f /boot/grub2/device.map &&
-test -d /boot/grub2.tmp &&
-mv -f /boot/grub2.tmp/*.mod \
-      /boot/grub2.tmp/*.img \
-      /boot/grub2.tmp/*.lst \
-      /boot/grub2.tmp/device.map \
-      /boot/grub2/ &&
-rm -r /boot/grub2.tmp/ || :
 
 %posttrans common
 set -eu
 
-EFI_HOME=/boot/efi/EFI/fedora
-GRUB_HOME=/boot/grub2
+EFI_HOME=%{efi_esp_dir}
+GRUB_HOME=/boot/%{name}
+ESP_PATH=/boot/efi
+
+if ! mountpoint -q ${ESP_PATH}; then
+    exit 0 # no ESP mounted, nothing to do
+fi
 
 if test ! -f ${EFI_HOME}/grub.cfg; then
-   exit 0 # nothing to unify, nothing to do
+    # there's no config in ESP, create one
+    grub2-mkconfig -o ${EFI_HOME}/grub.cfg
 fi
 
 if grep -q "configfile" ${EFI_HOME}/grub.cfg; then
@@ -362,8 +331,8 @@ if grep -q "configfile" ${EFI_HOME}/grub.cfg; then
 fi
 
 # create a stub grub2 config in EFI
-BOOT_UUID=$(grub2-probe --target=fs_uuid ${GRUB_HOME})
-GRUB_DIR=$(grub2-mkrelpath ${GRUB_HOME})
+BOOT_UUID=$(%{name}-probe --target=fs_uuid ${GRUB_HOME})
+GRUB_DIR=$(%{name}-mkrelpath ${GRUB_HOME})
 
 cat << EOF > ${EFI_HOME}/grub.cfg.stb
 search --no-floppy --fs-uuid --set=dev ${BOOT_UUID}
@@ -392,11 +361,11 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %dir /boot/%{name}
 %dir /boot/%{name}/themes/
 %dir /boot/%{name}/themes/system
-%attr(0700,root,root) %dir /boot/grub2
-%exclude /boot/grub2/*
+%attr(0700,root,root) %dir /boot/%{name}
+%exclude /boot/%{name}/*
 %dir %attr(0700,root,root) %{efi_esp_dir}
 %exclude %{efi_esp_dir}/*
-%ghost %config(noreplace) %verify(not size mode md5 mtime) /boot/grub2/grubenv
+%ghost %config(noreplace) %verify(not size mode md5 mtime) /boot/%{name}/grubenv
 %license COPYING
 %doc THANKS
 %doc docs/grub.html
@@ -404,7 +373,6 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %doc docs/font_char_metrics.png
 
 %files tools-minimal
-%{_sysconfdir}/prelink.conf.d/grub2.conf
 %{_sbindir}/%{name}-get-kernel-settings
 %{_sbindir}/%{name}-probe
 %attr(4755, root, root) %{_sbindir}/%{name}-set-bootflag
@@ -555,6 +523,10 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Tue Aug 31 2021 Javier Martinez Canillas <javierm@redhat.com> - 2.06-1
+- Update to 2.06 final release and ton of fixes
+  Resolves: rhbz#1976771
+
 * Wed Jun 23 2021 Javier Martinez Canillas <javierm@redhat.com> - 2.06~rc1-9
 - Fix kernel cmdline params getting overwritten on ppc64le
   Resolves: rhbz#1973564
