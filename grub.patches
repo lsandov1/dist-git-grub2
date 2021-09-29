@@ -217,3 +217,5 @@ Patch0216: 0216-arm64-Fix-EFI-loader-kernel-image-allocation.patch
 Patch0217: 0217-normal-main-Discover-the-device-to-read-the-config-f.patch
 Patch0218: 0218-powerpc-adjust-setting-of-prefix-for-signed-binary-c.patch
 Patch0219: 0219-powerpc-fix-prefix-signed-grub-special-case-for-Powe.patch
+Patch0220: 0220-Arm-check-for-the-PE-magic-for-the-compiled-arch.patch
+Patch0221: 0221-fs-xfs-Fix-unreadable-filesystem-with-v4-superblock.patch

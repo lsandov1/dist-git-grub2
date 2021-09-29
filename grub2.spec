@@ -14,7 +14,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	5%{?dist}
+Release:	6%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -523,6 +523,11 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Wed Sep 29 2021 Robbie Harwood <rharwood@redhat.com> - 2.06-6
+- fs/xfs: Fix unreadable filesystem with v4 superblock
+- Arm: check for the PE magic for the compiled arch
+- Resolves: rhbz#2008819
+
 * Mon Aug 30 2021 Javier Martinez Canillas <javierm@redhat.com> - 2.06-5
 - A few fixes for ppc64le LPAR Secure Boot support
 
