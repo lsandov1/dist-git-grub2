@@ -106,14 +106,14 @@ index 4e212e690c5..aab2a941f85 100644
    while (dc--)
      grub_install_pop_module ();
 diff --git a/util/grub-mkimage.c b/util/grub-mkimage.c
-index c0d55993702..26d1ecbf74e 100644
+index c0d55993702..94c9893230f 100644
 --- a/util/grub-mkimage.c
 +++ b/util/grub-mkimage.c
 @@ -84,6 +84,7 @@ static struct argp_option options[] = {
    {"sbat", 's', N_("FILE"), 0, N_("SBAT metadata"), 0},
    {"disable-shim-lock", GRUB_INSTALL_OPTIONS_DISABLE_SHIM_LOCK, 0, 0, N_("disable shim_lock verifier"), 0},
    {"verbose",     'v', 0,      0, N_("print verbose messages."), 0},
-+  {"appended-signature-size", 's', N_("SIZE"), 0, N_("Add a note segment reserving SIZE bytes for an appended signature"), 0},
++  {"appended-signature-size", 'S', N_("SIZE"), 0, N_("Add a note segment reserving SIZE bytes for an appended signature"), 0},
    { 0, 0, 0, 0, 0, 0 }
  };
  
