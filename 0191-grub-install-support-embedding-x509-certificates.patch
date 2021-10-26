@@ -94,7 +94,7 @@ index aab2a941f85..422f82362c7 100644
  			       disable_shim_lock);
    while (dc--)
 diff --git a/util/grub-mkimage.c b/util/grub-mkimage.c
-index 26d1ecbf74e..c5cdda498eb 100644
+index 8a53310548b..e1f1112784a 100644
 --- a/util/grub-mkimage.c
 +++ b/util/grub-mkimage.c
 @@ -75,7 +75,8 @@ static struct argp_option options[] = {
@@ -138,8 +138,8 @@ index 26d1ecbf74e..c5cdda498eb 100644
 +			       arguments.npubkeys, arguments.x509keys,
 +			       arguments.nx509keys, arguments.config,
  			       arguments.image_target, arguments.note,
- 
- 			       arguments.comp, arguments.appsig_size,
+ 			       arguments.appsig_size, arguments.comp,
+ 			       arguments.dtb, arguments.sbat,
 diff --git a/util/mkimage.c b/util/mkimage.c
 index bab12276010..8319e8dfbde 100644
 --- a/util/mkimage.c
