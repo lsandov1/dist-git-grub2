@@ -14,7 +14,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	10%{?dist}
+Release:	11%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -523,6 +523,9 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Fri Dec 10 2021 Robbie Harwood <rharwood@redhat.com> - 2.06-11
+- Bump to rerun signing (no code changes)
+
 * Thu Dec 09 2021 Robbie Harwood <rharwood@redhat.com> - 2.06-10
 - restore umask for grub.cfg (CVE-2021-3981)
 
