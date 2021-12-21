@@ -14,7 +14,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	13%{?dist}
+Release:	14%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -523,6 +523,10 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Tue Dec 21 2021 Robbie Harwood <rharwood@redhat.com> - 2.06-14
+- Rebuild for signing; no code changes
+- Resolves: rhbz#2006784
+
 * Fri Nov 19 2021 Robbie Harwood <rharwood@redhat.com> - 2.06-13
 - Rebuild for gating; no code changes
 - Resolves: rhbz#2006784
