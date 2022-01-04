@@ -32,6 +32,10 @@ Source9:	strtoull_test.c
 Source10:	20-grub.install
 Source11:	grub.patches
 Source12:	sbat.csv.in
+Source13:	redhatsecurebootca3.cer
+Source14:	redhatsecureboot301.cer
+Source15:	redhatsecurebootca5.cer
+Source16:	redhatsecureboot502.cer
 
 %include %{SOURCE1}
 
@@ -192,10 +196,10 @@ git commit -m "After making subdirs"
 
 %build
 %if 0%{with_efi_arch}
-%{expand:%do_primary_efi_build %%{grubefiarch} %%{grubefiname} %%{grubeficdname} %%{_target_platform} %%{efi_target_cflags} %%{efi_host_cflags}}
+%{expand:%do_primary_efi_build %%{grubefiarch} %%{grubefiname} %%{grubeficdname} %%{_target_platform} %%{efi_target_cflags} %%{efi_host_cflags} %{SOURCE13} %{SOURCE14} redhatsecureboot301 %{SOURCE15} %{SOURCE16} redhatsecureboot502}
 %endif
 %if 0%{with_alt_efi_arch}
-%{expand:%do_alt_efi_build %%{grubaltefiarch} %%{grubaltefiname} %%{grubalteficdname} %%{_alt_target_platform} %%{alt_efi_target_cflags} %%{alt_efi_host_cflags}}
+%{expand:%do_alt_efi_build %%{grubaltefiarch} %%{grubaltefiname} %%{grubalteficdname} %%{_alt_target_platform} %%{alt_efi_target_cflags} %%{alt_efi_host_cflags} %{SOURCE13} %{SOURCE14} redhatsecureboot301 %{SOURCE15} %{SOURCE16} redhatsecureboot502}
 %endif
 %if 0%{with_legacy_arch}
 %{expand:%do_legacy_build %%{grublegacyarch}}
@@ -523,6 +527,10 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Thu Sep 30 2021 Peter Jones <pjones@redhat.com> - 2.06-4
+- Sync with beta for signing changes
+- Resolves: rhbz#2006784
+
 * Tue Dec 21 2021 Robbie Harwood <rharwood@redhat.com> - 2.06-14
 - Rebuild for signing; no code changes
 - Resolves: rhbz#2006784
