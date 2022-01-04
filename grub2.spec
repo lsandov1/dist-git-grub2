@@ -14,7 +14,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	15%{?dist}
+Release:	16%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -36,8 +36,25 @@ Source13:	redhatsecurebootca3.cer
 Source14:	redhatsecureboot301.cer
 Source15:	redhatsecurebootca5.cer
 Source16:	redhatsecureboot502.cer
+Source17:	redhatsecureboot303.cer
+Source18:	redhatsecureboot601.cer
 
 %include %{SOURCE1}
+
+%if 0%{with_efi_arch}
+%define old_sb_ca	%{SOURCE13}
+%define old_sb_cer	%{SOURCE14}
+%define old_sb_key	redhatsecureboot301
+%define sb_ca		%{SOURCE15}
+%define sb_cer		%{SOURCE16}
+%define sb_key		redhatsecureboot502
+%endif
+
+%ifarch ppc64le
+%define old_sb_cer	%{SOURCE17}
+%define sb_cer		%{SOURCE18}
+%define sb_key		redhatsecureboot602
+%endif
 
 BuildRequires:	gcc efi-srpm-macros
 BuildRequires:	flex bison binutils python3
@@ -53,7 +70,7 @@ BuildRequires:	help2man
 # For %%_userunitdir macro
 BuildRequires:	systemd
 %ifarch %{efi_arch}
-BuildRequires:	pesign >= 113-21
+BuildRequires:	pesign >= 0.99-8
 %endif
 %if %{?_with_ccache: 1}%{?!_with_ccache: 0}
 BuildRequires:	ccache
@@ -196,16 +213,19 @@ git commit -m "After making subdirs"
 
 %build
 %if 0%{with_efi_arch}
-%{expand:%do_primary_efi_build %%{grubefiarch} %%{grubefiname} %%{grubeficdname} %%{_target_platform} %%{efi_target_cflags} %%{efi_host_cflags} %{SOURCE13} %{SOURCE14} redhatsecureboot301 %{SOURCE15} %{SOURCE16} redhatsecureboot502}
+%{expand:%do_primary_efi_build %%{grubefiarch} %%{grubefiname} %%{grubeficdname} %%{_target_platform} %%{efi_target_cflags} %%{efi_host_cflags} %{old_sb_ca} %{old_sb_cer} %{old_sb_key} %{sb_ca} %{sb_cer} %{sb_key}}
 %endif
 %if 0%{with_alt_efi_arch}
-%{expand:%do_alt_efi_build %%{grubaltefiarch} %%{grubaltefiname} %%{grubalteficdname} %%{_alt_target_platform} %%{alt_efi_target_cflags} %%{alt_efi_host_cflags} %{SOURCE13} %{SOURCE14} redhatsecureboot301 %{SOURCE15} %{SOURCE16} redhatsecureboot502}
+%{expand:%do_alt_efi_build %%{grubaltefiarch} %%{grubaltefiname} %%{grubalteficdname} %%{_alt_target_platform} %%{alt_efi_target_cflags} %%{alt_efi_host_cflags} %{old_sb_ca} %{old_sb_cer} %{old_sb_key} %{sb_ca} %{sb_cer} %{sb_key}}
 %endif
 %if 0%{with_legacy_arch}
 %{expand:%do_legacy_build %%{grublegacyarch}}
 %endif
 %if 0%{with_emu_arch}
 %{expand:%do_emu_build}
+%endif
+%ifarch ppc64le
+%{expand:%do_ieee1275_build_images %%{grublegacyarch} %{grubelfname} %{old_sb_cer} %{sb_cer} %{sb_key}}
 %endif
 makeinfo --info --no-split -I docs -o docs/grub-dev.info \
 	docs/grub-dev.texi
@@ -527,29 +547,49 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
-* Tue Jan 04 2021 Robbie Harwood <rharwood@redhat.com> - 2.06-15
-- Sync with beta for signing changes
+* Tue Jan 04 2021 Robbie Harwood <rharwood@redhat.com> - 2.06-16
+- Stop having this problem and just copy over the beta tree
 - Resolves: rhbz#2006784
 
-* Tue Dec 21 2021 Robbie Harwood <rharwood@redhat.com> - 2.06-14
-- Rebuild for signing; no code changes
-- Resolves: rhbz#2006784
+* Mon Oct 25 2021 Robbie Harwood <rharwood@redhat.com>
+- powerpc-ieee1275: load grub at 4MB, not 2MB
+  Related: rhbz#1873860
 
-* Fri Nov 19 2021 Robbie Harwood <rharwood@redhat.com> - 2.06-13
-- Rebuild for gating; no code changes
-- Resolves: rhbz#2006784
+* Tue Oct 12 2021 Robbie Harwood <rharwood@redhat.com>
+- Print out module name on license check failure
+  Related: rhbz#1873860
 
-* Tue Oct 26 2021 Robbie Harwood <rharwood@redhat.com> - 2.06-12
-- Sync with beta changes (version jump because our process is bad)
-  Resolves: rhbz#2006784
+* Thu Oct 07 2021 pjones <pjones@redhat.com>
+- Hopefully make "grub2-mkimage --appended-signature-size=" actually work.
+  Related: rhbz#1873860
+
+* Thu Oct 07 2021 Peter Jones <pjones@redhat.com> - 2.06-8
+- Attempt once more to fix signatures on ppc64le
+  Related: rhbz#1873860
+
+* Tue Oct 05 2021 Peter Jones <pjones@redhat.com> - 2.06-7
+- Fix signatures on ppc64le
+  Related: rhbz#1951104
+
+* Tue Oct 05 2021 Robbie Harwood <rharwood@redhat.com> - 2.06-6
+- Fix booting with XFSv4 partitions
+  Resolves: rhbz#2006993
+
+* Thu Sep 30 2021 Peter Jones <pjones@redhat.com> - 2.06-5
+- Rebuild for correct signatures once more.
+  Resolves: rhbz#1976771
+
+* Thu Sep 30 2021 Peter Jones <pjones@redhat.com> - 2.06-4
+- Rebuild for correct signatures
+  Resolves: rhbz#1976771
 
 * Mon Sep 27 2021 Robbie Harwood <rharwood@redhat.com> - 2.06-3
 - Rebuild for gating + rpminspect
-  Resolves: rhbz#2006784
+  Resolves: rhbz#1976771
 
 * Wed Sep 22 2021 Robbie Harwood <rharwood@redhat.com> - 2.06-2
 - Rebuild because our CI infrastructure doesn't work right
-  Resolves: rhbz#2006784
+  Resolves: rhbz#1976771
 
 * Tue Aug 31 2021 Javier Martinez Canillas <javierm@redhat.com> - 2.06-1
 - Update to 2.06 final release and ton of fixes
