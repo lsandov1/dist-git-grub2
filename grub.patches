@@ -210,3 +210,4 @@ Patch0209: 0209-fs-xfs-Fix-unreadable-filesystem-with-v4-superblock.patch
 Patch0210: 0210-Print-module-name-on-license-check-failure.patch
 Patch0211: 0211-powerpc-ieee1275-load-grub-at-4MB-not-2MB.patch
 Patch0212: 0212-grub-mkconfig-restore-umask-for-grub.cfg.patch
+Patch0213: 0213-fs-btrfs-Use-full-btrfs-bootloader-area.patch
