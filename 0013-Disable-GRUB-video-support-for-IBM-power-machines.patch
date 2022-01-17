@@ -5,6 +5,9 @@ Subject: [PATCH] Disable GRUB video support for IBM power machines
 
 Should fix the problem in bugzilla:
 https://bugzilla.redhat.com/show_bug.cgi?id=973205
+
+Signed-off-by: Paulo Flabiano Smorigo <pfsmorigo@br.ibm.com>
+Signed-off-by: Robbie Harwood <rharwood@redhat.com>
 ---
  grub-core/kern/ieee1275/cmain.c  | 5 ++++-
  grub-core/video/ieee1275.c       | 9 ++++++---

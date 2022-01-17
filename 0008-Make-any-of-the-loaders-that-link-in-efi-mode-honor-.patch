@@ -193,7 +193,7 @@ index 74888c463ba..585f2b57385 100644
    grub_unregister_command (cmd);
  }
 diff --git a/grub-core/loader/efi/chainloader.c b/grub-core/loader/efi/chainloader.c
-index b54cf6986fc..3ff305b1d32 100644
+index e6a8d4ad0e9..07c4937898d 100644
 --- a/grub-core/loader/efi/chainloader.c
 +++ b/grub-core/loader/efi/chainloader.c
 @@ -34,6 +34,7 @@

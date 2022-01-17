@@ -164,15 +164,30 @@ following branches:
 
 Bugzilla: https://bugzilla.redhat.com/show_bug.cgi?id=1347291
 Signed-off-by: Laszlo Ersek <lersek@redhat.com>
+
+Also:
+
+commit cc06f149fbd2d8c1da1e83173d21629ba97e0d92
+Author: Raymund Will <rw@suse.com>
+
+chainloader: Define machine types for RISC-V
+
+The commit "Add secureboot support on efi chainloader" didn't add machine
+types for RISC-V, so this patch adds them.
+
+Note, that grub-core/loader/riscv/linux.c is skipped because Linux is not
+supported yet. This patch might need a new revision once that's the case.
+
+Signed-off-by: David Abdurachmanov <david.abdurachmanov@sifive.com>
 ---
  grub-core/kern/efi/efi.c           |  14 +-
  grub-core/loader/arm64/linux.c     |   4 +-
- grub-core/loader/efi/chainloader.c | 816 +++++++++++++++++++++++++++++++++----
+ grub-core/loader/efi/chainloader.c | 820 +++++++++++++++++++++++++++++++++----
  grub-core/loader/efi/linux.c       |  25 +-
  grub-core/loader/i386/efi/linux.c  |  17 +-
  include/grub/efi/linux.h           |   2 +-
  include/grub/efi/pe32.h            |  52 ++-
- 7 files changed, 840 insertions(+), 90 deletions(-)
+ 7 files changed, 844 insertions(+), 90 deletions(-)
 
 diff --git a/grub-core/kern/efi/efi.c b/grub-core/kern/efi/efi.c
 index 35b8f670602..4a2259aa1c7 100644
@@ -226,7 +241,7 @@ index a312c668685..04994d5c67d 100644
        grub_error (GRUB_ERR_INVALID_COMMAND, N_("%s has invalid signature"), argv[0]);
        goto fail;
 diff --git a/grub-core/loader/efi/chainloader.c b/grub-core/loader/efi/chainloader.c
-index 2bd80f4db3d..b54cf6986fc 100644
+index 2bd80f4db3d..e6a8d4ad0e9 100644
 --- a/grub-core/loader/efi/chainloader.c
 +++ b/grub-core/loader/efi/chainloader.c
 @@ -32,6 +32,8 @@
@@ -261,7 +276,7 @@ index 2bd80f4db3d..b54cf6986fc 100644
  
    grub_dl_unref (my_mod);
    return GRUB_ERR_NONE;
-@@ -213,20 +221,690 @@ make_file_path (grub_efi_device_path_t *dp, const char *filename)
+@@ -213,20 +221,694 @@ make_file_path (grub_efi_device_path_t *dp, const char *filename)
    return file_path;
  }
  
@@ -376,6 +391,10 @@ index 2bd80f4db3d..b54cf6986fc 100644
 +  GRUB_PE32_MACHINE_I386;
 +#elif defined(__ia64__)
 +  GRUB_PE32_MACHINE_IA64;
++#elif defined(__riscv) && (__riscv_xlen == 32)
++  GRUB_PE32_MACHINE_RISCV32;
++#elif defined(__riscv) && (__riscv_xlen == 64)
++  GRUB_PE32_MACHINE_RISCV64;
 +#else
 +#error this architecture is not supported by grub2
 +#endif
@@ -955,7 +974,7 @@ index 2bd80f4db3d..b54cf6986fc 100644
  
    if (argc == 0)
      return grub_error (GRUB_ERR_BAD_ARGUMENT, N_("filename expected"));
-@@ -238,15 +916,45 @@ grub_cmd_chainloader (grub_command_t cmd __attribute__ ((unused)),
+@@ -238,15 +920,45 @@ grub_cmd_chainloader (grub_command_t cmd __attribute__ ((unused)),
    address = 0;
    image_handle = 0;
    file_path = 0;
@@ -1003,7 +1022,7 @@ index 2bd80f4db3d..b54cf6986fc 100644
    if (! dev)
      goto fail;
  
-@@ -283,17 +991,14 @@ grub_cmd_chainloader (grub_command_t cmd __attribute__ ((unused)),
+@@ -283,17 +995,14 @@ grub_cmd_chainloader (grub_command_t cmd __attribute__ ((unused)),
    if (! file_path)
      goto fail;
  
@@ -1024,7 +1043,7 @@ index 2bd80f4db3d..b54cf6986fc 100644
  
    status = efi_call_4 (b->allocate_pages, GRUB_EFI_ALLOCATE_ANY_PAGES,
  			      GRUB_EFI_LOADER_CODE,
-@@ -307,7 +1012,7 @@ grub_cmd_chainloader (grub_command_t cmd __attribute__ ((unused)),
+@@ -307,7 +1016,7 @@ grub_cmd_chainloader (grub_command_t cmd __attribute__ ((unused)),
      }
  
    boot_image = (void *) ((grub_addr_t) address);
@@ -1033,7 +1052,7 @@ index 2bd80f4db3d..b54cf6986fc 100644
      {
        if (grub_errno == GRUB_ERR_NONE)
  	grub_error (GRUB_ERR_BAD_OS, N_("premature end of file %s"),
-@@ -317,7 +1022,7 @@ grub_cmd_chainloader (grub_command_t cmd __attribute__ ((unused)),
+@@ -317,7 +1026,7 @@ grub_cmd_chainloader (grub_command_t cmd __attribute__ ((unused)),
      }
  
  #if defined (__i386__) || defined (__x86_64__)
@@ -1042,7 +1061,7 @@ index 2bd80f4db3d..b54cf6986fc 100644
      {
        struct grub_macho_fat_header *head = boot_image;
        if (head->magic
-@@ -326,6 +1031,14 @@ grub_cmd_chainloader (grub_command_t cmd __attribute__ ((unused)),
+@@ -326,6 +1035,14 @@ grub_cmd_chainloader (grub_command_t cmd __attribute__ ((unused)),
  	  grub_uint32_t i;
  	  struct grub_macho_fat_arch *archs
  	    = (struct grub_macho_fat_arch *) (head + 1);
@@ -1057,7 +1076,7 @@ index 2bd80f4db3d..b54cf6986fc 100644
  	  for (i = 0; i < grub_cpu_to_le32 (head->nfat_arch); i++)
  	    {
  	      if (GRUB_MACHO_CPUTYPE_IS_HOST_CURRENT (archs[i].cputype))
-@@ -340,79 +1053,39 @@ grub_cmd_chainloader (grub_command_t cmd __attribute__ ((unused)),
+@@ -340,79 +1057,39 @@ grub_cmd_chainloader (grub_command_t cmd __attribute__ ((unused)),
  	      > ~grub_cpu_to_le32 (archs[i].size)
  	      || grub_cpu_to_le32 (archs[i].offset)
  	      + grub_cpu_to_le32 (archs[i].size)
@@ -1154,7 +1173,7 @@ index 2bd80f4db3d..b54cf6986fc 100644
    if (dev)
      grub_device_close (dev);
  
-@@ -424,6 +1097,9 @@ grub_cmd_chainloader (grub_command_t cmd __attribute__ ((unused)),
+@@ -424,6 +1101,9 @@ grub_cmd_chainloader (grub_command_t cmd __attribute__ ((unused)),
    if (address)
      efi_call_2 (b->free_pages, address, pages);
  

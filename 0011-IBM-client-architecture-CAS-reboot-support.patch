@@ -7,16 +7,20 @@ This is an implementation of IBM client architecture (CAS) reboot for GRUB.
 
 There are cases where the POWER firmware must reboot in order to support
 specific features requested by a kernel. The kernel calls
-ibm,client-architecture-support and it may either return or reboot with the new
-feature set. eg:
+ibm,client-architecture-support and it may either return or reboot with
+the new feature set. eg:
 
 Calling ibm,client-architecture-support.../
 Elapsed time since release of system processors: 70959 mins 50 secs
 Welcome to GRUB!
 
-Instead of return to the GRUB menu, it will check if the flag for CAS reboot is
-set. If so, grub will automatically boot the last booted kernel using the same
-parameters
+Instead of return to the GRUB menu, it will check if the flag for CAS
+reboot is set. If so, grub will automatically boot the last booted
+kernel using the same parameters
+
+Signed-off-by: Paulo Flabiano Smorigo <pfsmorigo@br.ibm.com>
+[rharwood@redhat.com: commit message rewrap]
+Signed-off-by: Robbie Harwood <rharwood@redhat.com>
 ---
  grub-core/kern/ieee1275/openfw.c | 63 ++++++++++++++++++++++++++++++++++++++++
  grub-core/normal/main.c          | 19 ++++++++++++

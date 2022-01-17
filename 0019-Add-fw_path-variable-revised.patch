@@ -8,6 +8,9 @@ found. It was originally written by Matthew Garrett, and adapted to fix the
 "No modules are loaded on grub2 network boot" issue:
 
 https://bugzilla.redhat.com/show_bug.cgi?id=857936
+
+Signed-off-by: Paulo Flabiano Smorigo <pfsmorigo@br.ibm.com>
+Signed-off-by: Robbie Harwood <rharwood@redhat.com>
 ---
  grub-core/kern/main.c   | 13 ++++++-------
  grub-core/normal/main.c | 25 ++++++++++++++++++++++++-
