@@ -523,6 +523,9 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Tue Jan 18 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-14
+- Add location of DejaVu Sans font
+
 * Mon Jan 17 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-13
 - Update patches; minor changes at most, if correct
 

@@ -199,3 +199,4 @@ Patch0198: 0198-Print-module-name-on-license-check-failure.patch
 Patch0199: 0199-powerpc-ieee1275-load-grub-at-4MB-not-2MB.patch
 Patch0200: 0200-grub-mkconfig-restore-umask-for-grub.cfg.patch
 Patch0201: 0201-fs-btrfs-Use-full-btrfs-bootloader-area.patch
+Patch0202: 0202-Add-Fedora-location-of-DejaVu-SANS-font.patch
