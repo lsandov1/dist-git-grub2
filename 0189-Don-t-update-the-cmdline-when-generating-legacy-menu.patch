@@ -20,10 +20,10 @@ Signed-off-by: Javier Martinez Canillas <javierm@redhat.com>
  1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/util/grub.d/10_linux.in b/util/grub.d/10_linux.in
-index 6bceabf3dc9..b95a9a8d7ca 100644
+index 9fcd77cacc3..dc473f4333c 100644
 --- a/util/grub.d/10_linux.in
 +++ b/util/grub.d/10_linux.in
-@@ -261,7 +261,9 @@ if [ -z "\${kernelopts}" ]; then
+@@ -256,7 +256,9 @@ if [ -z "\${kernelopts}" ]; then
  fi
  EOF
  

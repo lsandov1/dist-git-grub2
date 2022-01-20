@@ -1,4 +1,4 @@
-From 8c68222cbb8e7527c447bd6908578b72b7302f80 Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: fluteze <fluteze@gmail.com>
 Date: Sat, 27 Nov 2021 10:54:44 -0600
 Subject: [PATCH] Add Fedora location of DejaVu SANS font
@@ -16,7 +16,7 @@ Signed-off-by: Robbie Harwood <rharwood@redhat.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/configure.ac b/configure.ac
-index 3c808a722..3527f069a 100644
+index 3c808a72230..3527f069ab2 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -1812,7 +1812,7 @@ fi
@@ -28,6 +28,3 @@ index 3c808a722..3527f069a 100644
          if test -f "$dir/DejaVuSans.$ext"; then
            DJVU_FONT_SOURCE="$dir/DejaVuSans.$ext"
            break 2
--- 
-2.34.1
-
