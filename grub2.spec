@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	107%{?dist}
+Release:	108%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -523,6 +523,10 @@ fi
 %endif
 
 %changelog
+* Wed Feb 02 2022 Robbie Harwood <rharwood@redhat.com> - 2.02-108
+- Bump version to fix build target
+- Resolves: #2030359
+
 * Wed Feb 02 2022 Robbie Harwood <rharwood@redhat.com> - 2.02-107
 - CVE-2021-3981 (Incorrect read permission in grub.cfg)
 - Resolves: #2030359
