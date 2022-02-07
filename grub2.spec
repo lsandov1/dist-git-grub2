@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	108%{?dist}
+Release:	109%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -232,18 +232,6 @@ rm -vf ${RPM_BUILD_ROOT}/%{_sbindir}/%{name}-macbless
 
 %find_lang grub
 
-# Make selinux happy with exec stack binaries.
-mkdir ${RPM_BUILD_ROOT}%{_sysconfdir}/prelink.conf.d/
-cat << EOF > ${RPM_BUILD_ROOT}%{_sysconfdir}/prelink.conf.d/grub2.conf
-# these have execstack, and break under selinux
--b /usr/bin/grub2-script-check
--b /usr/bin/grub2-mkrelpath
--b /usr/bin/grub2-fstest
--b /usr/sbin/grub2-bios-setup
--b /usr/sbin/grub2-probe
--b /usr/sbin/grub2-sparc64-setup
-EOF
-
 # Install kernel-install scripts
 install -d -m 0755 %{buildroot}%{_prefix}/lib/kernel/install.d/
 install -D -m 0755 -t %{buildroot}%{_prefix}/lib/kernel/install.d/ %{SOURCE9}
@@ -385,7 +373,6 @@ fi
 %doc docs/font_char_metrics.png
 
 %files tools-minimal
-%{_sysconfdir}/prelink.conf.d/grub2.conf
 %{_sbindir}/%{name}-get-kernel-settings
 %attr(4755, root, root) %{_sbindir}/%{name}-set-bootflag
 %{_sbindir}/%{name}-set-default
@@ -523,6 +510,10 @@ fi
 %endif
 
 %changelog
+* Mon Feb 07 2022 Robbie Harwood <rharwood@redhat.com> - 2.02-109
+- Drop prelink snippet
+- Resolves: #2016269
+
 * Wed Feb 02 2022 Robbie Harwood <rharwood@redhat.com> - 2.02-108
 - Bump version to fix build target
 - Resolves: #2030359
