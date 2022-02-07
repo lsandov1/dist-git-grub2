@@ -1,4 +1,4 @@
-From 25f6be4d626e6dba20930a28b573d0e2c35639de Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Michael Chang via Grub-devel <grub-devel@gnu.org>
 Date: Fri, 3 Dec 2021 16:13:28 +0800
 Subject: [PATCH] grub-mkconfig: restore umask for grub.cfg
@@ -41,6 +41,3 @@ index 5e643e169..a1c00776d 100644
      rm -f ${grub_cfg}.new
    fi
  fi
--- 
-2.34.1
-
