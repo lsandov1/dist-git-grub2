@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	111%{?dist}
+Release:	112%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -510,6 +510,10 @@ fi
 %endif
 
 %changelog
+* Wed Feb 09 2022 Robbie Harwood <rharwood@redhat.com> - 2.02-112
+- Fix DHCP proxy efi booting
+- Resolves: #1809246
+
 * Mon Feb 07 2022 Robbie Harwood <rharwood@redhat.com> - 2.02-111
 - Bump to fix target
 - Resolves: #1914575
