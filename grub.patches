@@ -488,3 +488,4 @@ Patch0487: 0487-powerpc-adjust-setting-of-prefix-for-signed-binary-c.patch
 Patch0488: 0488-powerpc-fix-prefix-signed-grub-special-case-for-Powe.patch
 Patch0489: 0489-grub-mkconfig-restore-umask-for-grub.cfg.patch
 Patch0490: 0490-efinet-Add-DHCP-proxy-support.patch
+Patch0491: 0491-at_keyboard-Fix-unreliable-key-presses.patch
