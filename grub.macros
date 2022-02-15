@@ -416,11 +416,8 @@ rm -f %{1}.conf							\
 	${GRUB_MODULES}						\
 %{expand:%%define ___pesign_client_cert %{?___pesign_client_cert}%{!?___pesign_client_cert:%{__pesign_client_cert}}} \
 %{?__pesign_client_cert:%{expand:%%define __pesign_client_cert %{___pesign_client_cert}}} \
-%{expand:%%{pesign -s -i %%{2}.orig -o %%{2}.onesig -a %%{5} -c %%{6} -n %%{7}}}	\
-%{expand:%%{pesign -s -i %%{3}.orig -o %%{3}.onesig -a %%{5} -c %%{6} -n %%{7}}}	\
-%{expand:%%define __pesign_client_cert %{name}-signer} \
-%{expand:%%{pesign -s -i %%{2}.onesig -o %%{2} -a %%{8} -c %%{9} -n %%{10}}}	\
-%{expand:%%{pesign -s -i %%{3}.onesig -o %%{3} -a %%{8} -c %%{9} -n %%{10}}}	\
+%{expand:%%{pesign -s -i %%{2}.orig -o %%{2} -a %%{5} -c %%{6} -n %%{7}}}	\
+%{expand:%%{pesign -s -i %%{3}.orig -o %%{3} -a %%{5} -c %%{6} -n %%{7}}}	\
 %{nil}
 %else
 %define efi_mkimage()						\

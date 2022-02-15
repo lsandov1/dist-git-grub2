@@ -213,10 +213,10 @@ git commit -m "After making subdirs"
 
 %build
 %if 0%{with_efi_arch}
-%{expand:%do_primary_efi_build %%{grubefiarch} %%{grubefiname} %%{grubeficdname} %%{_target_platform} %%{efi_target_cflags} %%{efi_host_cflags} %{old_sb_ca} %{old_sb_cer} %{old_sb_key} %{sb_ca} %{sb_cer} %{sb_key}}
+%{expand:%do_primary_efi_build %%{grubefiarch} %%{grubefiname} %%{grubeficdname} %%{_target_platform} %%{efi_target_cflags} %%{efi_host_cflags} %{sb_ca} %{sb_cer} %{sb_key}}
 %endif
 %if 0%{with_alt_efi_arch}
-%{expand:%do_alt_efi_build %%{grubaltefiarch} %%{grubaltefiname} %%{grubalteficdname} %%{_alt_target_platform} %%{alt_efi_target_cflags} %%{alt_efi_host_cflags} %{old_sb_ca} %{old_sb_cer} %{old_sb_key} %{sb_ca} %{sb_cer} %{sb_key}}
+%{expand:%do_alt_efi_build %%{grubaltefiarch} %%{grubaltefiname} %%{grubalteficdname} %%{_alt_target_platform} %%{alt_efi_target_cflags} %%{alt_efi_host_cflags} %{sb_ca} %{sb_cer} %{sb_key}}
 %endif
 %if 0%{with_legacy_arch}
 %{expand:%do_legacy_build %%{grublegacyarch}}
@@ -225,7 +225,7 @@ git commit -m "After making subdirs"
 %{expand:%do_emu_build}
 %endif
 %ifarch ppc64le
-%{expand:%do_ieee1275_build_images %%{grublegacyarch} %{grubelfname} %{old_sb_cer} %{sb_cer} %{sb_key}}
+%{expand:%do_ieee1275_build_images %%{grublegacyarch} %{grubelfname} %{sb_cer} %{sb_key}}
 %endif
 makeinfo --info --no-split -I docs -o docs/grub-dev.info \
 	docs/grub-dev.texi
