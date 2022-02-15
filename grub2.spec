@@ -32,28 +32,19 @@ Source9:	strtoull_test.c
 Source10:	20-grub.install
 Source11:	grub.patches
 Source12:	sbat.csv.in
-Source13:	redhatsecurebootca3.cer
-Source14:	redhatsecureboot301.cer
-Source15:	redhatsecurebootca5.cer
-Source16:	redhatsecureboot502.cer
-Source17:	redhatsecureboot303.cer
-Source18:	redhatsecureboot601.cer
 
 %include %{SOURCE1}
 
 %if 0%{with_efi_arch}
-%define old_sb_ca	%{SOURCE13}
-%define old_sb_cer	%{SOURCE14}
-%define old_sb_key	redhatsecureboot301
-%define sb_ca		%{SOURCE15}
-%define sb_cer		%{SOURCE16}
+%define sb_ca		%{_datadir}/pki/sb-certs/secureboot-ca-%{_arch}.cer
+%define sb_cer		%{_datadir}/pki/sb-certs/secureboot-grub2-%{_arch}.cer
+
+%if 0%{?centos}
+%define sb_key		centossecureboot202
+%else
 %define sb_key		redhatsecureboot502
 %endif
 
-%ifarch ppc64le
-%define old_sb_cer	%{SOURCE17}
-%define sb_cer		%{SOURCE18}
-%define sb_key		redhatsecureboot602
 %endif
 
 BuildRequires:	gcc efi-srpm-macros
@@ -71,6 +62,7 @@ BuildRequires:	help2man
 BuildRequires:	systemd
 %ifarch %{efi_arch}
 BuildRequires:	pesign >= 0.99-8
+BuildRequires:	system-sb-certs
 %endif
 %if %{?_with_ccache: 1}%{?!_with_ccache: 0}
 BuildRequires:	ccache
@@ -551,7 +543,7 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 - CVE-2021-3981 (Incorrect read permission in grub.cfg)
 - Resolves: rhbz#2030724
 
-* Tue Jan 04 2021 Robbie Harwood <rharwood@redhat.com> - 2.06-16
+* Tue Jan 04 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-16
 - Stop having this problem and just copy over the beta tree
 - Resolves: rhbz#2006784
 
