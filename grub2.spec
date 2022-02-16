@@ -14,7 +14,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	18%{?dist}
+Release:	19%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -539,6 +539,10 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Wed Feb 16 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-19
+- Attempt to fix ppc64le signing bugs in previous change
+- Resolves: #2049214
+
 * Wed Feb 16 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-18
 - Switch to single-signing and use certs from package (bstinson)
 - Resolves: #2049214
