@@ -14,7 +14,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	19%{?dist}
+Release:	20%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -35,17 +35,24 @@ Source12:	sbat.csv.in
 
 %include %{SOURCE1}
 
-%if 0%{with_efi_arch}
+%ifarch x86_64 aarch64 ppc64le
 %define sb_ca		%{_datadir}/pki/sb-certs/secureboot-ca-%{_arch}.cer
 %define sb_cer		%{_datadir}/pki/sb-certs/secureboot-grub2-%{_arch}.cer
+%endif
 
 %if 0%{?centos}
+%ifarch x86_64 aarch64 ppc64le
 %define sb_key		centossecureboot202
+%endif
 %else
+%ifarch x86_64 aarch64
 %define sb_key		redhatsecureboot502
 %endif
-
+%ifarch ppc64le
+%define sb_key		redhatsecureboot602
 %endif
+%endif
+
 
 BuildRequires:	gcc efi-srpm-macros
 BuildRequires:	flex bison binutils python3
@@ -539,6 +546,10 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Wed Feb 16 2022 Brian Stinson <bstinson@redhat.com> - 2.06-20
+- Conditionalize Secure Boot settings per architecture
+- Resolves: #2049214
+
 * Wed Feb 16 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-19
 - Attempt to fix ppc64le signing bugs in previous change
 - Resolves: #2049214
