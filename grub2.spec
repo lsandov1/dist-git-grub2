@@ -14,7 +14,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	20%{?dist}
+Release:	21%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -69,6 +69,8 @@ BuildRequires:	help2man
 BuildRequires:	systemd
 %ifarch %{efi_arch}
 BuildRequires:	pesign >= 0.99-8
+%endif
+%ifarch aarch64 ppc64le x86_64
 BuildRequires:	system-sb-certs
 %endif
 %if %{?_with_ccache: 1}%{?!_with_ccache: 0}
@@ -546,6 +548,10 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Wed Feb 16 2022 Brian Stinson <bstinson@redhat.com> - 2.06-21
+- Require Secure Boot certs based on architecture
+- Resolves: #2049214
+
 * Wed Feb 16 2022 Brian Stinson <bstinson@redhat.com> - 2.06-20
 - Conditionalize Secure Boot settings per architecture
 - Resolves: #2049214
