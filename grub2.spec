@@ -9,12 +9,14 @@
 %undefine _missing_build_ids_terminate_build
 %global _configure_gnuconfig_hack 0
 
-%global gnulibversion fixes
+# It's a commit from their gnulib's development tree.  They don't do releases,
+# and it is *awful* to update this.
+%global gnulibversion 9f48fb992a3d7e96610c4ce8be969cff2d61a01b
 
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	15%{?dist}
+Release:	16%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -523,6 +525,9 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Thu Feb 24 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-16
+- Suffer through updating gnulib
+
 * Thu Jan 20 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-15
 - Skip machine ID check when updating BLS
 

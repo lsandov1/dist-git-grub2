@@ -9,10 +9,13 @@
 %global _configure ../configure
 
 %if %{?_with_ccache: 1}%{?!_with_ccache: 0}
-%global cc_equals CC=/usr/%{_lib}/ccache/gcc
+%global ccpath /usr/%{_lib}/ccache/gcc
 %else
-%global cc_equals %{nil}
+%global ccpath %{__cc}
 %endif
+
+# gnulib actively ignores CFLAGS because it's terrible
+%global cc_equals "CC=%{ccpath} -fPIE"
 
 %global cflags_sed						\\\
 	sed							\\\
@@ -330,9 +333,8 @@ git config gc.auto 0						\
 rm -f configure							\
 git add .							\
 git commit -a -q -m "%{tarversion} baseline."			\
-#git apply --index --whitespace=nowarn %{SOURCE3}		\
-#git commit -a -q -m "%{tarversion} master."			\
 git am --whitespace=nowarn %%{patches} </dev/null		\
+rm -r build-aux m4						\
 ./bootstrap							\
 %{nil}
 
