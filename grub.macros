@@ -68,7 +68,6 @@
 %global efi_target_ldflags %{expand:%%(echo %{target_ldflags})}
 
 %global with_efi_arch 0
-%global with_alt_efi_arch 0
 %global with_legacy_arch 0
 %global with_emu_arch 1
 %global emuarch %{_arch}
@@ -154,19 +153,6 @@
 %global legacy_target_cpu_name i386
 %global legacy_package_arch pc
 %global platform pc
-
-%global alt_efi_arch ia32
-%global alt_target_cpu_name i386
-%global alt_grub_target_name i386-efi
-%global alt_platform efi
-%global alt_package_arch efi-ia32
-
-%global alt_efi_host_cflags %{expand:%%(echo %{efi_host_cflags})}
-%global alt_efi_target_cflags					\\\
-	%{expand:%%(echo %{target_cflags} |			\\\
-	%{cflags_sed}						\\\
-		-e 's/-m64//g'					\\\
-	)}
 %endif
 
 %ifarch aarch64
@@ -200,7 +186,6 @@
 %endif
 
 %global _target_platform %{target_cpu_name}-%{_vendor}-%{_target_os}%{?_gnu}
-%global _alt_target_platform %{alt_target_cpu_name}-%{_vendor}-%{_target_os}%{?_gnu}
 
 %ifarch %{efi_arch}
 %global with_efi_arch 1
@@ -214,13 +199,6 @@
 %global with_efi_modules 1
 %global without_efi_modules 0
 %endif
-%endif
-
-%if 0%{?alt_efi_arch:1}
-%global with_alt_efi_arch 1
-%global grubaltefiname grub%{alt_efi_arch}.efi
-%global grubalteficdname gcd%{alt_efi_arch}.efi
-%global grubaltefiarch %{alt_target_cpu_name}-efi
 %endif
 
 %ifnarch %{efi_only}
@@ -481,15 +459,6 @@ cd grub-%{1}-%{tarversion}					\
 cd ..								\
 %{nil}
 
-%define do_alt_efi_build()					\
-cd grub-%{1}-%{tarversion}					\
-%{expand:%%do_efi_configure %%{4} %%{5} %%{6}}			\
-%do_efi_build_modules						\
-%{expand:%%do_efi_link_utils %{grubefiarch}}			\
-%{expand:%%do_efi_build_images %{alt_grub_target_name} %{2} %{3} ../grub-%{grubefiarch}-%{tarversion}/ %{7} %{8} %{9} %{10} %{11} %{12}} \
-cd ..								\
-%{nil}
-
 %define do_legacy_build()					\
 cd grub-%{1}-%{tarversion}					\
 %configure							\\\
@@ -528,26 +497,6 @@ git commit -m "After emu configure"				\
 make %{?_smp_mflags} ascii.h widthspec.h			\
 make %{?_smp_mflags} -C grub-core/lib/gnulib			\
 make %{?_smp_mflags} -C grub-core				\
-cd ..								\
-%{nil}
-
-%define do_alt_efi_install()					\
-cd grub-%{1}-%{tarversion}					\
-install -d -m 755 $RPM_BUILD_ROOT/usr/lib/grub/%{grubaltefiarch}/ \
-find . '(' -iname gdb_grub					\\\
-	-o -iname kernel.exec					\\\
-	-o -iname kernel.img					\\\
-	-o -iname config.h					\\\
-	-o -iname gmodule.pl					\\\
-	-o -iname modinfo.sh					\\\
-	-o -iname '*.lst'					\\\
-	-o -iname '*.mod'					\\\
-	')'							\\\
-	-exec cp {} $RPM_BUILD_ROOT/usr/lib/grub/%{grubaltefiarch}/ \\\; \
-find $RPM_BUILD_ROOT -type f -iname "*.mod*" -exec chmod a-x {} '\;'	\
-install -m 700 %{2} $RPM_BUILD_ROOT%{efi_esp_dir}/%{2}	\
-install -m 700 %{3} $RPM_BUILD_ROOT%{efi_esp_dir}/%{3} \
-%{expand:%%do_install_protected_file %{name}-%{alt_package_arch}} \
 cd ..								\
 %{nil}
 
@@ -592,7 +541,7 @@ if [ -f $RPM_BUILD_ROOT/%{_libdir}/grub/%{1}/%{name}.chrp ]; then \
 	mv $RPM_BUILD_ROOT/%{_libdir}/grub/%{1}/%{name}.chrp	\\\
 	   $RPM_BUILD_ROOT/%{_libdir}/grub/%{1}/%{name}.chrp	\
 fi								\
-if [ %{3} -eq 0 ]; then						\
+if [ %{2} -eq 0 ]; then						\
 	${RPM_BUILD_ROOT}/%{_bindir}/%{name}-editenv		\\\
 		${RPM_BUILD_ROOT}/boot/%{name}/grubenv create	\
 fi								\

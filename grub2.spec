@@ -14,7 +14,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	21%{?dist}
+Release:	22%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -157,9 +157,6 @@ This subpackage provides tools for support of all platforms.
 %if 0%{with_efi_arch}
 %{expand:%define_efi_variant %%{package_arch} -o}
 %endif
-%if 0%{with_alt_efi_arch}
-%{expand:%define_efi_variant %%{alt_package_arch}}
-%endif
 %if 0%{with_legacy_arch}
 %{expand:%define_legacy_variant %%{legacy_package_arch}}
 %endif
@@ -192,12 +189,6 @@ sed -e "s,@@VERSION@@,%{version},g" -e "s,@@VERSION_RELEASE@@,%{version}-%{relea
     %{SOURCE12} > grub-%{grubefiarch}-%{tarversion}/sbat.csv
 git add grub-%{grubefiarch}-%{tarversion}
 %endif
-%if 0%{with_alt_efi_arch}
-mkdir grub-%{grubaltefiarch}-%{tarversion}
-grep -A100000 '# stuff "make" creates' .gitignore > grub-%{grubaltefiarch}-%{tarversion}/.gitignore
-cp %{SOURCE4} grub-%{grubaltefiarch}-%{tarversion}/unifont.pcf.gz
-git add grub-%{grubaltefiarch}-%{tarversion}
-%endif
 %if 0%{with_legacy_arch}
 mkdir grub-%{grublegacyarch}-%{tarversion}
 grep -A100000 '# stuff "make" creates' .gitignore > grub-%{grublegacyarch}-%{tarversion}/.gitignore
@@ -215,9 +206,6 @@ git commit -m "After making subdirs"
 %build
 %if 0%{with_efi_arch}
 %{expand:%do_primary_efi_build %%{grubefiarch} %%{grubefiname} %%{grubeficdname} %%{_target_platform} %%{efi_target_cflags} %%{efi_host_cflags} %{sb_ca} %{sb_cer} %{sb_key}}
-%endif
-%if 0%{with_alt_efi_arch}
-%{expand:%do_alt_efi_build %%{grubaltefiarch} %%{grubaltefiname} %%{grubalteficdname} %%{_alt_target_platform} %%{alt_efi_target_cflags} %%{alt_efi_host_cflags} %{sb_ca} %{sb_cer} %{sb_key}}
 %endif
 %if 0%{with_legacy_arch}
 %{expand:%do_legacy_build %%{grublegacyarch}}
@@ -245,11 +233,8 @@ rm -fr $RPM_BUILD_ROOT
 %if 0%{with_efi_arch}
 %{expand:%do_efi_install %%{grubefiarch} %%{grubefiname} %%{grubeficdname}}
 %endif
-%if 0%{with_alt_efi_arch}
-%{expand:%do_alt_efi_install %%{grubaltefiarch} %%{grubaltefiname} %%{grubalteficdname}}
-%endif
 %if 0%{with_legacy_arch}
-%{expand:%do_legacy_install %%{grublegacyarch} %%{alt_grub_target_name} 0%{with_efi_arch}}
+%{expand:%do_legacy_install %%{grublegacyarch} 0%{with_efi_arch}}
 %endif
 %if 0%{with_emu_arch}
 %{expand:%do_emu_install %%{package_arch}}
@@ -530,9 +515,6 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %if 0%{with_efi_arch}
 %{expand:%define_efi_variant_files %%{package_arch} %%{grubefiname} %%{grubeficdname} %%{grubefiarch} %%{target_cpu_name} %%{grub_target_name}}
 %endif
-%if 0%{with_alt_efi_arch}
-%{expand:%define_efi_variant_files %%{alt_package_arch} %%{grubaltefiname} %%{grubalteficdname} %%{grubaltefiarch} %%{alt_target_cpu_name} %%{alt_grub_target_name}}
-%endif
 %if 0%{with_legacy_arch}
 %{expand:%define_legacy_variant_files %%{legacy_package_arch} %%{grublegacyarch}}
 %endif
@@ -548,6 +530,10 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Fri Feb 18 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-22
+- Stop building unsupported 32-bit UEFI stuff
+- Resolves: #2038401
+
 * Wed Feb 16 2022 Brian Stinson <bstinson@redhat.com> - 2.06-21
 - Require Secure Boot certs based on architecture
 - Resolves: #2049214
