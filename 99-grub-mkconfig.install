@@ -40,13 +40,16 @@ if [[ $DISABLE_BLS = "true" ]]; then
     fi
 fi
 
+[ -f /etc/default/grub ] && . /etc/default/grub
+if [ x$GRUB_ENABLE_BLSCFG = xfalse ]; then
+   RUN_MKCONFIG=true
+fi
+
 # A traditional grub configuration file needs to be generated only in the case when
 # the bootloaders are not capable of populating a menu entry from the BLS fragments.
 if [[ $RUN_MKCONFIG != "true" ]]; then
     exit 0
 fi
-
-[[ -f /etc/default/grub ]] && . /etc/default/grub
 
 COMMAND="$1"
 
