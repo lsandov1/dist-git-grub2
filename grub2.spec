@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	114%{?dist}
+Release:	115%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -510,6 +510,10 @@ fi
 %endif
 
 %changelog
+* Fri Feb 18 2022 Robbie Harwood <rharwood@redhat.com> - 2.02-115
+- Re-arm GRUB_ENABLE_BLSCFG=false
+- Resolves: #1899903
+
 * Mon Feb 14 2022 Robbie Harwood <rharwood@redhat.com> - 2.02-114
 - Fix behavior of GRUB_TERMINAL_INPUT=at_keyboard
 - Resolves: #2020927
