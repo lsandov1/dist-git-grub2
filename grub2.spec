@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	116%{?dist}
+Release:	117%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -510,6 +510,10 @@ fi
 %endif
 
 %changelog
+* Thu Feb 24 2022 Robbie Harwood <rharwood@redhat.com> - 2.02-117
+- Once more, for signing
+- Resolves: #2048904
+
 * Thu Feb 24 2022 Robbie Harwood <rharwood@redhat.com> - 2.02-116
 - Add efidisk/connectefi patches
 - Resolves: #2048904
