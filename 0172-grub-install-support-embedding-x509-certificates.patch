@@ -33,7 +33,7 @@ index 355a43844ac..b81ac0ae46c 100644
  
      pseudo_file.fs = &pseudo_fs;
 diff --git a/util/grub-install-common.c b/util/grub-install-common.c
-index aab2a941f85..422f82362c7 100644
+index a74fee16e22..2d9693ffeb7 100644
 --- a/util/grub-install-common.c
 +++ b/util/grub-install-common.c
 @@ -460,6 +460,8 @@ static char **pubkeys;
@@ -82,7 +82,7 @@ index aab2a941f85..422f82362c7 100644
    for (md = modules.entries; *md; md++)
      {
        *p++ = '\'';
-@@ -688,7 +706,9 @@ grub_install_make_image_wrap_file (const char *dir, const char *prefix,
+@@ -684,7 +702,9 @@ grub_install_make_image_wrap_file (const char *dir, const char *prefix,
  
    grub_install_generate_image (dir, prefix, fp, outname,
  			       modules.entries, memdisk_path,

@@ -43,16 +43,16 @@ that verifies these signatures. You can find one at:
 I will be proposing this for inclusion in a future Power Architecture
 Platform Reference (PAPR).
 ---
- util/grub-install-common.c  | 18 ++++++++++++++++--
+ util/grub-install-common.c  | 18 ++++++++++++++----
  util/grub-mkimage.c         | 15 +++++++++++++--
  util/grub-mkimagexx.c       | 39 ++++++++++++++++++++++++++++++++++++++-
  util/mkimage.c              | 13 +++++++------
  include/grub/util/install.h |  8 ++++++--
  include/grub/util/mkimage.h |  4 ++--
- 6 files changed, 82 insertions(+), 15 deletions(-)
+ 6 files changed, 80 insertions(+), 17 deletions(-)
 
 diff --git a/util/grub-install-common.c b/util/grub-install-common.c
-index 4e212e690c5..aab2a941f85 100644
+index 4e212e690c5..a74fee16e22 100644
 --- a/util/grub-install-common.c
 +++ b/util/grub-install-common.c
 @@ -461,10 +461,12 @@ static size_t npubkeys;
@@ -81,22 +81,24 @@ index 4e212e690c5..aab2a941f85 100644
      default:
        return 0;
      }
-@@ -665,7 +673,13 @@ grub_install_make_image_wrap_file (const char *dir, const char *prefix,
+@@ -661,11 +669,13 @@ grub_install_make_image_wrap_file (const char *dir, const char *prefix,
+ 		  " --output '%s' "
+ 		  " --dtb '%s' "
+ 		  "--sbat '%s' "
+-		  "--format '%s' --compression '%s' %s %s %s\n",
++		  "--format '%s' --compression '%s' "
++		  "--appended-signature-size %zu %s %s %s\n",
  		  dir, prefix,
  		  outname, dtb ? : "", sbat ? : "", mkimage_target,
- 		  compnames[compression], note ? "--note" : "",
+-		  compnames[compression], note ? "--note" : "",
 -		  disable_shim_lock ? "--disable-shim-lock" : "", s);
-+		  disable_shim_lock ? "--disable-shim-lock" : "",
-+		  "--format '%s' --compression '%s' "
-+		  "--appended-signature-size %zu %s %s\n",
-+		  dir, prefix,
-+		  outname, dtb ? : "", mkimage_target,
 +		  compnames[compression], appsig_size,
++		  disable_shim_lock ? "--disable-shim-lock" : "",
 +		  note ? "--note" : "", s);
    free (s);
  
    tgt = grub_install_get_image_target (mkimage_target);
-@@ -675,7 +689,7 @@ grub_install_make_image_wrap_file (const char *dir, const char *prefix,
+@@ -675,7 +685,7 @@ grub_install_make_image_wrap_file (const char *dir, const char *prefix,
    grub_install_generate_image (dir, prefix, fp, outname,
  			       modules.entries, memdisk_path,
  			       pubkeys, npubkeys, config_path, tgt,
