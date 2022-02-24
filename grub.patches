@@ -222,3 +222,6 @@ Patch0221: 0221-fs-xfs-Fix-unreadable-filesystem-with-v4-superblock.patch
 Patch0222: 0222-Print-module-name-on-license-check-failure.patch
 Patch0223: 0223-powerpc-ieee1275-load-grub-at-4MB-not-2MB.patch
 Patch0224: 0224-grub-mkconfig-restore-umask-for-grub.cfg.patch
+Patch0225: 0225-search-fixed-bug-stopping-iteration-when-no-floppy-i.patch
+Patch0226: 0226-search-new-efidisk-only-option-on-EFI-systems.patch
+Patch0227: 0227-efi-new-connectefi-command.patch

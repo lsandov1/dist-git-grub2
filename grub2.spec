@@ -14,7 +14,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	23%{?dist}
+Release:	24%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -530,6 +530,11 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Thu Feb 24 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-24
+- Add efidisk/connectefi patches
+- Resolves: #2049219
+- Resolves: #2049220
+
 * Fri Feb 18 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-23
 - Re-arm GRUB_ENABLE_BLSCFG=false
 - Resolves: #2018331
