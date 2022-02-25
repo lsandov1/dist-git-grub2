@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	117%{?dist}
+Release:	118%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -510,6 +510,10 @@ fi
 %endif
 
 %changelog
+* Fri Feb 25 2022 Robbie Harwood <rharwood@redhat.com> - 2.02-118
+- Fix check on blscfg conditional (mlewando)
+- Resolves: #1899903
+
 * Thu Feb 24 2022 Robbie Harwood <rharwood@redhat.com> - 2.02-117
 - Once more, for signing
 - Resolves: #2048904

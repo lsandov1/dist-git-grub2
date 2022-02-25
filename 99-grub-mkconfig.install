@@ -9,8 +9,8 @@ ARCH=$(uname -m)
 [[ -f /etc/default/grub ]] && . /etc/default/grub
 
 # Can't assume a BLS capable bootloader on ppc64
-if [[ (x$GRUB_ENABLE_BLSCFG != xfalse) ||
-	  ($ARCH != "ppc64" && $ARCH != "ppc64le") ]]; then
+if [[ x$GRUB_ENABLE_BLSCFG != xfalse &&
+	  $ARCH != "ppc64" && $ARCH != "ppc64le" ]]; then
     exit 0
 fi
 
