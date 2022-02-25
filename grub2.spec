@@ -525,6 +525,9 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Fri Feb 25 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-19
+- Fix stripping of annobin -spec
+
 * Thu Feb 24 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-18
 - Add efidisk/connectefi patches
 
