@@ -4,6 +4,7 @@
 %global _lto_cflags %{nil}
 
 %undefine _hardened_build
+%undefine _package_note_file
 
 %global tarversion 2.06
 %undefine _missing_build_ids_terminate_build
@@ -16,7 +17,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	19%{?dist}
+Release:	20%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -525,6 +526,11 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Mon Feb 28 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-20
+- Disable the .package_note awfulness
+- Resolves: #2058712
+- Resolves: #2058527
+
 * Fri Feb 25 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-19
 - Fix stripping of annobin -spec
 
