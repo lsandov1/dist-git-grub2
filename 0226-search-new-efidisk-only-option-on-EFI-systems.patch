@@ -17,7 +17,9 @@ effective EFI device behind.
 This commit also refactors handling of --no-floppy option.
 
 Signed-off-by: Renaud Métrich <rmetrich@redhat.com>
-(cherry picked from commit aedb45f32106dd2a64f906b0db6a76ee09f1b930)
+[rharwood: apply rmetrich's flags initialization fix]
+Signed-off-by: Robbie Harwood <rharwood@redhat.com>
+(cherry picked from commit fdd8396f4fa750bbbabd4298f2593942f2b84710)
 ---
  grub-core/commands/search.c      | 27 +++++++++++++++++++++++----
  grub-core/commands/search_wrap.c | 18 ++++++++++++------
@@ -85,7 +87,7 @@ index 51656e361cc..57d26ced8a8 100644
      .nhints = nhints,
      .count = 0,
 diff --git a/grub-core/commands/search_wrap.c b/grub-core/commands/search_wrap.c
-index 47fc8eb9966..464e6ebb1c8 100644
+index 47fc8eb9966..0b62acf8535 100644
 --- a/grub-core/commands/search_wrap.c
 +++ b/grub-core/commands/search_wrap.c
 @@ -40,6 +40,7 @@ static const struct grub_arg_option options[] =
@@ -108,7 +110,7 @@ index 47fc8eb9966..464e6ebb1c8 100644
    const char *id = 0;
    int i = 0, j = 0, nhints = 0;
    char **hints = NULL;
-+  enum search_flags flags;
++  enum search_flags flags = 0;
  
    if (state[SEARCH_HINT].set)
      for (i = 0; state[SEARCH_HINT].args[i]; i++)
