@@ -17,8 +17,10 @@ effective EFI device behind.
 This commit also refactors handling of --no-floppy option.
 
 Signed-off-by: Renaud Métrich <rmetrich@redhat.com>
-(cherry picked from commit aedb45f32106dd2a64f906b0db6a76ee09f1b930)
-(cherry picked from commit 4fef28d5405f7f986dba6e503e48d6a408588382)
+[rharwood: apply rmetrich's flags initialization fix]
+Signed-off-by: Robbie Harwood <rharwood@redhat.com>
+(cherry picked from commit fdd8396f4fa750bbbabd4298f2593942f2b84710)
+(cherry picked from commit bea473b58726705bb83a3db88f52d46fdcc6150e)
 ---
  grub-core/commands/search.c      | 27 +++++++++++++++++++++++----
  grub-core/commands/search_wrap.c | 18 ++++++++++++------
@@ -86,7 +88,7 @@ index d3180bf66..2036a756b 100644
      .nhints = nhints,
      .count = 0,
 diff --git a/grub-core/commands/search_wrap.c b/grub-core/commands/search_wrap.c
-index 47fc8eb99..464e6ebb1 100644
+index 47fc8eb99..0b62acf85 100644
 --- a/grub-core/commands/search_wrap.c
 +++ b/grub-core/commands/search_wrap.c
 @@ -40,6 +40,7 @@ static const struct grub_arg_option options[] =
@@ -109,7 +111,7 @@ index 47fc8eb99..464e6ebb1 100644
    const char *id = 0;
    int i = 0, j = 0, nhints = 0;
    char **hints = NULL;
-+  enum search_flags flags;
++  enum search_flags flags = 0;
  
    if (state[SEARCH_HINT].set)
      for (i = 0; state[SEARCH_HINT].args[i]; i++)

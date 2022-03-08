@@ -1,4 +1,4 @@
-From fe8b1f619fafcd2438e3d86fb07c6a5e9280423c Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Ian Page Hands <iphands@gmail.com>
 Date: Tue, 8 Jun 2021 13:48:56 -0400
 Subject: [PATCH] efinet: Add DHCP proxy support
@@ -51,6 +51,3 @@ index df7760ad2..25809050b 100644
  					1, device, path);
  	grub_dprintf ("efinet", "device: `%s' path: `%s'\n", *device, *path);
        }
--- 
-2.34.1
-

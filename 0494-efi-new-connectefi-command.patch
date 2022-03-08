@@ -50,10 +50,10 @@ The code is easily extensible to handle other arguments in the future if
 needed.
 
 Signed-off-by: Renaud Métrich <rmetrich@redhat.com>
-(cherry picked from commit 73e183ce1e42bd97ae91a9254f8d4acd4d0b1cbc)
-(cherry picked from commit 174c3efcf17b1f5ad466f9c5fb83cd9554edb5f9)
+Signed-off-by: Robbie Harwood <rharwood@redhat.com>
+(cherry picked from commit cc972c27314c841f80ab0fe8318fae06f078c680)
+(cherry picked from commit 84b0c3f965a3918be64ca850139bea7c32d23ae9)
 ---
- NEWS                                |   2 +-
  grub-core/Makefile.core.def         |   6 ++
  grub-core/commands/efi/connectefi.c | 205 ++++++++++++++++++++++++++++++++++++
  grub-core/commands/efi/lsefi.c      |   1 +
@@ -61,22 +61,10 @@ Signed-off-by: Renaud Métrich <rmetrich@redhat.com>
  grub-core/kern/efi/efi.c            |  13 +++
  include/grub/efi/disk.h             |   2 +
  include/grub/efi/efi.h              |   5 +
+ NEWS                                |   2 +-
  8 files changed, 246 insertions(+), 1 deletion(-)
  create mode 100644 grub-core/commands/efi/connectefi.c
 
-diff --git a/NEWS b/NEWS
-index 2ebd54e78..b04041507 100644
---- a/NEWS
-+++ b/NEWS
-@@ -66,7 +66,7 @@ New in 2.02:
-   * Prefer pmtimer for TSC calibration.
- 
- * New/improved platform support:
--  * New `efifwsetup' and `lsefi' commands on EFI platforms.
-+  * New `efifwsetup', `lsefi' and `connectefi` commands on EFI platforms.
-   * New `cmosdump' and `cmosset' commands on platforms with CMOS support.
-   * New command `pcidump' for PCI platforms.
-   * Improve opcode parsing in ACPI halt implementation.
 diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
 index 612df2e9c..ef06f8c95 100644
 --- a/grub-core/Makefile.core.def
@@ -394,3 +382,16 @@ index 570a69361..4411ffa16 100644
  void *EXPORT_FUNC(grub_efi_open_protocol) (grub_efi_handle_t handle,
  					   grub_efi_guid_t *protocol,
  					   grub_efi_uint32_t attributes);
+diff --git a/NEWS b/NEWS
+index 2ebd54e78..b04041507 100644
+--- a/NEWS
++++ b/NEWS
+@@ -66,7 +66,7 @@ New in 2.02:
+   * Prefer pmtimer for TSC calibration.
+ 
+ * New/improved platform support:
+-  * New `efifwsetup' and `lsefi' commands on EFI platforms.
++  * New `efifwsetup', `lsefi' and `connectefi` commands on EFI platforms.
+   * New `cmosdump' and `cmosset' commands on platforms with CMOS support.
+   * New command `pcidump' for PCI platforms.
+   * Improve opcode parsing in ACPI halt implementation.
