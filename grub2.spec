@@ -41,7 +41,8 @@ Source12:	sbat.csv.in
 BuildRequires:	gcc efi-srpm-macros
 BuildRequires:	flex bison binutils python3
 BuildRequires:	ncurses-devel xz-devel bzip2-devel
-BuildRequires:	freetype-devel libusb-devel
+BuildRequires:	freetype-devel
+BuildRequires:	pkgconfig(libusb)
 BuildRequires:	fuse-devel
 BuildRequires:	rpm-devel rpm-libs
 BuildRequires:	autoconf automake device-mapper-devel
