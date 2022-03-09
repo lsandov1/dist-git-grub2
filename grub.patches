@@ -207,6 +207,6 @@ Patch0206: 0206-Where-present-ensure-config-util.h-precedes-config.h.patch
 Patch0207: 0207-Drop-gnulib-fix-base64.patch.patch
 Patch0208: 0208-Drop-gnulib-no-abort.patch.patch
 Patch0209: 0209-Update-gnulib-version-and-drop-most-gnulib-patches.patch
-Patch0210: 0210-search-fixed-bug-stopping-iteration-when-no-floppy-i.patch
+Patch0210: 0210-commands-search-Fix-bug-stopping-iteration-when-no-f.patch
 Patch0211: 0211-search-new-efidisk-only-option-on-EFI-systems.patch
 Patch0212: 0212-efi-new-connectefi-command.patch

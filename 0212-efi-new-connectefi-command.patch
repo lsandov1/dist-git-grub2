@@ -50,6 +50,7 @@ The code is easily extensible to handle other arguments in the future if
 needed.
 
 Signed-off-by: Renaud Métrich <rmetrich@redhat.com>
+Signed-off-by: Robbie Harwood <rharwood@redhat.com>
 ---
  grub-core/Makefile.core.def         |   6 ++
  grub-core/commands/efi/connectefi.c | 205 ++++++++++++++++++++++++++++++++++++
