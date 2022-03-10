@@ -7,12 +7,15 @@ Signed-off-by: Peter Jones <pjones@redhat.com>
 Signed-off-by: Javier Martinez Canillas <javierm@redhat.com>
 [jhlavac: Use ${etcdefaultgrub} instead of /etc/default/grub]
 Signed-off-by: Jan Hlavac <jhlavac@redhat.com>
+[rharwood: skip on ostree installations]
+Signed-off-by: Robbie Harwood <rharwood@redhat.com>
 ---
  Makefile.util.def             |   7 +
  util/grub-set-password.in     |   2 +-
  util/grub-switch-to-blscfg.8  |  33 +++++
  util/grub-switch-to-blscfg.in | 317 ++++++++++++++++++++++++++++++++++++++++++
- 4 files changed, 358 insertions(+), 1 deletion(-)
+ util/grub.d/10_linux.in       |   2 +-
+ 5 files changed, 359 insertions(+), 2 deletions(-)
  create mode 100644 util/grub-switch-to-blscfg.8
  create mode 100644 util/grub-switch-to-blscfg.in
 
@@ -408,3 +411,16 @@ index 00000000000..a851424beb2
 +
 +# Bye.
 +exit 0
+diff --git a/util/grub.d/10_linux.in b/util/grub.d/10_linux.in
+index 9fcd77cacc3..81f35a2f3f0 100644
+--- a/util/grub.d/10_linux.in
++++ b/util/grub.d/10_linux.in
+@@ -138,7 +138,7 @@ blsdir="/boot/loader/entries"
+ 
+ get_sorted_bls()
+ {
+-    if ! [ -d "${blsdir}" ]; then
++    if ! [ -d "${blsdir}" ] || [ -f /run/ostree-booted ]; then
+         return
+     fi
+ 
