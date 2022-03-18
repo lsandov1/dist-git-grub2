@@ -210,3 +210,7 @@ Patch0209: 0209-Update-gnulib-version-and-drop-most-gnulib-patches.patch
 Patch0210: 0210-commands-search-Fix-bug-stopping-iteration-when-no-f.patch
 Patch0211: 0211-search-new-efidisk-only-option-on-EFI-systems.patch
 Patch0212: 0212-efi-new-connectefi-command.patch
+Patch0213: 0213-grub-core-loader-i386-efi-linux.c-do-not-validate-ke.patch
+Patch0214: 0214-grub-core-loader-arm64-linux.c-do-not-validate-kerne.patch
+Patch0215: 0215-grub-core-loader-efi-chainloader.c-do-not-validate-c.patch
+Patch0216: 0216-grub-core-loader-efi-linux.c-drop-now-unused-grub_li.patch
