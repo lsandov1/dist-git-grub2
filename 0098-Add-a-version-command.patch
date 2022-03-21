@@ -17,10 +17,10 @@ Signed-off-by: Peter Jones <pjones@redhat.com>
  create mode 100644 grub-core/commands/version.c
 
 diff --git a/configure.ac b/configure.ac
-index bb4e05ceef3..59ccda24475 100644
+index 8fd57b709ff..31a08ff9b8e 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -312,6 +312,19 @@ AC_SUBST(target_cpu)
+@@ -310,6 +310,19 @@ AC_SUBST(target_cpu)
  AC_SUBST(platform)
  
  # Define default variables

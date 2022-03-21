@@ -49,7 +49,7 @@ Changes in v2:
  create mode 100644 util/grub.d/01_menu_auto_hide.in
 
 diff --git a/Makefile.util.def b/Makefile.util.def
-index 48512bc6311..314e6f2acf8 100644
+index bda9fd12111..cb8e3c3270d 100644
 --- a/Makefile.util.def
 +++ b/Makefile.util.def
 @@ -458,6 +458,12 @@ script = {

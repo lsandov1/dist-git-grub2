@@ -13,10 +13,10 @@ Subject: [PATCH] Fix up some man pages rpmdiff noticed.
  create mode 100644 util/grub-syslinux2cfg.1
 
 diff --git a/configure.ac b/configure.ac
-index 58e57a745fa..a0030632220 100644
+index c02898b7568..24f3be54bca 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -87,6 +87,7 @@ grub_TRANSFORM([grub-get-kernel-settings.3])
+@@ -86,6 +86,7 @@ grub_TRANSFORM([grub-get-kernel-settings.3])
  grub_TRANSFORM([grub-glue-efi.3])
  grub_TRANSFORM([grub-install.1])
  grub_TRANSFORM([grub-kbdcomp.3])
@@ -24,7 +24,7 @@ index 58e57a745fa..a0030632220 100644
  grub_TRANSFORM([grub-menulst2cfg.1])
  grub_TRANSFORM([grub-mkconfig.1])
  grub_TRANSFORM([grub-mkfont.3])
-@@ -105,6 +106,7 @@ grub_TRANSFORM([grub-render-label.3])
+@@ -103,6 +104,7 @@ grub_TRANSFORM([grub-render-label.3])
  grub_TRANSFORM([grub-script-check.3])
  grub_TRANSFORM([grub-set-default.1])
  grub_TRANSFORM([grub-sparc64-setup.3])

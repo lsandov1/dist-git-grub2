@@ -48,7 +48,7 @@ Signed-off-by: Robbie Harwood <rharwood@redhat.com>
  delete mode 100644 grub-core/lib/gnulib-patches/fix-unused-value.patch
 
 diff --git a/configure.ac b/configure.ac
-index 3527f069ab2..d04c94691ef 100644
+index 0510afe0172..eb928485e45 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -49,7 +49,7 @@ AC_CANONICAL_TARGET

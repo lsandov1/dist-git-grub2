@@ -17,10 +17,10 @@ Signed-off-by: Peter Jones <pjones@redhat.com>
  3 files changed, 64 insertions(+), 16 deletions(-)
 
 diff --git a/configure.ac b/configure.ac
-index b50fb2e9897..b27573b3de5 100644
+index a4ca2ec542e..f685f300327 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -877,11 +877,23 @@ if ( test "x$target_cpu" = xi386 || test "x$target_cpu" = xx86_64 ) && test "x$p
+@@ -875,11 +875,23 @@ if ( test "x$target_cpu" = xi386 || test "x$target_cpu" = xx86_64 ) && test "x$p
    TARGET_CFLAGS="$TARGET_CFLAGS -mno-mmx -mno-sse -mno-sse2 -mno-sse3 -mno-3dnow"
  fi
  
@@ -45,7 +45,7 @@ index b50fb2e9897..b27573b3de5 100644
    AC_CACHE_CHECK([for options to get soft-float], grub_cv_target_cc_soft_float, [
      grub_cv_target_cc_soft_float=no
      if test "x$target_cpu" = xarm64; then
-@@ -2011,6 +2023,41 @@ HOST_CPPFLAGS="$HOST_CPPFLAGS -I\$(top_builddir)/include"
+@@ -1980,6 +1992,41 @@ HOST_CPPFLAGS="$HOST_CPPFLAGS -I\$(top_builddir)/include"
  TARGET_CPPFLAGS="$TARGET_CPPFLAGS -I\$(top_srcdir)/include"
  TARGET_CPPFLAGS="$TARGET_CPPFLAGS -I\$(top_builddir)/include"
  

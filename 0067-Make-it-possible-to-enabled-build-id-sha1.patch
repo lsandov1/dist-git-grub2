@@ -10,10 +10,10 @@ Signed-off-by: Peter Jones <pjones@redhat.com>
  2 files changed, 27 insertions(+)
 
 diff --git a/configure.ac b/configure.ac
-index a0030632220..b50fb2e9897 100644
+index 24f3be54bca..a4ca2ec542e 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -1470,7 +1470,15 @@ grub_PROG_TARGET_CC
+@@ -1468,7 +1468,15 @@ grub_PROG_TARGET_CC
  if test "x$TARGET_APPLE_LINKER" != x1 ; then
  grub_PROG_OBJCOPY_ABSOLUTE
  fi

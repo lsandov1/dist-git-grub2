@@ -17,7 +17,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	24%{?dist}
+Release:	25%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -422,7 +422,6 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %{_datarootdir}/bash-completion/completions/grub
 %{_sbindir}/%{name}-mkconfig
 %{_sbindir}/%{name}-switch-to-blscfg
-%{_sbindir}/%{name}-rpm-sort
 %{_sbindir}/%{name}-reboot
 %{_bindir}/%{name}-file
 %{_bindir}/%{name}-menulst2cfg
@@ -526,6 +525,9 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Mon Mar 21 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-25
+- Use my sort patch instead
+
 * Mon Mar 21 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-24
 - Fix missing format specifier in appended signature commit
 

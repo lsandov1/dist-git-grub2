@@ -10,10 +10,10 @@ Signed-off-by: Peter Jones <pjones@redhat.com>
  2 files changed, 4 insertions(+), 1 deletion(-)
 
 diff --git a/configure.ac b/configure.ac
-index 6eb297fdbf6..c6bd965f1f9 100644
+index efc871a6732..b45ddb2292f 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -2055,6 +2055,9 @@ if test x"$enable_wextra" != xno ; then
+@@ -2024,6 +2024,9 @@ if test x"$enable_wextra" != xno ; then
    HOST_CFLAGS="$HOST_CFLAGS -Wextra"
  fi
  

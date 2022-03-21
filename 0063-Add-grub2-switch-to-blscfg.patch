@@ -20,10 +20,10 @@ Signed-off-by: Robbie Harwood <rharwood@redhat.com>
  create mode 100644 util/grub-switch-to-blscfg.in
 
 diff --git a/Makefile.util.def b/Makefile.util.def
-index 43a1c7453b1..a90879fa9ba 100644
+index 18a92427767..88f55e35c47 100644
 --- a/Makefile.util.def
 +++ b/Makefile.util.def
-@@ -1365,6 +1365,13 @@ program = {
+@@ -1348,6 +1348,13 @@ program = {
    ldadd = '$(LIBINTL) $(LIBDEVMAPPER) $(LIBZFS) $(LIBNVPAIR) $(LIBGEOM)';
  };
  

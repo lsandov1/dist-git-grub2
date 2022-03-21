@@ -23,7 +23,7 @@ Signed-off-by: Christian Glombek <lorbus@fedoraproject.org>
  create mode 100644 util/grub.d/01_fallback_counting.in
 
 diff --git a/Makefile.util.def b/Makefile.util.def
-index 0b85a7fce4a..27a13bc734e 100644
+index d066652e9bb..e10fe766d1d 100644
 --- a/Makefile.util.def
 +++ b/Makefile.util.def
 @@ -458,6 +458,12 @@ script = {
