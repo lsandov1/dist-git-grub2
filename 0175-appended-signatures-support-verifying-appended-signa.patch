@@ -20,6 +20,8 @@ other mechanisms, such as a password or lockdown, must be used to ensure
 that a user cannot drop to the grub shell and disable verification.
 
 Signed-off-by: Daniel Axtens <dja@axtens.net>
+[pjones: fix missing format specifier]
+Signed-off-by: Robbie Harwood <rharwood@redhat.com>
 ---
  grub-core/Makefile.core.def                  |  12 +
  grub-core/commands/appendedsig/appendedsig.c | 645 +++++++++++++++++++++++++++
@@ -52,7 +54,7 @@ index b4aaccf7b57..77321d218c8 100644
    common = commands/hdparm.c;
 diff --git a/grub-core/commands/appendedsig/appendedsig.c b/grub-core/commands/appendedsig/appendedsig.c
 new file mode 100644
-index 00000000000..dc294cd339e
+index 00000000000..bf8b18b6205
 --- /dev/null
 +++ b/grub-core/commands/appendedsig/appendedsig.c
 @@ -0,0 +1,645 @@
@@ -387,7 +389,7 @@ index 00000000000..dc294cd339e
 +  data = grub_malloc (file_size);
 +  if (!data)
 +    return grub_error (GRUB_ERR_OUT_OF_MEMORY,
-+		       N_("Could not allocate data buffer size "
++		       N_("Could not allocate data buffer size %"
 +		       PRIuGRUB_UINT64_T " for verification"), file_size);
 +
 +  while (total_read_size < file_size)

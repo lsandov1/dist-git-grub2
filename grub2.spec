@@ -17,7 +17,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	23%{?dist}
+Release:	24%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -526,6 +526,9 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Mon Mar 21 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-24
+- Fix missing format specifier in appended signature commit
+
 * Fri Mar 18 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-23
 - Don't verify kernels twice
 
