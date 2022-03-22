@@ -27,10 +27,10 @@ index 005f093809b..535c0f02499 100644
  if test "x${grub_cfg}" != "x"; then
    rm -f "${grub_cfg}.new"
 diff --git a/util/grub-mkconfig_lib.in b/util/grub-mkconfig_lib.in
-index 0f6505bf3b6..5e96f6cc5d2 100644
+index 42c2ea9ba50..fafeac95061 100644
 --- a/util/grub-mkconfig_lib.in
 +++ b/util/grub-mkconfig_lib.in
-@@ -49,7 +49,11 @@ grub_warn ()
+@@ -52,7 +52,11 @@ grub_warn ()
  
  make_system_path_relative_to_its_root ()
  {

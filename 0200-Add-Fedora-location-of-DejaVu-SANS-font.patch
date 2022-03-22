@@ -16,10 +16,10 @@ Signed-off-by: Robbie Harwood <rharwood@redhat.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/configure.ac b/configure.ac
-index 6b19c489cb0..0510afe0172 100644
+index 3c808a72230..3527f069ab2 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -1810,7 +1810,7 @@ fi
+@@ -1812,7 +1812,7 @@ fi
  
  if test x"$starfield_excuse" = x; then
     for ext in pcf pcf.gz bdf bdf.gz ttf ttf.gz; do

@@ -51,10 +51,10 @@ Signed-off-by: Daniel Axtens <dja@axtens.net>
  create mode 100644 tests/test_asn1.in
 
 diff --git a/Makefile.util.def b/Makefile.util.def
-index 6366442129d..d04b3fe68a1 100644
+index 9927c2cfd6a..3f191aa8095 100644
 --- a/Makefile.util.def
 +++ b/Makefile.util.def
-@@ -1289,6 +1289,12 @@ script = {
+@@ -1306,6 +1306,12 @@ script = {
    common = tests/syslinux_test.in;
  };
  

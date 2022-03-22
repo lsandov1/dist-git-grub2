@@ -17,7 +17,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	26%{?dist}
+Release:	27%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -422,6 +422,7 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %{_datarootdir}/bash-completion/completions/grub
 %{_sbindir}/%{name}-mkconfig
 %{_sbindir}/%{name}-switch-to-blscfg
+%{_sbindir}/%{name}-rpm-sort
 %{_sbindir}/%{name}-reboot
 %{_bindir}/%{name}-file
 %{_bindir}/%{name}-menulst2cfg
@@ -525,6 +526,12 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Tue Mar 22 2022 Adam Williamson <awilliam@redhat.com> - 2.06-27
+- Revert "Use my sort patch instead", it broke Rawhide
+- Tweak BLS skipping on ostree to work in chroots (I hope)
+- Resolves: #2066969
+- Resolves: #2059776
+
 * Tue Mar 22 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-26
 - Fix rebase on x509 embedding patch
 

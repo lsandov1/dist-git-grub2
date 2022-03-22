@@ -89,7 +89,7 @@ index 535c0f02499..f55339a3f64 100644
  if test "x${grub_cfg}" != "x"; then
    rm -f "${grub_cfg}.new"
 diff --git a/util/grub-mkconfig_lib.in b/util/grub-mkconfig_lib.in
-index 5e96f6cc5d2..301d8a8a1e4 100644
+index fafeac95061..d8bb4069360 100644
 --- a/util/grub-mkconfig_lib.in
 +++ b/util/grub-mkconfig_lib.in
 @@ -30,6 +30,9 @@ fi
@@ -102,7 +102,7 @@ index 5e96f6cc5d2..301d8a8a1e4 100644
  if test "x$grub_mkrelpath" = x; then
    grub_mkrelpath="${bindir}/@grub_mkrelpath@"
  fi
-@@ -122,8 +125,19 @@ EOF
+@@ -125,8 +128,19 @@ EOF
    fi
  }
  
@@ -122,7 +122,7 @@ index 5e96f6cc5d2..301d8a8a1e4 100644
    old_ifs="$IFS"
    IFS='
  '
-@@ -158,18 +172,18 @@ prepare_grub_to_access_device ()
+@@ -161,18 +175,18 @@ prepare_grub_to_access_device ()
    # otherwise set root as per value in device.map.
    fs_hint="`"${grub_probe}" --device $@ --target=compatibility_hint`"
    if [ "x$fs_hint" != x ]; then
