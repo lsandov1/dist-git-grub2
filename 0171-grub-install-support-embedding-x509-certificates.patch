@@ -12,12 +12,12 @@ Signed-off-by: Alastair D'Silva <alastair@d-silva.org>
 Signed-off-by: Daniel Axtens <dja@axtens.net>
 ---
  grub-core/commands/pgp.c    |  2 +-
- util/grub-install-common.c  | 22 +++++++++++++++++++++-
+ util/grub-install-common.c  | 23 ++++++++++++++++++++++-
  util/grub-mkimage.c         | 15 +++++++++++++--
  util/mkimage.c              | 38 ++++++++++++++++++++++++++++++++++++--
  include/grub/kernel.h       |  4 +++-
  include/grub/util/install.h |  7 +++++--
- 6 files changed, 79 insertions(+), 9 deletions(-)
+ 6 files changed, 80 insertions(+), 9 deletions(-)
 
 diff --git a/grub-core/commands/pgp.c b/grub-core/commands/pgp.c
 index 355a43844ac..b81ac0ae46c 100644
@@ -33,7 +33,7 @@ index 355a43844ac..b81ac0ae46c 100644
  
      pseudo_file.fs = &pseudo_fs;
 diff --git a/util/grub-install-common.c b/util/grub-install-common.c
-index a74fee16e22..2d9693ffeb7 100644
+index a74fee16e22..c603f5b308d 100644
 --- a/util/grub-install-common.c
 +++ b/util/grub-install-common.c
 @@ -460,6 +460,8 @@ static char **pubkeys;
@@ -45,19 +45,20 @@ index a74fee16e22..2d9693ffeb7 100644
  static grub_compression_t compression;
  static size_t appsig_size;
  
-@@ -500,6 +502,11 @@ grub_install_parse (int key, char *arg)
-       return 1;
+@@ -501,6 +503,12 @@ grub_install_parse (int key, char *arg)
      case GRUB_INSTALL_OPTIONS_DISABLE_SHIM_LOCK:
        disable_shim_lock = 1;
+       return 1;
 +    case 'x':
 +      x509keys = xrealloc (x509keys,
 +			  sizeof (x509keys[0])
 +			  * (nx509keys + 1));
 +      x509keys[nx509keys++] = xstrdup (arg);
-       return 1;
++      return 1;
  
      case GRUB_INSTALL_OPTIONS_VERBOSITY:
-@@ -627,6 +634,9 @@ grub_install_make_image_wrap_file (const char *dir, const char *prefix,
+       verbosity++;
+@@ -627,6 +635,9 @@ grub_install_make_image_wrap_file (const char *dir, const char *prefix,
    for (pk = pubkeys; pk < pubkeys + npubkeys; pk++)
      slen += 20 + grub_strlen (*pk);
  
@@ -67,7 +68,7 @@ index a74fee16e22..2d9693ffeb7 100644
    for (md = modules.entries; *md; md++)
      {
        slen += 10 + grub_strlen (*md);
-@@ -655,6 +665,14 @@ grub_install_make_image_wrap_file (const char *dir, const char *prefix,
+@@ -655,6 +666,14 @@ grub_install_make_image_wrap_file (const char *dir, const char *prefix,
        *p++ = ' ';
      }
  
@@ -82,7 +83,7 @@ index a74fee16e22..2d9693ffeb7 100644
    for (md = modules.entries; *md; md++)
      {
        *p++ = '\'';
-@@ -684,7 +702,9 @@ grub_install_make_image_wrap_file (const char *dir, const char *prefix,
+@@ -684,7 +703,9 @@ grub_install_make_image_wrap_file (const char *dir, const char *prefix,
  
    grub_install_generate_image (dir, prefix, fp, outname,
  			       modules.entries, memdisk_path,

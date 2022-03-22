@@ -17,7 +17,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	25%{?dist}
+Release:	26%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -525,6 +525,9 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Tue Mar 22 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-26
+- Fix rebase on x509 embedding patch
+
 * Mon Mar 21 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-25
 - Use my sort patch instead
 
