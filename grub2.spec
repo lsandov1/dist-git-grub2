@@ -17,7 +17,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	28%{?dist}
+Release:	29%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -526,6 +526,9 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Wed Mar 23 2022 Adam Williamson <awilliam@redhat.com> - 2.06-29
+- Fix a syntax error in the ostree BLS fix attempt
+
 * Wed Mar 23 2022 Peter Robinson <pbrobinson@fedoraproject.org> 2.06-28
 - Rebuild for secure-boot signing
 

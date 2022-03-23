@@ -420,7 +420,7 @@ index 9fcd77cacc3..81f35a2f3f0 100644
  get_sorted_bls()
  {
 -    if ! [ -d "${blsdir}" ]; then
-+    if ! [ -d "${blsdir}" ] || [ -f /run/ostree-booted ] || [ -d /ostree/repo ]]; then
++    if ! [ -d "${blsdir}" ] || [ -f /run/ostree-booted ] || [ -d /ostree/repo ]; then
          return
      fi
  
