@@ -17,7 +17,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	30%{?dist}
+Release:	31%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -58,7 +58,7 @@ BuildRequires:	pesign >= 0.99-8
 BuildRequires:	ccache
 %endif
 
-ExcludeArch:	s390 s390x %{ix86}
+ExcludeArch:	s390 s390x
 Obsoletes:	%{name} <= %{evr}
 
 %if 0%{with_legacy_arch}
@@ -526,6 +526,9 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Wed Mar 30 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-31
+- Revert previous change (grub2-pc-modules is built on i32)
+
 * Tue Mar 29 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-30
 - Drop i32 support
 
