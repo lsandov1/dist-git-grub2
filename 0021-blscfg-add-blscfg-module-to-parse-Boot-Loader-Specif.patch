@@ -28,7 +28,7 @@ Signed-off-by: Will Thompson <wjt@endlessm.com>
  create mode 100644 grub-core/commands/loadenv.h
 
 diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
-index c865a08b027..c15e91943b9 100644
+index c865a08b0..c15e91943 100644
 --- a/grub-core/Makefile.core.def
 +++ b/grub-core/Makefile.core.def
 @@ -814,6 +814,16 @@ module = {
@@ -58,7 +58,7 @@ index c865a08b027..c15e91943b9 100644
  
 diff --git a/grub-core/commands/blscfg.c b/grub-core/commands/blscfg.c
 new file mode 100644
-index 00000000000..e907a6a5d28
+index 000000000..e907a6a5d
 --- /dev/null
 +++ b/grub-core/commands/blscfg.c
 @@ -0,0 +1,1177 @@
@@ -1240,7 +1240,7 @@ index 00000000000..e907a6a5d28
 +  grub_unregister_extcmd (oldcmd);
 +}
 diff --git a/grub-core/commands/legacycfg.c b/grub-core/commands/legacycfg.c
-index cc5971f4dbd..782761c31aa 100644
+index cc5971f4d..782761c31 100644
 --- a/grub-core/commands/legacycfg.c
 +++ b/grub-core/commands/legacycfg.c
 @@ -143,7 +143,7 @@ legacy_file (const char *filename)
@@ -1263,7 +1263,7 @@ index cc5971f4dbd..782761c31aa 100644
      }
  
 diff --git a/grub-core/commands/loadenv.c b/grub-core/commands/loadenv.c
-index 3fd664aac33..163b9a09042 100644
+index 3fd664aac..163b9a090 100644
 --- a/grub-core/commands/loadenv.c
 +++ b/grub-core/commands/loadenv.c
 @@ -28,6 +28,8 @@
@@ -1358,7 +1358,7 @@ index 3fd664aac33..163b9a09042 100644
  grub_cmd_load_env (grub_extcmd_context_t ctxt, int argc, char **args)
  {
 diff --git a/grub-core/commands/menuentry.c b/grub-core/commands/menuentry.c
-index 720e6d8ea3b..b194123eb67 100644
+index 720e6d8ea..b194123eb 100644
 --- a/grub-core/commands/menuentry.c
 +++ b/grub-core/commands/menuentry.c
 @@ -78,7 +78,7 @@ grub_normal_add_menu_entry (int argc, const char **args,
@@ -1430,7 +1430,7 @@ index 720e6d8ea3b..b194123eb67 100644
    src[len - 1] = ch;
    args[argc - 1] = src;
 diff --git a/grub-core/normal/main.c b/grub-core/normal/main.c
-index 62571e6dfcc..7ca2e5400b1 100644
+index 62571e6df..7ca2e5400 100644
 --- a/grub-core/normal/main.c
 +++ b/grub-core/normal/main.c
 @@ -21,6 +21,7 @@
@@ -1455,7 +1455,7 @@ index 62571e6dfcc..7ca2e5400b1 100644
        grub_free ((void *) entry->title);
 diff --git a/grub-core/commands/loadenv.h b/grub-core/commands/loadenv.h
 new file mode 100644
-index 00000000000..952f46121bd
+index 000000000..952f46121
 --- /dev/null
 +++ b/grub-core/commands/loadenv.h
 @@ -0,0 +1,93 @@
@@ -1553,7 +1553,7 @@ index 00000000000..952f46121bd
 +  return 0;
 +}
 diff --git a/include/grub/compiler.h b/include/grub/compiler.h
-index 8f3be3ae706..ebafec68957 100644
+index 8f3be3ae7..ebafec689 100644
 --- a/include/grub/compiler.h
 +++ b/include/grub/compiler.h
 @@ -56,4 +56,6 @@
@@ -1564,7 +1564,7 @@ index 8f3be3ae706..ebafec68957 100644
 +
  #endif /* ! GRUB_COMPILER_HEADER */
 diff --git a/include/grub/menu.h b/include/grub/menu.h
-index ee2b5e91045..0acdc2aa6bf 100644
+index ee2b5e910..0acdc2aa6 100644
 --- a/include/grub/menu.h
 +++ b/include/grub/menu.h
 @@ -20,6 +20,16 @@
@@ -1595,7 +1595,7 @@ index ee2b5e91045..0acdc2aa6bf 100644
  typedef struct grub_menu_entry *grub_menu_entry_t;
  
 diff --git a/include/grub/normal.h b/include/grub/normal.h
-index 218cbabccaf..8839ad85a19 100644
+index 218cbabcc..8839ad85a 100644
 --- a/include/grub/normal.h
 +++ b/include/grub/normal.h
 @@ -145,7 +145,7 @@ grub_normal_add_menu_entry (int argc, const char **args, char **classes,

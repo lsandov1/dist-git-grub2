@@ -17,7 +17,7 @@ Signed-off-by: Robbie Harwood <rharwood@redhat.com>
  2 files changed, 30 insertions(+), 8 deletions(-)
 
 diff --git a/grub-core/kern/main.c b/grub-core/kern/main.c
-index 73967e2f5b0..d1de9fa6873 100644
+index 73967e2f5..d1de9fa68 100644
 --- a/grub-core/kern/main.c
 +++ b/grub-core/kern/main.c
 @@ -128,16 +128,15 @@ grub_set_prefix_and_root (void)
@@ -44,7 +44,7 @@ index 73967e2f5b0..d1de9fa6873 100644
      }
  
 diff --git a/grub-core/normal/main.c b/grub-core/normal/main.c
-index 70614de1565..62571e6dfcc 100644
+index 70614de15..62571e6df 100644
 --- a/grub-core/normal/main.c
 +++ b/grub-core/normal/main.c
 @@ -339,7 +339,30 @@ grub_cmd_normal (struct grub_command *cmd __attribute__ ((unused)),

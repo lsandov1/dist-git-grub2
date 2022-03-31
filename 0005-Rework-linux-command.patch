@@ -13,7 +13,7 @@ Signed-off-by: Matthew Garrett <mjg59@coreos.com>
  1 file changed, 23 insertions(+), 12 deletions(-)
 
 diff --git a/grub-core/loader/i386/linux.c b/grub-core/loader/i386/linux.c
-index 9f74a96b19a..dccf3bb3005 100644
+index 9f74a96b1..dccf3bb30 100644
 --- a/grub-core/loader/i386/linux.c
 +++ b/grub-core/loader/i386/linux.c
 @@ -649,13 +649,15 @@ grub_cmd_linux (grub_command_t cmd __attribute__ ((unused)),

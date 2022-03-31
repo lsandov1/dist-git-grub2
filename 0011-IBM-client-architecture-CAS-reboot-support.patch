@@ -29,7 +29,7 @@ Signed-off-by: Robbie Harwood <rharwood@redhat.com>
  4 files changed, 91 insertions(+)
 
 diff --git a/grub-core/kern/ieee1275/openfw.c b/grub-core/kern/ieee1275/openfw.c
-index 4d493ab7661..3a6689abb11 100644
+index 4d493ab76..3a6689abb 100644
 --- a/grub-core/kern/ieee1275/openfw.c
 +++ b/grub-core/kern/ieee1275/openfw.c
 @@ -591,3 +591,66 @@ grub_ieee1275_get_boot_dev (void)
@@ -100,7 +100,7 @@ index 4d493ab7661..3a6689abb11 100644
 +  return 0;
 +}
 diff --git a/grub-core/normal/main.c b/grub-core/normal/main.c
-index c4ebe9e22ad..70614de1565 100644
+index c4ebe9e22..70614de15 100644
 --- a/grub-core/normal/main.c
 +++ b/grub-core/normal/main.c
 @@ -34,6 +34,9 @@
@@ -137,7 +137,7 @@ index c4ebe9e22ad..70614de1565 100644
        grub_errno = GRUB_ERR_NONE;
      }
 diff --git a/grub-core/script/execute.c b/grub-core/script/execute.c
-index 25158407dd8..ad80399246a 100644
+index 25158407d..ad8039924 100644
 --- a/grub-core/script/execute.c
 +++ b/grub-core/script/execute.c
 @@ -28,6 +28,9 @@
@@ -162,7 +162,7 @@ index 25158407dd8..ad80399246a 100644
      {
        char *line;
 diff --git a/include/grub/ieee1275/ieee1275.h b/include/grub/ieee1275/ieee1275.h
-index 73e2f464475..0a599607f31 100644
+index 73e2f4644..0a599607f 100644
 --- a/include/grub/ieee1275/ieee1275.h
 +++ b/include/grub/ieee1275/ieee1275.h
 @@ -254,6 +254,8 @@ int EXPORT_FUNC(grub_ieee1275_devalias_next) (struct grub_ieee1275_devalias *ali

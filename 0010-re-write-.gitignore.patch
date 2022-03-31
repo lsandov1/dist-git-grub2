@@ -20,7 +20,7 @@ Subject: [PATCH] re-write .gitignore
  create mode 100644 util/bash-completion.d/.gitignore
 
 diff --git a/.gitignore b/.gitignore
-index f6a1bd05175..594d0134d33 100644
+index f6a1bd051..594d0134d 100644
 --- a/.gitignore
 +++ b/.gitignore
 @@ -275,3 +275,155 @@ widthspec.bin
@@ -181,7 +181,7 @@ index f6a1bd05175..594d0134d33 100644
 +/widthspec.h
 diff --git a/docs/.gitignore b/docs/.gitignore
 new file mode 100644
-index 00000000000..e1d849ef95b
+index 000000000..e1d849ef9
 --- /dev/null
 +++ b/docs/.gitignore
 @@ -0,0 +1,5 @@
@@ -192,7 +192,7 @@ index 00000000000..e1d849ef95b
 +/version*.texi
 diff --git a/grub-core/.gitignore b/grub-core/.gitignore
 new file mode 100644
-index 00000000000..2acce281159
+index 000000000..2acce2811
 --- /dev/null
 +++ b/grub-core/.gitignore
 @@ -0,0 +1,16 @@
@@ -214,14 +214,14 @@ index 00000000000..2acce281159
 +/trigtables.c
 diff --git a/grub-core/lib/.gitignore b/grub-core/lib/.gitignore
 new file mode 100644
-index 00000000000..68154591404
+index 000000000..681545914
 --- /dev/null
 +++ b/grub-core/lib/.gitignore
 @@ -0,0 +1 @@
 +/libgcrypt-grub/
 diff --git a/include/grub/gcrypt/.gitignore b/include/grub/gcrypt/.gitignore
 new file mode 100644
-index 00000000000..8fbf5646246
+index 000000000..8fbf56462
 --- /dev/null
 +++ b/include/grub/gcrypt/.gitignore
 @@ -0,0 +1,2 @@
@@ -229,7 +229,7 @@ index 00000000000..8fbf5646246
 +gcrypt.h
 diff --git a/po/.gitignore b/po/.gitignore
 new file mode 100644
-index 00000000000..f507e7741e3
+index 000000000..f507e7741
 --- /dev/null
 +++ b/po/.gitignore
 @@ -0,0 +1,5 @@
@@ -240,7 +240,7 @@ index 00000000000..f507e7741e3
 +/stamp-po
 diff --git a/util/bash-completion.d/.gitignore b/util/bash-completion.d/.gitignore
 new file mode 100644
-index 00000000000..6813a527ad3
+index 000000000..6813a527a
 --- /dev/null
 +++ b/util/bash-completion.d/.gitignore
 @@ -0,0 +1,2 @@

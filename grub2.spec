@@ -17,7 +17,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	31%{?dist}
+Release:	32%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -526,6 +526,9 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Thu Mar 31 2022 Robbie Harwood <rharwood@redhat.com> - 1:2.06-32
+- Switch to upstream man pages
+
 * Wed Mar 30 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-31
 - Revert previous change (grub2-pc-modules is built on i32)
 
