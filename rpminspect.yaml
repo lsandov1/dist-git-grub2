@@ -9,9 +9,6 @@ inspections:
   patches: off
   upstream: off
 
-  # https://bugzilla.redhat.com/show_bug.cgi?id=2007427
-  manpage: off
-
   # https://bugzilla.redhat.com/show_bug.cgi?id=2007428
   elf: off
 
@@ -20,3 +17,6 @@ inspections:
 
   # https://bugzilla.redhat.com/show_bug.cgi?id=2007431
   permissions: off
+
+  # https://bugzilla.redhat.com/show_bug.cgi?id=2007431
+  addedfiles: off
