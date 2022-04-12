@@ -17,7 +17,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	33%{?dist}
+Release:	34%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -84,7 +84,9 @@ hardware devices.\
 Summary:	grub2 common layout
 BuildArch:	noarch
 Conflicts:	grubby < 8.40-18
-Requires(post): util-linux
+Requires(posttrans): util-linux-core
+Requires(posttrans): coreutils
+Requires(posttrans): grep
 
 %description common
 This package provides some directories which are required by various grub2
@@ -94,9 +96,10 @@ subpackages.
 Summary:	Support tools for GRUB.
 Obsoletes:	%{name}-tools < %{evr}
 Requires:	%{name}-common = %{epoch}:%{version}-%{release}
-Requires:	gettext os-prober which file
+Requires:	gettext os-prober file
 Requires(pre):	dracut
-Requires(post):	dracut
+Requires(pre):	grep
+Requires(pre):	sed
 
 %description tools
 %{desc}
@@ -105,7 +108,7 @@ This subpackage provides tools for support of all platforms.
 %ifarch x86_64
 %package tools-efi
 Summary:	Support tools for GRUB.
-Requires:	gettext os-prober which file
+Requires:	gettext os-prober file
 Requires:	%{name}-common = %{epoch}:%{version}-%{release}
 Obsoletes:	%{name}-tools < %{evr}
 
@@ -126,7 +129,7 @@ This subpackage provides tools for support of all platforms.
 
 %package tools-extra
 Summary:	Support tools for GRUB.
-Requires:	gettext os-prober which file
+Requires:	gettext os-prober file
 Requires:	%{name}-tools-minimal = %{epoch}:%{version}-%{release}
 Requires:	%{name}-common = %{epoch}:%{version}-%{release}
 Obsoletes:	%{name}-tools < %{evr}
@@ -526,6 +529,9 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Tue Apr 12 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-34
+- Bump for requirements updates; no code changes
+
 * Thu Mar 31 2022 Robbie Harwood <rharwood@redhat.com> - 1:2.06-33
 - Drop i32 build for real this time
 
