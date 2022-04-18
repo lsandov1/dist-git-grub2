@@ -237,13 +237,13 @@
 %define define_legacy_variant()						\
 %{expand:%%package %%{1}}						\
 Summary:	Bootloader with support for Linux, Multiboot, and more	\
-Provides:	%{name} = %{evr}					\
-Obsoletes:	%{name} < %{evr}					\
-Requires:	%{name}-common = %{evr}					\
-Requires:	%{name}-tools-minimal = %{evr}				\
-Requires:	%{name}-%{1}-modules = %{evr}				\
+Provides:	grub2 = %{evr}					\
+Obsoletes:	grub2 < %{evr}					\
+Requires:	grub2-common = %{evr}					\
+Requires:	grub2-tools-minimal = %{evr}				\
+Requires:	grub2-%{1}-modules = %{evr}				\
 Requires:	gettext which file					\
-Requires:	%{name}-tools = %{evr}					\
+Requires:	grub2-tools = %{evr}					\
 Requires(pre):	dracut							\
 Requires(post): dracut							\
 %{expand:%%description %%{1}}						\
@@ -255,7 +255,7 @@ This subpackage provides support for %{1} systems.			\
 %%package %%{1}-modules							\
 Summary:	Modules used to build custom grub images		\
 BuildArch:	noarch							\
-Requires:	%%{name}-common = %%{evr}				\
+Requires:	grub2-common = %%{evr}				\
 %%description %%{1}-modules						\
 %%{desc}								\
 This subpackage provides support for rebuilding your own grub.efi.	\
@@ -266,8 +266,8 @@ This subpackage provides support for rebuilding your own grub.efi.	\
 %{expand:%%package %%{1}-tools}						\
 Summary:	Support tools for GRUB.					\
 Requires:	gettext os-prober which file system-logos		\
-Requires:	%{name}-common = %{evr}					\
-Requires:	%{name}-tools-minimal = %{evr}				\
+Requires:	grub2-common = %{evr}					\
+Requires:	grub2-tools-minimal = %{evr}				\
 Requires:	os-prober >= 1.58-11					\
 Requires:	gettext which file					\
 									\
@@ -280,12 +280,12 @@ This subpackage provides tools for support of %%{1} platforms.		\
 %{expand:%%package %{1}}						\
 Summary:	GRUB for EFI systems.					\
 Requires:	efi-filesystem						\
-Requires:	%{name}-common = %{evr}					\
-Requires:	%{name}-tools-minimal >= %{evr}				\
-Requires:	%{name}-tools = %{evr}					\
-Provides:	%{name}-efi = %{evr}					\
-%{?legacy_provides:Provides:	%{name} = %{evr}}			\
-%{-o:Obsoletes:	%{name}-efi < %{evr}}					\
+Requires:	grub2-common = %{evr}					\
+Requires:	grub2-tools-minimal >= %{evr}				\
+Requires:	grub2-tools = %{evr}					\
+Provides:	grub2-efi = %{evr}					\
+%{?legacy_provides:Provides:	grub2 = %{evr}}			\
+%{-o:Obsoletes:	grub2-efi < %{evr}}					\
 									\
 %{expand:%%description %{1}}						\
 %{desc}									\
@@ -296,9 +296,9 @@ This subpackage provides support for %{1} systems.			\
 %{expand:%%package %{1}-modules}					\
 Summary:	Modules used to build custom grub.efi images		\
 BuildArch:	noarch							\
-Requires:	%{name}-common = %{evr}					\
-Provides:	%{name}-efi-modules = %{evr}				\
-Obsoletes:	%{name}-efi-modules < %{evr}				\
+Requires:	grub2-common = %{evr}					\
+Provides:	grub2-efi-modules = %{evr}				\
+Obsoletes:	grub2-efi-modules < %{evr}				\
 %{expand:%%description %{1}-modules}					\
 %{desc}									\
 This subpackage provides support for rebuilding your own grub.efi.	\
@@ -306,8 +306,8 @@ This subpackage provides support for rebuilding your own grub.efi.	\
 									\
 %{expand:%%package %{1}-cdboot}						\
 Summary:	Files used to boot removeable media with EFI		\
-Requires:	%{name}-common = %{evr}					\
-Provides:	%{name}-efi-cdboot = %{evr}				\
+Requires:	grub2-common = %{evr}					\
+Provides:	grub2-efi-cdboot = %{evr}				\
 %{expand:%%description %{1}-cdboot}					\
 %{desc}									\
 This subpackage provides optional components of grub used with removeable media on %{1} systems.\
@@ -327,7 +327,7 @@ git init							\
 echo '![[:digit:]][[:digit:]]_*.in' > util/grub.d/.gitignore	\
 echo '!*.[[:digit:]]' > util/.gitignore				\
 echo '!config.h' > include/grub/emu/.gitignore			\
-git config user.email "%{name}-owner@fedoraproject.org"		\
+git config user.email "grub2-owner@fedoraproject.org"		\
 git config user.name "Fedora Ninjas"				\
 git config gc.auto 0						\
 rm -f configure							\
@@ -350,8 +350,8 @@ rm -r build-aux m4						\
 	--with-platform=efi					\\\
 	--with-utils=host					\\\
 	--target=%{1}						\\\
-	--with-grubdir=%{name}					\\\
-	--program-transform-name=s,grub,%{name},		\\\
+	--with-grubdir=grub2					\\\
+	--program-transform-name=s,grub,grub2,		\\\
 	--disable-werror || ( cat config.log ; exit 1 )		\
 git add .							\
 git commit -m "After efi configure"				\
@@ -454,8 +454,8 @@ cd grub-%{1}-%{tarversion}					\
 	--with-platform=%{platform}				\\\
 	--with-utils=host					\\\
 	--target=%{_target_platform}				\\\
-	--with-grubdir=%{name}					\\\
-	--program-transform-name=s,grub,%{name},		\\\
+	--with-grubdir=grub2					\\\
+	--program-transform-name=s,grub,grub2,		\\\
 	--disable-werror || ( cat config.log ; exit 1 )		\
 git add .							\
 git commit -m "After legacy configure"				\
@@ -471,8 +471,8 @@ cd grub-emu-%{tarversion}					\
 	HOST_CPPFLAGS="-I$(pwd)"				\\\
 	HOST_LDFLAGS="%{legacy_host_ldflags}"			\\\
 	--with-platform=emu					\\\
-	--with-grubdir=%{name}					\\\
-	--program-transform-name=s,grub,%{name},		\\\
+	--with-grubdir=grub2					\\\
+	--program-transform-name=s,grub,grub2,		\\\
 	--disable-werror || ( cat config.log ; exit 1 )		\
 git add .							\
 git commit -m "After emu configure"				\
@@ -498,7 +498,7 @@ find . '(' -iname gdb_grub					\\\
 find $RPM_BUILD_ROOT -type f -iname "*.mod*" -exec chmod a-x {} '\;'	\
 install -m 700 %{2} $RPM_BUILD_ROOT%{efi_esp_dir}/%{2}	\
 install -m 700 %{3} $RPM_BUILD_ROOT%{efi_esp_dir}/%{3} \
-%{expand:%%do_install_protected_file %{name}-%{alt_package_arch}} \
+%{expand:%%do_install_protected_file grub2-%{alt_package_arch}} \
 cd ..								\
 %{nil}
 
@@ -512,18 +512,18 @@ if [ -f $RPM_BUILD_ROOT%{_infodir}/grub-dev.info ]; then	\
 	rm -f $RPM_BUILD_ROOT%{_infodir}/grub-dev.info		\
 fi								\
 find $RPM_BUILD_ROOT -iname "*.module" -exec chmod a-x {} '\;'	\
-ln -s ../boot/%{name}/grub.cfg					\\\
-	$RPM_BUILD_ROOT%{_sysconfdir}/%{name}-efi.cfg		\
+ln -s ../boot/grub2/grub.cfg					\\\
+	$RPM_BUILD_ROOT%{_sysconfdir}/grub2-efi.cfg		\
 install -m 700 %{2} $RPM_BUILD_ROOT%{efi_esp_dir}/%{2}		\
 install -m 700 %{3} $RPM_BUILD_ROOT%{efi_esp_dir}/%{3}		\
 %ifarch %{arm}							\
 install -D -m 700 %{2} $RPM_BUILD_ROOT%{efi_esp_boot}/BOOTARM.EFI \
 %endif								\
 install -D -m 700 unicode.pf2					\\\
-	${RPM_BUILD_ROOT}/boot/%{name}/fonts/unicode.pf2		\
-${RPM_BUILD_ROOT}/%{_bindir}/%{name}-editenv			\\\
-		${RPM_BUILD_ROOT}/boot/%{name}/grubenv create	\
-%{expand:%%do_install_protected_file %{name}-%{package_arch}}	\
+	${RPM_BUILD_ROOT}/boot/grub2/fonts/unicode.pf2		\
+${RPM_BUILD_ROOT}/%{_bindir}/grub2-editenv			\\\
+		${RPM_BUILD_ROOT}/boot/grub2/grubenv create	\
+%{expand:%%do_install_protected_file grub2-%{package_arch}}	\
 cd ..								\
 %{nil}
 
@@ -541,10 +541,10 @@ if [ -f $RPM_BUILD_ROOT/%{_libdir}/grub/%{1}/grub2.chrp ]; then \
 	   $RPM_BUILD_ROOT/%{_libdir}/grub/%{1}/grub.chrp	\
 fi								\
 if [ %{3} -eq 0 ]; then						\
-	${RPM_BUILD_ROOT}/%{_bindir}/%{name}-editenv		\\\
-		${RPM_BUILD_ROOT}/boot/%{name}/grubenv create	\
+	${RPM_BUILD_ROOT}/%{_bindir}/grub2-editenv		\\\
+		${RPM_BUILD_ROOT}/boot/grub2/grubenv create	\
 fi								\
-%{expand:%%do_install_protected_file %{name}-%{legacy_package_arch}} \
+%{expand:%%do_install_protected_file grub2-%{legacy_package_arch}} \
 cd ..								\
 %{nil}
 
@@ -571,30 +571,30 @@ install -d -m 0755 						\\\
 	$RPM_BUILD_ROOT%{_infodir}/				\
 cp -a $RPM_BUILD_ROOT%{_datarootdir}/locale/en\@quot		\\\
 	$RPM_BUILD_ROOT%{_datarootdir}/locale/en		\
-cp docs/grub.info $RPM_BUILD_ROOT%{_infodir}/%{name}.info	\
+cp docs/grub.info $RPM_BUILD_ROOT%{_infodir}/grub2.info	\
 cp docs/grub-dev.info						\\\
-	$RPM_BUILD_ROOT%{_infodir}/%{name}-dev.info		\
+	$RPM_BUILD_ROOT%{_infodir}/grub2-dev.info		\
 install -d -m 0700 ${RPM_BUILD_ROOT}%{efi_esp_dir}/		\
 install -d -m 0700 ${RPM_BUILD_ROOT}/boot/grub2/		\
 install -d -m 0700 ${RPM_BUILD_ROOT}/boot/loader/entries	\
-install -d -m 0700 ${RPM_BUILD_ROOT}/boot/%{name}/themes/system	\
+install -d -m 0700 ${RPM_BUILD_ROOT}/boot/grub2/themes/system	\
 install -d -m 0700 ${RPM_BUILD_ROOT}%{_sysconfdir}/default	\
 install -d -m 0700 ${RPM_BUILD_ROOT}%{_sysconfdir}/sysconfig	\
 touch ${RPM_BUILD_ROOT}%{_sysconfdir}/default/grub		\
 ln -sf ../default/grub						\\\
 	${RPM_BUILD_ROOT}%{_sysconfdir}/sysconfig/grub		\
-touch ${RPM_BUILD_ROOT}/boot/%{name}/grub.cfg			\
-ln -s ../boot/%{name}/grub.cfg					\\\
+touch ${RPM_BUILD_ROOT}/boot/grub2/grub.cfg			\
+ln -s ../boot/grub2/grub.cfg					\\\
 	${RPM_BUILD_ROOT}%{_sysconfdir}/grub2.cfg		\
 %{nil}
 
 %define define_legacy_variant_files()				\
 %{expand:%%files %{1}}						\
 %defattr(-,root,root,-)						\
-%config(noreplace) %{_sysconfdir}/%{name}.cfg			\
-%ghost %config(noreplace) %attr(0700,root,root)/boot/%{name}/grub.cfg	\
+%config(noreplace) %{_sysconfdir}/grub2.cfg			\
+%ghost %config(noreplace) %attr(0700,root,root)/boot/grub2/grub.cfg	\
 %dir %attr(0700,root,root)/boot/loader/entries			\
-%attr(0644,root,root) %config(noreplace) /etc/dnf/protected.d/%{name}-%{1}.conf \
+%attr(0644,root,root) %config(noreplace) /etc/dnf/protected.d/grub2-%{1}.conf \
 								\
 %{expand:%if 0%{?with_legacy_modules}				\
 %{expand:%%files %{1}-modules}					\
@@ -612,18 +612,18 @@ ln -s ../boot/%{name}/grub.cfg					\\\
 %define define_efi_variant_files()				\
 %{expand:%%files %{1}}						\
 %defattr(-,root,root,-)						\
-%config(noreplace) %{_sysconfdir}/%{name}.cfg			\
-%config(noreplace) %{_sysconfdir}/%{name}-efi.cfg		\
+%config(noreplace) %{_sysconfdir}/grub2.cfg			\
+%config(noreplace) %{_sysconfdir}/grub2-efi.cfg		\
 %attr(0700,root,root)%{efi_esp_dir}/%{2}			\
 %ifarch %{arm}							\
 %attr(0700,root,root)%{efi_esp_boot}/BOOTARM.EFI		\
 %endif								\
-%attr(0700,root,root)/boot/%{name}/fonts			\
+%attr(0700,root,root)/boot/grub2/fonts			\
 %dir %attr(0700,root,root)/boot/loader/entries			\
-%ghost %config(noreplace) %attr(0700,root,root)/boot/%{name}/grub.cfg	\
+%ghost %config(noreplace) %attr(0700,root,root)/boot/grub2/grub.cfg	\
 %ghost %config(noreplace) %attr(0700,root,root)%{efi_esp_dir}/grub.cfg	\
 %config(noreplace) %verify(not size mode md5 mtime) /boot/grub2/grubenv	\
-%attr(0644,root,root) %config(noreplace) /etc/dnf/protected.d/%{name}-%{1}.conf \
+%attr(0644,root,root) %config(noreplace) /etc/dnf/protected.d/grub2-%{1}.conf \
 %{expand:%if 0%{?without_efi_modules}				\
 %exclude %{_libdir}/grub/%{6}					\
 %exclude %{_libdir}/grub/%{6}/*					\
@@ -640,5 +640,5 @@ ln -s ../boot/%{name}/grub.cfg					\\\
 %{expand:%%files %{1}-cdboot}					\
 %defattr(-,root,root,-)						\
 %attr(0700,root,root)%{efi_esp_dir}/%{3}			\
-%attr(0700,root,root)/boot/%{name}/fonts			\
+%attr(0700,root,root)/boot/grub2/fonts			\
 %{nil}

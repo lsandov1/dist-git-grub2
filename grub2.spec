@@ -59,12 +59,12 @@ BuildRequires:	ccache
 %endif
 
 ExcludeArch:	s390 s390x %{ix86}
-Obsoletes:	%{name} <= %{evr}
+Obsoletes:	grub2 <= %{evr}
 
 %if 0%{with_legacy_arch}
-Requires:	%{name}-%{legacy_package_arch} = %{evr}
+Requires:	grub2-%{legacy_package_arch} = %{evr}
 %else
-Requires:	%{name}-%{package_arch} = %{evr}
+Requires:	grub2-%{package_arch} = %{evr}
 %endif
 
 %global desc \
@@ -94,8 +94,8 @@ subpackages.
 
 %package tools
 Summary:	Support tools for GRUB.
-Obsoletes:	%{name}-tools < %{evr}
-Requires:	%{name}-common = %{epoch}:%{version}-%{release}
+Obsoletes:	grub2-tools < %{evr}
+Requires:	grub2-common = %{epoch}:%{version}-%{release}
 Requires:	gettext os-prober file
 Requires(pre):	dracut
 Requires(pre):	grep
@@ -109,8 +109,8 @@ This subpackage provides tools for support of all platforms.
 %package tools-efi
 Summary:	Support tools for GRUB.
 Requires:	gettext os-prober file
-Requires:	%{name}-common = %{epoch}:%{version}-%{release}
-Obsoletes:	%{name}-tools < %{evr}
+Requires:	grub2-common = %{epoch}:%{version}-%{release}
+Obsoletes:	grub2-tools < %{evr}
 
 %description tools-efi
 %{desc}
@@ -120,8 +120,8 @@ This subpackage provides tools for support of EFI platforms.
 %package tools-minimal
 Summary:	Support tools for GRUB.
 Requires:	gettext
-Requires:	%{name}-common = %{epoch}:%{version}-%{release}
-Obsoletes:	%{name}-tools < %{evr}
+Requires:	grub2-common = %{epoch}:%{version}-%{release}
+Obsoletes:	grub2-tools < %{evr}
 
 %description tools-minimal
 %{desc}
@@ -130,9 +130,9 @@ This subpackage provides tools for support of all platforms.
 %package tools-extra
 Summary:	Support tools for GRUB.
 Requires:	gettext os-prober file
-Requires:	%{name}-tools-minimal = %{epoch}:%{version}-%{release}
-Requires:	%{name}-common = %{epoch}:%{version}-%{release}
-Obsoletes:	%{name}-tools < %{evr}
+Requires:	grub2-tools-minimal = %{epoch}:%{version}-%{release}
+Requires:	grub2-common = %{epoch}:%{version}-%{release}
+Obsoletes:	grub2-tools < %{evr}
 
 %description tools-extra
 %{desc}
@@ -151,7 +151,7 @@ This subpackage provides tools for support of all platforms.
 %if 0%{with_emu_arch}
 %package emu
 Summary:	GRUB user-space emulation.
-Requires:	%{name}-tools-minimal = %{epoch}:%{version}-%{release}
+Requires:	grub2-tools-minimal = %{epoch}:%{version}-%{release}
 
 %description emu
 %{desc}
@@ -159,7 +159,7 @@ This subpackage provides the GRUB user-space emulation support of all platforms.
 
 %package emu-modules
 Summary:	GRUB user-space emulation modules.
-Requires:	%{name}-tools-minimal = %{epoch}:%{version}-%{release}
+Requires:	grub2-tools-minimal = %{epoch}:%{version}-%{release}
 
 %description emu-modules
 %{desc}
@@ -236,14 +236,14 @@ rm -fr $RPM_BUILD_ROOT
 %{expand:%do_emu_install %%{package_arch}}
 %endif
 rm -f $RPM_BUILD_ROOT%{_infodir}/dir
-ln -s %{name}-set-password ${RPM_BUILD_ROOT}/%{_sbindir}/%{name}-setpassword
-echo '.so man8/%{name}-set-password.8' > ${RPM_BUILD_ROOT}/%{_datadir}/man/man8/%{name}-setpassword.8
+ln -s grub2-set-password ${RPM_BUILD_ROOT}/%{_sbindir}/grub2-setpassword
+echo '.so man8/grub2-set-password.8' > ${RPM_BUILD_ROOT}/%{_datadir}/man/man8/grub2-setpassword.8
 %ifnarch x86_64
-rm -vf ${RPM_BUILD_ROOT}/%{_bindir}/%{name}-render-label
-rm -vf ${RPM_BUILD_ROOT}/%{_sbindir}/%{name}-bios-setup
-rm -vf ${RPM_BUILD_ROOT}/%{_sbindir}/%{name}-macbless
+rm -vf ${RPM_BUILD_ROOT}/%{_bindir}/grub2-render-label
+rm -vf ${RPM_BUILD_ROOT}/%{_sbindir}/grub2-bios-setup
+rm -vf ${RPM_BUILD_ROOT}/%{_sbindir}/grub2-macbless
 %endif
-%{expand:%%do_install_protected_file %{name}-tools-minimal}
+%{expand:%%do_install_protected_file grub2-tools-minimal}
 
 %find_lang grub
 
@@ -364,9 +364,9 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %{_prefix}/lib/kernel/install.d/99-grub-mkconfig.install
 %dir %{_datarootdir}/grub
 %exclude %{_datarootdir}/grub/*
-%dir /boot/%{name}
-%dir /boot/%{name}/themes/
-%dir /boot/%{name}/themes/system
+%dir /boot/grub2
+%dir /boot/grub2/themes/
+%dir /boot/grub2/themes/system
 %attr(0700,root,root) %dir /boot/grub2
 %exclude /boot/grub2/*
 %dir %attr(0700,root,root) %{efi_esp_dir}
@@ -379,30 +379,30 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %doc docs/font_char_metrics.png
 
 %files tools-minimal
-%{_sbindir}/%{name}-get-kernel-settings
-%{_sbindir}/%{name}-probe
-%attr(4755, root, root) %{_sbindir}/%{name}-set-bootflag
-%{_sbindir}/%{name}-set-default
-%{_sbindir}/%{name}-set*password
-%{_bindir}/%{name}-editenv
-%{_bindir}/%{name}-mkpasswd-pbkdf2
-%{_bindir}/%{name}-mount
-%attr(0644,root,root) %config(noreplace) /etc/dnf/protected.d/%{name}-tools-minimal.conf
+%{_sbindir}/grub2-get-kernel-settings
+%{_sbindir}/grub2-probe
+%attr(4755, root, root) %{_sbindir}/grub2-set-bootflag
+%{_sbindir}/grub2-set-default
+%{_sbindir}/grub2-set*password
+%{_bindir}/grub2-editenv
+%{_bindir}/grub2-mkpasswd-pbkdf2
+%{_bindir}/grub2-mount
+%attr(0644,root,root) %config(noreplace) /etc/dnf/protected.d/grub2-tools-minimal.conf
 
-%{_datadir}/man/man3/%{name}-get-kernel-settings*
-%{_datadir}/man/man8/%{name}-set-default*
-%{_datadir}/man/man8/%{name}-set*password*
-%{_datadir}/man/man1/%{name}-editenv*
-%{_datadir}/man/man1/%{name}-mkpasswd-*
+%{_datadir}/man/man3/grub2-get-kernel-settings*
+%{_datadir}/man/man8/grub2-set-default*
+%{_datadir}/man/man8/grub2-set*password*
+%{_datadir}/man/man1/grub2-editenv*
+%{_datadir}/man/man1/grub2-mkpasswd-*
 
 %ifarch x86_64
 %files tools-efi
-%{_bindir}/%{name}-glue-efi
-%{_bindir}/%{name}-render-label
-%{_sbindir}/%{name}-macbless
-%{_datadir}/man/man1/%{name}-glue-efi*
-%{_datadir}/man/man1/%{name}-render-label*
-%{_datadir}/man/man8/%{name}-macbless*
+%{_bindir}/grub2-glue-efi
+%{_bindir}/grub2-render-label
+%{_sbindir}/grub2-macbless
+%{_datadir}/man/man1/grub2-glue-efi*
+%{_datadir}/man/man1/grub2-render-label*
+%{_datadir}/man/man8/grub2-macbless*
 %endif
 
 %files tools
@@ -414,98 +414,98 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %{_userunitdir}/timers.target.wants
 %{_unitdir}/grub-boot-indeterminate.service
 %{_unitdir}/system-update.target.wants
-%{_unitdir}/%{name}-systemd-integration.service
+%{_unitdir}/grub2-systemd-integration.service
 %{_unitdir}/reboot.target.wants
 %{_unitdir}/systemd-logind.service.d
-%{_infodir}/%{name}*
+%{_infodir}/grub2*
 %{_datarootdir}/grub/*
-%{_sbindir}/%{name}-install
+%{_sbindir}/grub2-install
 %exclude %{_datarootdir}/grub/themes
 %exclude %{_datarootdir}/grub/*.h
 %{_datarootdir}/bash-completion/completions/grub
-%{_sbindir}/%{name}-mkconfig
-%{_sbindir}/%{name}-switch-to-blscfg
-%{_sbindir}/%{name}-rpm-sort
-%{_sbindir}/%{name}-reboot
-%{_bindir}/%{name}-file
-%{_bindir}/%{name}-menulst2cfg
-%{_bindir}/%{name}-mkimage
-%{_bindir}/%{name}-mkrelpath
-%{_bindir}/%{name}-script-check
-%{_libexecdir}/%{name}
+%{_sbindir}/grub2-mkconfig
+%{_sbindir}/grub2-switch-to-blscfg
+%{_sbindir}/grub2-rpm-sort
+%{_sbindir}/grub2-reboot
+%{_bindir}/grub2-file
+%{_bindir}/grub2-menulst2cfg
+%{_bindir}/grub2-mkimage
+%{_bindir}/grub2-mkrelpath
+%{_bindir}/grub2-script-check
+%{_libexecdir}/grub2
 %{_datadir}/man/man?/*
 
 # exclude man pages from tools-extra
-%exclude %{_datadir}/man/man8/%{name}-sparc64-setup*
-%exclude %{_datadir}/man/man1/%{name}-fstest*
-%exclude %{_datadir}/man/man1/%{name}-glue-efi*
-%exclude %{_datadir}/man/man1/%{name}-kbdcomp*
-%exclude %{_datadir}/man/man1/%{name}-mkfont*
-%exclude %{_datadir}/man/man1/%{name}-mklayout*
-%exclude %{_datadir}/man/man1/%{name}-mknetdir*
-%exclude %{_datadir}/man/man1/%{name}-mkrescue*
-%exclude %{_datadir}/man/man1/%{name}-mkstandalone*
-%exclude %{_datadir}/man/man1/%{name}-syslinux2cfg*
+%exclude %{_datadir}/man/man8/grub2-sparc64-setup*
+%exclude %{_datadir}/man/man1/grub2-fstest*
+%exclude %{_datadir}/man/man1/grub2-glue-efi*
+%exclude %{_datadir}/man/man1/grub2-kbdcomp*
+%exclude %{_datadir}/man/man1/grub2-mkfont*
+%exclude %{_datadir}/man/man1/grub2-mklayout*
+%exclude %{_datadir}/man/man1/grub2-mknetdir*
+%exclude %{_datadir}/man/man1/grub2-mkrescue*
+%exclude %{_datadir}/man/man1/grub2-mkstandalone*
+%exclude %{_datadir}/man/man1/grub2-syslinux2cfg*
 
 # exclude man pages from tools-minimal
-%exclude %{_datadir}/man/man3/%{name}-get-kernel-settings*
-%exclude %{_datadir}/man/man8/%{name}-set-default*
-%exclude %{_datadir}/man/man8/%{name}-set*password*
-%exclude %{_datadir}/man/man1/%{name}-editenv*
-%exclude %{_datadir}/man/man1/%{name}-mkpasswd-*
-%exclude %{_datadir}/man/man8/%{name}-macbless*
-%exclude %{_datadir}/man/man1/%{name}-render-label*
+%exclude %{_datadir}/man/man3/grub2-get-kernel-settings*
+%exclude %{_datadir}/man/man8/grub2-set-default*
+%exclude %{_datadir}/man/man8/grub2-set*password*
+%exclude %{_datadir}/man/man1/grub2-editenv*
+%exclude %{_datadir}/man/man1/grub2-mkpasswd-*
+%exclude %{_datadir}/man/man8/grub2-macbless*
+%exclude %{_datadir}/man/man1/grub2-render-label*
 
 %if %{with_legacy_arch}
-%{_sbindir}/%{name}-install
+%{_sbindir}/grub2-install
 %ifarch x86_64
-%{_sbindir}/%{name}-bios-setup
+%{_sbindir}/grub2-bios-setup
 %else
-%exclude %{_sbindir}/%{name}-bios-setup
-%exclude %{_datadir}/man/man8/%{name}-bios-setup*
+%exclude %{_sbindir}/grub2-bios-setup
+%exclude %{_datadir}/man/man8/grub2-bios-setup*
 %endif
 %ifarch %{sparc}
-%{_sbindir}/%{name}-sparc64-setup
+%{_sbindir}/grub2-sparc64-setup
 %else
-%exclude %{_sbindir}/%{name}-sparc64-setup
-%exclude %{_datadir}/man/man8/%{name}-sparc64-setup*
+%exclude %{_sbindir}/grub2-sparc64-setup
+%exclude %{_datadir}/man/man8/grub2-sparc64-setup*
 %endif
 %ifarch %{sparc} ppc ppc64 ppc64le
-%{_sbindir}/%{name}-ofpathname
+%{_sbindir}/grub2-ofpathname
 %else
-%exclude %{_sbindir}/%{name}-ofpathname
-%exclude %{_datadir}/man/man8/%{name}-ofpathname*
+%exclude %{_sbindir}/grub2-ofpathname
+%exclude %{_datadir}/man/man8/grub2-ofpathname*
 %endif
 %endif
 
 %files tools-extra
-%{_bindir}/%{name}-fstest
-%{_bindir}/%{name}-kbdcomp
-%{_bindir}/%{name}-mkfont
-%{_bindir}/%{name}-mklayout
-%{_bindir}/%{name}-mknetdir
+%{_bindir}/grub2-fstest
+%{_bindir}/grub2-kbdcomp
+%{_bindir}/grub2-mkfont
+%{_bindir}/grub2-mklayout
+%{_bindir}/grub2-mknetdir
 %ifnarch %{sparc}
-%{_bindir}/%{name}-mkrescue
-%{_datadir}/man/man1/%{name}-mkrescue*
+%{_bindir}/grub2-mkrescue
+%{_datadir}/man/man1/grub2-mkrescue*
 %else
-%exclude %{_datadir}/man/man1/%{name}-mkrescue*
+%exclude %{_datadir}/man/man1/grub2-mkrescue*
 %endif
-%{_bindir}/%{name}-mkstandalone
-%{_bindir}/%{name}-syslinux2cfg
+%{_bindir}/grub2-mkstandalone
+%{_bindir}/grub2-syslinux2cfg
 %{_sysconfdir}/sysconfig/grub
-%{_datadir}/man/man1/%{name}-fstest*
-%{_datadir}/man/man1/%{name}-kbdcomp*
-%{_datadir}/man/man1/%{name}-mkfont*
-%{_datadir}/man/man1/%{name}-mklayout*
-%{_datadir}/man/man1/%{name}-mknetdir*
-%{_datadir}/man/man1/%{name}-mkstandalone*
-%{_datadir}/man/man1/%{name}-syslinux2cfg*
-%exclude %{_bindir}/%{name}-glue-efi
-%exclude %{_sbindir}/%{name}-sparc64-setup
-%exclude %{_sbindir}/%{name}-ofpathname
-%exclude %{_datadir}/man/man1/%{name}-glue-efi*
-%exclude %{_datadir}/man/man8/%{name}-ofpathname*
-%exclude %{_datadir}/man/man8/%{name}-sparc64-setup*
+%{_datadir}/man/man1/grub2-fstest*
+%{_datadir}/man/man1/grub2-kbdcomp*
+%{_datadir}/man/man1/grub2-mkfont*
+%{_datadir}/man/man1/grub2-mklayout*
+%{_datadir}/man/man1/grub2-mknetdir*
+%{_datadir}/man/man1/grub2-mkstandalone*
+%{_datadir}/man/man1/grub2-syslinux2cfg*
+%exclude %{_bindir}/grub2-glue-efi
+%exclude %{_sbindir}/grub2-sparc64-setup
+%exclude %{_sbindir}/grub2-ofpathname
+%exclude %{_datadir}/man/man1/grub2-glue-efi*
+%exclude %{_datadir}/man/man8/grub2-ofpathname*
+%exclude %{_datadir}/man/man8/grub2-sparc64-setup*
 %exclude %{_datarootdir}/grub/themes/starfield
 
 %if 0%{with_efi_arch}
@@ -520,8 +520,8 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 
 %if 0%{with_emu_arch}
 %files emu
-%{_bindir}/%{name}-emu*
-%{_datadir}/man/man1/%{name}-emu*
+%{_bindir}/grub2-emu*
+%{_datadir}/man/man1/grub2-emu*
 
 %files emu-modules
 %{_libdir}/grub/%{emuarch}-emu/*
