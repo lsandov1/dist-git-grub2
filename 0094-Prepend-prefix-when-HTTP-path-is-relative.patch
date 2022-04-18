@@ -16,7 +16,7 @@ Signed-off-by: Robbie Harwood <rharwood@redhat.com>
  2 files changed, 71 insertions(+), 21 deletions(-)
 
 diff --git a/grub-core/kern/main.c b/grub-core/kern/main.c
-index d1de9fa68..1c540fc8c 100644
+index d1de9fa687..1c540fc8c2 100644
 --- a/grub-core/kern/main.c
 +++ b/grub-core/kern/main.c
 @@ -131,11 +131,19 @@ grub_set_prefix_and_root (void)
@@ -41,7 +41,7 @@ index d1de9fa68..1c540fc8c 100644
  	}
      }
 diff --git a/grub-core/net/efi/http.c b/grub-core/net/efi/http.c
-index 243acbaa3..de351b2cd 100644
+index 243acbaa35..de351b2cd0 100644
 --- a/grub-core/net/efi/http.c
 +++ b/grub-core/net/efi/http.c
 @@ -9,10 +9,52 @@

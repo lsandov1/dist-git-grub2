@@ -11,7 +11,7 @@ Signed-off-by: Peter Jones <pjones@redhat.com>
  1 file changed, 94 insertions(+), 73 deletions(-)
 
 diff --git a/grub-core/loader/i386/efi/linux.c b/grub-core/loader/i386/efi/linux.c
-index 5f48fa556..3e4f7ef39 100644
+index 5f48fa5561..3e4f7ef39f 100644
 --- a/grub-core/loader/i386/efi/linux.c
 +++ b/grub-core/loader/i386/efi/linux.c
 @@ -47,6 +47,65 @@ static char *linux_cmdline;

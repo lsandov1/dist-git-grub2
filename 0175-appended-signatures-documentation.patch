@@ -13,7 +13,7 @@ Signed-off-by: Daniel Axtens <dja@axtens.net>
  1 file changed, 182 insertions(+), 17 deletions(-)
 
 diff --git a/docs/grub.texi b/docs/grub.texi
-index afbde7c1f..4816be856 100644
+index afbde7c1f7..4816be8561 100644
 --- a/docs/grub.texi
 +++ b/docs/grub.texi
 @@ -3214,6 +3214,7 @@ These variables have special meaning to GRUB.

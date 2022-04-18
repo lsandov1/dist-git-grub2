@@ -31,7 +31,7 @@ Signed-off-by: Robbie Harwood <rharwood@redhat.com>
  delete mode 100644 grub-core/lib/gnulib-patches/fix-base64.patch
 
 diff --git a/grub-core/lib/posix_wrap/sys/types.h b/grub-core/lib/posix_wrap/sys/types.h
-index f63412c8d..2f3e86549 100644
+index f63412c8da..2f3e865495 100644
 --- a/grub-core/lib/posix_wrap/sys/types.h
 +++ b/grub-core/lib/posix_wrap/sys/types.h
 @@ -23,11 +23,10 @@
@@ -50,7 +50,7 @@ index f63412c8d..2f3e86549 100644
  typedef grub_uint8_t uint8_t;
  typedef grub_uint16_t uint16_t;
 diff --git a/grub-core/lib/xzembed/xz.h b/grub-core/lib/xzembed/xz.h
-index f7b32d800..d1417039a 100644
+index f7b32d8003..d1417039aa 100644
 --- a/grub-core/lib/xzembed/xz.h
 +++ b/grub-core/lib/xzembed/xz.h
 @@ -29,10 +29,7 @@
@@ -66,7 +66,7 @@ index f7b32d800..d1417039a 100644
  /**
   * enum xz_ret - Return codes
 diff --git a/bootstrap.conf b/bootstrap.conf
-index 52d4af44b..645e3a459 100644
+index 52d4af44be..645e3a459c 100644
 --- a/bootstrap.conf
 +++ b/bootstrap.conf
 @@ -35,6 +35,7 @@ gnulib_modules="
@@ -87,7 +87,7 @@ index 52d4af44b..645e3a459 100644
      patch -d grub-core/lib/gnulib -p2 \
        < "grub-core/lib/gnulib-patches/$patchname.patch"
 diff --git a/conf/Makefile.extra-dist b/conf/Makefile.extra-dist
-index ad235de7f..f4791dc6c 100644
+index ad235de7fc..f4791dc6ca 100644
 --- a/conf/Makefile.extra-dist
 +++ b/conf/Makefile.extra-dist
 @@ -31,7 +31,6 @@ EXTRA_DIST += grub-core/gensymlist.sh
@@ -99,7 +99,7 @@ index ad235de7f..f4791dc6c 100644
  EXTRA_DIST += grub-core/lib/gnulib-patches/fix-null-state-deref.patch
  EXTRA_DIST += grub-core/lib/gnulib-patches/fix-regcomp-uninit-token.patch
 diff --git a/config.h.in b/config.h.in
-index f2ed0066e..9c7b4afaa 100644
+index f2ed0066ec..9c7b4afaaa 100644
 --- a/config.h.in
 +++ b/config.h.in
 @@ -66,4 +66,8 @@
@@ -113,7 +113,7 @@ index f2ed0066e..9c7b4afaa 100644
  #endif
 diff --git a/grub-core/lib/gnulib-patches/fix-base64.patch b/grub-core/lib/gnulib-patches/fix-base64.patch
 deleted file mode 100644
-index 985db1279..000000000
+index 985db12797..0000000000
 --- a/grub-core/lib/gnulib-patches/fix-base64.patch
 +++ /dev/null
 @@ -1,21 +0,0 @@

@@ -11,7 +11,7 @@ Signed-off-by: Peter Jones <pjones@redhat.com>
  2 files changed, 12 insertions(+), 4 deletions(-)
 
 diff --git a/configure.ac b/configure.ac
-index 2af5f23ad..091ab3283 100644
+index 2af5f23adf..091ab32836 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -1453,11 +1453,11 @@ fi
@@ -45,7 +45,7 @@ index 2af5f23ad..091ab3283 100644
  TARGET_CCAS=$TARGET_CC
  
 diff --git a/conf/Makefile.common b/conf/Makefile.common
-index 2ff9b3935..35e14ff01 100644
+index 2ff9b39357..35e14ff017 100644
 --- a/conf/Makefile.common
 +++ b/conf/Makefile.common
 @@ -66,7 +66,7 @@ grubconfdir = $(sysconfdir)/grub.d

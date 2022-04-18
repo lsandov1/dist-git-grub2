@@ -15,7 +15,7 @@ Signed-off-by: David Abdurachmanov <david.abdurachmanov@sifive.com>
  1 file changed, 1 insertion(+)
 
 diff --git a/grub-core/kern/riscv/efi/startup.S b/grub-core/kern/riscv/efi/startup.S
-index f2a7b2b1e..781773136 100644
+index f2a7b2b1ed..781773136e 100644
 --- a/grub-core/kern/riscv/efi/startup.S
 +++ b/grub-core/kern/riscv/efi/startup.S
 @@ -29,6 +29,7 @@

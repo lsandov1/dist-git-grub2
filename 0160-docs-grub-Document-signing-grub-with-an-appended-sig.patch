@@ -13,7 +13,7 @@ Signed-off-by: Daniel Axtens <dja@axtens.net>
  1 file changed, 42 insertions(+)
 
 diff --git a/docs/grub.texi b/docs/grub.texi
-index 365d1d693..afbde7c1f 100644
+index 365d1d6931..afbde7c1f7 100644
 --- a/docs/grub.texi
 +++ b/docs/grub.texi
 @@ -6087,6 +6087,48 @@ image works under UEFI secure boot and can maintain the secure-boot chain. It

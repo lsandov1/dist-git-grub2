@@ -11,7 +11,7 @@ Signed-off-by: Robbie Harwood <rharwood@redhat.com>
  1 file changed, 29 insertions(+), 29 deletions(-)
 
 diff --git a/config.h.in b/config.h.in
-index c80e3e0ab..f2ed0066e 100644
+index c80e3e0aba..f2ed0066ec 100644
 --- a/config.h.in
 +++ b/config.h.in
 @@ -23,47 +23,47 @@

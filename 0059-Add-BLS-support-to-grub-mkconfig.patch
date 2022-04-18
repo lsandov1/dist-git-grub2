@@ -33,7 +33,7 @@ Signed-off-by: Robbie Harwood <rharwood@redhat.com>
  3 files changed, 243 insertions(+), 6 deletions(-)
 
 diff --git a/util/grub-mkconfig.in b/util/grub-mkconfig.in
-index 535c0f024..f55339a3f 100644
+index 535c0f0249..f55339a3f6 100644
 --- a/util/grub-mkconfig.in
 +++ b/util/grub-mkconfig.in
 @@ -50,6 +50,8 @@ grub_get_kernel_settings="${sbindir}/@grub_get_kernel_settings@"
@@ -74,7 +74,7 @@ index 535c0f024..f55339a3f 100644
  if test "x${grub_cfg}" != "x"; then
    rm -f "${grub_cfg}.new"
 diff --git a/util/grub-mkconfig_lib.in b/util/grub-mkconfig_lib.in
-index fafeac950..d8bb40693 100644
+index fafeac9506..d8bb406936 100644
 --- a/util/grub-mkconfig_lib.in
 +++ b/util/grub-mkconfig_lib.in
 @@ -30,6 +30,9 @@ fi
@@ -131,7 +131,7 @@ index fafeac950..d8bb40693 100644
    fi
    IFS="$old_ifs"
 diff --git a/util/grub.d/10_linux.in b/util/grub.d/10_linux.in
-index 7bb3a211a..f1548a260 100644
+index 7bb3a211a7..f1548a2605 100644
 --- a/util/grub.d/10_linux.in
 +++ b/util/grub.d/10_linux.in
 @@ -82,6 +82,218 @@ case x"$GRUB_FS" in

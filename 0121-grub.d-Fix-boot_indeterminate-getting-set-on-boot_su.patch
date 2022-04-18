@@ -53,7 +53,7 @@ Signed-off-by: Robbie Harwood <rharwood@redhat.com>
  1 file changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/util/grub.d/10_reset_boot_success.in b/util/grub.d/10_reset_boot_success.in
-index 6c88d933d..e73f4137b 100644
+index 6c88d933dd..e73f4137b3 100644
 --- a/util/grub.d/10_reset_boot_success.in
 +++ b/util/grub.d/10_reset_boot_success.in
 @@ -6,18 +6,18 @@

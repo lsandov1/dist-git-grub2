@@ -19,7 +19,7 @@ Signed-off-by: Dimitri John Ledkov <dimitri.ledkov@canonical.com>
  1 file changed, 13 deletions(-)
 
 diff --git a/grub-core/loader/arm64/linux.c b/grub-core/loader/arm64/linux.c
-index f18d90bd7..d2af47c2c 100644
+index f18d90bd74..d2af47c2c0 100644
 --- a/grub-core/loader/arm64/linux.c
 +++ b/grub-core/loader/arm64/linux.c
 @@ -34,7 +34,6 @@

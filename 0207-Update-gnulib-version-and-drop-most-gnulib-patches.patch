@@ -48,7 +48,7 @@ Signed-off-by: Robbie Harwood <rharwood@redhat.com>
  delete mode 100644 grub-core/lib/gnulib-patches/fix-unused-value.patch
 
 diff --git a/configure.ac b/configure.ac
-index 88e33e0f0..871235b91 100644
+index 88e33e0f0c..871235b91b 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -49,7 +49,7 @@ AC_CANONICAL_TARGET
@@ -61,7 +61,7 @@ index 88e33e0f0..871235b91 100644
  AC_CONFIG_HEADER([config-util.h])
  
 diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
-index 6b00eb555..39233096f 100644
+index 6b00eb5557..39233096f2 100644
 --- a/grub-core/Makefile.core.def
 +++ b/grub-core/Makefile.core.def
 @@ -762,6 +762,9 @@ module = {
@@ -75,7 +75,7 @@ index 6b00eb555..39233096f 100644
    cflags = '$(CFLAGS_POSIX) $(CFLAGS_GNULIB)';
    cppflags = '$(CPPFLAGS_POSIX) $(CPPFLAGS_GNULIB)';
 diff --git a/grub-core/disk/luks2.c b/grub-core/disk/luks2.c
-index 371a53b83..c917a5f91 100644
+index 371a53b837..c917a5f91e 100644
 --- a/grub-core/disk/luks2.c
 +++ b/grub-core/disk/luks2.c
 @@ -389,7 +389,7 @@ luks2_verify_key (grub_luks2_digest_t *d, grub_uint8_t *candidate_key,
@@ -97,7 +97,7 @@ index 371a53b83..c917a5f91 100644
    const gcry_md_spec_t *hash;
    gcry_err_code_t gcry_ret;
 diff --git a/grub-core/lib/posix_wrap/limits.h b/grub-core/lib/posix_wrap/limits.h
-index 591dbf328..4be7b4080 100644
+index 591dbf3289..4be7b40806 100644
 --- a/grub-core/lib/posix_wrap/limits.h
 +++ b/grub-core/lib/posix_wrap/limits.h
 @@ -25,7 +25,11 @@
@@ -114,7 +114,7 @@ index 591dbf328..4be7b4080 100644
  #define SCHAR_MIN GRUB_SCHAR_MIN
  #define SCHAR_MAX GRUB_SCHAR_MAX
 diff --git a/include/grub/compiler.h b/include/grub/compiler.h
-index ebafec689..441a9eca0 100644
+index ebafec6895..441a9eca07 100644
 --- a/include/grub/compiler.h
 +++ b/include/grub/compiler.h
 @@ -30,10 +30,10 @@
@@ -131,7 +131,7 @@ index ebafec689..441a9eca0 100644
  
  #if GNUC_PREREQ(4,4)
 diff --git a/include/grub/list.h b/include/grub/list.h
-index b13acb962..21f4b4b44 100644
+index b13acb9624..21f4b4b44a 100644
 --- a/include/grub/list.h
 +++ b/include/grub/list.h
 @@ -40,7 +40,7 @@ void EXPORT_FUNC(grub_list_remove) (grub_list_t item);
@@ -144,7 +144,7 @@ index b13acb962..21f4b4b44 100644
  static inline void *
  grub_bad_type_cast_real (int line, const char *file)
 diff --git a/INSTALL b/INSTALL
-index 79a0af7d9..ee9f536f7 100644
+index 79a0af7d93..ee9f536f76 100644
 --- a/INSTALL
 +++ b/INSTALL
 @@ -42,7 +42,7 @@ If you use a development snapshot or want to hack on GRUB you may
@@ -157,7 +157,7 @@ index 79a0af7d9..ee9f536f7 100644
  
  Prerequisites for make-check:
 diff --git a/bootstrap b/bootstrap
-index 5b08e7e2d..dc2238f4a 100755
+index 5b08e7e2d4..dc2238f4ad 100755
 --- a/bootstrap
 +++ b/bootstrap
 @@ -1,10 +1,10 @@
@@ -563,7 +563,7 @@ index 5b08e7e2d..dc2238f4a 100755
  # time-stamp-start: "scriptversion="
  # time-stamp-format: "%:y-%02m-%02d.%02H"
 diff --git a/bootstrap.conf b/bootstrap.conf
-index 71ce943c7..e4e5f3750 100644
+index 71ce943c7d..e4e5f3750a 100644
 --- a/bootstrap.conf
 +++ b/bootstrap.conf
 @@ -1,6 +1,6 @@
@@ -618,7 +618,7 @@ index 71ce943c7..e4e5f3750 100644
        0001-Support-POTFILES-shell \
        0002-Handle-gettext_printf-shell-function \
 diff --git a/conf/Makefile.extra-dist b/conf/Makefile.extra-dist
-index 5eef70833..26ac8765e 100644
+index 5eef708338..26ac8765e3 100644
 --- a/conf/Makefile.extra-dist
 +++ b/conf/Makefile.extra-dist
 @@ -31,12 +31,6 @@ EXTRA_DIST += grub-core/gensymlist.sh
@@ -635,7 +635,7 @@ index 5eef70833..26ac8765e 100644
  
  EXTRA_DIST += grub-core/lib/libgcrypt
 diff --git a/config.h.in b/config.h.in
-index c3134309c..512d1bbe1 100644
+index c3134309c6..512d1bbe13 100644
 --- a/config.h.in
 +++ b/config.h.in
 @@ -67,10 +67,78 @@
@@ -719,7 +719,7 @@ index c3134309c..512d1bbe1 100644
  #endif
 diff --git a/grub-core/lib/gnulib-patches/fix-null-deref.patch b/grub-core/lib/gnulib-patches/fix-null-deref.patch
 deleted file mode 100644
-index 8fafa153a..000000000
+index 8fafa153a4..0000000000
 --- a/grub-core/lib/gnulib-patches/fix-null-deref.patch
 +++ /dev/null
 @@ -1,13 +0,0 @@
@@ -738,7 +738,7 @@ index 8fafa153a..000000000
 -       struct parser *parser = state->pstate;
 diff --git a/grub-core/lib/gnulib-patches/fix-null-state-deref.patch b/grub-core/lib/gnulib-patches/fix-null-state-deref.patch
 deleted file mode 100644
-index 813ec09c8..000000000
+index 813ec09c8a..0000000000
 --- a/grub-core/lib/gnulib-patches/fix-null-state-deref.patch
 +++ /dev/null
 @@ -1,12 +0,0 @@
@@ -756,7 +756,7 @@ index 813ec09c8..000000000
 -                           "rmargin", up->name);
 diff --git a/grub-core/lib/gnulib-patches/fix-regcomp-uninit-token.patch b/grub-core/lib/gnulib-patches/fix-regcomp-uninit-token.patch
 deleted file mode 100644
-index 02e06315d..000000000
+index 02e06315df..0000000000
 --- a/grub-core/lib/gnulib-patches/fix-regcomp-uninit-token.patch
 +++ /dev/null
 @@ -1,15 +0,0 @@
@@ -777,7 +777,7 @@ index 02e06315d..000000000
 - 
 diff --git a/grub-core/lib/gnulib-patches/fix-regexec-null-deref.patch b/grub-core/lib/gnulib-patches/fix-regexec-null-deref.patch
 deleted file mode 100644
-index db6dac9c9..000000000
+index db6dac9c9e..0000000000
 --- a/grub-core/lib/gnulib-patches/fix-regexec-null-deref.patch
 +++ /dev/null
 @@ -1,12 +0,0 @@
@@ -795,7 +795,7 @@ index db6dac9c9..000000000
 -       || (next_state_log_idx >= mctx->input.valid_len
 diff --git a/grub-core/lib/gnulib-patches/fix-uninit-structure.patch b/grub-core/lib/gnulib-patches/fix-uninit-structure.patch
 deleted file mode 100644
-index 7b4d9f67a..000000000
+index 7b4d9f67af..0000000000
 --- a/grub-core/lib/gnulib-patches/fix-uninit-structure.patch
 +++ /dev/null
 @@ -1,11 +0,0 @@
@@ -812,7 +812,7 @@ index 7b4d9f67a..000000000
 -   sbcset = (re_bitset_ptr_t) calloc (sizeof (bitset_t), 1);
 diff --git a/grub-core/lib/gnulib-patches/fix-unused-value.patch b/grub-core/lib/gnulib-patches/fix-unused-value.patch
 deleted file mode 100644
-index ba51f1bf2..000000000
+index ba51f1bf22..0000000000
 --- a/grub-core/lib/gnulib-patches/fix-unused-value.patch
 +++ /dev/null
 @@ -1,14 +0,0 @@

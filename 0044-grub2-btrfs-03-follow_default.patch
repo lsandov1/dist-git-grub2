@@ -10,7 +10,7 @@ Signed-off-by: Robbie Harwood <rharwood@redhat.com>
  1 file changed, 76 insertions(+), 31 deletions(-)
 
 diff --git a/grub-core/fs/btrfs.c b/grub-core/fs/btrfs.c
-index ad1b56b71..113c1f746 100644
+index ad1b56b716..113c1f746c 100644
 --- a/grub-core/fs/btrfs.c
 +++ b/grub-core/fs/btrfs.c
 @@ -1256,6 +1256,7 @@ grub_btrfs_mount (grub_device_t dev)

@@ -12,7 +12,7 @@ Signed-off-by: Renaud Métrich <rmetrich@redhat.com>
  1 file changed, 14 insertions(+)
 
 diff --git a/grub-core/kern/file.c b/grub-core/kern/file.c
-index 58454458c..e19aea3e5 100644
+index 58454458c4..e19aea3e51 100644
 --- a/grub-core/kern/file.c
 +++ b/grub-core/kern/file.c
 @@ -66,6 +66,8 @@ grub_file_open (const char *name, enum grub_file_type type)

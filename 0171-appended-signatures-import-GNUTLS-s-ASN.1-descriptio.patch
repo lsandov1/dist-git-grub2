@@ -22,7 +22,7 @@ Signed-off-by: Daniel Axtens <dja@axtens.net>
 
 diff --git a/grub-core/commands/appendedsig/gnutls_asn1_tab.c b/grub-core/commands/appendedsig/gnutls_asn1_tab.c
 new file mode 100644
-index 000000000..ddd1314e6
+index 0000000000..ddd1314e63
 --- /dev/null
 +++ b/grub-core/commands/appendedsig/gnutls_asn1_tab.c
 @@ -0,0 +1,121 @@
@@ -149,7 +149,7 @@ index 000000000..ddd1314e6
 +};
 diff --git a/grub-core/commands/appendedsig/pkix_asn1_tab.c b/grub-core/commands/appendedsig/pkix_asn1_tab.c
 new file mode 100644
-index 000000000..adef69d95
+index 0000000000..adef69d95c
 --- /dev/null
 +++ b/grub-core/commands/appendedsig/pkix_asn1_tab.c
 @@ -0,0 +1,484 @@

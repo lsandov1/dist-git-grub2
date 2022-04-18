@@ -18,7 +18,7 @@ Signed-off-by: Javier Martinez Canillas <javierm@redhat.com>
  1 file changed, 7 insertions(+), 7 deletions(-)
 
 diff --git a/grub-core/commands/tpm.c b/grub-core/commands/tpm.c
-index 2052c36ea..e287d042e 100644
+index 2052c36eab..e287d042e6 100644
 --- a/grub-core/commands/tpm.c
 +++ b/grub-core/commands/tpm.c
 @@ -42,7 +42,8 @@ grub_tpm_verify_init (grub_file_t io,

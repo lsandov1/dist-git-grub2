@@ -44,7 +44,7 @@ moves the check into grub_dl_load_file.
  create mode 100644 include/grub/efi/linux.h
 
 diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
-index 8022e1c0a..45d3edaa4 100644
+index 8022e1c0a7..45d3edaa4d 100644
 --- a/grub-core/Makefile.core.def
 +++ b/grub-core/Makefile.core.def
 @@ -1734,13 +1734,6 @@ module = {
@@ -88,7 +88,7 @@ index 8022e1c0a..45d3edaa4 100644
  
  module = {
 diff --git a/grub-core/kern/dl.c b/grub-core/kern/dl.c
-index 48f8a7907..b71493709 100644
+index 48f8a79073..b714937095 100644
 --- a/grub-core/kern/dl.c
 +++ b/grub-core/kern/dl.c
 @@ -38,6 +38,14 @@
@@ -127,7 +127,7 @@ index 48f8a7907..b71493709 100644
  
    file = grub_file_open (filename, GRUB_FILE_TYPE_GRUB_MODULE);
 diff --git a/grub-core/kern/efi/efi.c b/grub-core/kern/efi/efi.c
-index 8cff7be02..35b8f6706 100644
+index 8cff7be028..35b8f67060 100644
 --- a/grub-core/kern/efi/efi.c
 +++ b/grub-core/kern/efi/efi.c
 @@ -286,6 +286,34 @@ grub_efi_get_variable (const char *var, const grub_efi_guid_t *guid,
@@ -166,7 +166,7 @@ index 8cff7be02..35b8f6706 100644
  
  /* Search the mods section from the PE32/PE32+ image. This code uses
 diff --git a/grub-core/kern/efi/mm.c b/grub-core/kern/efi/mm.c
-index 9838fb2f5..f6aef0ef6 100644
+index 9838fb2f50..f6aef0ef64 100644
 --- a/grub-core/kern/efi/mm.c
 +++ b/grub-core/kern/efi/mm.c
 @@ -113,6 +113,38 @@ grub_efi_drop_alloc (grub_efi_physical_address_t address,
@@ -209,7 +209,7 @@ index 9838fb2f5..f6aef0ef6 100644
  void *
  grub_efi_allocate_pages_real (grub_efi_physical_address_t address,
 diff --git a/grub-core/loader/arm64/linux.c b/grub-core/loader/arm64/linux.c
-index ef3e9f944..a312c6686 100644
+index ef3e9f9444..a312c66868 100644
 --- a/grub-core/loader/arm64/linux.c
 +++ b/grub-core/loader/arm64/linux.c
 @@ -29,6 +29,7 @@
@@ -390,7 +390,7 @@ index ef3e9f944..a312c6686 100644
    linux_args = grub_malloc (cmdline_size);
    if (!linux_args)
 diff --git a/grub-core/loader/arm64/xen_boot.c b/grub-core/loader/arm64/xen_boot.c
-index 22cc25ecc..d9b7a9ba4 100644
+index 22cc25eccd..d9b7a9ba40 100644
 --- a/grub-core/loader/arm64/xen_boot.c
 +++ b/grub-core/loader/arm64/xen_boot.c
 @@ -266,7 +266,6 @@ xen_boot (void)
@@ -403,7 +403,7 @@ index 22cc25ecc..d9b7a9ba4 100644
  
 diff --git a/grub-core/loader/efi/linux.c b/grub-core/loader/efi/linux.c
 new file mode 100644
-index 000000000..c24202a5d
+index 0000000000..c24202a5dd
 --- /dev/null
 +++ b/grub-core/loader/efi/linux.c
 @@ -0,0 +1,70 @@
@@ -479,7 +479,7 @@ index 000000000..c24202a5d
 +#pragma GCC diagnostic pop
 diff --git a/grub-core/loader/i386/efi/linux.c b/grub-core/loader/i386/efi/linux.c
 new file mode 100644
-index 000000000..bb2616a80
+index 0000000000..bb2616a809
 --- /dev/null
 +++ b/grub-core/loader/i386/efi/linux.c
 @@ -0,0 +1,335 @@
@@ -819,7 +819,7 @@ index 000000000..bb2616a80
 +  grub_unregister_command (cmd_initrdefi);
 +}
 diff --git a/grub-core/loader/i386/pc/linux.c b/grub-core/loader/i386/pc/linux.c
-index 2a2995201..8be4c3b3f 100644
+index 2a29952016..8be4c3b3f4 100644
 --- a/grub-core/loader/i386/pc/linux.c
 +++ b/grub-core/loader/i386/pc/linux.c
 @@ -474,14 +474,20 @@ grub_cmd_initrd (grub_command_t cmd __attribute__ ((unused)),
@@ -853,7 +853,7 @@ index 2a2995201..8be4c3b3f 100644
 +  grub_unregister_command (cmd_initrd16);
  }
 diff --git a/include/grub/arm/linux.h b/include/grub/arm/linux.h
-index bcd5a7eb1..b582f67f6 100644
+index bcd5a7eb18..b582f67f66 100644
 --- a/include/grub/arm/linux.h
 +++ b/include/grub/arm/linux.h
 @@ -20,6 +20,7 @@
@@ -883,7 +883,7 @@ index bcd5a7eb1..b582f67f6 100644
  
  #if defined GRUB_MACHINE_UBOOT
 diff --git a/include/grub/arm64/linux.h b/include/grub/arm64/linux.h
-index 7e22b4ab6..ea030312d 100644
+index 7e22b4ab69..ea030312df 100644
 --- a/include/grub/arm64/linux.h
 +++ b/include/grub/arm64/linux.h
 @@ -19,6 +19,7 @@
@@ -913,7 +913,7 @@ index 7e22b4ab6..ea030312d 100644
  
  #endif /* ! GRUB_ARM64_LINUX_HEADER */
 diff --git a/include/grub/efi/efi.h b/include/grub/efi/efi.h
-index 83d958f99..6295df85f 100644
+index 83d958f994..6295df85f3 100644
 --- a/include/grub/efi/efi.h
 +++ b/include/grub/efi/efi.h
 @@ -47,6 +47,9 @@ EXPORT_FUNC(grub_efi_allocate_fixed) (grub_efi_physical_address_t address,
@@ -946,7 +946,7 @@ index 83d958f99..6295df85f 100644
  grub_addr_t grub_efi_modules_addr (void);
 diff --git a/include/grub/efi/linux.h b/include/grub/efi/linux.h
 new file mode 100644
-index 000000000..d9ede3677
+index 0000000000..d9ede36773
 --- /dev/null
 +++ b/include/grub/efi/linux.h
 @@ -0,0 +1,31 @@

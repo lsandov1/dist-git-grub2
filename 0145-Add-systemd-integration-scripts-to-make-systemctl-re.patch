@@ -65,7 +65,7 @@ Signed-off-by: Hans de Goede <hdegoede@redhat.com>
  create mode 100644 util/systemd/systemd-integration.sh.in
 
 diff --git a/Makefile.util.def b/Makefile.util.def
-index 2e6ad979c..9927c2cfd 100644
+index 2e6ad979c3..9927c2cfd6 100644
 --- a/Makefile.util.def
 +++ b/Makefile.util.def
 @@ -470,6 +470,12 @@ script = {
@@ -110,7 +110,7 @@ index 2e6ad979c..9927c2cfd 100644
    mansection = 1;
    name = grub-mkrescue;
 diff --git a/conf/Makefile.common b/conf/Makefile.common
-index 0647c53b9..9fe5863b2 100644
+index 0647c53b91..9fe5863b2d 100644
 --- a/conf/Makefile.common
 +++ b/conf/Makefile.common
 @@ -63,8 +63,11 @@ CCASFLAGS_LIBRARY = $(UTILS_CCASFLAGS)
@@ -137,7 +137,7 @@ index 0647c53b9..9fe5863b2 100644
  EXTRA_DIST =
 diff --git a/util/grub.d/14_menu_show_once.in b/util/grub.d/14_menu_show_once.in
 new file mode 100755
-index 000000000..1cd7f3614
+index 0000000000..1cd7f36142
 --- /dev/null
 +++ b/util/grub.d/14_menu_show_once.in
 @@ -0,0 +1,13 @@
@@ -156,7 +156,7 @@ index 000000000..1cd7f3614
 +EOF
 diff --git a/util/systemd/10-grub-logind-service.conf.in b/util/systemd/10-grub-logind-service.conf.in
 new file mode 100644
-index 000000000..f2d4ac007
+index 0000000000..f2d4ac0073
 --- /dev/null
 +++ b/util/systemd/10-grub-logind-service.conf.in
 @@ -0,0 +1,2 @@
@@ -164,7 +164,7 @@ index 000000000..f2d4ac007
 +Environment=SYSTEMD_REBOOT_TO_BOOT_LOADER_MENU=true
 diff --git a/util/systemd/grub-systemd-integration.service.in b/util/systemd/grub-systemd-integration.service.in
 new file mode 100644
-index 000000000..c81fb594c
+index 0000000000..c81fb594ce
 --- /dev/null
 +++ b/util/systemd/grub-systemd-integration.service.in
 @@ -0,0 +1,8 @@
@@ -178,7 +178,7 @@ index 000000000..c81fb594c
 +ExecStart=@libexecdir@/@grubdirname@/systemd-integration.sh
 diff --git a/util/systemd/systemd-integration.sh.in b/util/systemd/systemd-integration.sh.in
 new file mode 100644
-index 000000000..dc1218597
+index 0000000000..dc1218597b
 --- /dev/null
 +++ b/util/systemd/systemd-integration.sh.in
 @@ -0,0 +1,6 @@

@@ -17,7 +17,7 @@ Signed-off-by: Javier Martinez Canillas <javierm@redhat.com>
  1 file changed, 13 insertions(+), 10 deletions(-)
 
 diff --git a/grub-core/normal/menu.c b/grub-core/normal/menu.c
-index fe2e77a43..ec0c92bad 100644
+index fe2e77a43e..ec0c92bade 100644
 --- a/grub-core/normal/menu.c
 +++ b/grub-core/normal/menu.c
 @@ -285,7 +285,7 @@ get_and_remove_first_entry_number (grub_menu_t menu, const char *name)

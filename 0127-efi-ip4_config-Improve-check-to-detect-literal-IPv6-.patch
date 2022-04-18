@@ -21,7 +21,7 @@ Signed-off-by: Javier Martinez Canillas <javierm@redhat.com>
  1 file changed, 12 insertions(+), 1 deletion(-)
 
 diff --git a/grub-core/net/efi/ip4_config.c b/grub-core/net/efi/ip4_config.c
-index b711a5d94..313c818b1 100644
+index b711a5d945..313c818b18 100644
 --- a/grub-core/net/efi/ip4_config.c
 +++ b/grub-core/net/efi/ip4_config.c
 @@ -56,9 +56,20 @@ int

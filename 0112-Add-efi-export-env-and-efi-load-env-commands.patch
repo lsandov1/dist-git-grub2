@@ -21,7 +21,7 @@ Signed-off-by: Peter Jones <pjones@redhat.com>
  create mode 100644 grub-core/commands/efi/env.c
 
 diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
-index 1e1534510..81fc27414 100644
+index 1e15345107..81fc274148 100644
 --- a/grub-core/Makefile.core.def
 +++ b/grub-core/Makefile.core.def
 @@ -820,6 +820,12 @@ module = {
@@ -39,7 +39,7 @@ index 1e1534510..81fc27414 100644
    efi = commands/efi/efifwsetup.c;
 diff --git a/grub-core/commands/efi/env.c b/grub-core/commands/efi/env.c
 new file mode 100644
-index 000000000..cbd13e03e
+index 0000000000..cbd13e03e8
 --- /dev/null
 +++ b/grub-core/commands/efi/env.c
 @@ -0,0 +1,168 @@
@@ -212,7 +212,7 @@ index 000000000..cbd13e03e
 +  grub_unregister_command (loadenv_cmd);
 +}
 diff --git a/grub-core/kern/efi/efi.c b/grub-core/kern/efi/efi.c
-index 2a446f503..14bc10eb5 100644
+index 2a446f5031..14bc10eb56 100644
 --- a/grub-core/kern/efi/efi.c
 +++ b/grub-core/kern/efi/efi.c
 @@ -225,6 +225,9 @@ grub_efi_set_variable(const char *var, const grub_efi_guid_t *guid,
@@ -226,7 +226,7 @@ index 2a446f503..14bc10eb5 100644
  }
  
 diff --git a/grub-core/kern/efi/init.c b/grub-core/kern/efi/init.c
-index 2d12e6188..0574d8d62 100644
+index 2d12e6188f..0574d8d621 100644
 --- a/grub-core/kern/efi/init.c
 +++ b/grub-core/kern/efi/init.c
 @@ -85,11 +85,6 @@ stack_protector_init (void)
@@ -242,7 +242,7 @@ index 2d12e6188..0574d8d62 100644
  static int
  set_var (const char *name, const char *value,
 diff --git a/grub-core/lib/envblk.c b/grub-core/lib/envblk.c
-index 2e4e78b13..874506da1 100644
+index 2e4e78b132..874506da16 100644
 --- a/grub-core/lib/envblk.c
 +++ b/grub-core/lib/envblk.c
 @@ -223,6 +223,49 @@ grub_envblk_delete (grub_envblk_t envblk, const char *name)
@@ -296,7 +296,7 @@ index 2e4e78b13..874506da1 100644
  grub_envblk_iterate (grub_envblk_t envblk,
                       void *hook_data,
 diff --git a/util/grub-set-bootflag.c b/util/grub-set-bootflag.c
-index d506f7e75..a6ccc1138 100644
+index d506f7e75b..a6ccc11383 100644
 --- a/util/grub-set-bootflag.c
 +++ b/util/grub-set-bootflag.c
 @@ -25,6 +25,7 @@
@@ -308,7 +308,7 @@ index d506f7e75..a6ccc1138 100644
  #include <errno.h>
  #include <stdio.h>
 diff --git a/include/grub/efi/efi.h b/include/grub/efi/efi.h
-index 2e0691454..8dfc89a33 100644
+index 2e0691454b..8dfc89a33b 100644
 --- a/include/grub/efi/efi.h
 +++ b/include/grub/efi/efi.h
 @@ -24,6 +24,11 @@
@@ -324,7 +324,7 @@ index 2e0691454..8dfc89a33 100644
  extern grub_efi_system_table_t *EXPORT_VAR(grub_efi_system_table);
  extern grub_efi_handle_t EXPORT_VAR(grub_efi_image_handle);
 diff --git a/include/grub/lib/envblk.h b/include/grub/lib/envblk.h
-index c3e655921..ab969af24 100644
+index c3e6559217..ab969af246 100644
 --- a/include/grub/lib/envblk.h
 +++ b/include/grub/lib/envblk.h
 @@ -22,6 +22,8 @@

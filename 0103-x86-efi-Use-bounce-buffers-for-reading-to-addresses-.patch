@@ -12,7 +12,7 @@ Signed-off-by: Peter Jones <pjones@redhat.com>
  1 file changed, 45 insertions(+), 7 deletions(-)
 
 diff --git a/grub-core/loader/i386/efi/linux.c b/grub-core/loader/i386/efi/linux.c
-index 33e981e76..2f0336809 100644
+index 33e981e76e..2f0336809e 100644
 --- a/grub-core/loader/i386/efi/linux.c
 +++ b/grub-core/loader/i386/efi/linux.c
 @@ -35,11 +35,16 @@ static grub_dl_t my_mod;

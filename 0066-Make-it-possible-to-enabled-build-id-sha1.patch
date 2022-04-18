@@ -10,7 +10,7 @@ Signed-off-by: Peter Jones <pjones@redhat.com>
  2 files changed, 27 insertions(+)
 
 diff --git a/configure.ac b/configure.ac
-index 4f1676967..b809c0078 100644
+index 4f1676967e..b809c00784 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -1443,7 +1443,15 @@ grub_PROG_TARGET_CC
@@ -30,7 +30,7 @@ index 4f1676967..b809c0078 100644
    if test "$platform" != emu && test "x$TARGET_APPLE_LINKER" != x1 ; then
      if test ! -z "$TARGET_IMG_LDSCRIPT"; then
 diff --git a/acinclude.m4 b/acinclude.m4
-index 6e14bb553..21238fcfd 100644
+index 6e14bb553c..21238fcfd0 100644
 --- a/acinclude.m4
 +++ b/acinclude.m4
 @@ -136,6 +136,25 @@ if test "x$grub_cv_prog_ld_build_id_none" = xyes; then

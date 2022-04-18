@@ -17,7 +17,7 @@ Signed-off-by: Peter Jones <pjones@redhat.com>
 
 diff --git a/include/grub/arm/efi/console.h b/include/grub/arm/efi/console.h
 new file mode 100644
-index 000000000..1592f6f76
+index 0000000000..1592f6f76b
 --- /dev/null
 +++ b/include/grub/arm/efi/console.h
 @@ -0,0 +1,24 @@
@@ -47,7 +47,7 @@ index 000000000..1592f6f76
 +#endif /* ! GRUB_ARM_EFI_CONSOLE_H */
 diff --git a/include/grub/arm64/efi/console.h b/include/grub/arm64/efi/console.h
 new file mode 100644
-index 000000000..956893393
+index 0000000000..9568933938
 --- /dev/null
 +++ b/include/grub/arm64/efi/console.h
 @@ -0,0 +1,24 @@
@@ -77,7 +77,7 @@ index 000000000..956893393
 +#endif /* ! GRUB_ARM64_EFI_CONSOLE_H */
 diff --git a/include/grub/i386/efi/console.h b/include/grub/i386/efi/console.h
 new file mode 100644
-index 000000000..9231375cb
+index 0000000000..9231375cb0
 --- /dev/null
 +++ b/include/grub/i386/efi/console.h
 @@ -0,0 +1,24 @@
@@ -107,7 +107,7 @@ index 000000000..9231375cb
 +#endif /* ! GRUB_I386_EFI_CONSOLE_H */
 diff --git a/include/grub/x86_64/efi/console.h b/include/grub/x86_64/efi/console.h
 new file mode 100644
-index 000000000..dba9d8678
+index 0000000000..dba9d8678d
 --- /dev/null
 +++ b/include/grub/x86_64/efi/console.h
 @@ -0,0 +1,24 @@

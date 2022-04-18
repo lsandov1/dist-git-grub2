@@ -10,7 +10,7 @@ This reverts commit e346414725a70e5c74ee87ca14e580c66f517666.
  2 files changed, 9 insertions(+), 14 deletions(-)
 
 diff --git a/docs/grub.texi b/docs/grub.texi
-index f8b4b3b21..69f08d289 100644
+index f8b4b3b21a..69f08d289f 100644
 --- a/docs/grub.texi
 +++ b/docs/grub.texi
 @@ -1519,13 +1519,10 @@ boot sequence.  If you have problems, set this option to @samp{text} and
@@ -46,7 +46,7 @@ index f8b4b3b21..69f08d289 100644
  First create a separate GRUB partition, big enough to hold GRUB. Some of the
  following entries show how to load OS installer images from this same partition,
 diff --git a/util/grub.d/30_os-prober.in b/util/grub.d/30_os-prober.in
-index 80685b15f..1b91c102f 100644
+index 80685b15f4..1b91c102f3 100644
 --- a/util/grub.d/30_os-prober.in
 +++ b/util/grub.d/30_os-prober.in
 @@ -26,8 +26,7 @@ export TEXTDOMAINDIR="@localedir@"

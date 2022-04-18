@@ -18,7 +18,7 @@ Signed-off-by: Hans de Goede <hdegoede@redhat.com>
  1 file changed, 5 insertions(+)
 
 diff --git a/util/systemd/systemd-integration.sh.in b/util/systemd/systemd-integration.sh.in
-index dc1218597..a4c071c5b 100644
+index dc1218597b..a4c071c5b0 100644
 --- a/util/systemd/systemd-integration.sh.in
 +++ b/util/systemd/systemd-integration.sh.in
 @@ -4,3 +4,8 @@ TIMEOUT_USEC=$(cat /run/systemd/reboot-to-boot-loader-menu)

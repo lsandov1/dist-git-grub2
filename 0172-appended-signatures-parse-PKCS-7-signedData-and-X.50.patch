@@ -29,7 +29,7 @@ Signed-off-by: Daniel Axtens <dja@axtens.net>
 
 diff --git a/grub-core/commands/appendedsig/asn1util.c b/grub-core/commands/appendedsig/asn1util.c
 new file mode 100644
-index 000000000..eff095a9d
+index 0000000000..eff095a9df
 --- /dev/null
 +++ b/grub-core/commands/appendedsig/asn1util.c
 @@ -0,0 +1,102 @@
@@ -137,7 +137,7 @@ index 000000000..eff095a9d
 +}
 diff --git a/grub-core/commands/appendedsig/pkcs7.c b/grub-core/commands/appendedsig/pkcs7.c
 new file mode 100644
-index 000000000..dc6afe203
+index 0000000000..dc6afe203f
 --- /dev/null
 +++ b/grub-core/commands/appendedsig/pkcs7.c
 @@ -0,0 +1,305 @@
@@ -448,7 +448,7 @@ index 000000000..dc6afe203
 +}
 diff --git a/grub-core/commands/appendedsig/x509.c b/grub-core/commands/appendedsig/x509.c
 new file mode 100644
-index 000000000..2b38b3670
+index 0000000000..2b38b3670a
 --- /dev/null
 +++ b/grub-core/commands/appendedsig/x509.c
 @@ -0,0 +1,958 @@
@@ -1412,7 +1412,7 @@ index 000000000..2b38b3670
 +}
 diff --git a/grub-core/commands/appendedsig/appendedsig.h b/grub-core/commands/appendedsig/appendedsig.h
 new file mode 100644
-index 000000000..9792ef390
+index 0000000000..9792ef3901
 --- /dev/null
 +++ b/grub-core/commands/appendedsig/appendedsig.h
 @@ -0,0 +1,110 @@

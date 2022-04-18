@@ -26,7 +26,7 @@ Signed-off-by: Robbie Harwood <rharwood@redhat.com>
  3 files changed, 47 insertions(+), 13 deletions(-)
 
 diff --git a/grub-core/commands/search.c b/grub-core/commands/search.c
-index 51656e361..57d26ced8 100644
+index 51656e361c..57d26ced8a 100644
 --- a/grub-core/commands/search.c
 +++ b/grub-core/commands/search.c
 @@ -47,7 +47,7 @@ struct search_ctx
@@ -86,7 +86,7 @@ index 51656e361..57d26ced8 100644
      .nhints = nhints,
      .count = 0,
 diff --git a/grub-core/commands/search_wrap.c b/grub-core/commands/search_wrap.c
-index 47fc8eb99..0b62acf85 100644
+index 47fc8eb996..0b62acf853 100644
 --- a/grub-core/commands/search_wrap.c
 +++ b/grub-core/commands/search_wrap.c
 @@ -40,6 +40,7 @@ static const struct grub_arg_option options[] =
@@ -139,7 +139,7 @@ index 47fc8eb99..0b62acf85 100644
      grub_error (GRUB_ERR_INVALID_COMMAND, "unspecified search type");
  
 diff --git a/include/grub/search.h b/include/grub/search.h
-index d80347df3..4190aeb2c 100644
+index d80347df34..4190aeb2cb 100644
 --- a/include/grub/search.h
 +++ b/include/grub/search.h
 @@ -19,11 +19,20 @@

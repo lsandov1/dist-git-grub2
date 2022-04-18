@@ -190,7 +190,7 @@ Signed-off-by: David Abdurachmanov <david.abdurachmanov@sifive.com>
  7 files changed, 844 insertions(+), 90 deletions(-)
 
 diff --git a/grub-core/kern/efi/efi.c b/grub-core/kern/efi/efi.c
-index 35b8f6706..4a2259aa1 100644
+index 35b8f67060..4a2259aa1c 100644
 --- a/grub-core/kern/efi/efi.c
 +++ b/grub-core/kern/efi/efi.c
 @@ -296,14 +296,20 @@ grub_efi_secure_boot (void)
@@ -219,7 +219,7 @@ index 35b8f6706..4a2259aa1 100644
    if (*secure_boot && !*setup_mode)
      ret = 1;
 diff --git a/grub-core/loader/arm64/linux.c b/grub-core/loader/arm64/linux.c
-index a312c6686..04994d5c6 100644
+index a312c66868..04994d5c67 100644
 --- a/grub-core/loader/arm64/linux.c
 +++ b/grub-core/loader/arm64/linux.c
 @@ -284,6 +284,7 @@ grub_cmd_linux (grub_command_t cmd __attribute__ ((unused)),
@@ -241,7 +241,7 @@ index a312c6686..04994d5c6 100644
        grub_error (GRUB_ERR_INVALID_COMMAND, N_("%s has invalid signature"), argv[0]);
        goto fail;
 diff --git a/grub-core/loader/efi/chainloader.c b/grub-core/loader/efi/chainloader.c
-index 2bd80f4db..e6a8d4ad0 100644
+index 2bd80f4db3..e6a8d4ad0e 100644
 --- a/grub-core/loader/efi/chainloader.c
 +++ b/grub-core/loader/efi/chainloader.c
 @@ -32,6 +32,8 @@
@@ -1184,7 +1184,7 @@ index 2bd80f4db..e6a8d4ad0 100644
  
    return grub_errno;
 diff --git a/grub-core/loader/efi/linux.c b/grub-core/loader/efi/linux.c
-index c24202a5d..c8ecce6df 100644
+index c24202a5dd..c8ecce6dfd 100644
 --- a/grub-core/loader/efi/linux.c
 +++ b/grub-core/loader/efi/linux.c
 @@ -33,21 +33,34 @@ struct grub_efi_shim_lock
@@ -1229,7 +1229,7 @@ index c24202a5d..c8ecce6df 100644
  
  #pragma GCC diagnostic push
 diff --git a/grub-core/loader/i386/efi/linux.c b/grub-core/loader/i386/efi/linux.c
-index bb2616a80..6b24cbb94 100644
+index bb2616a809..6b24cbb948 100644
 --- a/grub-core/loader/i386/efi/linux.c
 +++ b/grub-core/loader/i386/efi/linux.c
 @@ -117,6 +117,8 @@ grub_cmd_initrd (grub_command_t cmd __attribute__ ((unused)),
@@ -1297,7 +1297,7 @@ index bb2616a80..6b24cbb94 100644
      grub_file_close (file);
  
 diff --git a/include/grub/efi/linux.h b/include/grub/efi/linux.h
-index d9ede3677..0033d9305 100644
+index d9ede36773..0033d9305a 100644
 --- a/include/grub/efi/linux.h
 +++ b/include/grub/efi/linux.h
 @@ -22,7 +22,7 @@
@@ -1310,7 +1310,7 @@ index d9ede3677..0033d9305 100644
  grub_err_t
  EXPORT_FUNC(grub_efi_linux_boot) (void *kernel_address, grub_off_t offset,
 diff --git a/include/grub/efi/pe32.h b/include/grub/efi/pe32.h
-index 0ed8781f0..a43adf274 100644
+index 0ed8781f03..a43adf2746 100644
 --- a/include/grub/efi/pe32.h
 +++ b/include/grub/efi/pe32.h
 @@ -223,7 +223,11 @@ struct grub_pe64_optional_header

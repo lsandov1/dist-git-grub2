@@ -22,7 +22,7 @@ Signed-off-by: Hans de Goede <hdegoede@redhat.com>
  1 file changed, 3 insertions(+)
 
 diff --git a/grub-core/kern/main.c b/grub-core/kern/main.c
-index 3fc340147..993b8a859 100644
+index 3fc3401472..993b8a8598 100644
 --- a/grub-core/kern/main.c
 +++ b/grub-core/kern/main.c
 @@ -317,10 +317,13 @@ grub_main (void)

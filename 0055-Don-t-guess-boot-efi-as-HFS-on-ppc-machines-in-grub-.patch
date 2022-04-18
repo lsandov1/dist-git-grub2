@@ -16,7 +16,7 @@ Signed-off-by: Peter Jones <pjones@redhat.com>
  1 file changed, 1 insertion(+), 11 deletions(-)
 
 diff --git a/util/grub-install.c b/util/grub-install.c
-index 84ed6e88e..a2bec7446 100644
+index 84ed6e88ec..a2bec7446c 100644
 --- a/util/grub-install.c
 +++ b/util/grub-install.c
 @@ -1190,18 +1190,8 @@ main (int argc, char *argv[])

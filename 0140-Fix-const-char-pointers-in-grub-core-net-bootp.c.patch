@@ -14,7 +14,7 @@ Signed-off-by: Peter Jones <pjones@redhat.com>
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/grub-core/net/bootp.c b/grub-core/net/bootp.c
-index 8fb8918ae..7baf3540c 100644
+index 8fb8918ae7..7baf3540c8 100644
 --- a/grub-core/net/bootp.c
 +++ b/grub-core/net/bootp.c
 @@ -329,7 +329,7 @@ grub_net_configure_by_dhcp_ack (const char *name,

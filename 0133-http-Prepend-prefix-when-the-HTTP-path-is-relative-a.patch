@@ -20,7 +20,7 @@ Signed-off-by: Javier Martinez Canillas <javierm@redhat.com>
  1 file changed, 8 insertions(+), 1 deletion(-)
 
 diff --git a/grub-core/net/http.c b/grub-core/net/http.c
-index b52b558d6..7f878b561 100644
+index b52b558d63..7f878b5615 100644
 --- a/grub-core/net/http.c
 +++ b/grub-core/net/http.c
 @@ -501,13 +501,20 @@ http_open (struct grub_file *file, const char *filename)

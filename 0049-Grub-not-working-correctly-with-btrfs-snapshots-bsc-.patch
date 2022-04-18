@@ -10,7 +10,7 @@ Signed-off-by: Robbie Harwood <rharwood@redhat.com>
  1 file changed, 238 insertions(+)
 
 diff --git a/grub-core/fs/btrfs.c b/grub-core/fs/btrfs.c
-index 673ded035..2b21cbaa6 100644
+index 673ded0352..2b21cbaa67 100644
 --- a/grub-core/fs/btrfs.c
 +++ b/grub-core/fs/btrfs.c
 @@ -2887,6 +2887,238 @@ out:

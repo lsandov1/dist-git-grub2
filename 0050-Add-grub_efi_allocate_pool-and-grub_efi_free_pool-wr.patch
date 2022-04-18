@@ -10,7 +10,7 @@ Signed-off-by: Peter Jones <pjones@redhat.com>
  1 file changed, 32 insertions(+), 4 deletions(-)
 
 diff --git a/include/grub/efi/efi.h b/include/grub/efi/efi.h
-index 585fa6662..03f9a9d01 100644
+index 585fa6662b..03f9a9d011 100644
 --- a/include/grub/efi/efi.h
 +++ b/include/grub/efi/efi.h
 @@ -24,6 +24,10 @@

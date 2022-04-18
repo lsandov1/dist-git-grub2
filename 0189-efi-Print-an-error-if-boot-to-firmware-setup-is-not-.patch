@@ -21,7 +21,7 @@ Signed-off-by: Javier Martinez Canillas <javierm@redhat.com>
  1 file changed, 23 insertions(+), 20 deletions(-)
 
 diff --git a/grub-core/commands/efi/efifwsetup.c b/grub-core/commands/efi/efifwsetup.c
-index eaca03283..328c45e82 100644
+index eaca032838..328c45e82e 100644
 --- a/grub-core/commands/efi/efifwsetup.c
 +++ b/grub-core/commands/efi/efifwsetup.c
 @@ -27,6 +27,25 @@

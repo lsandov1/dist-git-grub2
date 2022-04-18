@@ -18,7 +18,7 @@ Signed-off-by: Peter Jones <pjones@redhat.com>
  4 files changed, 109 insertions(+), 12 deletions(-)
 
 diff --git a/grub-core/net/http.c b/grub-core/net/http.c
-index b616cf40b..12a2632ea 100644
+index b616cf40b1..12a2632ea5 100644
 --- a/grub-core/net/http.c
 +++ b/grub-core/net/http.c
 @@ -289,7 +289,9 @@ http_receive (grub_net_tcp_socket_t sock __attribute__ ((unused)),
@@ -87,7 +87,7 @@ index b616cf40b..12a2632ea 100644
  				  file);
    if (!data->sock)
 diff --git a/grub-core/net/net.c b/grub-core/net/net.c
-index a46f82362..0ce5e675e 100644
+index a46f82362e..0ce5e675ed 100644
 --- a/grub-core/net/net.c
 +++ b/grub-core/net/net.c
 @@ -444,6 +444,13 @@ parse_ip6 (const char *val, grub_uint64_t *ip, const char **rest)
@@ -225,7 +225,7 @@ index a46f82362..0ce5e675e 100644
  }
  
 diff --git a/grub-core/net/tftp.c b/grub-core/net/tftp.c
-index 4ab2f5c73..d54b13f09 100644
+index 4ab2f5c735..d54b13f09f 100644
 --- a/grub-core/net/tftp.c
 +++ b/grub-core/net/tftp.c
 @@ -295,6 +295,7 @@ tftp_open (struct grub_file *file, const char *filename)
@@ -257,7 +257,7 @@ index 4ab2f5c73..d54b13f09 100644
    if (!data->sock)
      {
 diff --git a/include/grub/net.h b/include/grub/net.h
-index af0404db7..d55d505a0 100644
+index af0404db7e..d55d505a03 100644
 --- a/include/grub/net.h
 +++ b/include/grub/net.h
 @@ -273,6 +273,7 @@ typedef struct grub_net

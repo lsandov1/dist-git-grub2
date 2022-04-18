@@ -13,7 +13,7 @@ Signed-off-by: Robbie Harwood <rharwood@redhat.com>
  create mode 100644 include/grub/loopback.h
 
 diff --git a/grub-core/disk/loopback.c b/grub-core/disk/loopback.c
-index 41bebd14f..99f47924e 100644
+index 41bebd14fe..99f47924ec 100644
 --- a/grub-core/disk/loopback.c
 +++ b/grub-core/disk/loopback.c
 @@ -21,20 +21,13 @@
@@ -39,7 +39,7 @@ index 41bebd14f..99f47924e 100644
  static unsigned long last_id = 0;
  
 diff --git a/grub-core/loader/efi/chainloader.c b/grub-core/loader/efi/chainloader.c
-index d41e8ea14..3af6b1229 100644
+index d41e8ea14a..3af6b12292 100644
 --- a/grub-core/loader/efi/chainloader.c
 +++ b/grub-core/loader/efi/chainloader.c
 @@ -24,6 +24,7 @@
@@ -102,7 +102,7 @@ index d41e8ea14..3af6b1229 100644
  
 diff --git a/include/grub/loopback.h b/include/grub/loopback.h
 new file mode 100644
-index 000000000..3b9a9e32e
+index 0000000000..3b9a9e32e8
 --- /dev/null
 +++ b/include/grub/loopback.h
 @@ -0,0 +1,30 @@

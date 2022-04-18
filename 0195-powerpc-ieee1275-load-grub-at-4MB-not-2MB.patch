@@ -79,7 +79,7 @@ Signed-off-by: Robbie Harwood <rharwood@redhat.com>
  2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
-index 3f3459b2c..6b00eb555 100644
+index 3f3459b2c7..6b00eb5557 100644
 --- a/grub-core/Makefile.core.def
 +++ b/grub-core/Makefile.core.def
 @@ -89,7 +89,7 @@ kernel = {
@@ -92,7 +92,7 @@ index 3f3459b2c..6b00eb555 100644
    mips_arc_ldflags    = '-Wl,-Ttext,$(TARGET_LINK_ADDR)';
    mips_qemu_mips_ldflags    = '-Wl,-Ttext,0x80200000';
 diff --git a/include/grub/offsets.h b/include/grub/offsets.h
-index 871e1cd4c..69211aa79 100644
+index 871e1cd4c3..69211aa798 100644
 --- a/include/grub/offsets.h
 +++ b/include/grub/offsets.h
 @@ -63,7 +63,7 @@

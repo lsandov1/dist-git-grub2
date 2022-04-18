@@ -29,7 +29,7 @@ Signed-off-by: Javier Martinez Canillas <javierm@redhat.com>
  1 file changed, 14 insertions(+)
 
 diff --git a/grub-core/loader/efi/linux.c b/grub-core/loader/efi/linux.c
-index 0622dfa48..e8b9ecb17 100644
+index 0622dfa48d..e8b9ecb17f 100644
 --- a/grub-core/loader/efi/linux.c
 +++ b/grub-core/loader/efi/linux.c
 @@ -72,6 +72,7 @@ grub_err_t

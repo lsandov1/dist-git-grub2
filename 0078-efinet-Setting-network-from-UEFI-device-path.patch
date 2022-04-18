@@ -32,7 +32,7 @@ Signed-off-by: Ken Lin <ken.lin@hpe.com>
  2 files changed, 280 insertions(+), 15 deletions(-)
 
 diff --git a/grub-core/net/drivers/efi/efinet.c b/grub-core/net/drivers/efi/efinet.c
-index 014e5bf98..8171ecaa5 100644
+index 014e5bf980..8171ecaa5e 100644
 --- a/grub-core/net/drivers/efi/efinet.c
 +++ b/grub-core/net/drivers/efi/efinet.c
 @@ -26,6 +26,7 @@
@@ -375,7 +375,7 @@ index 014e5bf98..8171ecaa5 100644
    }
  }
 diff --git a/include/grub/efi/api.h b/include/grub/efi/api.h
-index 91ab528e4..4a51667ad 100644
+index 91ab528e4d..4a51667adb 100644
 --- a/include/grub/efi/api.h
 +++ b/include/grub/efi/api.h
 @@ -864,6 +864,8 @@ struct grub_efi_ipv4_device_path

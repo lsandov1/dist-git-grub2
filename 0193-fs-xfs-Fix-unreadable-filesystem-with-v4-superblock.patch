@@ -81,7 +81,7 @@ Reviewed-by: Daniel Kiper <daniel.kiper@oracle.com>
  1 file changed, 10 insertions(+), 4 deletions(-)
 
 diff --git a/grub-core/fs/xfs.c b/grub-core/fs/xfs.c
-index 0f524c3a8..e3816d1ec 100644
+index 0f524c3a8a..e3816d1ec4 100644
 --- a/grub-core/fs/xfs.c
 +++ b/grub-core/fs/xfs.c
 @@ -192,6 +192,11 @@ struct grub_xfs_time_legacy

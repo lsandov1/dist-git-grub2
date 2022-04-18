@@ -13,7 +13,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  5 files changed, 38 insertions(+), 2 deletions(-)
 
 diff --git a/util/grub-mkconfig.in b/util/grub-mkconfig.in
-index 005f09380..535c0f024 100644
+index 005f093809..535c0f0249 100644
 --- a/util/grub-mkconfig.in
 +++ b/util/grub-mkconfig.in
 @@ -252,7 +252,8 @@ export GRUB_DEFAULT \
@@ -27,7 +27,7 @@ index 005f09380..535c0f024 100644
  if test "x${grub_cfg}" != "x"; then
    rm -f "${grub_cfg}.new"
 diff --git a/util/grub-mkconfig_lib.in b/util/grub-mkconfig_lib.in
-index 42c2ea9ba..fafeac950 100644
+index 42c2ea9ba5..fafeac9506 100644
 --- a/util/grub-mkconfig_lib.in
 +++ b/util/grub-mkconfig_lib.in
 @@ -52,7 +52,11 @@ grub_warn ()
@@ -43,7 +43,7 @@ index 42c2ea9ba..fafeac950 100644
  
  is_path_readable_by_grub ()
 diff --git a/util/grub.d/00_header.in b/util/grub.d/00_header.in
-index 858b526c9..de727e6ee 100644
+index 858b526c92..de727e6ee6 100644
 --- a/util/grub.d/00_header.in
 +++ b/util/grub.d/00_header.in
 @@ -27,6 +27,14 @@ export TEXTDOMAINDIR="@localedir@"
@@ -90,7 +90,7 @@ index 858b526c9..de727e6ee 100644
 +EOF
 +fi
 diff --git a/util/grub.d/10_linux.in b/util/grub.d/10_linux.in
-index 292e33332..7bb3a211a 100644
+index 292e333324..7bb3a211a7 100644
 --- a/util/grub.d/10_linux.in
 +++ b/util/grub.d/10_linux.in
 @@ -66,10 +66,14 @@ fi
@@ -109,7 +109,7 @@ index 292e33332..7bb3a211a 100644
      xzfs)
  	rpool=`${grub_probe} --device ${GRUB_DEVICE} --target=fs_label 2>/dev/null || true`
 diff --git a/util/grub.d/20_linux_xen.in b/util/grub.d/20_linux_xen.in
-index ada20775a..e9e73b815 100644
+index ada20775a1..e9e73b815f 100644
 --- a/util/grub.d/20_linux_xen.in
 +++ b/util/grub.d/20_linux_xen.in
 @@ -73,10 +73,14 @@ fi

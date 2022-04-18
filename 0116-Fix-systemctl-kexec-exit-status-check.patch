@@ -19,7 +19,7 @@ Signed-off-by: Javier Martinez Canillas <javierm@redhat.com>
  1 file changed, 4 insertions(+), 2 deletions(-)
 
 diff --git a/grub-core/loader/emu/linux.c b/grub-core/loader/emu/linux.c
-index fda9e00d2..5b85b225e 100644
+index fda9e00d24..5b85b225ee 100644
 --- a/grub-core/loader/emu/linux.c
 +++ b/grub-core/loader/emu/linux.c
 @@ -71,8 +71,10 @@ grub_linux_boot (void)

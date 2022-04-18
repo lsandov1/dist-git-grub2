@@ -64,7 +64,7 @@ Signed-off-by: Robbie Harwood <rharwood@redhat.com>
  create mode 100644 grub-core/commands/efi/connectefi.c
 
 diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
-index 39233096f..3c0ac3b7b 100644
+index 39233096f2..3c0ac3b7bd 100644
 --- a/grub-core/Makefile.core.def
 +++ b/grub-core/Makefile.core.def
 @@ -836,6 +836,12 @@ module = {
@@ -82,7 +82,7 @@ index 39233096f..3c0ac3b7b 100644
    common = commands/blocklist.c;
 diff --git a/grub-core/commands/efi/connectefi.c b/grub-core/commands/efi/connectefi.c
 new file mode 100644
-index 000000000..8ab75bd51
+index 0000000000..8ab75bd51b
 --- /dev/null
 +++ b/grub-core/commands/efi/connectefi.c
 @@ -0,0 +1,205 @@
@@ -292,7 +292,7 @@ index 000000000..8ab75bd51
 +  grub_unregister_command (cmd);
 +}
 diff --git a/grub-core/commands/efi/lsefi.c b/grub-core/commands/efi/lsefi.c
-index d1ce99af4..f2d2430e6 100644
+index d1ce99af43..f2d2430e66 100644
 --- a/grub-core/commands/efi/lsefi.c
 +++ b/grub-core/commands/efi/lsefi.c
 @@ -19,6 +19,7 @@
@@ -304,7 +304,7 @@ index d1ce99af4..f2d2430e6 100644
  #include <grub/efi/pci.h>
  #include <grub/efi/efi.h>
 diff --git a/grub-core/disk/efi/efidisk.c b/grub-core/disk/efi/efidisk.c
-index fe8ba6e6c..062143dff 100644
+index fe8ba6e6c9..062143dfff 100644
 --- a/grub-core/disk/efi/efidisk.c
 +++ b/grub-core/disk/efi/efidisk.c
 @@ -396,6 +396,19 @@ enumerate_disks (void)
@@ -328,7 +328,7 @@ index fe8ba6e6c..062143dff 100644
  grub_efidisk_iterate (grub_disk_dev_iterate_hook_t hook, void *hook_data,
  		      grub_disk_pull_t pull)
 diff --git a/grub-core/kern/efi/efi.c b/grub-core/kern/efi/efi.c
-index 14bc10eb5..7fcca69c1 100644
+index 14bc10eb56..7fcca69c17 100644
 --- a/grub-core/kern/efi/efi.c
 +++ b/grub-core/kern/efi/efi.c
 @@ -95,6 +95,19 @@ grub_efi_locate_handle (grub_efi_locate_search_type_t search_type,
@@ -352,7 +352,7 @@ index 14bc10eb5..7fcca69c1 100644
  grub_efi_open_protocol (grub_efi_handle_t handle,
  			grub_efi_guid_t *protocol,
 diff --git a/include/grub/efi/disk.h b/include/grub/efi/disk.h
-index 254475c84..6845c2f1f 100644
+index 254475c842..6845c2f1fd 100644
 --- a/include/grub/efi/disk.h
 +++ b/include/grub/efi/disk.h
 @@ -27,6 +27,8 @@ grub_efi_handle_t
@@ -365,7 +365,7 @@ index 254475c84..6845c2f1f 100644
  void grub_efidisk_fini (void);
  
 diff --git a/include/grub/efi/efi.h b/include/grub/efi/efi.h
-index 8dfc89a33..ec52083c4 100644
+index 8dfc89a33b..ec52083c49 100644
 --- a/include/grub/efi/efi.h
 +++ b/include/grub/efi/efi.h
 @@ -41,6 +41,11 @@ EXPORT_FUNC(grub_efi_locate_handle) (grub_efi_locate_search_type_t search_type,
@@ -381,7 +381,7 @@ index 8dfc89a33..ec52083c4 100644
  					   grub_efi_guid_t *protocol,
  					   grub_efi_uint32_t attributes);
 diff --git a/NEWS b/NEWS
-index 73b8492bc..d7c1d23ae 100644
+index 73b8492bc4..d7c1d23aed 100644
 --- a/NEWS
 +++ b/NEWS
 @@ -98,7 +98,7 @@ New in 2.02:

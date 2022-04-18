@@ -12,7 +12,7 @@ Signed-off-by: Peter Jones <pjones@redhat.com>
  1 file changed, 7 insertions(+), 4 deletions(-)
 
 diff --git a/grub-core/commands/reboot.c b/grub-core/commands/reboot.c
-index 46d364c99..f5cc22836 100644
+index 46d364c99a..f5cc228363 100644
 --- a/grub-core/commands/reboot.c
 +++ b/grub-core/commands/reboot.c
 @@ -32,15 +32,18 @@ grub_cmd_reboot (grub_command_t cmd __attribute__ ((unused)),

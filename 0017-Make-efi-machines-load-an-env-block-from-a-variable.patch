@@ -10,7 +10,7 @@ Signed-off-by: Peter Jones <pjones@redhat.com>
  2 files changed, 36 insertions(+), 1 deletion(-)
 
 diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
-index 45d3edaa4..c865a08b0 100644
+index 45d3edaa4d..c865a08b02 100644
 --- a/grub-core/Makefile.core.def
 +++ b/grub-core/Makefile.core.def
 @@ -207,6 +207,7 @@ kernel = {
@@ -22,7 +22,7 @@ index 45d3edaa4..c865a08b0 100644
    i386_multiboot = kern/i386/pc/acpi.c;
    i386_coreboot = kern/acpi.c;
 diff --git a/grub-core/kern/efi/init.c b/grub-core/kern/efi/init.c
-index 7facacf09..6d39bd3ad 100644
+index 7facacf09c..6d39bd3ad2 100644
 --- a/grub-core/kern/efi/init.c
 +++ b/grub-core/kern/efi/init.c
 @@ -27,8 +27,11 @@

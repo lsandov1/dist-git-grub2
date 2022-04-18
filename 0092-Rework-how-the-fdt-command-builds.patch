@@ -25,7 +25,7 @@ Signed-off-by: Robbie Harwood <rharwood@redhat.com>
  5 files changed, 11 insertions(+), 5 deletions(-)
 
 diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
-index c40170f2d..84a3d89de 100644
+index c40170f2dd..84a3d89de9 100644
 --- a/grub-core/Makefile.core.def
 +++ b/grub-core/Makefile.core.def
 @@ -177,7 +177,6 @@ kernel = {
@@ -62,7 +62,7 @@ index c40170f2d..84a3d89de 100644
  };
  
 diff --git a/grub-core/lib/fdt.c b/grub-core/lib/fdt.c
-index 0d371c563..37e04bd69 100644
+index 0d371c5633..37e04bd69e 100644
 --- a/grub-core/lib/fdt.c
 +++ b/grub-core/lib/fdt.c
 @@ -21,8 +21,6 @@
@@ -75,7 +75,7 @@ index 0d371c563..37e04bd69 100644
  
  #define FDT_BEGIN_NODE	0x00000001
 diff --git a/grub-core/loader/efi/fdt.c b/grub-core/loader/efi/fdt.c
-index c86f283d7..c572415d3 100644
+index c86f283d75..c572415d38 100644
 --- a/grub-core/loader/efi/fdt.c
 +++ b/grub-core/loader/efi/fdt.c
 @@ -27,6 +27,8 @@
@@ -88,7 +88,7 @@ index c86f283d7..c572415d3 100644
  static void *fdt;
  
 diff --git a/include/grub/fdt.h b/include/grub/fdt.h
-index e609c7e41..3514aa4a5 100644
+index e609c7e411..3514aa4a5b 100644
 --- a/include/grub/fdt.h
 +++ b/include/grub/fdt.h
 @@ -19,6 +19,9 @@
@@ -110,7 +110,7 @@ index e609c7e41..3514aa4a5 100644
 +
  #endif	/* ! GRUB_FDT_HEADER */
 diff --git a/grub-core/Makefile.am b/grub-core/Makefile.am
-index f512573c0..dd49939aa 100644
+index f512573c0d..dd49939aaa 100644
 --- a/grub-core/Makefile.am
 +++ b/grub-core/Makefile.am
 @@ -76,6 +76,7 @@ KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/efi/sb.h

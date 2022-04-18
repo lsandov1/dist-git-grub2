@@ -13,7 +13,7 @@ Signed-off-by: Peter Jones <pjones@redhat.com>
  3 files changed, 82 insertions(+), 82 deletions(-)
 
 diff --git a/grub-core/kern/ieee1275/init.c b/grub-core/kern/ieee1275/init.c
-index e71d15841..0cd2a6272 100644
+index e71d158416..0cd2a62723 100644
 --- a/grub-core/kern/ieee1275/init.c
 +++ b/grub-core/kern/ieee1275/init.c
 @@ -127,23 +127,25 @@ grub_machine_get_bootlocation (char **device, char **path)
@@ -56,7 +56,7 @@ index e71d15841..0cd2a6272 100644
  }
  
 diff --git a/grub-core/net/net.c b/grub-core/net/net.c
-index 4d3eb5c1a..0ef148f4a 100644
+index 4d3eb5c1a5..0ef148f4ad 100644
 --- a/grub-core/net/net.c
 +++ b/grub-core/net/net.c
 @@ -1869,7 +1869,7 @@ grub_net_search_config_file (char *config)
@@ -69,7 +69,7 @@ index 4d3eb5c1a..0ef148f4a 100644
  
  static struct grub_preboot *fini_hnd;
 diff --git a/grub-core/normal/main.c b/grub-core/normal/main.c
-index 880d0ebd4..d5df4f815 100644
+index 0a99768f75..55558cc0b9 100644
 --- a/grub-core/normal/main.c
 +++ b/grub-core/normal/main.c
 @@ -335,81 +335,79 @@ grub_enter_normal_mode (const char *config)

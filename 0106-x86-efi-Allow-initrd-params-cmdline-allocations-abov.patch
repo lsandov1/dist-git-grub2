@@ -14,7 +14,7 @@ Signed-off-by: Peter Jones <pjones@redhat.com>
  2 files changed, 65 insertions(+), 8 deletions(-)
 
 diff --git a/grub-core/loader/i386/efi/linux.c b/grub-core/loader/i386/efi/linux.c
-index 3e4f7ef39..6bc18d5ae 100644
+index 3e4f7ef39f..6bc18d5aef 100644
 --- a/grub-core/loader/i386/efi/linux.c
 +++ b/grub-core/loader/i386/efi/linux.c
 @@ -52,13 +52,22 @@ struct allocation_choice {
@@ -153,7 +153,7 @@ index 3e4f7ef39..6bc18d5ae 100644
    grub_memcpy (kernel_mem, (char *)kernel + start, filelen - start);
  
 diff --git a/include/grub/i386/linux.h b/include/grub/i386/linux.h
-index 25ef52c04..fac22476c 100644
+index 25ef52c04e..fac22476cc 100644
 --- a/include/grub/i386/linux.h
 +++ b/include/grub/i386/linux.h
 @@ -236,7 +236,11 @@ struct linux_kernel_params

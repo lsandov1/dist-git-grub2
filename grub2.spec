@@ -17,7 +17,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	36%{?dist}
+Release:	37%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -529,6 +529,9 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Mon Apr 18 2022 Robbie Harwood <rharwood@redhat.com> - 1:2.06-37
+- Attempt to fix version display
+
 * Mon Apr 18 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-36
 - Fix permission change report from rpm verification on grub.cfg
 

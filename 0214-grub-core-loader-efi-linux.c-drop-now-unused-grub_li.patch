@@ -18,7 +18,7 @@ Signed-off-by: Dimitri John Ledkov <dimitri.ledkov@canonical.com>
  2 files changed, 42 deletions(-)
 
 diff --git a/grub-core/loader/efi/linux.c b/grub-core/loader/efi/linux.c
-index 9260731c1..9265cf420 100644
+index 9260731c10..9265cf4200 100644
 --- a/grub-core/loader/efi/linux.c
 +++ b/grub-core/loader/efi/linux.c
 @@ -24,46 +24,6 @@
@@ -69,7 +69,7 @@ index 9260731c1..9265cf420 100644
  #pragma GCC diagnostic ignored "-Wcast-align"
  
 diff --git a/include/grub/efi/linux.h b/include/grub/efi/linux.h
-index 0033d9305..887b02fd9 100644
+index 0033d9305a..887b02fd9f 100644
 --- a/include/grub/efi/linux.h
 +++ b/include/grub/efi/linux.h
 @@ -22,8 +22,6 @@

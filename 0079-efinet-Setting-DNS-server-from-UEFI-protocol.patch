@@ -33,7 +33,7 @@ Signed-off-by: Ken Lin <ken.lin@hpe.com>
  2 files changed, 238 insertions(+)
 
 diff --git a/grub-core/net/drivers/efi/efinet.c b/grub-core/net/drivers/efi/efinet.c
-index 8171ecaa5..715a6168d 100644
+index 8171ecaa5e..715a6168d7 100644
 --- a/grub-core/net/drivers/efi/efinet.c
 +++ b/grub-core/net/drivers/efi/efinet.c
 @@ -33,6 +33,8 @@ GRUB_MOD_LICENSE ("GPLv3+");
@@ -242,7 +242,7 @@ index 8171ecaa5..715a6168d 100644
      }
  
 diff --git a/include/grub/efi/api.h b/include/grub/efi/api.h
-index 4a51667ad..0b490195a 100644
+index 4a51667adb..0b490195ad 100644
 --- a/include/grub/efi/api.h
 +++ b/include/grub/efi/api.h
 @@ -352,6 +352,15 @@

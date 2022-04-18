@@ -24,7 +24,7 @@ Signed-off-by: Robbie Harwood <rharwood@redhat.com>
  3 files changed, 68 insertions(+), 34 deletions(-)
 
 diff --git a/grub-core/loader/arm64/linux.c b/grub-core/loader/arm64/linux.c
-index 47f8cf0d8..f18d90bd7 100644
+index 47f8cf0d84..f18d90bd74 100644
 --- a/grub-core/loader/arm64/linux.c
 +++ b/grub-core/loader/arm64/linux.c
 @@ -41,6 +41,8 @@ GRUB_MOD_LICENSE ("GPLv3+");
@@ -193,7 +193,7 @@ index 47f8cf0d8..f18d90bd7 100644
    return grub_errno;
  }
 diff --git a/include/grub/arm/linux.h b/include/grub/arm/linux.h
-index b582f67f6..966a5074f 100644
+index b582f67f66..966a5074f5 100644
 --- a/include/grub/arm/linux.h
 +++ b/include/grub/arm/linux.h
 @@ -44,6 +44,7 @@ struct grub_arm_linux_pe_header
@@ -205,7 +205,7 @@ index b582f67f6..966a5074f 100644
  # define grub_armxx_linux_pe_header grub_arm_linux_pe_header
  #endif
 diff --git a/include/grub/arm64/linux.h b/include/grub/arm64/linux.h
-index ea030312d..422bf2bf2 100644
+index ea030312df..422bf2bf24 100644
 --- a/include/grub/arm64/linux.h
 +++ b/include/grub/arm64/linux.h
 @@ -48,6 +48,7 @@ struct grub_arm64_linux_pe_header

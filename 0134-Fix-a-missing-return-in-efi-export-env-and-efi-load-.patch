@@ -13,7 +13,7 @@ Signed-off-by: Peter Jones <pjones@redhat.com>
  1 file changed, 2 insertions(+)
 
 diff --git a/grub-core/commands/efi/env.c b/grub-core/commands/efi/env.c
-index cbd13e03e..977edb6b0 100644
+index cbd13e03e8..977edb6b06 100644
 --- a/grub-core/commands/efi/env.c
 +++ b/grub-core/commands/efi/env.c
 @@ -149,6 +149,8 @@ grub_efi_load_env(grub_command_t cmd __attribute__ ((unused)),

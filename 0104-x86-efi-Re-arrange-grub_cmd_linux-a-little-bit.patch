@@ -11,7 +11,7 @@ Signed-off-by: Peter Jones <pjones@redhat.com>
  1 file changed, 41 insertions(+), 34 deletions(-)
 
 diff --git a/grub-core/loader/i386/efi/linux.c b/grub-core/loader/i386/efi/linux.c
-index 2f0336809..5f48fa556 100644
+index 2f0336809e..5f48fa5561 100644
 --- a/grub-core/loader/i386/efi/linux.c
 +++ b/grub-core/loader/i386/efi/linux.c
 @@ -243,32 +243,9 @@ grub_cmd_linux (grub_command_t cmd __attribute__ ((unused)),

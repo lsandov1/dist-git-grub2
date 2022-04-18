@@ -23,7 +23,7 @@ Signed-off-by: Daniel Axtens <dja@axtens.net>
  3 files changed, 10 insertions(+)
 
 diff --git a/grub-core/lib/posix_wrap/limits.h b/grub-core/lib/posix_wrap/limits.h
-index 7217138ff..591dbf328 100644
+index 7217138ffd..591dbf3289 100644
 --- a/grub-core/lib/posix_wrap/limits.h
 +++ b/grub-core/lib/posix_wrap/limits.h
 @@ -37,5 +37,6 @@
@@ -34,7 +34,7 @@ index 7217138ff..591dbf328 100644
  
  #endif
 diff --git a/grub-core/lib/posix_wrap/stdlib.h b/grub-core/lib/posix_wrap/stdlib.h
-index 7a8d385e9..4634db09f 100644
+index 7a8d385e97..4634db09f2 100644
 --- a/grub-core/lib/posix_wrap/stdlib.h
 +++ b/grub-core/lib/posix_wrap/stdlib.h
 @@ -58,4 +58,12 @@ abs (int c)
@@ -51,7 +51,7 @@ index 7a8d385e9..4634db09f 100644
 +
  #endif
 diff --git a/grub-core/lib/posix_wrap/sys/types.h b/grub-core/lib/posix_wrap/sys/types.h
-index 854eb0122..f63412c8d 100644
+index 854eb0122e..f63412c8da 100644
 --- a/grub-core/lib/posix_wrap/sys/types.h
 +++ b/grub-core/lib/posix_wrap/sys/types.h
 @@ -51,6 +51,7 @@ typedef grub_uint8_t byte;

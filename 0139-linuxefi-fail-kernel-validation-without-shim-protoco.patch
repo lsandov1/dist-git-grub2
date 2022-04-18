@@ -23,7 +23,7 @@ Signed-off-by: Dimitri John Ledkov <xnox@ubuntu.com>
  4 files changed, 22 insertions(+), 10 deletions(-)
 
 diff --git a/grub-core/loader/arm64/linux.c b/grub-core/loader/arm64/linux.c
-index 70a0075ec..47f8cf0d8 100644
+index 70a0075ec5..47f8cf0d84 100644
 --- a/grub-core/loader/arm64/linux.c
 +++ b/grub-core/loader/arm64/linux.c
 @@ -34,6 +34,7 @@
@@ -55,7 +55,7 @@ index 70a0075ec..47f8cf0d8 100644
  
    pe = (void *)((unsigned long)kernel_addr + lh.hdr_offset);
 diff --git a/grub-core/loader/efi/chainloader.c b/grub-core/loader/efi/chainloader.c
-index ac8dfd40c..d41e8ea14 100644
+index ac8dfd40c6..d41e8ea14a 100644
 --- a/grub-core/loader/efi/chainloader.c
 +++ b/grub-core/loader/efi/chainloader.c
 @@ -1084,6 +1084,7 @@ grub_cmd_chainloader (grub_command_t cmd __attribute__ ((unused)),
@@ -67,7 +67,7 @@ index ac8dfd40c..d41e8ea14 100644
  fail:
    if (dev)
 diff --git a/grub-core/loader/efi/linux.c b/grub-core/loader/efi/linux.c
-index e8b9ecb17..9260731c1 100644
+index e8b9ecb17f..9260731c10 100644
 --- a/grub-core/loader/efi/linux.c
 +++ b/grub-core/loader/efi/linux.c
 @@ -33,6 +33,7 @@ struct grub_efi_shim_lock
@@ -79,7 +79,7 @@ index e8b9ecb17..9260731c1 100644
  grub_linuxefi_secure_validate (void *data, grub_uint32_t size)
  {
 diff --git a/grub-core/loader/i386/efi/linux.c b/grub-core/loader/i386/efi/linux.c
-index f992ceeef..3cf0f9b33 100644
+index f992ceeef2..3cf0f9b330 100644
 --- a/grub-core/loader/i386/efi/linux.c
 +++ b/grub-core/loader/i386/efi/linux.c
 @@ -30,6 +30,7 @@

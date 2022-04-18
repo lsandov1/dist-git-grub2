@@ -13,7 +13,7 @@ Signed-off-by: Peter Jones <pjones@redhat.com>
  2 files changed, 28 insertions(+), 10 deletions(-)
 
 diff --git a/grub-core/net/efi/ip4_config.c b/grub-core/net/efi/ip4_config.c
-index 313c818b1..9725e928f 100644
+index 313c818b18..9725e928f7 100644
 --- a/grub-core/net/efi/ip4_config.c
 +++ b/grub-core/net/efi/ip4_config.c
 @@ -4,15 +4,20 @@
@@ -82,7 +82,7 @@ index 313c818b1..9725e928f 100644
        char *subnet, *gateway, *mask;
        grub_uint32_t u32_subnet, u32_gateway;
 diff --git a/grub-core/net/efi/ip6_config.c b/grub-core/net/efi/ip6_config.c
-index 017c4d05b..a46f6f9b6 100644
+index 017c4d05bc..a46f6f9b68 100644
 --- a/grub-core/net/efi/ip6_config.c
 +++ b/grub-core/net/efi/ip6_config.c
 @@ -3,6 +3,7 @@

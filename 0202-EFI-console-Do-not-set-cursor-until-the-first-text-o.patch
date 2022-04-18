@@ -25,7 +25,7 @@ Signed-off-by: Hans de Goede <hdegoede@redhat.com>
  1 file changed, 16 insertions(+), 3 deletions(-)
 
 diff --git a/grub-core/term/efi/console.c b/grub-core/term/efi/console.c
-index c44b2ac31..a3622e4fe 100644
+index c44b2ac318..a3622e4fe5 100644
 --- a/grub-core/term/efi/console.c
 +++ b/grub-core/term/efi/console.c
 @@ -31,7 +31,15 @@ typedef enum {

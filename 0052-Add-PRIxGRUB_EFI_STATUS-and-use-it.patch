@@ -12,7 +12,7 @@ Signed-off-by: Peter Jones <pjones@redhat.com>
  2 files changed, 11 insertions(+), 1 deletion(-)
 
 diff --git a/grub-core/loader/efi/chainloader.c b/grub-core/loader/efi/chainloader.c
-index 89ac84cc6..ac8dfd40c 100644
+index 89ac84cc66..ac8dfd40c6 100644
 --- a/grub-core/loader/efi/chainloader.c
 +++ b/grub-core/loader/efi/chainloader.c
 @@ -810,7 +810,8 @@ handle_image (void *data, grub_efi_uint32_t datasize)
@@ -26,7 +26,7 @@ index 89ac84cc6..ac8dfd40c 100644
    efi_status = grub_efi_free_pool (buffer);
  
 diff --git a/include/grub/efi/api.h b/include/grub/efi/api.h
-index 117469450..996288014 100644
+index 117469450d..9962880147 100644
 --- a/include/grub/efi/api.h
 +++ b/include/grub/efi/api.h
 @@ -546,7 +546,16 @@ typedef grub_uint64_t grub_efi_uint64_t;

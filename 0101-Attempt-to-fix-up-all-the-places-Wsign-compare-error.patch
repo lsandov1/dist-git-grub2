@@ -19,7 +19,7 @@ Signed-off-by: Peter Jones <pjones@redhat.com>
  11 files changed, 18 insertions(+), 17 deletions(-)
 
 diff --git a/grub-core/kern/emu/misc.c b/grub-core/kern/emu/misc.c
-index eeea09275..f08a1bb84 100644
+index eeea092752..f08a1bb841 100644
 --- a/grub-core/kern/emu/misc.c
 +++ b/grub-core/kern/emu/misc.c
 @@ -189,7 +189,7 @@ grub_util_get_image_size (const char *path)
@@ -32,7 +32,7 @@ index eeea09275..f08a1bb84 100644
    ret = (size_t) sz;
  
 diff --git a/grub-core/lib/reed_solomon.c b/grub-core/lib/reed_solomon.c
-index 467305b46..79037c093 100644
+index 467305b46a..79037c093f 100644
 --- a/grub-core/lib/reed_solomon.c
 +++ b/grub-core/lib/reed_solomon.c
 @@ -157,7 +157,7 @@ static void
@@ -54,7 +54,7 @@ index 467305b46..79037c093 100644
      {
        grub_size_t ds = (s + SECTOR_SIZE - 1 - i) / SECTOR_SIZE;
 diff --git a/grub-core/osdep/linux/blocklist.c b/grub-core/osdep/linux/blocklist.c
-index c77d6085c..42a315031 100644
+index c77d6085cc..42a315031f 100644
 --- a/grub-core/osdep/linux/blocklist.c
 +++ b/grub-core/osdep/linux/blocklist.c
 @@ -109,7 +109,7 @@ grub_install_get_blocklist (grub_device_t root_dev,
@@ -67,7 +67,7 @@ index c77d6085c..42a315031 100644
  		      + fie1.fm_mapped_extents
  		      * sizeof (fie1.fm_extents[1]));
 diff --git a/grub-core/osdep/linux/getroot.c b/grub-core/osdep/linux/getroot.c
-index 28790307e..9f730b351 100644
+index 28790307e0..9f730b3518 100644
 --- a/grub-core/osdep/linux/getroot.c
 +++ b/grub-core/osdep/linux/getroot.c
 @@ -236,7 +236,7 @@ grub_find_root_devices_from_btrfs (const char *dir)
@@ -80,7 +80,7 @@ index 28790307e..9f730b351 100644
  
    fd = open (dir, 0);
 diff --git a/grub-core/osdep/linux/hostdisk.c b/grub-core/osdep/linux/hostdisk.c
-index da62f924e..7bc99ac1c 100644
+index da62f924e3..7bc99ac1c1 100644
 --- a/grub-core/osdep/linux/hostdisk.c
 +++ b/grub-core/osdep/linux/hostdisk.c
 @@ -83,7 +83,7 @@ grub_util_get_fd_size_os (grub_util_fd_t fd, const char *name, unsigned *log_sec
@@ -93,7 +93,7 @@ index da62f924e..7bc99ac1c 100644
  
    if (log_secsize)
 diff --git a/util/grub-fstest.c b/util/grub-fstest.c
-index 838656420..bfcef852d 100644
+index 8386564200..bfcef852d8 100644
 --- a/util/grub-fstest.c
 +++ b/util/grub-fstest.c
 @@ -323,7 +323,7 @@ cmd_cmp (char *src, char *dest)
@@ -106,7 +106,7 @@ index 838656420..bfcef852d 100644
      fseek (ff, 0, SEEK_END);
      if (pre != ftell (ff))
 diff --git a/util/grub-menulst2cfg.c b/util/grub-menulst2cfg.c
-index a39f86939..358d60421 100644
+index a39f869394..358d604210 100644
 --- a/util/grub-menulst2cfg.c
 +++ b/util/grub-menulst2cfg.c
 @@ -34,7 +34,7 @@ main (int argc, char **argv)
@@ -119,7 +119,7 @@ index a39f86939..358d60421 100644
  
    grub_util_host_init (&argc, &argv);
 diff --git a/util/grub-mkfont.c b/util/grub-mkfont.c
-index 0fe45a610..3e09240b9 100644
+index 0fe45a6103..3e09240b99 100644
 --- a/util/grub-mkfont.c
 +++ b/util/grub-mkfont.c
 @@ -138,7 +138,8 @@ add_glyph (struct grub_font_info *font_info, FT_UInt glyph_idx, FT_Face face,
@@ -173,7 +173,7 @@ index 0fe45a610..3e09240b9 100644
        add_pixel (&data, &mask,
  		 glyph->bitmap.buffer[i / 8 + j * glyph->bitmap.pitch] &
 diff --git a/util/grub-probe.c b/util/grub-probe.c
-index c08e46bbb..c6fac732b 100644
+index c08e46bbb4..c6fac732b4 100644
 --- a/util/grub-probe.c
 +++ b/util/grub-probe.c
 @@ -798,7 +798,7 @@ argp_parser (int key, char *arg, struct argp_state *state)
@@ -186,7 +186,7 @@ index c08e46bbb..c6fac732b 100644
  	for (i = PRINT_FS; i < ARRAY_SIZE (targets); i++)
  	  if (strcmp (arg, targets[i]) == 0)
 diff --git a/util/grub-rpm-sort.c b/util/grub-rpm-sort.c
-index f33bd1ed5..834594410 100644
+index f33bd1ed56..8345944105 100644
 --- a/util/grub-rpm-sort.c
 +++ b/util/grub-rpm-sort.c
 @@ -232,7 +232,7 @@ main (int argc, char *argv[])
@@ -199,7 +199,7 @@ index f33bd1ed5..834594410 100644
    grub_util_host_init (&argc, &argv);
  
 diff --git a/util/setup.c b/util/setup.c
-index da5f2c07f..8b22bb8cc 100644
+index da5f2c07f5..8b22bb8cca 100644
 --- a/util/setup.c
 +++ b/util/setup.c
 @@ -406,7 +406,7 @@ SETUP (const char *dir,

@@ -25,7 +25,7 @@ Signed-off-by: Robbie Harwood <rharwood@redhat.com>
  1 file changed, 44 insertions(+), 5 deletions(-)
 
 diff --git a/grub-core/kern/main.c b/grub-core/kern/main.c
-index b573be665..3fc340147 100644
+index b573be6650..3fc3401472 100644
 --- a/grub-core/kern/main.c
 +++ b/grub-core/kern/main.c
 @@ -216,13 +216,52 @@ grub_set_prefix_and_root (void)

@@ -23,7 +23,7 @@ Signed-off-by: Javier Martinez Canillas <javierm@redhat.com>
  1 file changed, 9 insertions(+), 1 deletion(-)
 
 diff --git a/grub-core/fs/ext2.c b/grub-core/fs/ext2.c
-index e7dd78e66..731d346f8 100644
+index e7dd78e663..731d346f88 100644
 --- a/grub-core/fs/ext2.c
 +++ b/grub-core/fs/ext2.c
 @@ -103,6 +103,7 @@ GRUB_MOD_LICENSE ("GPLv3+");

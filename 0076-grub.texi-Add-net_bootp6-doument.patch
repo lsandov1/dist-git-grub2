@@ -12,7 +12,7 @@ Signed-off-by: Ken Lin <ken.lin@hpe.com>
  1 file changed, 17 insertions(+)
 
 diff --git a/docs/grub.texi b/docs/grub.texi
-index 0615d0ed9..04ed6ac1f 100644
+index 0615d0ed97..04ed6ac1f0 100644
 --- a/docs/grub.texi
 +++ b/docs/grub.texi
 @@ -5487,6 +5487,7 @@ This command is only available on AArch64 systems.

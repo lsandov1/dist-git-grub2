@@ -49,7 +49,7 @@ Signed-off-by: Robbie Harwood <rharwood@redhat.com>
  create mode 100644 docs/man/grub-set-bootflag.h2m
 
 diff --git a/Makefile.util.def b/Makefile.util.def
-index 314e6f2ac..0b85a7fce 100644
+index 314e6f2acf..0b85a7fce4 100644
 --- a/Makefile.util.def
 +++ b/Makefile.util.def
 @@ -1446,3 +1446,10 @@ program = {
@@ -65,7 +65,7 @@ index 314e6f2ac..0b85a7fce 100644
 +};
 diff --git a/util/grub-set-bootflag.c b/util/grub-set-bootflag.c
 new file mode 100644
-index 000000000..d506f7e75
+index 0000000000..d506f7e75b
 --- /dev/null
 +++ b/util/grub-set-bootflag.c
 @@ -0,0 +1,172 @@
@@ -242,7 +242,7 @@ index 000000000..d506f7e75
 +  return 0;
 +}
 diff --git a/conf/Makefile.extra-dist b/conf/Makefile.extra-dist
-index 8f1485d52..ad235de7f 100644
+index 8f1485d52a..ad235de7fc 100644
 --- a/conf/Makefile.extra-dist
 +++ b/conf/Makefile.extra-dist
 @@ -15,6 +15,9 @@ EXTRA_DIST += docs/man
@@ -257,7 +257,7 @@ index 8f1485d52..ad235de7f 100644
  
 diff --git a/docs/grub-boot-success.service b/docs/grub-boot-success.service
 new file mode 100644
-index 000000000..80e79584c
+index 0000000000..80e79584c9
 --- /dev/null
 +++ b/docs/grub-boot-success.service
 @@ -0,0 +1,6 @@
@@ -269,7 +269,7 @@ index 000000000..80e79584c
 +ExecStart=/usr/sbin/grub2-set-bootflag boot_success
 diff --git a/docs/grub-boot-success.timer b/docs/grub-boot-success.timer
 new file mode 100644
-index 000000000..406f17200
+index 0000000000..406f172005
 --- /dev/null
 +++ b/docs/grub-boot-success.timer
 @@ -0,0 +1,7 @@
@@ -282,7 +282,7 @@ index 000000000..406f17200
 +OnActiveSec=2min
 diff --git a/docs/man/grub-set-bootflag.h2m b/docs/man/grub-set-bootflag.h2m
 new file mode 100644
-index 000000000..94ec0b92e
+index 0000000000..94ec0b92ed
 --- /dev/null
 +++ b/docs/man/grub-set-bootflag.h2m
 @@ -0,0 +1,2 @@

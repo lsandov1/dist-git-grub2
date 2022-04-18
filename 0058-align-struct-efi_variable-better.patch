@@ -9,7 +9,7 @@ Subject: [PATCH] align struct efi_variable better...
  2 files changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/include/grub/efiemu/runtime.h b/include/grub/efiemu/runtime.h
-index 36d2dedf4..9d93ba88b 100644
+index 36d2dedf47..9d93ba88ba 100644
 --- a/include/grub/efiemu/runtime.h
 +++ b/include/grub/efiemu/runtime.h
 @@ -33,5 +33,5 @@ struct efi_variable
@@ -20,7 +20,7 @@ index 36d2dedf4..9d93ba88b 100644
 +} GRUB_PACKED GRUB_ALIGNED(8);
  #endif /* ! GRUB_EFI_EMU_RUNTIME_HEADER */
 diff --git a/include/grub/types.h b/include/grub/types.h
-index 0a3ff1591..ba446d990 100644
+index 0a3ff15913..ba446d9904 100644
 --- a/include/grub/types.h
 +++ b/include/grub/types.h
 @@ -29,6 +29,7 @@

@@ -23,7 +23,7 @@ Signed-off-by: Christian Glombek <lorbus@fedoraproject.org>
  create mode 100644 util/grub.d/01_fallback_counting.in
 
 diff --git a/Makefile.util.def b/Makefile.util.def
-index 0b85a7fce..27a13bc73 100644
+index 0b85a7fce4..27a13bc734 100644
 --- a/Makefile.util.def
 +++ b/Makefile.util.def
 @@ -458,6 +458,12 @@ script = {
@@ -40,7 +40,7 @@ index 0b85a7fce..27a13bc73 100644
    name = '01_menu_auto_hide';
    common = util/grub.d/01_menu_auto_hide.in;
 diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
-index 498ca1176..1e1534510 100644
+index 498ca11762..1e15345107 100644
 --- a/grub-core/Makefile.core.def
 +++ b/grub-core/Makefile.core.def
 @@ -398,6 +398,11 @@ kernel = {
@@ -57,7 +57,7 @@ index 498ca1176..1e1534510 100644
    mansection = 1;
 diff --git a/grub-core/commands/increment.c b/grub-core/commands/increment.c
 new file mode 100644
-index 000000000..79cf13765
+index 0000000000..79cf137656
 --- /dev/null
 +++ b/grub-core/commands/increment.c
 @@ -0,0 +1,105 @@
@@ -168,7 +168,7 @@ index 000000000..79cf13765
 +}
 diff --git a/util/grub.d/01_fallback_counting.in b/util/grub.d/01_fallback_counting.in
 new file mode 100644
-index 000000000..be0e770ea
+index 0000000000..be0e770ea8
 --- /dev/null
 +++ b/util/grub.d/01_fallback_counting.in
 @@ -0,0 +1,22 @@

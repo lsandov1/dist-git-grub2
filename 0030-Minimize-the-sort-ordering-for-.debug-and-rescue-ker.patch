@@ -10,7 +10,7 @@ Signed-off-by: Peter Jones <pjones@redhat.com>
  1 file changed, 8 insertions(+)
 
 diff --git a/util/grub-mkconfig_lib.in b/util/grub-mkconfig_lib.in
-index 301d1ac22..0f6505bf3 100644
+index 301d1ac229..0f6505bf3b 100644
 --- a/util/grub-mkconfig_lib.in
 +++ b/util/grub-mkconfig_lib.in
 @@ -253,6 +253,14 @@ version_test_gt ()

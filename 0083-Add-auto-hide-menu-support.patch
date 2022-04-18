@@ -43,7 +43,7 @@ Signed-off-by: Hans de Goede <hdegoede@redhat.com>
  create mode 100644 util/grub.d/01_menu_auto_hide.in
 
 diff --git a/Makefile.util.def b/Makefile.util.def
-index 48512bc63..314e6f2ac 100644
+index 48512bc631..314e6f2acf 100644
 --- a/Makefile.util.def
 +++ b/Makefile.util.def
 @@ -458,6 +458,12 @@ script = {
@@ -61,7 +61,7 @@ index 48512bc63..314e6f2ac 100644
    common = util/grub.d/01_users.in;
 diff --git a/util/grub.d/01_menu_auto_hide.in b/util/grub.d/01_menu_auto_hide.in
 new file mode 100644
-index 000000000..ad175870a
+index 0000000000..ad175870a5
 --- /dev/null
 +++ b/util/grub.d/01_menu_auto_hide.in
 @@ -0,0 +1,48 @@
@@ -114,7 +114,7 @@ index 000000000..ad175870a
 +fi
 +EOF
 diff --git a/util/grub.d/30_os-prober.in b/util/grub.d/30_os-prober.in
-index 4b27bd201..3c9431cfc 100644
+index 4b27bd2015..3c9431cfcf 100644
 --- a/util/grub.d/30_os-prober.in
 +++ b/util/grub.d/30_os-prober.in
 @@ -42,6 +42,7 @@ if [ -z "${OSPROBED}" ] ; then

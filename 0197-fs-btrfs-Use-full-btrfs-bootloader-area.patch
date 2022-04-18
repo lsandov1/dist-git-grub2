@@ -32,7 +32,7 @@ Reviewed-by: Daniel Kiper <daniel.kiper@oracle.com>
  2 files changed, 79 insertions(+), 13 deletions(-)
 
 diff --git a/grub-core/fs/btrfs.c b/grub-core/fs/btrfs.c
-index 4cc86e9b7..07c0ff874 100644
+index 4cc86e9b79..07c0ff874b 100644
 --- a/grub-core/fs/btrfs.c
 +++ b/grub-core/fs/btrfs.c
 @@ -2476,6 +2476,33 @@ grub_btrfs_label (grub_device_t device, char **label)
@@ -146,7 +146,7 @@ index 4cc86e9b7..07c0ff874 100644
    return GRUB_ERR_NONE;
  }
 diff --git a/include/grub/disk.h b/include/grub/disk.h
-index f95aca929..06210a704 100644
+index f95aca929a..06210a7049 100644
 --- a/include/grub/disk.h
 +++ b/include/grub/disk.h
 @@ -182,6 +182,8 @@ typedef struct grub_disk_memberlist *grub_disk_memberlist_t;

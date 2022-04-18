@@ -9,7 +9,7 @@ Signed-off-by: Peter Jones <pjones@redhat.com>
  1 file changed, 1 insertion(+)
 
 diff --git a/gentpl.py b/gentpl.py
-index f3c5f84f8..f09b33686 100644
+index f3c5f84f85..f09b336869 100644
 --- a/gentpl.py
 +++ b/gentpl.py
 @@ -51,6 +51,7 @@ GROUPS["riscv32"]  = [ "riscv32_efi" ]

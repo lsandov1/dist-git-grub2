@@ -10,7 +10,7 @@ Signed-off-by: Peter Jones <pjones@redhat.com>
  2 files changed, 4 insertions(+), 1 deletion(-)
 
 diff --git a/configure.ac b/configure.ac
-index 091ab3283..de707f7e0 100644
+index 091ab32836..de707f7e0b 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -2028,6 +2028,9 @@ if test x"$enable_wextra" != xno ; then
@@ -24,7 +24,7 @@ index 091ab3283..de707f7e0 100644
  TARGET_CCAS=$TARGET_CC
  
 diff --git a/conf/Makefile.common b/conf/Makefile.common
-index 35e14ff01..0647c53b9 100644
+index 35e14ff017..0647c53b91 100644
 --- a/conf/Makefile.common
 +++ b/conf/Makefile.common
 @@ -66,7 +66,7 @@ grubconfdir = $(sysconfdir)/grub.d

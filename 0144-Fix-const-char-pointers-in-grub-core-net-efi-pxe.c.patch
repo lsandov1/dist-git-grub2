@@ -14,7 +14,7 @@ Signed-off-by: Peter Jones <pjones@redhat.com>
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/grub-core/net/efi/pxe.c b/grub-core/net/efi/pxe.c
-index 531949cba..73e2bb01c 100644
+index 531949cba5..73e2bb01c1 100644
 --- a/grub-core/net/efi/pxe.c
 +++ b/grub-core/net/efi/pxe.c
 @@ -187,7 +187,7 @@ parse_ip6 (const char *val, grub_uint64_t *ip, const char **rest)

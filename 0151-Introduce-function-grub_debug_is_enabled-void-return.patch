@@ -14,7 +14,7 @@ Signed-off-by: Renaud Métrich <rmetrich@redhat.com>
  2 files changed, 14 insertions(+)
 
 diff --git a/grub-core/kern/misc.c b/grub-core/kern/misc.c
-index 9f54b6b7d..a186ad3dd 100644
+index 9f54b6b7d2..a186ad3dd4 100644
 --- a/grub-core/kern/misc.c
 +++ b/grub-core/kern/misc.c
 @@ -163,6 +163,19 @@ int grub_err_printf (const char *fmt, ...)
@@ -38,7 +38,7 @@ index 9f54b6b7d..a186ad3dd 100644
  grub_debug_enabled (const char * condition)
  {
 diff --git a/include/grub/misc.h b/include/grub/misc.h
-index 3adc4036e..6c4aa85ac 100644
+index 3adc4036e3..6c4aa85ac5 100644
 --- a/include/grub/misc.h
 +++ b/include/grub/misc.h
 @@ -340,6 +340,7 @@ grub_puts (const char *s)

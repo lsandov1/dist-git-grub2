@@ -22,7 +22,7 @@ Signed-off-by: Javier Martinez Canillas <javierm@redhat.com>
  1 file changed, 11 insertions(+), 7 deletions(-)
 
 diff --git a/grub-core/net/efi/net.c b/grub-core/net/efi/net.c
-index 84573937b..a3f0535d4 100644
+index 84573937b1..a3f0535d43 100644
 --- a/grub-core/net/efi/net.c
 +++ b/grub-core/net/efi/net.c
 @@ -778,9 +778,9 @@ grub_efi_net_parse_address (const char *address,

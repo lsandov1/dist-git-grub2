@@ -25,7 +25,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  1 file changed, 2 insertions(+)
 
 diff --git a/util/grub-mkconfig.in b/util/grub-mkconfig.in
-index f55339a3f..520a672cd 100644
+index f55339a3f6..520a672cd2 100644
 --- a/util/grub-mkconfig.in
 +++ b/util/grub-mkconfig.in
 @@ -311,7 +311,9 @@ and /etc/grub.d/* files or please file a bug report with

@@ -39,7 +39,7 @@ Signed-off-by: Dimitri John Ledkov <dimitri.ledkov@canonical.com>
  1 file changed, 2 insertions(+), 6 deletions(-)
 
 diff --git a/grub-core/loader/efi/chainloader.c b/grub-core/loader/efi/chainloader.c
-index 3af6b1229..644cd2e56 100644
+index 3af6b12292..644cd2e56f 100644
 --- a/grub-core/loader/efi/chainloader.c
 +++ b/grub-core/loader/efi/chainloader.c
 @@ -906,7 +906,6 @@ grub_cmd_chainloader (grub_command_t cmd __attribute__ ((unused)),

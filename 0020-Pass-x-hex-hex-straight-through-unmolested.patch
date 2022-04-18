@@ -13,7 +13,7 @@ Signed-off-by: Peter Jones <pjones@redhat.com>
  3 files changed, 75 insertions(+), 9 deletions(-)
 
 diff --git a/grub-core/commands/wildcard.c b/grub-core/commands/wildcard.c
-index cc3290311..8f67a4be7 100644
+index cc3290311f..8f67a4be7f 100644
 --- a/grub-core/commands/wildcard.c
 +++ b/grub-core/commands/wildcard.c
 @@ -488,6 +488,12 @@ check_file (const char *dir, const char *basename)
@@ -47,7 +47,7 @@ index cc3290311..8f67a4be7 100644
  	  *optr++ = iptr[1];
  	  iptr += 2;
 diff --git a/grub-core/lib/cmdline.c b/grub-core/lib/cmdline.c
-index ed0b149dc..8e2294d8f 100644
+index ed0b149dca..8e2294d8ff 100644
 --- a/grub-core/lib/cmdline.c
 +++ b/grub-core/lib/cmdline.c
 @@ -20,6 +20,12 @@
@@ -97,7 +97,7 @@ index ed0b149dc..8e2294d8f 100644
  
  	  *buf++ = *c;
 diff --git a/grub-core/script/execute.c b/grub-core/script/execute.c
-index ad8039924..0c6dd9c52 100644
+index ad80399246..0c6dd9c520 100644
 --- a/grub-core/script/execute.c
 +++ b/grub-core/script/execute.c
 @@ -56,6 +56,12 @@ static struct grub_script_scope *scope = 0;

@@ -13,7 +13,7 @@ Signed-off-by: Robbie Harwood <rharwood@redhat.com>
  4 files changed, 392 insertions(+), 5 deletions(-)
 
 diff --git a/grub-core/fs/btrfs.c b/grub-core/fs/btrfs.c
-index 113c1f746..d323746ec 100644
+index 113c1f746c..d323746ecf 100644
 --- a/grub-core/fs/btrfs.c
 +++ b/grub-core/fs/btrfs.c
 @@ -41,6 +41,7 @@
@@ -279,7 +279,7 @@ index 113c1f746..d323746ec 100644
  					 grub_cmd_btrfs_list_subvols, 0,
  					 "[-p|-n] [-o var] DEVICE",
 diff --git a/grub-core/osdep/linux/getroot.c b/grub-core/osdep/linux/getroot.c
-index caf9b1ccd..28790307e 100644
+index caf9b1ccd3..28790307e0 100644
 --- a/grub-core/osdep/linux/getroot.c
 +++ b/grub-core/osdep/linux/getroot.c
 @@ -107,6 +107,14 @@ struct btrfs_ioctl_search_key
@@ -462,7 +462,7 @@ index caf9b1ccd..28790307e 100644
  grub_make_system_path_relative_to_its_root_os (const char *path)
  {
 diff --git a/util/grub-install.c b/util/grub-install.c
-index 0f66f36d2..84ed6e88e 100644
+index 0f66f36d23..84ed6e88ec 100644
 --- a/util/grub-install.c
 +++ b/util/grub-install.c
 @@ -1569,6 +1569,55 @@ main (int argc, char *argv[])
@@ -522,7 +522,7 @@ index 0f66f36d2..84ed6e88e 100644
    const char *core_name = NULL;
  
 diff --git a/include/grub/emu/getroot.h b/include/grub/emu/getroot.h
-index 73fa2d34a..9c642ae3f 100644
+index 73fa2d34ab..9c642ae3fe 100644
 --- a/include/grub/emu/getroot.h
 +++ b/include/grub/emu/getroot.h
 @@ -53,6 +53,11 @@ char **

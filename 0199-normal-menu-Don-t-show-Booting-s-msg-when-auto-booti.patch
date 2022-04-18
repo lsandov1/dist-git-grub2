@@ -18,7 +18,7 @@ Signed-off-by: Hans de Goede <hdegoede@redhat.com>
  1 file changed, 16 insertions(+), 8 deletions(-)
 
 diff --git a/grub-core/normal/menu.c b/grub-core/normal/menu.c
-index ec0c92bad..c8516a5a0 100644
+index ec0c92bade..c8516a5a08 100644
 --- a/grub-core/normal/menu.c
 +++ b/grub-core/normal/menu.c
 @@ -606,13 +606,15 @@ print_countdown (struct grub_term_coordinate *pos, int n)

@@ -13,7 +13,7 @@ Subject: [PATCH] Make grub_fatal() also backtrace.
  create mode 100644 grub-core/lib/arm64/backtrace.c
 
 diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
-index c15e91943..058c88ac3 100644
+index c15e91943b..058c88ac3a 100644
 --- a/grub-core/Makefile.core.def
 +++ b/grub-core/Makefile.core.def
 @@ -188,6 +188,9 @@ kernel = {
@@ -27,7 +27,7 @@ index c15e91943..058c88ac3 100644
    i386_xen = kern/i386/dl.c;
    i386_xen_pvh = kern/i386/dl.c;
 diff --git a/grub-core/kern/misc.c b/grub-core/kern/misc.c
-index 63b586d09..a3e215155 100644
+index 63b586d09c..a3e215155b 100644
 --- a/grub-core/kern/misc.c
 +++ b/grub-core/kern/misc.c
 @@ -24,6 +24,7 @@
@@ -55,7 +55,7 @@ index 63b586d09..a3e215155 100644
  #endif
 diff --git a/grub-core/lib/arm64/backtrace.c b/grub-core/lib/arm64/backtrace.c
 new file mode 100644
-index 000000000..1079b5380
+index 0000000000..1079b5380e
 --- /dev/null
 +++ b/grub-core/lib/arm64/backtrace.c
 @@ -0,0 +1,62 @@
@@ -122,7 +122,7 @@ index 000000000..1079b5380
 +}
 +
 diff --git a/grub-core/lib/backtrace.c b/grub-core/lib/backtrace.c
-index 825a8800e..c0ad6ab8b 100644
+index 825a8800e2..c0ad6ab8be 100644
 --- a/grub-core/lib/backtrace.c
 +++ b/grub-core/lib/backtrace.c
 @@ -29,6 +29,7 @@ GRUB_MOD_LICENSE ("GPLv3+");
@@ -142,7 +142,7 @@ index 825a8800e..c0ad6ab8b 100644
  }
  
 diff --git a/grub-core/lib/i386/backtrace.c b/grub-core/lib/i386/backtrace.c
-index c3e03c727..c67273db3 100644
+index c3e03c7275..c67273db3a 100644
 --- a/grub-core/lib/i386/backtrace.c
 +++ b/grub-core/lib/i386/backtrace.c
 @@ -15,11 +15,23 @@

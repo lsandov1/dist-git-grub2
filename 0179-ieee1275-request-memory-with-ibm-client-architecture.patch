@@ -69,7 +69,7 @@ Signed-off-by: Daniel Axtens <dja@axtens.net>
  3 files changed, 152 insertions(+), 3 deletions(-)
 
 diff --git a/grub-core/kern/ieee1275/cmain.c b/grub-core/kern/ieee1275/cmain.c
-index 04df9d2c6..6435628ec 100644
+index 04df9d2c66..6435628ec5 100644
 --- a/grub-core/kern/ieee1275/cmain.c
 +++ b/grub-core/kern/ieee1275/cmain.c
 @@ -127,6 +127,9 @@ grub_ieee1275_find_options (void)
@@ -83,7 +83,7 @@ index 04df9d2c6..6435628ec 100644
  
    if (is_smartfirmware)
 diff --git a/grub-core/kern/ieee1275/init.c b/grub-core/kern/ieee1275/init.c
-index c61d91a02..9704715c8 100644
+index c61d91a028..9704715c83 100644
 --- a/grub-core/kern/ieee1275/init.c
 +++ b/grub-core/kern/ieee1275/init.c
 @@ -242,6 +242,135 @@ heap_init (grub_uint64_t addr, grub_uint64_t len, grub_memory_type_t type,
@@ -248,7 +248,7 @@ index c61d91a02..9704715c8 100644
  
    total = total / 4;
 diff --git a/include/grub/ieee1275/ieee1275.h b/include/grub/ieee1275/ieee1275.h
-index b5a1d49bb..e0a6c2ce1 100644
+index b5a1d49bbc..e0a6c2ce1e 100644
 --- a/include/grub/ieee1275/ieee1275.h
 +++ b/include/grub/ieee1275/ieee1275.h
 @@ -149,7 +149,13 @@ enum grub_ieee1275_flag

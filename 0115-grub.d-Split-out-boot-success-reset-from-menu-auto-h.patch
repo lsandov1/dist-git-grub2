@@ -21,7 +21,7 @@ Signed-off-by: Robbie Harwood <rharwood@redhat.com>
  rename util/grub.d/{01_menu_auto_hide.in => 12_menu_auto_hide.in} (58%)
 
 diff --git a/Makefile.util.def b/Makefile.util.def
-index 27a13bc73..2e6ad979c 100644
+index 27a13bc734..2e6ad979c3 100644
 --- a/Makefile.util.def
 +++ b/Makefile.util.def
 @@ -459,14 +459,14 @@ script = {
@@ -60,7 +60,7 @@ diff --git a/util/grub.d/01_fallback_counting.in b/util/grub.d/08_fallback_count
 similarity index 65%
 rename from util/grub.d/01_fallback_counting.in
 rename to util/grub.d/08_fallback_counting.in
-index be0e770ea..2e2c3ff7d 100644
+index be0e770ea8..2e2c3ff7d3 100644
 --- a/util/grub.d/01_fallback_counting.in
 +++ b/util/grub.d/08_fallback_counting.in
 @@ -1,15 +1,17 @@
@@ -89,7 +89,7 @@ index be0e770ea..2e2c3ff7d 100644
      set boot_counter=-1
 diff --git a/util/grub.d/10_reset_boot_success.in b/util/grub.d/10_reset_boot_success.in
 new file mode 100644
-index 000000000..6c88d933d
+index 0000000000..6c88d933dd
 --- /dev/null
 +++ b/util/grub.d/10_reset_boot_success.in
 @@ -0,0 +1,25 @@
@@ -122,7 +122,7 @@ diff --git a/util/grub.d/01_menu_auto_hide.in b/util/grub.d/12_menu_auto_hide.in
 similarity index 58%
 rename from util/grub.d/01_menu_auto_hide.in
 rename to util/grub.d/12_menu_auto_hide.in
-index ad175870a..6a7c0fa0d 100644
+index ad175870a5..6a7c0fa0d4 100644
 --- a/util/grub.d/01_menu_auto_hide.in
 +++ b/util/grub.d/12_menu_auto_hide.in
 @@ -1,5 +1,8 @@

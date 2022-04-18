@@ -15,7 +15,7 @@ Signed-off-by: Daniel Axtens <dja@axtens.net>
  4 files changed, 32 insertions(+), 3 deletions(-)
 
 diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
-index 6bddc841b..3f3459b2c 100644
+index 6bddc841b8..3f3459b2c7 100644
 --- a/grub-core/Makefile.core.def
 +++ b/grub-core/Makefile.core.def
 @@ -323,6 +323,7 @@ kernel = {
@@ -27,7 +27,7 @@ index 6bddc841b..3f3459b2c 100644
    sparc64_ieee1275 = kern/sparc64/cache.S;
    sparc64_ieee1275 = kern/sparc64/dl.c;
 diff --git a/grub-core/kern/ieee1275/init.c b/grub-core/kern/ieee1275/init.c
-index 937c1bc44..fc7d97127 100644
+index 937c1bc44c..fc7d971272 100644
 --- a/grub-core/kern/ieee1275/init.c
 +++ b/grub-core/kern/ieee1275/init.c
 @@ -44,6 +44,7 @@
@@ -79,7 +79,7 @@ index 937c1bc44..fc7d97127 100644
  
  void
 diff --git a/include/grub/lockdown.h b/include/grub/lockdown.h
-index 40531fa82..ebfee4bf0 100644
+index 40531fa823..ebfee4bf06 100644
 --- a/include/grub/lockdown.h
 +++ b/include/grub/lockdown.h
 @@ -24,7 +24,8 @@
@@ -93,7 +93,7 @@ index 40531fa82..ebfee4bf0 100644
  EXPORT_FUNC (grub_lockdown) (void);
  extern int
 diff --git a/docs/grub.texi b/docs/grub.texi
-index 4816be856..a4da9c2a1 100644
+index 4816be8561..a4da9c2a1b 100644
 --- a/docs/grub.texi
 +++ b/docs/grub.texi
 @@ -6227,8 +6227,8 @@ Measured boot is currently only supported on EFI platforms.

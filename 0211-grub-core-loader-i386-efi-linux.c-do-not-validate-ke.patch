@@ -34,7 +34,7 @@ Signed-off-by: Dimitri John Ledkov <dimitri.ledkov@canonical.com>
  1 file changed, 13 deletions(-)
 
 diff --git a/grub-core/loader/i386/efi/linux.c b/grub-core/loader/i386/efi/linux.c
-index 3cf0f9b33..941df6400 100644
+index 3cf0f9b330..941df6400b 100644
 --- a/grub-core/loader/i386/efi/linux.c
 +++ b/grub-core/loader/i386/efi/linux.c
 @@ -30,7 +30,6 @@

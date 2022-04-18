@@ -29,7 +29,7 @@ Signed-off-by: Robbie Harwood <rharwood@redhat.com>
  create mode 100644 docs/man/grub-rpm-sort.h2m
 
 diff --git a/configure.ac b/configure.ac
-index 8331f95b6..87c8f1739 100644
+index 8331f95b64..87c8f17393 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -72,6 +72,7 @@ grub_TRANSFORM([grub-mkrelpath])
@@ -97,7 +97,7 @@ index 8331f95b6..87c8f1739 100644
  echo starfield theme: Yes
  echo With DejaVuSans font from $DJVU_FONT_SOURCE
 diff --git a/Makefile.util.def b/Makefile.util.def
-index 2c9b283a2..bc10cc797 100644
+index 2c9b283a23..bc10cc7972 100644
 --- a/Makefile.util.def
 +++ b/Makefile.util.def
 @@ -703,6 +703,23 @@ program = {
@@ -126,7 +126,7 @@ index 2c9b283a2..bc10cc797 100644
    common = util/grub-mkconfig.in;
 diff --git a/util/grub-rpm-sort.c b/util/grub-rpm-sort.c
 new file mode 100644
-index 000000000..f33bd1ed5
+index 0000000000..f33bd1ed56
 --- /dev/null
 +++ b/util/grub-rpm-sort.c
 @@ -0,0 +1,281 @@
@@ -413,14 +413,14 @@ index 000000000..f33bd1ed5
 +}
 diff --git a/docs/man/grub-rpm-sort.h2m b/docs/man/grub-rpm-sort.h2m
 new file mode 100644
-index 000000000..fe711ae10
+index 0000000000..fe711ae102
 --- /dev/null
 +++ b/docs/man/grub-rpm-sort.h2m
 @@ -0,0 +1,2 @@
 +[NAME]
 +grub-rpm-sort \- sort input according to RPM version compare
 diff --git a/util/grub-mkconfig_lib.in b/util/grub-mkconfig_lib.in
-index 0f6505bf3..42c2ea9ba 100644
+index 0f6505bf3b..42c2ea9ba5 100644
 --- a/util/grub-mkconfig_lib.in
 +++ b/util/grub-mkconfig_lib.in
 @@ -33,6 +33,9 @@ fi

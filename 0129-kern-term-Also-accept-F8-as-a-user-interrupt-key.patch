@@ -12,7 +12,7 @@ Signed-off-by: Javier Martinez Canillas <javierm@redhat.com>
  1 file changed, 3 insertions(+), 2 deletions(-)
 
 diff --git a/grub-core/kern/term.c b/grub-core/kern/term.c
-index 14d596498..4d61f4e97 100644
+index 14d5964983..4d61f4e979 100644
 --- a/grub-core/kern/term.c
 +++ b/grub-core/kern/term.c
 @@ -144,9 +144,10 @@ grub_key_is_interrupt (int key)

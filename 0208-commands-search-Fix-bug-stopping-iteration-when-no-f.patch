@@ -19,7 +19,7 @@ Signed-off-by: Robbie Harwood <rharwood@redhat.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/grub-core/commands/search.c b/grub-core/commands/search.c
-index ed090b3af..51656e361 100644
+index ed090b3af8..51656e361c 100644
 --- a/grub-core/commands/search.c
 +++ b/grub-core/commands/search.c
 @@ -64,7 +64,7 @@ iterate_device (const char *name, void *data)

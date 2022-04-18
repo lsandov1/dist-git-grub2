@@ -12,7 +12,7 @@ Signed-off-by: Peter Jones <pjones@redhat.com>
  1 file changed, 27 insertions(+), 7 deletions(-)
 
 diff --git a/util/grub.d/10_linux.in b/util/grub.d/10_linux.in
-index 5f6d3c8d5..786dbabb4 100644
+index 5f6d3c8d52..786dbabb4a 100644
 --- a/util/grub.d/10_linux.in
 +++ b/util/grub.d/10_linux.in
 @@ -78,6 +78,32 @@ case x"$GRUB_FS" in

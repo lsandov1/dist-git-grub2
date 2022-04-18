@@ -16,7 +16,7 @@ Signed-off-by: Robbie Harwood <rharwood@redhat.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/configure.ac b/configure.ac
-index f069d8403..88e33e0f0 100644
+index f069d84039..88e33e0f0c 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -1785,7 +1785,7 @@ fi

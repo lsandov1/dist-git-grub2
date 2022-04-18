@@ -20,7 +20,7 @@ Signed-off-by: Robbie Harwood <rharwood@redhat.com>
  create mode 100644 util/grub-switch-to-blscfg.in
 
 diff --git a/Makefile.util.def b/Makefile.util.def
-index 43a1c7453..a90879fa9 100644
+index 43a1c7453b..a90879fa9b 100644
 --- a/Makefile.util.def
 +++ b/Makefile.util.def
 @@ -1365,6 +1365,13 @@ program = {
@@ -39,14 +39,14 @@ index 43a1c7453..a90879fa9 100644
    mansection = 1;
 diff --git a/docs/man/grub-switch-to-blscfg.h2m b/docs/man/grub-switch-to-blscfg.h2m
 new file mode 100644
-index 000000000..fa341426a
+index 0000000000..fa341426a5
 --- /dev/null
 +++ b/docs/man/grub-switch-to-blscfg.h2m
 @@ -0,0 +1,2 @@
 +[NAME]
 +grub-switch-to-blscfg \- switch to using BLS config files
 diff --git a/util/grub-set-password.in b/util/grub-set-password.in
-index 5ebf50576..c0b5ebbfd 100644
+index 5ebf50576d..c0b5ebbfdc 100644
 --- a/util/grub-set-password.in
 +++ b/util/grub-set-password.in
 @@ -1,6 +1,6 @@
@@ -59,7 +59,7 @@ index 5ebf50576..c0b5ebbfd 100644
  else
 diff --git a/util/grub-switch-to-blscfg.in b/util/grub-switch-to-blscfg.in
 new file mode 100644
-index 000000000..a851424be
+index 0000000000..a851424beb
 --- /dev/null
 +++ b/util/grub-switch-to-blscfg.in
 @@ -0,0 +1,317 @@
@@ -381,7 +381,7 @@ index 000000000..a851424be
 +# Bye.
 +exit 0
 diff --git a/util/grub.d/10_linux.in b/util/grub.d/10_linux.in
-index f1548a260..c02c1f082 100644
+index f1548a2605..c02c1f0820 100644
 --- a/util/grub.d/10_linux.in
 +++ b/util/grub.d/10_linux.in
 @@ -138,7 +138,7 @@ blsdir="/boot/loader/entries"

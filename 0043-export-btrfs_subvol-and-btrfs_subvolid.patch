@@ -12,7 +12,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  1 file changed, 2 insertions(+)
 
 diff --git a/grub-core/fs/btrfs.c b/grub-core/fs/btrfs.c
-index f1fff7385..ad1b56b71 100644
+index f1fff7385b..ad1b56b716 100644
 --- a/grub-core/fs/btrfs.c
 +++ b/grub-core/fs/btrfs.c
 @@ -2714,6 +2714,8 @@ GRUB_MOD_INIT (btrfs)

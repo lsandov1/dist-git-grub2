@@ -30,7 +30,7 @@ Signed-off-by: Robbie Harwood <rharwood@redhat.com>
  create mode 100644 grub-core/commands/appendedsig/appendedsig.c
 
 diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
-index b4aaccf7b..77321d218 100644
+index b4aaccf7b5..77321d218c 100644
 --- a/grub-core/Makefile.core.def
 +++ b/grub-core/Makefile.core.def
 @@ -980,6 +980,18 @@ module = {
@@ -54,7 +54,7 @@ index b4aaccf7b..77321d218 100644
    common = commands/hdparm.c;
 diff --git a/grub-core/commands/appendedsig/appendedsig.c b/grub-core/commands/appendedsig/appendedsig.c
 new file mode 100644
-index 000000000..bf8b18b62
+index 0000000000..bf8b18b620
 --- /dev/null
 +++ b/grub-core/commands/appendedsig/appendedsig.c
 @@ -0,0 +1,645 @@
@@ -704,7 +704,7 @@ index 000000000..bf8b18b62
 +  grub_unregister_command (cmd_distrust);
 +}
 diff --git a/include/grub/file.h b/include/grub/file.h
-index 31567483c..96827a4f8 100644
+index 31567483cc..96827a4f89 100644
 --- a/include/grub/file.h
 +++ b/include/grub/file.h
 @@ -80,6 +80,8 @@ enum grub_file_type

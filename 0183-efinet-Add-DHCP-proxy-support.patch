@@ -14,7 +14,7 @@ Signed-off-by: Robbie Harwood <rharwood@redhat.com>
  1 file changed, 23 insertions(+), 2 deletions(-)
 
 diff --git a/grub-core/net/drivers/efi/efinet.c b/grub-core/net/drivers/efi/efinet.c
-index e11d759f1..1a24f38a2 100644
+index e11d759f19..1a24f38a21 100644
 --- a/grub-core/net/drivers/efi/efinet.c
 +++ b/grub-core/net/drivers/efi/efinet.c
 @@ -850,10 +850,31 @@ grub_efi_net_config_real (grub_efi_handle_t hnd, char **device,

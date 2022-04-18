@@ -10,7 +10,7 @@ Ref: bsc#953538
  1 file changed, 31 insertions(+), 1 deletion(-)
 
 diff --git a/grub-core/fs/btrfs.c b/grub-core/fs/btrfs.c
-index d323746ec..673ded035 100644
+index d323746ecf..673ded0352 100644
 --- a/grub-core/fs/btrfs.c
 +++ b/grub-core/fs/btrfs.c
 @@ -1260,11 +1260,41 @@ lookup_root_by_name(struct grub_btrfs_data *data, const char *path)

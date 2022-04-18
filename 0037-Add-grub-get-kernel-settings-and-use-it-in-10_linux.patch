@@ -24,7 +24,7 @@ Resolves: rhbz#1226325
  create mode 100644 util/grub-get-kernel-settings.in
 
 diff --git a/configure.ac b/configure.ac
-index 916bede6b..4f1676967 100644
+index 916bede6bf..4f1676967e 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -65,6 +65,7 @@ grub_TRANSFORM([grub-install])
@@ -36,7 +36,7 @@ index 916bede6b..4f1676967 100644
  grub_TRANSFORM([grub-mklayout])
  grub_TRANSFORM([grub-mkpasswd-pbkdf2])
 diff --git a/Makefile.util.def b/Makefile.util.def
-index 8ca4c14f0..43a1c7453 100644
+index 8ca4c14f0b..43a1c7453b 100644
 --- a/Makefile.util.def
 +++ b/Makefile.util.def
 @@ -733,6 +733,13 @@ script = {
@@ -55,14 +55,14 @@ index 8ca4c14f0..43a1c7453 100644
    common = util/grub-set-default.in;
 diff --git a/docs/man/grub-get-kernel-settings.h2m b/docs/man/grub-get-kernel-settings.h2m
 new file mode 100644
-index 000000000..b8051f01f
+index 0000000000..b8051f01f3
 --- /dev/null
 +++ b/docs/man/grub-get-kernel-settings.h2m
 @@ -0,0 +1,2 @@
 +[NAME]
 +grub-get-kernel-settings \- Evaluate the system's kernel installation settings for use while making a grub configuration file
 diff --git a/util/bash-completion.d/grub-completion.bash.in b/util/bash-completion.d/grub-completion.bash.in
-index 44bf135b9..5c4acd496 100644
+index 44bf135b9f..5c4acd496d 100644
 --- a/util/bash-completion.d/grub-completion.bash.in
 +++ b/util/bash-completion.d/grub-completion.bash.in
 @@ -264,6 +264,28 @@ have ${__grub_sparc64_setup_program} && \
@@ -96,7 +96,7 @@ index 44bf135b9..5c4acd496 100644
  #
 diff --git a/util/grub-get-kernel-settings.in b/util/grub-get-kernel-settings.in
 new file mode 100644
-index 000000000..7e87dfccc
+index 0000000000..7e87dfccc0
 --- /dev/null
 +++ b/util/grub-get-kernel-settings.in
 @@ -0,0 +1,88 @@
@@ -189,7 +189,7 @@ index 000000000..7e87dfccc
 +    echo export GRUB_UPDATE_DEFAULT_KERNEL
 +fi
 diff --git a/util/grub-mkconfig.in b/util/grub-mkconfig.in
-index ba14cf626..005f09380 100644
+index ba14cf6261..005f093809 100644
 --- a/util/grub-mkconfig.in
 +++ b/util/grub-mkconfig.in
 @@ -45,6 +45,7 @@ grub_probe="${sbindir}/@grub_probe@"
@@ -210,7 +210,7 @@ index ba14cf626..005f09380 100644
    if [ -z "${GRUB_DISABLE_LINUX_UUID}" ]; then
      GRUB_DISABLE_LINUX_UUID="true"
 diff --git a/util/grub.d/10_linux.in b/util/grub.d/10_linux.in
-index 786dbabb4..292e33332 100644
+index 786dbabb4a..292e333324 100644
 --- a/util/grub.d/10_linux.in
 +++ b/util/grub.d/10_linux.in
 @@ -111,7 +111,8 @@ linux_entry ()

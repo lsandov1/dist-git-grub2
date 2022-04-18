@@ -25,7 +25,7 @@ Signed-off-by: Robbie Harwood <rharwood@redhat.com>
  delete mode 100644 grub-core/lib/gnulib-patches/no-abort.patch
 
 diff --git a/bootstrap.conf b/bootstrap.conf
-index 645e3a459..71ce943c7 100644
+index 645e3a459c..71ce943c7d 100644
 --- a/bootstrap.conf
 +++ b/bootstrap.conf
 @@ -81,7 +81,7 @@ cp -a INSTALL INSTALL.grub
@@ -38,7 +38,7 @@ index 645e3a459..71ce943c7 100644
        < "grub-core/lib/gnulib-patches/$patchname.patch"
    done
 diff --git a/conf/Makefile.extra-dist b/conf/Makefile.extra-dist
-index f4791dc6c..5eef70833 100644
+index f4791dc6ca..5eef708338 100644
 --- a/conf/Makefile.extra-dist
 +++ b/conf/Makefile.extra-dist
 @@ -38,7 +38,6 @@ EXTRA_DIST += grub-core/lib/gnulib-patches/fix-regexec-null-deref.patch
@@ -50,7 +50,7 @@ index f4791dc6c..5eef70833 100644
  EXTRA_DIST += grub-core/lib/libgcrypt
  EXTRA_DIST += grub-core/lib/libgcrypt-grub/mpi/generic
 diff --git a/config.h.in b/config.h.in
-index 9c7b4afaa..c3134309c 100644
+index 9c7b4afaaa..c3134309c6 100644
 --- a/config.h.in
 +++ b/config.h.in
 @@ -68,6 +68,9 @@
@@ -65,7 +65,7 @@ index 9c7b4afaa..c3134309c 100644
  #endif
 diff --git a/grub-core/lib/gnulib-patches/no-abort.patch b/grub-core/lib/gnulib-patches/no-abort.patch
 deleted file mode 100644
-index e469c4762..000000000
+index e469c4762e..0000000000
 --- a/grub-core/lib/gnulib-patches/no-abort.patch
 +++ /dev/null
 @@ -1,26 +0,0 @@

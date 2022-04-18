@@ -22,7 +22,7 @@ Signed-off-by: Ken Lin <ken.lin@hpe.com>
  2 files changed, 56 insertions(+)
 
 diff --git a/grub-core/net/bootp.c b/grub-core/net/bootp.c
-index fe93b80f1..8fb8918ae 100644
+index fe93b80f1c..8fb8918ae7 100644
 --- a/grub-core/net/bootp.c
 +++ b/grub-core/net/bootp.c
 @@ -20,6 +20,7 @@
@@ -95,7 +95,7 @@ index fe93b80f1..8fb8918ae 100644
    if (opt && opt_len)
      grub_env_set_net_property (name, "extensionspath", (const char *) opt, opt_len);
 diff --git a/include/grub/net.h b/include/grub/net.h
-index 543251f72..42af7de25 100644
+index 543251f727..42af7de250 100644
 --- a/include/grub/net.h
 +++ b/include/grub/net.h
 @@ -531,6 +531,7 @@ enum

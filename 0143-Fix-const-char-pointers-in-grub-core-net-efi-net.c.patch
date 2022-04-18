@@ -14,7 +14,7 @@ Signed-off-by: Peter Jones <pjones@redhat.com>
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/grub-core/net/efi/net.c b/grub-core/net/efi/net.c
-index a3f0535d4..78e5442fc 100644
+index a3f0535d43..78e5442fc5 100644
 --- a/grub-core/net/efi/net.c
 +++ b/grub-core/net/efi/net.c
 @@ -729,7 +729,7 @@ grub_efi_net_parse_address (const char *address,

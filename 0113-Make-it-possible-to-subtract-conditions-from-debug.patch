@@ -14,7 +14,7 @@ Signed-off-by: Peter Jones <pjones@redhat.com>
  1 file changed, 13 insertions(+), 1 deletion(-)
 
 diff --git a/grub-core/kern/misc.c b/grub-core/kern/misc.c
-index 9a2fae639..578bf51a5 100644
+index 9a2fae6398..578bf51a5f 100644
 --- a/grub-core/kern/misc.c
 +++ b/grub-core/kern/misc.c
 @@ -164,12 +164,24 @@ int

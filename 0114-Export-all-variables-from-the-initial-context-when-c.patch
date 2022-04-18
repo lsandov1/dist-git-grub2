@@ -17,7 +17,7 @@ Signed-off-by: Javier Martinez Canillas <javierm@redhat.com>
  2 files changed, 1 insertion(+), 3 deletions(-)
 
 diff --git a/grub-core/normal/context.c b/grub-core/normal/context.c
-index ee53d4a68..87edd254c 100644
+index ee53d4a68e..87edd254c4 100644
 --- a/grub-core/normal/context.c
 +++ b/grub-core/normal/context.c
 @@ -99,7 +99,7 @@ grub_env_new_context (int export_all)
@@ -30,7 +30,7 @@ index ee53d4a68..87edd254c 100644
  
  int grub_extractor_level = 0;
 diff --git a/grub-core/normal/menu.c b/grub-core/normal/menu.c
-index 4a02aadb0..fe2e77a43 100644
+index 4a02aadb01..fe2e77a43e 100644
 --- a/grub-core/normal/menu.c
 +++ b/grub-core/normal/menu.c
 @@ -375,8 +375,6 @@ grub_menu_execute_entry(grub_menu_entry_t entry, int auto_boot)

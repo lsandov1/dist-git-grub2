@@ -9,7 +9,7 @@ Signed-off-by: Peter Jones <pjones@redhat.com>
  1 file changed, 51 insertions(+), 46 deletions(-)
 
 diff --git a/grub-core/normal/main.c b/grub-core/normal/main.c
-index 025775021..880d0ebd4 100644
+index bf24e65713..0a99768f75 100644
 --- a/grub-core/normal/main.c
 +++ b/grub-core/normal/main.c
 @@ -345,61 +345,66 @@ grub_cmd_normal (struct grub_command *cmd __attribute__ ((unused)),

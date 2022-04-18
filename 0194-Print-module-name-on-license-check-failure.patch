@@ -13,7 +13,7 @@ Signed-off-by: Robbie Harwood <rharwood@redhat.com>
  1 file changed, 6 insertions(+), 4 deletions(-)
 
 diff --git a/grub-core/kern/dl.c b/grub-core/kern/dl.c
-index 955725403..f30449457 100644
+index 9557254035..f304494574 100644
 --- a/grub-core/kern/dl.c
 +++ b/grub-core/kern/dl.c
 @@ -528,14 +528,16 @@ grub_dl_find_section_index (Elf_Ehdr *e, const char *name)

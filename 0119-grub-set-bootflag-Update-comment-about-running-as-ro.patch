@@ -13,7 +13,7 @@ Signed-off-by: Hans de Goede <hdegoede@redhat.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/util/grub-set-bootflag.c b/util/grub-set-bootflag.c
-index a6ccc1138..3eb04beb5 100644
+index a6ccc11383..3eb04beb5e 100644
 --- a/util/grub-set-bootflag.c
 +++ b/util/grub-set-bootflag.c
 @@ -18,7 +18,7 @@
