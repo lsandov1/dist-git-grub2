@@ -17,7 +17,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	37%{?dist}
+Release:	38%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -132,6 +132,7 @@ Summary:	Support tools for GRUB.
 Requires:	gettext os-prober file
 Requires:	grub2-tools-minimal = %{epoch}:%{version}-%{release}
 Requires:	grub2-common = %{epoch}:%{version}-%{release}
+Requires:	mtools
 Obsoletes:	grub2-tools < %{evr}
 
 %description tools-extra
@@ -529,6 +530,9 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Tue Apr 19 2022 Dominik Mierzejewski <dominik@greysector.net> - 1:2.06-38
+- fix "grub2-mkrescue: error: `mformat` invocation failed"
+
 * Mon Apr 18 2022 Robbie Harwood <rharwood@redhat.com> - 1:2.06-37
 - Attempt to fix version display
 
