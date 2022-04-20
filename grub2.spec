@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	124%{?dist}
+Release:	125%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -510,7 +510,7 @@ fi
 %endif
 
 %changelog
-* Wed Apr 20 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-124
+* Wed Apr 20 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-125
 - RHEL 8.6.0 import; no code changes
 - Resolves: #2062892
 
