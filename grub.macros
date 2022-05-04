@@ -596,7 +596,7 @@ touch ${RPM_BUILD_ROOT}/boot/%{name}/grub.cfg			\
 %{expand:%%files %{1}}						\
 %defattr(-,root,root,-)						\
 %config(noreplace) %{_sysconfdir}/%{name}.cfg			\
-%ghost %config(noreplace) /boot/%{name}/grub.cfg		\
+%ghost %config(noreplace) %attr(0700,root,root)/boot/%{name}/grub.cfg	\
 %dir %attr(0700,root,root)/boot/loader/entries			\
 %ifarch ppc64le						\
 %dir %{_libdir}/grub/%{2}/					\
