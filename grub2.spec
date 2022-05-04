@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	126%{?dist}
+Release:	127%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -510,6 +510,12 @@ fi
 %endif
 
 %changelog
+* Wed May 04 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-127
+- ppc64le: CAS improvements, prefix detection, and vTPM support
+- Resolves: #2076795
+- Resolves: #2026568
+- Resolves: #2051331
+
 * Wed May 04 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-126
 - Fix rpm verification error on grub.cfg permissions
 - Resolves: #2071643

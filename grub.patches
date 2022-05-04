@@ -498,3 +498,7 @@ Patch0497: 0497-x86-efi-Re-arrange-grub_cmd_linux-a-little-bit.patch
 Patch0498: 0498-x86-efi-Make-our-own-allocator-for-kernel-stuff.patch
 Patch0499: 0499-x86-efi-Allow-initrd-params-cmdline-allocations-abov.patch
 Patch0500: 0500-x86-efi-Reduce-maximum-bounce-buffer-size-to-16-MiB.patch
+Patch0501: 0501-ibmvtpm-Add-support-for-trusted-boot-using-a-vTPM-2..patch
+Patch0502: 0502-ibmvtpm-Backport-ibmvtpm-support-to-grub-2.02.patch
+Patch0503: 0503-powerpc-do-CAS-in-a-more-compatible-way.patch
+Patch0504: 0504-powerpc-prefix-detection-support-device-names-with-c.patch
