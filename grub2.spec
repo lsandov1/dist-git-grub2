@@ -14,7 +14,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	29%{?dist}
+Release:	30%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -530,6 +530,12 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Wed May 04 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-30
+- ppc64le: CAS improvements, prefix detection, and vTPM support
+- Resolves: #2068281
+- Resolves: #2051314
+- Resolves: #2076798
+
 * Wed May 04 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-29
 - Fix rpm verification report on grub.cfg permissions
 - Resolves: #2076322

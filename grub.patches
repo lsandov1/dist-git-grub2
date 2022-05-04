@@ -225,3 +225,6 @@ Patch0224: 0224-grub-mkconfig-restore-umask-for-grub.cfg.patch
 Patch0225: 0225-commands-search-Fix-bug-stopping-iteration-when-no-f.patch
 Patch0226: 0226-search-new-efidisk-only-option-on-EFI-systems.patch
 Patch0227: 0227-efi-new-connectefi-command.patch
+Patch0228: 0228-powerpc-do-CAS-in-a-more-compatible-way.patch
+Patch0229: 0229-powerpc-prefix-detection-support-device-names-with-c.patch
+Patch0230: 0230-ibmvtpm-Add-support-for-trusted-boot-using-a-vTPM-2..patch
