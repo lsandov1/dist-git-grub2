@@ -17,7 +17,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	38%{?dist}
+Release:	39%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -530,6 +530,9 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Wed May 04 2022 Robbie Harwood <rharwood@redhat.com> - 1:2.06-39
+- ppc64le: CAS improvements, prefix detection, and vTPM support
+
 * Tue Apr 19 2022 Dominik Mierzejewski <dominik@greysector.net> - 1:2.06-38
 - fix "grub2-mkrescue: error: `mformat` invocation failed"
 
