@@ -502,3 +502,4 @@ Patch0501: 0501-ibmvtpm-Add-support-for-trusted-boot-using-a-vTPM-2..patch
 Patch0502: 0502-ibmvtpm-Backport-ibmvtpm-support-to-grub-2.02.patch
 Patch0503: 0503-powerpc-do-CAS-in-a-more-compatible-way.patch
 Patch0504: 0504-powerpc-prefix-detection-support-device-names-with-c.patch
+Patch0505: 0505-make-ofdisk_retries-optional.patch

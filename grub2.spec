@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	127%{?dist}
+Release:	129%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -510,6 +510,10 @@ fi
 %endif
 
 %changelog
+* Mon May 16 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-129
+- ppc64le: Slow boot after LPM
+- Resolves: #2070347
+
 * Wed May 04 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-127
 - ppc64le: CAS improvements, prefix detection, and vTPM support
 - Resolves: #2076795
