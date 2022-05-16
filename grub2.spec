@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	129%{?dist}
+Release:	137%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -166,8 +166,8 @@ This subpackage provides tools for support of all platforms.
 mkdir grub-%{grubefiarch}-%{tarversion}
 grep -A100000 '# stuff "make" creates' .gitignore > grub-%{grubefiarch}-%{tarversion}/.gitignore
 cp %{SOURCE4} grub-%{grubefiarch}-%{tarversion}/unifont.pcf.gz
-sed -e "s,@@VERSION@@,%{evr},g" %{SOURCE19} \
-	> grub-%{grubefiarch}-%{tarversion}/sbat.csv
+sed -e "s,@@VERSION@@,%{version},g" -e "s,@@VERSION_RELEASE@@,%{version}-%{release},g" \
+    %{SOURCE19} > grub-%{grubefiarch}-%{tarversion}/sbat.csv
 git add grub-%{grubefiarch}-%{tarversion}
 %endif
 %if 0%{with_alt_efi_arch}
@@ -510,6 +510,12 @@ fi
 %endif
 
 %changelog
+* Wed Jun 03 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-137
+- CVE fixes for 2022-06-07
+- CVE-2022-28736 CVE-2022-28735 CVE-2022-28734 CVE-2022-28733
+- CVE-2021-3697 CVE-2021-3696 CVE-2021-3695
+- Resolves: #2070687
+
 * Mon May 16 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-129
 - ppc64le: Slow boot after LPM
 - Resolves: #2070347
