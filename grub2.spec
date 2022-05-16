@@ -17,7 +17,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	40%{?dist}
+Release:	41%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -530,6 +530,9 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Mon May 16 2022 Robbie Harwood <rharwood@redhat.com> - 1:2.06-41
+- ppc64le: make ofdisk retries optional
+
 * Thu May 05 2022 Robbie Harwood <rharwood@redhat.com> - 1:2.06-40
 - Fix missing declaration of strchrnul in rpm-sort
 

@@ -216,3 +216,4 @@ Patch0215: 0215-powerpc-do-CAS-in-a-more-compatible-way.patch
 Patch0216: 0216-powerpc-prefix-detection-support-device-names-with-c.patch
 Patch0217: 0217-ibmvtpm-Add-support-for-trusted-boot-using-a-vTPM-2..patch
 Patch0218: 0218-rpm-sort-add-prereqs-for-declaration-of-strchrnul.patch
+Patch0219: 0219-make-ofdisk_retries-optional.patch
