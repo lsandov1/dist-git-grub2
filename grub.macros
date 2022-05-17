@@ -367,13 +367,13 @@ install -m 644 %{1}.conf ${RPM_BUILD_ROOT}/etc/dnf/protected.d/ \
 rm -f %{1}.conf							\
 %{nil}
 
-%global grub_modules  " all_video boot blscfg btrfs		\\\
+%global grub_modules  " all_video boot blscfg			\\\
 			cat configfile cryptodisk		\\\
 			echo ext2 f2fs fat font			\\\
 			gcry_rijndael gcry_rsa gcry_serpent	\\\
 			gcry_sha256 gcry_twofish gcry_whirlpool	\\\
 			gfxmenu gfxterm gzio			\\\
-			halt hfsplus http increment iso9660	\\\
+			halt http increment iso9660		\\\
 			jpeg loadenv loopback linux lvm luks	\\\
 			luks2 mdraid09 mdraid1x minicmd net	\\\
 			normal part_apple part_msdos part_gpt	\\\

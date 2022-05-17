@@ -14,7 +14,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	32%{?dist}
+Release:	37%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -530,6 +530,12 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Thu Jun 03 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-37
+- CVE fixes for 2022-06-07
+- CVE-2022-28736 CVE-2022-28735 CVE-2022-28734 CVE-2022-28733
+- CVE-2021-3697 CVE-2021-3696 CVE-2021-3695
+- Resolves: #2070688
+
 * Tue May 17 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-32
 - ppc64le: make ofdisk_retries optional
 - Resolves: #2070725
