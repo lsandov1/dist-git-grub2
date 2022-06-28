@@ -530,7 +530,11 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
-* Thu Jun 03 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-37
+* Tue Jun 28 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-38
+- Bless the TPM module on ppc64le
+- Resolves: #2051314
+
+* Fri Jun 03 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-37
 - CVE fixes for 2022-06-07
 - CVE-2022-28736 CVE-2022-28735 CVE-2022-28734 CVE-2022-28733
 - CVE-2021-3697 CVE-2021-3696 CVE-2021-3695
