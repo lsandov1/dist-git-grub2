@@ -14,7 +14,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	38%{?dist}
+Release:	39%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -530,6 +530,10 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Mon Jul 18 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-39
+- Rebuild against new ppc64le key
+- Resolves: #2074761
+
 * Tue Jun 28 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-38
 - Bless the TPM module on ppc64le
 - Resolves: #2051314
