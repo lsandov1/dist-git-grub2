@@ -14,7 +14,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	39%{?dist}
+Release:	40%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -41,6 +41,7 @@ Source12:	sbat.csv.in
 %endif
 
 %if 0%{?centos}
+
 %ifarch x86_64 aarch64 ppc64le
 %define sb_key		centossecureboot202
 %endif
@@ -49,8 +50,9 @@ Source12:	sbat.csv.in
 %define sb_key		redhatsecureboot502
 %endif
 %ifarch ppc64le
-%define sb_key		redhatsecureboot602
+%define sb_key		redhatsecureboot702
 %endif
+
 %endif
 
 
@@ -530,7 +532,7 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
-* Mon Jul 18 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-39
+* Mon Jul 18 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-40
 - Rebuild against new ppc64le key
 - Resolves: #2074761
 
