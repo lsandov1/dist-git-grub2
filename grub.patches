@@ -264,3 +264,6 @@ Patch0263: 0263-nx-add-memory-attribute-get-set-API.patch
 Patch0264: 0264-nx-set-page-permissions-for-loaded-modules.patch
 Patch0265: 0265-nx-set-attrs-in-our-kernel-loaders.patch
 Patch0266: 0266-nx-set-the-nx-compatible-flag-in-EFI-grub-images.patch
+Patch0267: 0267-grub-probe-document-the-behavior-of-multiple-v.patch
+Patch0268: 0268-grub_fs_probe-dprint-errors-from-filesystems.patch
+Patch0269: 0269-fs-fat-don-t-error-when-mtime-is-0.patch
