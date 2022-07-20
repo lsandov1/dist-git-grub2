@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	137%{?dist}
+Release:	138%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -28,8 +28,8 @@ Source13:	redhatsecurebootca3.cer
 Source14:	redhatsecureboot301.cer
 Source15:	redhatsecurebootca5.cer
 Source16:	redhatsecureboot502.cer
-Source17:	redhatsecureboot303.cer
-Source18:	redhatsecureboot601.cer
+Source17:	redhatsecureboot601.cer
+Source18:	redhatsecureboot701.cer
 Source19:	sbat.csv.in
 
 %include %{SOURCE1}
@@ -46,7 +46,7 @@ Source19:	sbat.csv.in
 %ifarch ppc64le
 %define old_sb_cer	%{SOURCE17}
 %define sb_cer		%{SOURCE18}
-%define sb_key		redhatsecureboot602
+%define sb_key		redhatsecureboot702
 %endif
 
 # generate with do-rebase
@@ -510,7 +510,11 @@ fi
 %endif
 
 %changelog
-* Wed Jun 03 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-137
+* Wed Jul 20 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-138
+- Rotate signing keys on ppc64le
+- Resolves: #2074762
+
+* Fri Jun 03 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-137
 - CVE fixes for 2022-06-07
 - CVE-2022-28736 CVE-2022-28735 CVE-2022-28734 CVE-2022-28733
 - CVE-2021-3697 CVE-2021-3696 CVE-2021-3695
