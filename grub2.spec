@@ -17,7 +17,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	43%{?dist}
+Release:	44%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -530,6 +530,9 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Mon Aug 01 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-44
+- Some allocator fixes for kernel
+
 * Tue Jul 19 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-43
 - Handle FAT mtime of 0
 - Resolves: #2096192

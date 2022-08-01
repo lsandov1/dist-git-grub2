@@ -267,3 +267,7 @@ Patch0266: 0266-nx-set-the-nx-compatible-flag-in-EFI-grub-images.patch
 Patch0267: 0267-grub-probe-document-the-behavior-of-multiple-v.patch
 Patch0268: 0268-grub_fs_probe-dprint-errors-from-filesystems.patch
 Patch0269: 0269-fs-fat-don-t-error-when-mtime-is-0.patch
+Patch0270: 0270-Make-debug-file-show-which-file-filters-get-run.patch
+Patch0271: 0271-efi-make-the-default-arena-most-of-ram.patch
+Patch0272: 0272-efi-use-enumerated-array-positions-for-our-allocatio.patch
+Patch0273: 0273-efi-split-allocation-policy-for-kernel-vs-initrd-mem.patch
