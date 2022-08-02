@@ -17,7 +17,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	45%{?dist}
+Release:	46%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -530,7 +530,10 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
-* Mon Aug 02 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-45
+* Tue Aug 02 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-46
+- Populate /etc/kernel/cmdline during mkconfig
+
+* Tue Aug 02 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-45
 - Rest of allocator fixes
 
 * Mon Aug 01 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-44
