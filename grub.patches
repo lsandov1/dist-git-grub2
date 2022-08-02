@@ -276,3 +276,7 @@ Patch0275: 0275-nx-add-memory-attribute-get-set-API.patch
 Patch0276: 0276-nx-set-page-permissions-for-loaded-modules.patch
 Patch0277: 0277-nx-set-attrs-in-our-kernel-loaders.patch
 Patch0278: 0278-nx-set-the-nx-compatible-flag-in-EFI-grub-images.patch
+Patch0279: 0279-Make-debug-file-show-which-file-filters-get-run.patch
+Patch0280: 0280-efi-make-the-default-arena-most-of-ram.patch
+Patch0281: 0281-efi-use-enumerated-array-positions-for-our-allocatio.patch
+Patch0282: 0282-efi-split-allocation-policy-for-kernel-vs-initrd-mem.patch
