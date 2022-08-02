@@ -280,3 +280,5 @@ Patch0279: 0279-Make-debug-file-show-which-file-filters-get-run.patch
 Patch0280: 0280-efi-make-the-default-arena-most-of-ram.patch
 Patch0281: 0281-efi-use-enumerated-array-positions-for-our-allocatio.patch
 Patch0282: 0282-efi-split-allocation-policy-for-kernel-vs-initrd-mem.patch
+Patch0283: 0283-efi-allocate-the-initrd-within-the-bounds-expressed-.patch
+Patch0284: 0284-efi-use-EFI_LOADER_-CODE-DATA-for-kernel-and-initrd-.patch
