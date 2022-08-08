@@ -274,3 +274,4 @@ Patch0273: 0273-efi-split-allocation-policy-for-kernel-vs-initrd-mem.patch
 Patch0274: 0274-efi-allocate-the-initrd-within-the-bounds-expressed-.patch
 Patch0275: 0275-efi-use-EFI_LOADER_-CODE-DATA-for-kernel-and-initrd-.patch
 Patch0276: 0276-BLS-create-etc-kernel-cmdline-during-mkconfig.patch
+Patch0277: 0277-Try-reserving-less-ram.patch
