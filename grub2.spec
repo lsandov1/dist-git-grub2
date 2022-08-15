@@ -530,6 +530,10 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Mon Aug 15 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-48
+- Use --with-rpm-version
+- Resolves: #2118390
+
 * Mon Aug 08 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-47
 - Try reserving less RAM to fix windows booting
 - Related: #2115202

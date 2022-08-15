@@ -347,6 +347,7 @@ rm -r build-aux m4						\
 	TARGET_CFLAGS="%{2}"					\\\
 	TARGET_CPPFLAGS="-I$(pwd)"				\\\
 	TARGET_LDFLAGS="%{efi_target_ldflags}"			\\\
+	--with-rpm-version=%{version}-%{release}		\\\
 	--with-platform=efi					\\\
 	--with-utils=host					\\\
 	--target=%{1}						\\\
