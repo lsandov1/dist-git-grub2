@@ -622,14 +622,14 @@ ln -s ../boot/%{name}/grub.cfg					\\\
 %defattr(-,root,root,-)						\
 %config(noreplace) %{_sysconfdir}/%{name}.cfg			\
 %config(noreplace) %{_sysconfdir}/%{name}-efi.cfg		\
-%attr(0700,root,root)%{efi_esp_dir}/%{2}			\
+%attr(0700,root,root) %verify(not mtime) %{efi_esp_dir}/%{2}	\
 %ifarch %{arm}							\
-%attr(0700,root,root)%{efi_esp_boot}/BOOTARM.EFI		\
+%attr(0700,root,root) %verify(not mtime) %{efi_esp_boot}/BOOTARM.EFI \
 %endif								\
 %attr(0700,root,root)/boot/%{name}/fonts			\
 %dir %attr(0700,root,root)/boot/loader/entries			\
 %ghost %config(noreplace) %attr(0700,root,root)/boot/%{name}/grub.cfg	\
-%ghost %config(noreplace) %attr(0700,root,root)%{efi_esp_dir}/grub.cfg	\
+%ghost %config(noreplace) %verify(not mtime) %attr(0700,root,root)%{efi_esp_dir}/grub.cfg	\
 %config(noreplace) %verify(not size mode md5 mtime) /boot/%{name}/grubenv	\
 %attr(0644,root,root) %config(noreplace) /etc/dnf/protected.d/%{name}-%{1}.conf \
 %{expand:%if 0%{?without_efi_modules}				\
@@ -647,6 +647,6 @@ ln -s ../boot/%{name}/grub.cfg					\\\
 								\
 %{expand:%%files %{1}-cdboot}					\
 %defattr(-,root,root,-)						\
-%attr(0700,root,root)%{efi_esp_dir}/%{3}			\
+%attr(0700,root,root) %verify(not mtime) %{efi_esp_dir}/%{3}	\
 %attr(0700,root,root)/boot/%{name}/fonts			\
 %{nil}

@@ -14,7 +14,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	43%{?dist}
+Release:	44%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -532,6 +532,10 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Mon Aug 15 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-44
+- Skip rpm mtime verification on likely-vfat filesystems
+- Resolves: #2047979
+
 * Thu Aug 11 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-43
 - Generate BLS snippets during mkconfig
 - Resolves: #1969362
