@@ -87,6 +87,10 @@ case "$COMMAND" in
 
         if [[ "x${GRUB_ENABLE_BLSCFG}" = "xtrue" ]] || [[ ! -f /sbin/new-kernel-pkg ]]; then
             if [[ -f /etc/kernel/cmdline ]]; then
+                if [[ /etc/kernel/cmdline -ot /etc/default/grub ]]; then
+                    # user modified /etc/default/grub manually; sync
+                    grub2-mkconfig -o /etc/grub2.cfg
+                fi
                 read -r -d '' -a BOOT_OPTIONS < /etc/kernel/cmdline
             elif [[ -f /usr/lib/kernel/cmdline ]]; then
                 read -r -d '' -a BOOT_OPTIONS < /usr/lib/kernel/cmdline
