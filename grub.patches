@@ -276,3 +276,4 @@ Patch0275: 0275-efi-use-EFI_LOADER_-CODE-DATA-for-kernel-and-initrd-.patch
 Patch0276: 0276-BLS-create-etc-kernel-cmdline-during-mkconfig.patch
 Patch0277: 0277-Try-reserving-less-ram.patch
 Patch0278: 0278-squish-don-t-dup-rhgb-quiet-check-mtimes.patch
+Patch0279: 0279-squish-give-up-on-rhgb-quiet.patch
