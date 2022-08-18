@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	138%{?dist}
+Release:	139%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -510,6 +510,10 @@ fi
 %endif
 
 %changelog
+* Thu Aug 18 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-139
+- Kernel allocator fixups (in one pass)
+- Resolves: #2118896
+
 * Wed Jul 20 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-138
 - Rotate signing keys on ppc64le
 - Resolves: #2074762
