@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	140%{?dist}
+Release:	141%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -510,6 +510,10 @@ fi
 %endif
 
 %changelog
+* Thu Aug 25 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-141
+- Implement vec5 for cas negotiation
+- Resolves: #2117914
+
 * Wed Aug 24 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-140
 - Or two, because I forgot the debug patch
 - Resolves: #2118896
