@@ -279,3 +279,4 @@ Patch0278: 0278-squish-don-t-dup-rhgb-quiet-check-mtimes.patch
 Patch0279: 0279-squish-give-up-on-rhgb-quiet.patch
 Patch0280: 0280-squish-BLS-only-write-etc-kernel-cmdline-if-writable.patch
 Patch0281: 0281-ieee1275-implement-vec5-for-cas-negotiation.patch
+Patch0282: 0282-blscfg-Don-t-root-device-in-emu-builds.patch
