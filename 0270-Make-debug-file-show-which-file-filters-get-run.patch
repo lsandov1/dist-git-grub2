@@ -15,14 +15,14 @@ Signed-off-by: Peter Jones <pjones@redhat.com>
  1 file changed, 11 insertions(+)
 
 diff --git a/grub-core/kern/file.c b/grub-core/kern/file.c
-index ed69fc0f0f..3f175630ea 100644
+index ed69fc0f0f..20a4c839aa 100644
 --- a/grub-core/kern/file.c
 +++ b/grub-core/kern/file.c
 @@ -30,6 +30,14 @@ void (*EXPORT_VAR (grub_grubnet_fini)) (void);
  
  grub_file_filter_t grub_file_filters[GRUB_FILE_FILTER_MAX];
  
-+static char *filter_names[] = {
++static const char *filter_names[] = {
 +    [GRUB_FILE_FILTER_VERIFY] = "GRUB_FILE_FILTER_VERIFY",
 +    [GRUB_FILE_FILTER_GZIO] = "GRUB_FILE_FILTER_GZIO",
 +    [GRUB_FILE_FILTER_XZIO] = "GRUB_FILE_FILTER_XZIO",
