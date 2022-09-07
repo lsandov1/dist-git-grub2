@@ -17,7 +17,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	55%{?dist}
+Release:	56%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -530,6 +530,9 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Wed Sep 07 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-56
+- Revert patches to claim more memory for the arena
+
 * Thu Aug 25 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-55
 - Fix root definition for blscfg in emu
 
