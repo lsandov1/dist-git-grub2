@@ -278,3 +278,5 @@ Patch0277: 0277-squish-give-up-on-rhgb-quiet.patch
 Patch0278: 0278-squish-BLS-only-write-etc-kernel-cmdline-if-writable.patch
 Patch0279: 0279-ieee1275-implement-vec5-for-cas-negotiation.patch
 Patch0280: 0280-blscfg-Don-t-root-device-in-emu-builds.patch
+Patch0281: 0281-loader-arm64-linux-Remove-magic-number-header-field-.patch
+Patch0282: 0282-Correct-BSS-zeroing-on-aarch64.patch
