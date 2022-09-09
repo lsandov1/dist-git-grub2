@@ -242,7 +242,7 @@ Obsoletes:	grub2 < %{evr}					\
 Requires:	grub2-common = %{evr}					\
 Requires:	grub2-tools-minimal = %{evr}				\
 Requires:	grub2-%{1}-modules = %{evr}				\
-Requires:	gettext which file					\
+Requires:	gettext-runtime which file				\
 Requires:	grub2-tools = %{evr}					\
 Requires(pre):	dracut							\
 Requires(post): dracut							\
@@ -265,11 +265,10 @@ This subpackage provides support for rebuilding your own grub.efi.	\
 %{expand:%%{?!buildsubdir:%%define buildsubdir grub-%%{1}-%{tarversion}}}\
 %{expand:%%package %%{1}-tools}						\
 Summary:	Support tools for GRUB.					\
-Requires:	gettext os-prober which file system-logos		\
+Requires:	gettext-runtime os-prober which file system-logos	\
 Requires:	grub2-common = %{evr}					\
 Requires:	grub2-tools-minimal = %{evr}				\
 Requires:	os-prober >= 1.58-11					\
-Requires:	gettext which file					\
 									\
 %{expand:%%description %%{1}-tools}					\
 %{desc}									\
