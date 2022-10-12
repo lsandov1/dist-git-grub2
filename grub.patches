@@ -287,3 +287,4 @@ Patch0286: 0286-ieee1275-implement-vec5-for-cas-negotiation.patch
 Patch0287: 0287-squish-don-t-dup-rhgb-quiet-check-mtimes.patch
 Patch0288: 0288-squish-give-up-on-rhgb-quiet.patch
 Patch0289: 0289-squish-BLS-only-write-etc-kernel-cmdline-if-writable.patch
+Patch0290: 0290-x86-efi-Fix-an-incorrect-array-size-in-kernel-alloca.patch
