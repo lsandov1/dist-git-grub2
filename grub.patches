@@ -558,3 +558,4 @@ Patch0557: 0557-efi-split-allocation-policy-for-kernel-vs-initrd-mem.patch
 Patch0558: 0558-efi-use-EFI_LOADER_-CODE-DATA-for-kernel-and-initrd-.patch
 Patch0559: 0559-ieee1275-implement-vec5-for-cas-negotiation.patch
 Patch0560: 0560-x86-efi-Fix-an-incorrect-array-size-in-kernel-alloca.patch
+Patch0561: 0561-switch-to-blscfg-don-t-assume-newline-at-end-of-cfg.patch

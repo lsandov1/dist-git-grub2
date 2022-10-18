@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	143%{?dist}
+Release:	144%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -510,6 +510,10 @@ fi
 %endif
 
 %changelog
+* Tue Oct 18 2022 Robbie Harwood <rharwood@redhat.com> - 2.02-144
+- blscfg: don't assume newline at end of cfg
+- Resolves: #2121132
+
 * Wed Oct 12 2022 Robbie Harwood <rharwood@redhat.com> - 2.02-143
 - x86-efi: Fix an incorrect array size in kernel allocation
 - Also merge with 8.7
