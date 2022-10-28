@@ -282,3 +282,6 @@ Patch0281: 0281-loader-arm64-linux-Remove-magic-number-header-field-.patch
 Patch0282: 0282-Correct-BSS-zeroing-on-aarch64.patch
 Patch0283: 0283-linuxefi-Invalidate-i-cache-before-starting-the-kern.patch
 Patch0284: 0284-x86-efi-Fix-an-incorrect-array-size-in-kernel-alloca.patch
+Patch0285: 0285-commands-efi-tpm-Refine-the-status-of-log-event.patch
+Patch0286: 0286-commands-efi-tpm-Use-grub_strcpy-instead-of-grub_mem.patch
+Patch0287: 0287-efi-tpm-Add-EFI_CC_MEASUREMENT_PROTOCOL-support.patch
