@@ -14,7 +14,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	47%{?dist}
+Release:	48%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -532,6 +532,10 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Fri Oct 28 2022 Robbie Harwood <rharwood@redhat.com> - 1:2.06-48
+- TDX measurement to RTMR
+- Resolves: #1981487
+
 * Wed Oct 12 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-47
 - x86-efi: Fix an incorrect array size in kernel allocation
 - Resolves: #2031289
