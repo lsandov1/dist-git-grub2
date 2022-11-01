@@ -24,7 +24,7 @@ Resolves: rhbz#1226325
  create mode 100644 util/grub-get-kernel-settings.in
 
 diff --git a/configure.ac b/configure.ac
-index 916bede6bf..4f1676967e 100644
+index 7f59ad788f..0d0e6782a1 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -65,6 +65,7 @@ grub_TRANSFORM([grub-install])
@@ -36,10 +36,10 @@ index 916bede6bf..4f1676967e 100644
  grub_TRANSFORM([grub-mklayout])
  grub_TRANSFORM([grub-mkpasswd-pbkdf2])
 diff --git a/Makefile.util.def b/Makefile.util.def
-index 8ca4c14f0b..43a1c7453b 100644
+index 4ee22c5daa..18a9242776 100644
 --- a/Makefile.util.def
 +++ b/Makefile.util.def
-@@ -733,6 +733,13 @@ script = {
+@@ -716,6 +716,13 @@ script = {
    installdir = sbin;
  };
  

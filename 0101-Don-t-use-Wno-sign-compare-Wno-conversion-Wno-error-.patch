@@ -11,10 +11,10 @@ Signed-off-by: Peter Jones <pjones@redhat.com>
  2 files changed, 12 insertions(+), 4 deletions(-)
 
 diff --git a/configure.ac b/configure.ac
-index 2af5f23adf..091ab32836 100644
+index 7b4e1854d3..490353713a 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -1453,11 +1453,11 @@ fi
+@@ -1452,11 +1452,11 @@ fi
  # Set them to their new values for the tests below.
  CC="$TARGET_CC"
  if test x"$platform" = xemu ; then
@@ -29,7 +29,7 @@ index 2af5f23adf..091ab32836 100644
  fi
  CPPFLAGS="$TARGET_CPPFLAGS"
  
-@@ -2020,6 +2020,14 @@ if test x"$enable_werror" != xno ; then
+@@ -1990,6 +1990,14 @@ if test x"$enable_werror" != xno ; then
    HOST_CFLAGS="$HOST_CFLAGS -Werror"
  fi
  

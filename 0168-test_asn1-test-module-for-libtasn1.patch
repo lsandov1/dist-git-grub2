@@ -51,10 +51,10 @@ Signed-off-by: Daniel Axtens <dja@axtens.net>
  create mode 100644 tests/test_asn1.in
 
 diff --git a/Makefile.util.def b/Makefile.util.def
-index 9927c2cfd6..3f191aa809 100644
+index 6366442129..d04b3fe68a 100644
 --- a/Makefile.util.def
 +++ b/Makefile.util.def
-@@ -1306,6 +1306,12 @@ script = {
+@@ -1289,6 +1289,12 @@ script = {
    common = tests/syslinux_test.in;
  };
  
@@ -1426,7 +1426,7 @@ index 0000000000..555e56dd20
 +
 +#endif
 diff --git a/.gitignore b/.gitignore
-index 594d0134d3..856e69bc5c 100644
+index 208d1d2325..1d005887e7 100644
 --- a/.gitignore
 +++ b/.gitignore
 @@ -264,6 +264,7 @@ widthspec.bin

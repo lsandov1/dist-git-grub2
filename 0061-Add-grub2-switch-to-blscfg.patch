@@ -20,10 +20,10 @@ Signed-off-by: Robbie Harwood <rharwood@redhat.com>
  create mode 100644 util/grub-switch-to-blscfg.in
 
 diff --git a/Makefile.util.def b/Makefile.util.def
-index 43a1c7453b..a90879fa9b 100644
+index 18a9242776..88f55e35c4 100644
 --- a/Makefile.util.def
 +++ b/Makefile.util.def
-@@ -1365,6 +1365,13 @@ program = {
+@@ -1348,6 +1348,13 @@ program = {
    ldadd = '$(LIBINTL) $(LIBDEVMAPPER) $(LIBZFS) $(LIBNVPAIR) $(LIBGEOM)';
  };
  
@@ -381,7 +381,7 @@ index 0000000000..a851424beb
 +# Bye.
 +exit 0
 diff --git a/util/grub.d/10_linux.in b/util/grub.d/10_linux.in
-index f1548a2605..c02c1f0820 100644
+index 2851952659..e490e1a43a 100644
 --- a/util/grub.d/10_linux.in
 +++ b/util/grub.d/10_linux.in
 @@ -138,7 +138,7 @@ blsdir="/boot/loader/entries"

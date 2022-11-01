@@ -21,7 +21,7 @@ Signed-off-by: Robbie Harwood <rharwood@redhat.com>
  rename util/grub.d/{01_menu_auto_hide.in => 12_menu_auto_hide.in} (58%)
 
 diff --git a/Makefile.util.def b/Makefile.util.def
-index 27a13bc734..2e6ad979c3 100644
+index e10fe766d1..b4ce5383b7 100644
 --- a/Makefile.util.def
 +++ b/Makefile.util.def
 @@ -459,14 +459,14 @@ script = {

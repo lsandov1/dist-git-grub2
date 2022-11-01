@@ -24,7 +24,7 @@ Signed-off-by: Peter Jones <pjones@redhat.com>
 Signed-off-by: Javier Martinez Canillas <javierm@redhat.com>
 [iwienand@redhat.com: skip machine ID check when updating entries]
 Signed-off-by: Ian Wienand <iwienand@redhat.com>
-[rharwood: commit message composits, drop man pages]
+[rharwood: use sort(1), commit message composits, drop man pages]
 Signed-off-by: Robbie Harwood <rharwood@redhat.com>
 ---
  util/grub-mkconfig.in     |   9 +-
@@ -74,7 +74,7 @@ index 535c0f0249..f55339a3f6 100644
  if test "x${grub_cfg}" != "x"; then
    rm -f "${grub_cfg}.new"
 diff --git a/util/grub-mkconfig_lib.in b/util/grub-mkconfig_lib.in
-index fafeac9506..d8bb406936 100644
+index 5e96f6cc5d..301d8a8a1e 100644
 --- a/util/grub-mkconfig_lib.in
 +++ b/util/grub-mkconfig_lib.in
 @@ -30,6 +30,9 @@ fi
@@ -87,7 +87,7 @@ index fafeac9506..d8bb406936 100644
  if test "x$grub_mkrelpath" = x; then
    grub_mkrelpath="${bindir}/@grub_mkrelpath@"
  fi
-@@ -125,8 +128,19 @@ EOF
+@@ -122,8 +125,19 @@ EOF
    fi
  }
  
@@ -107,7 +107,7 @@ index fafeac9506..d8bb406936 100644
    old_ifs="$IFS"
    IFS='
  '
-@@ -161,18 +175,18 @@ prepare_grub_to_access_device ()
+@@ -158,18 +172,18 @@ prepare_grub_to_access_device ()
    # otherwise set root as per value in device.map.
    fs_hint="`"${grub_probe}" --device $@ --target=compatibility_hint`"
    if [ "x$fs_hint" != x ]; then
@@ -131,7 +131,7 @@ index fafeac9506..d8bb406936 100644
    fi
    IFS="$old_ifs"
 diff --git a/util/grub.d/10_linux.in b/util/grub.d/10_linux.in
-index 7bb3a211a7..f1548a2605 100644
+index 7bb3a211a7..2851952659 100644
 --- a/util/grub.d/10_linux.in
 +++ b/util/grub.d/10_linux.in
 @@ -82,6 +82,218 @@ case x"$GRUB_FS" in
@@ -207,7 +207,7 @@ index 7bb3a211a7..f1548a2605 100644
 +        bls="${bls%.conf}"
 +        bls="${bls##*/}"
 +        echo "${bls}"
-+    done | ${kernel_sort} 2>/dev/null | tac)) || :
++    done | sort -Vr 2>/dev/null)) || :
 +
 +    echo "${files[@]}"
 +}

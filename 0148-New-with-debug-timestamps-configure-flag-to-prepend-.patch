@@ -15,10 +15,10 @@ Signed-off-by: Renaud Métrich <rmetrich@redhat.com>
  3 files changed, 39 insertions(+)
 
 diff --git a/configure.ac b/configure.ac
-index de707f7e0b..f069d84039 100644
+index a02d40a05b..ab0d326f00 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -1586,6 +1586,17 @@ else
+@@ -1585,6 +1585,17 @@ else
  fi
  AC_SUBST([BOOT_TIME_STATS])
  
@@ -36,7 +36,7 @@ index de707f7e0b..f069d84039 100644
  AC_ARG_ENABLE([grub-emu-sdl],
  	      [AS_HELP_STRING([--enable-grub-emu-sdl],
                               [build and install the `grub-emu' debugging utility with SDL support (default=guessed)])])
-@@ -2167,6 +2178,7 @@ AM_CONDITIONAL([COND_APPLE_LINKER], [test x$TARGET_APPLE_LINKER = x1])
+@@ -2136,6 +2147,7 @@ AM_CONDITIONAL([COND_APPLE_LINKER], [test x$TARGET_APPLE_LINKER = x1])
  AM_CONDITIONAL([COND_ENABLE_EFIEMU], [test x$enable_efiemu = xyes])
  AM_CONDITIONAL([COND_ENABLE_CACHE_STATS], [test x$DISK_CACHE_STATS = x1])
  AM_CONDITIONAL([COND_ENABLE_BOOT_TIME_STATS], [test x$BOOT_TIME_STATS = x1])
@@ -44,7 +44,7 @@ index de707f7e0b..f069d84039 100644
  
  AM_CONDITIONAL([COND_HAVE_CXX], [test x$HAVE_CXX = xyes])
  
-@@ -2262,6 +2274,12 @@ else
+@@ -2231,6 +2243,12 @@ else
  echo With boot time statistics: No
  fi
  

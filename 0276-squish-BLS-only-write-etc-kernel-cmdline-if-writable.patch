@@ -32,7 +32,7 @@ Fixes: https://github.com/fedora-silverblue/issue-tracker/issues/322
  1 file changed, 7 insertions(+), 6 deletions(-)
 
 diff --git a/util/grub.d/10_linux.in b/util/grub.d/10_linux.in
-index 5ad624bfec..e5e87a6d80 100644
+index 5d1fa072f2..4795a63b4c 100644
 --- a/util/grub.d/10_linux.in
 +++ b/util/grub.d/10_linux.in
 @@ -161,12 +161,13 @@ update_bls_cmdline()

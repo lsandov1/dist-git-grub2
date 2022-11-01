@@ -9,10 +9,10 @@ Signed-off-by: Peter Jones <pjones@redhat.com>
  1 file changed, 20 insertions(+)
 
 diff --git a/configure.ac b/configure.ac
-index b1ca894791..f42be65332 100644
+index 008f6c273b..54462e0892 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -1261,6 +1261,26 @@ if test "x$target_cpu" = xarm; then
+@@ -1260,6 +1260,26 @@ if test "x$target_cpu" = xarm; then
      done
    ])
  

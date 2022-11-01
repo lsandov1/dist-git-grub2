@@ -65,7 +65,7 @@ Signed-off-by: Hans de Goede <hdegoede@redhat.com>
  create mode 100644 util/systemd/systemd-integration.sh.in
 
 diff --git a/Makefile.util.def b/Makefile.util.def
-index 2e6ad979c3..9927c2cfd6 100644
+index b4ce5383b7..6366442129 100644
 --- a/Makefile.util.def
 +++ b/Makefile.util.def
 @@ -470,6 +470,12 @@ script = {

@@ -14,9 +14,8 @@ Signed-off-by: Peter Jones <pjones@redhat.com>
  util/grub-menulst2cfg.c           |  2 +-
  util/grub-mkfont.c                | 13 +++++++------
  util/grub-probe.c                 |  2 +-
- util/grub-rpm-sort.c              |  2 +-
  util/setup.c                      |  2 +-
- 11 files changed, 18 insertions(+), 17 deletions(-)
+ 10 files changed, 17 insertions(+), 16 deletions(-)
 
 diff --git a/grub-core/kern/emu/misc.c b/grub-core/kern/emu/misc.c
 index eeea092752..f08a1bb841 100644
@@ -185,19 +184,6 @@ index c08e46bbb4..c6fac732b4 100644
  
  	for (i = PRINT_FS; i < ARRAY_SIZE (targets); i++)
  	  if (strcmp (arg, targets[i]) == 0)
-diff --git a/util/grub-rpm-sort.c b/util/grub-rpm-sort.c
-index f33bd1ed56..8345944105 100644
---- a/util/grub-rpm-sort.c
-+++ b/util/grub-rpm-sort.c
-@@ -232,7 +232,7 @@ main (int argc, char *argv[])
-   struct arguments arguments;
-   char **package_names = NULL;
-   size_t n_package_names = 0;
--  int i;
-+  unsigned int i;
- 
-   grub_util_host_init (&argc, &argv);
- 
 diff --git a/util/setup.c b/util/setup.c
 index da5f2c07f5..8b22bb8cca 100644
 --- a/util/setup.c

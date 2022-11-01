@@ -43,7 +43,7 @@ Signed-off-by: Hans de Goede <hdegoede@redhat.com>
  create mode 100644 util/grub.d/01_menu_auto_hide.in
 
 diff --git a/Makefile.util.def b/Makefile.util.def
-index 48512bc631..314e6f2acf 100644
+index bda9fd1211..cb8e3c3270 100644
 --- a/Makefile.util.def
 +++ b/Makefile.util.def
 @@ -458,6 +458,12 @@ script = {

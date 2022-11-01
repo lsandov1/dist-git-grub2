@@ -4,14 +4,14 @@ Date: Mon, 8 Jul 2019 12:55:29 +0200
 Subject: [PATCH] re-write .gitignore
 
 ---
- .gitignore                        | 152 ++++++++++++++++++++++++++++++++++++++
+ .gitignore                        | 150 ++++++++++++++++++++++++++++++++++++++
  docs/.gitignore                   |   5 ++
  grub-core/.gitignore              |  16 ++++
  grub-core/lib/.gitignore          |   1 +
  include/grub/gcrypt/.gitignore    |   2 +
  po/.gitignore                     |   5 ++
  util/bash-completion.d/.gitignore |   2 +
- 7 files changed, 183 insertions(+)
+ 7 files changed, 181 insertions(+)
  create mode 100644 docs/.gitignore
  create mode 100644 grub-core/.gitignore
  create mode 100644 grub-core/lib/.gitignore
@@ -20,10 +20,10 @@ Subject: [PATCH] re-write .gitignore
  create mode 100644 util/bash-completion.d/.gitignore
 
 diff --git a/.gitignore b/.gitignore
-index f6a1bd0517..594d0134d3 100644
+index f6a1bd0517..208d1d2325 100644
 --- a/.gitignore
 +++ b/.gitignore
-@@ -275,3 +275,155 @@ widthspec.bin
+@@ -275,3 +275,153 @@ widthspec.bin
  /xfs_test
  /xzcompress_test
  /zfs_test
@@ -152,8 +152,6 @@ index f6a1bd0517..594d0134d3 100644
 +/grub*-reboot.8
 +/grub*-render-label
 +/grub*-render-label.1
-+/grub*-rpm-sort
-+/grub*-rpm-sort.8
 +/grub*-script-check
 +/grub*-script-check.1
 +/grub*-set-bootflag

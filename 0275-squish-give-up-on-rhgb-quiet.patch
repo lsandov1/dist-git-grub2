@@ -9,7 +9,7 @@ Signed-off-by: Robbie Harwood <rharwood@redhat.com>
  1 file changed, 4 deletions(-)
 
 diff --git a/util/grub.d/10_linux.in b/util/grub.d/10_linux.in
-index 03f091a4dc..5ad624bfec 100644
+index 41c6cb1dc2..5d1fa072f2 100644
 --- a/util/grub.d/10_linux.in
 +++ b/util/grub.d/10_linux.in
 @@ -166,10 +166,6 @@ update_bls_cmdline()
