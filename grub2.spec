@@ -14,7 +14,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	48%{?dist}
+Release:	49%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -532,6 +532,10 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Thu Nov 03 2022 Robbie Harwood <rharwood@redhat.com> - 1:2.06-49
+- Font CVE fixes
+- Resolves: CVE-2022-2601
+
 * Fri Oct 28 2022 Robbie Harwood <rharwood@redhat.com> - 1:2.06-48
 - TDX measurement to RTMR
 - Resolves: #1981487
