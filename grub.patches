@@ -283,3 +283,16 @@ Patch0282: 0282-x86-efi-Fix-an-incorrect-array-size-in-kernel-alloca.patch
 Patch0283: 0283-commands-efi-tpm-Refine-the-status-of-log-event.patch
 Patch0284: 0284-commands-efi-tpm-Use-grub_strcpy-instead-of-grub_mem.patch
 Patch0285: 0285-efi-tpm-Add-EFI_CC_MEASUREMENT_PROTOCOL-support.patch
+Patch0286: 0286-font-Reject-glyphs-exceeds-font-max_glyph_width-or-f.patch
+Patch0287: 0287-font-Fix-size-overflow-in-grub_font_get_glyph_intern.patch
+Patch0288: 0288-font-Fix-several-integer-overflows-in-grub_font_cons.patch
+Patch0289: 0289-font-Remove-grub_font_dup_glyph.patch
+Patch0290: 0290-font-Fix-integer-overflow-in-ensure_comb_space.patch
+Patch0291: 0291-font-Fix-integer-overflow-in-BMP-index.patch
+Patch0292: 0292-font-Fix-integer-underflow-in-binary-search-of-char-.patch
+Patch0293: 0293-kern-efi-sb-Enforce-verification-of-font-files.patch
+Patch0294: 0294-fbutil-Fix-integer-overflow.patch
+Patch0295: 0295-font-Fix-an-integer-underflow-in-blit_comb.patch
+Patch0296: 0296-font-Harden-grub_font_blit_glyph-and-grub_font_blit_.patch
+Patch0297: 0297-font-Assign-null_font-to-glyphs-in-ascii_font_glyph.patch
+Patch0298: 0298-normal-charset-Fix-an-integer-overflow-in-grub_unico.patch
