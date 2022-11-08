@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	144%{?dist}
+Release:	145%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -510,6 +510,10 @@ fi
 %endif
 
 %changelog
+* Tue Nov 08 2022 Robbie Harwood <rharwood@redhat.com> - 1:2.02-145
+- Font CVE fixes
+- Resolves: CVE-2022-2601
+
 * Tue Oct 18 2022 Robbie Harwood <rharwood@redhat.com> - 2.02-144
 - blscfg: don't assume newline at end of cfg
 - Resolves: #2121132
