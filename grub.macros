@@ -122,7 +122,7 @@
 %endif
 
 %ifarch ppc64le
-%global platform_modules " appendedsig tpm "
+%global platform_modules " appendedsig ofnet tpm "
 %endif
 
 %ifarch aarch64 %{arm} riscv64
