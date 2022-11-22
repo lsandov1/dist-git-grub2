@@ -38,22 +38,37 @@ Source12:	sbat.csv.in
 
 %include %{SOURCE1}
 
-BuildRequires:	gcc efi-srpm-macros
-BuildRequires:	flex bison binutils python3
-BuildRequires:	ncurses-devel xz-devel bzip2-devel
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	binutils
+BuildRequires:	bison
+BuildRequires:	bzip2-devel
+BuildRequires:	dejavu-sans-fonts
+BuildRequires:	device-mapper-devel
+BuildRequires:	efi-srpm-macros
+BuildRequires:	flex
+BuildRequires:	freetype-devel
 BuildRequires:	freetype-devel
 BuildRequires:	fuse-devel
-BuildRequires:	rpm-devel rpm-libs
-BuildRequires:	autoconf automake device-mapper-devel
-BuildRequires:	freetype-devel gettext-devel git
-BuildRequires:	texinfo
-BuildRequires:	dejavu-sans-fonts
+BuildRequires:	gcc
+BuildRequires:	gettext-devel
+BuildRequires:	git
 BuildRequires:	help2man
+BuildRequires:	ncurses-devel
+BuildRequires:	python3
+BuildRequires:	rpm-devel
+BuildRequires:	rpm-libs
+BuildRequires:	squashfs-tools
+BuildRequires:	texinfo
+BuildRequires:	xz-devel
+
 # For %%_userunitdir macro
 BuildRequires:	systemd
+
 %ifarch %{efi_arch}
 BuildRequires:	pesign >= 0.99-8
 %endif
+
 %if %{?_with_ccache: 1}%{?!_with_ccache: 0}
 BuildRequires:	ccache
 %endif
