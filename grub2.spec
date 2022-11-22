@@ -17,7 +17,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	64%{?dist}
+Release:	65%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -94,7 +94,6 @@ subpackages.
 
 %package tools
 Summary:	Support tools for GRUB.
-Obsoletes:	grub2-tools < %{evr}
 Requires:	grub2-common = %{epoch}:%{version}-%{release}
 Requires:	gettext-runtime os-prober file
 Requires(pre):	dracut
@@ -110,7 +109,6 @@ This subpackage provides tools for support of all platforms.
 Summary:	Support tools for GRUB.
 Requires:	gettext-runtime os-prober file
 Requires:	grub2-common = %{epoch}:%{version}-%{release}
-Obsoletes:	grub2-tools < %{evr}
 
 %description tools-efi
 %{desc}
@@ -133,7 +131,6 @@ Requires:	gettext-runtime os-prober file
 Requires:	grub2-tools-minimal = %{epoch}:%{version}-%{release}
 Requires:	grub2-common = %{epoch}:%{version}-%{release}
 Requires:	mtools
-Obsoletes:	grub2-tools < %{evr}
 
 %description tools-extra
 %{desc}
@@ -532,6 +529,9 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Tue Nov 22 2022 Robbie Harwood <rharwood@redhat.com> - 1:2.06-65
+- Don't obsolete the tools package with extra/efi (pbrobinson)
+
 * Mon Nov 21 2022 Robbie Harwood <rharwood@redhat.com> - 1:2.06-64
 - Forward-port ppc64le image creation (with nerfed signing)
 
