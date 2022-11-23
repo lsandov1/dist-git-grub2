@@ -585,6 +585,8 @@ install -m 700 %{3} $RPM_BUILD_ROOT%{efi_esp_dir}/%{3}		\
 %ifarch %{arm}							\
 install -D -m 700 %{2} $RPM_BUILD_ROOT%{efi_esp_boot}/BOOTARM.EFI \
 %endif								\
+install -D -m 700 unicode.pf2					\\\
+	${RPM_BUILD_ROOT}/boot/grub2/fonts/unicode.pf2		\
 ${RPM_BUILD_ROOT}/%{_bindir}/grub2-editenv			\\\
 		${RPM_BUILD_ROOT}/boot/grub2/grubenv create	\
 %{expand:%%do_install_protected_file grub2-%{package_arch}}	\
@@ -692,6 +694,7 @@ ln -s ../boot/grub2/grub.cfg					\\\
 %ifarch %{arm}							\
 %attr(0700,root,root) %verify(not mtime) %{efi_esp_boot}/BOOTARM.EFI \
 %endif								\
+%attr(0700,root,root)/boot/grub2/fonts			\
 %dir %attr(0700,root,root)/boot/loader/entries			\
 %ghost %config(noreplace) %attr(0700,root,root)/boot/grub2/grub.cfg	\
 %ghost %config(noreplace) %verify(not mtime) %attr(0700,root,root)%{efi_esp_dir}/grub.cfg	\
@@ -713,4 +716,5 @@ ln -s ../boot/grub2/grub.cfg					\\\
 %{expand:%%files %{1}-cdboot}					\
 %defattr(-,root,root,-)						\
 %attr(0700,root,root) %verify(not mtime) %{efi_esp_dir}/%{3}	\
+%attr(0700,root,root)/boot/grub2/fonts			\
 %{nil}
