@@ -18,10 +18,10 @@ Reviewed-by: Daniel Kiper <daniel.kiper@oracle.com>
  1 file changed, 2 insertions(+)
 
 diff --git a/grub-core/kern/file.c b/grub-core/kern/file.c
-index e19aea3e51..ed69fc0f0f 100644
+index ec10e54fc0..db938e099d 100644
 --- a/grub-core/kern/file.c
 +++ b/grub-core/kern/file.c
-@@ -81,6 +81,7 @@ grub_file_open (const char *name, enum grub_file_type type)
+@@ -84,6 +84,7 @@ grub_file_open (const char *name, enum grub_file_type type)
  
    device = grub_device_open (device_name);
    grub_free (device_name);
@@ -29,7 +29,7 @@ index e19aea3e51..ed69fc0f0f 100644
    if (! device)
      goto fail;
  
-@@ -135,6 +136,7 @@ grub_file_open (const char *name, enum grub_file_type type)
+@@ -138,6 +139,7 @@ grub_file_open (const char *name, enum grub_file_type type)
    return file;
  
   fail:
