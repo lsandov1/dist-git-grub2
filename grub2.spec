@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	145%{?dist}
+Release:	146%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -510,6 +510,10 @@ fi
 %endif
 
 %changelog
+* Wed Dec 14 2022 Robbie Harwood <rharwood@redhat.com> - 2.02-146
+- ppc64le: fix lpar cas5
+- Resolves: #2139508
+
 * Tue Nov 08 2022 Robbie Harwood <rharwood@redhat.com> - 1:2.02-145
 - Font CVE fixes
 - Resolves: CVE-2022-2601
