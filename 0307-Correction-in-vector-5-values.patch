@@ -1,0 +1,31 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Avnish Chouhan <avnish.chouhan@ibm.com>
+Date: Tue, 22 Nov 2022 08:01:47 -0500
+Subject: [PATCH] Correction in vector 5 values
+
+This patch is to update the vector 5 values which is troubling some
+machines to bootup properly. Max out the values of all the properties of
+Vector 5 (similar to vector 2) except max cpu property, which were set
+as 0 earlier.
+
+Signed-off-by: Avnish Chouhan <avnish.chouhan@ibm.com>
+[rharwood: rewrap comit message]
+Signed-off-by: Robbie Harwood <rharwood@redhat.com>
+(cherry picked from commit c2e640266247e3e0d3268f5ef20a734f5800f577)
+---
+ grub-core/kern/ieee1275/init.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/grub-core/kern/ieee1275/init.c b/grub-core/kern/ieee1275/init.c
+index 6a51c9efab..28a3bd4621 100644
+--- a/grub-core/kern/ieee1275/init.c
++++ b/grub-core/kern/ieee1275/init.c
+@@ -376,7 +376,7 @@ grub_ieee1275_ibm_cas (void)
+     .vec4 = 0x0001, // set required minimum capacity % to the lowest value
+     .vec5_size = 1 + sizeof(struct option_vector5) - 2,
+     .vec5 = {
+-	0, 0, 0, 0, 0, 0, 0, 0, 256
++	-1, -1, -1, -1, -1, -1, -1, -1, 256
+     }
+   };
+ 

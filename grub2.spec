@@ -14,7 +14,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	51%{?dist}
+Release:	52%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -532,6 +532,10 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Wed Dec 14 2022 Robbie Harwood <rharwood@redhat.com> - 2.06-52
+- ppc64le: fix lpar cas5
+- Resolves: #2153071
+
 * Mon Nov 21 2022 Robbie Harwood <rharwood@redhat.com> - 1:2.06-51
 - Bless the ofnet module down in ppc64le
 - Resolves: #2143420
