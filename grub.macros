@@ -436,10 +436,18 @@ mksquashfs memdisk memdisk.squashfs -comp xz			\
 %endif
 
 %ifarch ppc64le
-%if 0%{?rhel}
+# RHEL signs, Fedora + ELN don't (but ELN defines rhel)
+%if 0%{?fedora} || 0%{?eln}
 %define ieee1275_mkimage()					\
 mkdir -p memdisk/fonts						\
-cp %{4}/unicode.pf2 memdisk/fonts				\
+cp %{5}/unicode.pf2 memdisk/fonts				\
+mksquashfs memdisk memdisk.squashfs -comp xz			\
+./grub-mkimage -O %{1} -o %{2} -p '/grub2' -d grub-core ${GRUB_MODULES} \
+%{nil}
+%else
+%define ieee1275_mkimage()					\
+mkdir -p memdisk/fonts						\
+cp %{5}/unicode.pf2 memdisk/fonts				\
 mksquashfs memdisk memdisk.squashfs -comp xz			\
 APPENDED_SIG_SIZE=0						\
 if [ -x /usr/bin/rpm-sign ]; then				\
@@ -466,12 +474,6 @@ else								\
 	mv %{2}.orig %{2}					\
 fi								\
 %{nil}
-%else
-# Fedora et al.
-%define ieee1275_mkimage()					\
-./grub-mkimage -O %{1} -o %{2}.orig -p '/grub2' -d grub-core ${GRUB_MODULES} \
-mv %{2}.orig %{2}
-%{nil}
 %endif
 %endif
 
@@ -486,7 +488,7 @@ GRUB_MODULES+=%{platform_modules}				\
 GRUB_MODULES+=%{grub_modules}				\
 GRUB_MODULES+=%{platform_modules}			\
 cd grub-%{1}-%{tarversion}				\
-%{expand:%%ieee1275_mkimage %%{1} %%{2} %%{3} %%{4}}	\
+%{expand:%%ieee1275_mkimage %%{1} %%{2} %%{3} %%{4} ./ }\
 cd ..							\
 %{nil}
 
