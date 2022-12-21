@@ -416,14 +416,16 @@ mkdir -p memdisk/fonts						\
 cp %{4}/unicode.pf2 memdisk/fonts				\
 mksquashfs memdisk memdisk.squashfs -comp xz			\
 %{4}./grub-mkimage -O %{1} -o %{2}.orig				\\\
-	-p /EFI/%{efi_vendor} -d grub-core			\\\
+	-d grub-core						\\\
 	--sbat %{4}./sbat.csv					\\\
 	-m memdisk.squashfs					\\\
+	-p /EFI/%{efi_vendor}					\\\
 	${GRUB_MODULES}						\
 %{4}./grub-mkimage -O %{1} -o %{3}.orig				\\\
-	-p /EFI/BOOT -d grub-core				\\\
+	-d grub-core						\\\
 	--sbat %{4}./sbat.csv					\\\
 	-m memdisk.squashfs					\\\
+	-p /EFI/BOOT						\\\
 	${GRUB_MODULES}						\
 %{expand:%%define ___pesign_client_cert %{?___pesign_client_cert}%{!?___pesign_client_cert:%{__pesign_client_cert}}} \
 %{?__pesign_client_cert:%{expand:%%define __pesign_client_cert %{___pesign_client_cert}}} \
@@ -460,8 +462,9 @@ if [ -x /usr/bin/rpm-sign ]; then				\
 fi								\
 # FIXME: using this prefix is fragile, must be done properly	\
 ./grub-mkimage -O %{1} -o %{2}.orig				\\\
-	-p '/grub2' -d grub-core				\\\
+	-d grub-core						\\\
 	-m memdisk.squashfs					\\\
+	-p '/grub2'						\\\
 	-x %{3}							\\\
 	--appended-signature-size ${APPENDED_SIG_SIZE}		\\\
 	${GRUB_MODULES}						\
