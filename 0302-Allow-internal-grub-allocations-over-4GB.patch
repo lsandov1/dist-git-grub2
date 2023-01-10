@@ -1,0 +1,105 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Julian Andres Klode <julian.klode@canonical.com>
+Date: Tue, 6 Dec 2022 15:29:13 +0100
+Subject: [PATCH] Allow internal grub allocations over 4GB
+
+Previous commits introduced support for loading kernel and
+initrd over 4GB if necessary, but only for the actual loading.
+
+Grub also needs to load large initrds into memory as part of
+the verifiers framework.
+
+Increase the maximum allocation limit to the maximum usable
+address, and at the same time, to preserve existing behavior,
+define a 4G limit that behaves like the old one.
+
+Signed-off-by: Julian Andres Klode <julian.klode@canonical.com>
+(cherry picked from commit cf6516128ea03294156fc59a50ce90856bd3ebd2)
+---
+ grub-core/loader/i386/efi/linux.c | 20 +++++++++++---------
+ include/grub/x86_64/efi/memory.h  |  2 +-
+ 2 files changed, 12 insertions(+), 10 deletions(-)
+
+diff --git a/grub-core/loader/i386/efi/linux.c b/grub-core/loader/i386/efi/linux.c
+index 9854b0defa..0cc1c0d9a5 100644
+--- a/grub-core/loader/i386/efi/linux.c
++++ b/grub-core/loader/i386/efi/linux.c
+@@ -31,6 +31,8 @@
+ #include <grub/tpm.h>
+ #include <grub/safemath.h>
+ 
++#define GRUB_EFI_4G_ALLOCATION_ADDRESS 0x7fffffff
++
+ GRUB_MOD_LICENSE ("GPLv3+");
+ 
+ static grub_dl_t my_mod;
+@@ -79,17 +81,17 @@ static struct allocation_choice max_addresses[] =
+     /* the kernel overrides this one with pref_address and
+      * GRUB_EFI_ALLOCATE_ADDRESS */
+     [KERNEL_PREF_ADDRESS] =
+-      { KERNEL_MEM, GRUB_EFI_MAX_ALLOCATION_ADDRESS, GRUB_EFI_ALLOCATE_MAX_ADDRESS },
++      { KERNEL_MEM, GRUB_EFI_4G_ALLOCATION_ADDRESS, GRUB_EFI_ALLOCATE_MAX_ADDRESS },
+     /* If the flag in params is set, this one gets changed to be above 4GB. */
+     [KERNEL_4G_LIMIT] =
+-      { KERNEL_MEM, GRUB_EFI_MAX_ALLOCATION_ADDRESS, GRUB_EFI_ALLOCATE_MAX_ADDRESS },
++      { KERNEL_MEM, GRUB_EFI_4G_ALLOCATION_ADDRESS, GRUB_EFI_ALLOCATE_MAX_ADDRESS },
+     /* this one is always below 4GB, which we still *prefer* even if the flag
+      * is set. */
+     [KERNEL_NO_LIMIT] =
+-      { KERNEL_MEM, GRUB_EFI_MAX_ALLOCATION_ADDRESS, GRUB_EFI_ALLOCATE_MAX_ADDRESS },
++      { KERNEL_MEM, GRUB_EFI_4G_ALLOCATION_ADDRESS, GRUB_EFI_ALLOCATE_MAX_ADDRESS },
+     /* this is for the initrd */
+     [INITRD_MAX_ADDRESS] =
+-      { INITRD_MEM, GRUB_EFI_MAX_ALLOCATION_ADDRESS, GRUB_EFI_ALLOCATE_MAX_ADDRESS },
++      { INITRD_MEM, GRUB_EFI_4G_ALLOCATION_ADDRESS, GRUB_EFI_ALLOCATE_MAX_ADDRESS },
+     { NO_MEM, 0, 0 }
+   };
+ static struct allocation_choice saved_addresses[sizeof(max_addresses) / sizeof(max_addresses[0])];
+@@ -190,7 +192,7 @@ grub_linuxefi_unload (void *data)
+   cmd_initrdefi->data = 0;
+   grub_free (context);
+ 
+-  max_addresses[INITRD_MAX_ADDRESS].addr = GRUB_EFI_MAX_ALLOCATION_ADDRESS;
++  max_addresses[INITRD_MAX_ADDRESS].addr = GRUB_EFI_4G_ALLOCATION_ADDRESS;
+ 
+   return GRUB_ERR_NONE;
+ }
+@@ -506,13 +508,13 @@ grub_cmd_linux (grub_command_t cmd __attribute__ ((unused)),
+    */
+   save_addresses();
+   grub_dprintf ("linux", "lh->pref_address: %p\n", (void *)(grub_addr_t)lh->pref_address);
+-  if (lh->pref_address < (grub_uint64_t)GRUB_EFI_MAX_ALLOCATION_ADDRESS)
++  if (lh->pref_address < (grub_uint64_t)GRUB_EFI_4G_ALLOCATION_ADDRESS)
+     {
+       max_addresses[KERNEL_PREF_ADDRESS].addr = lh->pref_address;
+       max_addresses[KERNEL_PREF_ADDRESS].alloc_type = GRUB_EFI_ALLOCATE_ADDRESS;
+     }
+-  max_addresses[KERNEL_4G_LIMIT].addr = GRUB_EFI_MAX_ALLOCATION_ADDRESS;
+-  max_addresses[KERNEL_NO_LIMIT].addr = GRUB_EFI_MAX_ALLOCATION_ADDRESS;
++  max_addresses[KERNEL_4G_LIMIT].addr = GRUB_EFI_4G_ALLOCATION_ADDRESS;
++  max_addresses[KERNEL_NO_LIMIT].addr = GRUB_EFI_4G_ALLOCATION_ADDRESS;
+   kernel_size = lh->init_size;
+   grub_dprintf ("linux", "Trying to allocate kernel mem\n");
+   kernel_mem = kernel_alloc (KERNEL_MEM, kernel_size,
+@@ -564,7 +566,7 @@ fail:
+ 
+   grub_dl_unref (my_mod);
+ 
+-  max_addresses[INITRD_MAX_ADDRESS].addr = GRUB_EFI_MAX_ALLOCATION_ADDRESS;
++  max_addresses[INITRD_MAX_ADDRESS].addr = GRUB_EFI_4G_ALLOCATION_ADDRESS;
+ 
+   if (lh)
+     kernel_free (cmdline, lh->cmdline_size + 1);
+diff --git a/include/grub/x86_64/efi/memory.h b/include/grub/x86_64/efi/memory.h
+index e81cfb3221..547e3f82f8 100644
+--- a/include/grub/x86_64/efi/memory.h
++++ b/include/grub/x86_64/efi/memory.h
+@@ -3,7 +3,7 @@
+ 
+ #if defined (__code_model_large__)
+ #define GRUB_EFI_MAX_USABLE_ADDRESS __UINTPTR_MAX__
+-#define GRUB_EFI_MAX_ALLOCATION_ADDRESS 0x7fffffff
++#define GRUB_EFI_MAX_ALLOCATION_ADDRESS GRUB_EFI_MAX_USABLE_ADDRESS
+ #else
+ #define GRUB_EFI_MAX_USABLE_ADDRESS 0x7fffffff
+ #define GRUB_EFI_MAX_ALLOCATION_ADDRESS GRUB_EFI_MAX_USABLE_ADDRESS
