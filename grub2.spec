@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	146%{?dist}
+Release:	147%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -510,6 +510,10 @@ fi
 %endif
 
 %changelog
+* Tue Jan 10 2023 Robbie Harwood <rharwood@redhat.com> - 2.02-147
+- Enable TDX measurement to RTMR register
+- Resolves: #1981485
+
 * Wed Dec 14 2022 Robbie Harwood <rharwood@redhat.com> - 2.02-146
 - ppc64le: fix lpar cas5
 - Resolves: #2139508
