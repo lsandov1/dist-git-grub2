@@ -32,10 +32,10 @@
 		-e 's/^/ -fno-strict-aliasing /'		\\\
 		%{nil}
 
-%global host_cflags %{expand:%%(echo %{build_cflags} %{?_hardening_cflags} | %{cflags_sed})}
+%global host_cflags %{expand:%%(echo %{build_cflags} %{?_hardening_cflags} | %{cflags_sed})} -fstack-protector-strong -fcf-protection
 %global legacy_host_cflags					\\\
 	%{expand:%%(echo %{host_cflags} |			\\\
-	%{cflags_sed}						\\\
+	sed							\\\
 		-e 's/-m64//g'					\\\
 		-e 's/-mcpu=power[[:alnum:]]\\+/-mcpu=power6/g'	\\\
 	)}
