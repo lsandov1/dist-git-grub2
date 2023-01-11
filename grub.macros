@@ -32,7 +32,12 @@
 		-e 's/^/ -fno-strict-aliasing /'		\\\
 		%{nil}
 
-%global host_cflags %{expand:%%(echo %{build_cflags} %{?_hardening_cflags} | %{cflags_sed})} -fstack-protector-strong -fcf-protection
+%global host_cflags_ %{expand:%%(echo %{build_cflags} %{?_hardening_cflags} | %{cflags_sed})} -fstack-protector-strong
+%ifarch x86_64
+%global host_cflags %{host_cflags_} -fcf-protection
+%else
+%global host_cflags %{host_cflags_}
+%endif
 %global legacy_host_cflags					\\\
 	%{expand:%%(echo %{host_cflags} |			\\\
 	sed							\\\
