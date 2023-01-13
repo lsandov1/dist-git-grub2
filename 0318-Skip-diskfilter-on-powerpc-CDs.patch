@@ -1,0 +1,58 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Robbie Harwood <rharwood@redhat.com>
+Date: Thu, 12 Jan 2023 16:03:03 -0500
+Subject: [PATCH] Skip diskfilter on powerpc CDs
+
+Prior to this change, on ppc64le with part_msdos and the mdraid* modules
+enabled, we see:
+
+    disk/diskfilter.c:191: scanning ieee1275/cdrom
+    kern/disk.c:196: Opening `ieee1275/cdrom'...
+    disk/ieee1275/ofdisk.c:477: Opening `cdrom'.
+    disk/ieee1275/ofdisk.c:502: MAX_RETRIES set to 20
+    kern/disk.c:288: Opening `ieee1275/cdrom' succeeded.
+    disk/diskfilter.c:136: Scanning for DISKFILTER devices on disk ieee1275/cdrom
+    partmap/msdos.c:184: partition 0: flag 0x80, type 0x96, start 0x0, len
+    0x6a5d70
+    disk/diskfilter.c:136: Scanning for DISKFILTER devices on disk ieee1275/cdrom
+    SCSI-DISK: Access beyond end of device !
+    SCSI-DISK: Access beyond end of device !
+    SCSI-DISK: Access beyond end of device !
+    SCSI-DISK: Access beyond end of device !
+    SCSI-DISK: Access beyond end of device !
+    disk/ieee1275/ofdisk.c:578: MAX_RETRIES set to 20
+
+These latter two lines repeat many times, eventually ending in:
+
+    kern/disk.c:388: ieee1275/cdrom read failed
+    error: ../../grub-core/disk/ieee1275/ofdisk.c:608:failure reading sector
+    0x1a9720 from `ieee1275/cdrom'.
+
+and the system drops to a "grub>" prompt.
+
+The firmware and the iso image appear to diagree on the blocksize (512
+vs. 2048), and the diskfilter RAID probing is too much for it.  We won't
+be seeing RAID on bootable CDs, so just turn it off.
+
+Signed-off-by: Robbie Harwood <rharwood@redhat.com>
+(cherry picked from commit 35614da6ef0296d1a2d1583ae23822230c25a334)
+---
+ grub-core/disk/diskfilter.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/grub-core/disk/diskfilter.c b/grub-core/disk/diskfilter.c
+index 7cdffe3ebd..f9140f7493 100644
+--- a/grub-core/disk/diskfilter.c
++++ b/grub-core/disk/diskfilter.c
+@@ -133,6 +133,11 @@ scan_disk_partition_iter (grub_disk_t disk, grub_partition_t p, void *data)
+   struct grub_diskfilter_pv_id id;
+   grub_diskfilter_t diskfilter;
+ 
++#ifdef __powerpc__
++  if (!grub_strcmp (name, "ieee1275/cdrom"))
++    return 0;
++#endif
++
+   grub_dprintf ("diskfilter", "Scanning for DISKFILTER devices on disk %s\n",
+ 		name);
+ #ifdef GRUB_UTIL
