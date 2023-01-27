@@ -41,7 +41,7 @@ Fix detection of root.
 Try the chrp path as a fallback if the built prefix doesn't work.
 
 Signed-off-by: Robbie Harwood <rharwood@redhat.com>
-(cherry picked from commit 178d2c473ba6408529d522cd27626e832834590a)
+(cherry picked from commit dbdc69060a60988dd72a2df0fd5d0b23ac13e009)
 ---
  grub-core/disk/diskfilter.c      | 6 ++++++
  grub-core/kern/ieee1275/openfw.c | 2 +-
@@ -49,14 +49,14 @@ Signed-off-by: Robbie Harwood <rharwood@redhat.com>
  3 files changed, 12 insertions(+), 1 deletion(-)
 
 diff --git a/grub-core/disk/diskfilter.c b/grub-core/disk/diskfilter.c
-index 7cdffe3ebd..27fbca903f 100644
+index 7cdffe3ebd..68c836fc64 100644
 --- a/grub-core/disk/diskfilter.c
 +++ b/grub-core/disk/diskfilter.c
 @@ -139,6 +139,12 @@ scan_disk_partition_iter (grub_disk_t disk, grub_partition_t p, void *data)
    grub_util_info ("Scanning for DISKFILTER devices on disk %s", name);
  #endif
  
-+  if (p->parent == NULL || p->parent->len == 0)
++  if (p != NULL && (p->parent == NULL || p->parent->len == 0))
 +    {
 +      grub_dprintf ("diskfilter", "skipping %s due to unknown parent partition length", name);
 +      return 0;
