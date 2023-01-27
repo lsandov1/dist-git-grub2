@@ -23,7 +23,7 @@
 		-e 's/-fplugin=annobin//g'			\\\
 		-e 's,-specs=[[:alnum:]/_-]*annobin[[:alnum:]_-]*,,g' \\\
 		-e 's/-fstack-protector[[:alpha:]-]\\+//g'	\\\
-		-e 's/-Wp,-D_FORTIFY_SOURCE=[[:digit:]]\\+//g'	\\\
+		-e 's/-[^ ]*D_FORTIFY_SOURCE=[[:digit:]][^ ]*\\+//g'	\\\
 		-e 's/--param=ssp-buffer-size=4//g'		\\\
 		-e 's/-mregparm=3/-mregparm=4/g'		\\\
 		-e 's/-fexceptions//g'				\\\
