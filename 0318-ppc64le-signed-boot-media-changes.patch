@@ -3,7 +3,7 @@ From: Robbie Harwood <rharwood@redhat.com>
 Date: Wed, 25 Jan 2023 16:10:58 -0500
 Subject: [PATCH] ppc64le: signed boot media changes
 
-Skip diskfilter on isos since mdraid* can't even
+Skip mdraid < 1.1 on isos since mdraid* can't even
 
 Prior to this change, on ppc64le with part_msdos and the mdraid* modules
 enabled, we see:
@@ -32,38 +32,61 @@ These latter two lines repeat many times, eventually ending in:
 
 and the system drops to a "grub>" prompt.
 
-The firmware and the iso image appear to diagree on the blocksize (512
-vs. 2048), and the diskfilter RAID probing is too much for it.  We won't
-be seeing RAID on bootable CDs, so just turn it off.
+Prior to 1.1, mdraid stored the superblock offset from the end of the
+disk, and the firmware really doesn't like reads there.  Best guess was
+that the firmware and the iso image appear to diagree on the blocksize
+(512 vs. 2048), and the diskfilter RAID probing is too much for it.
+It's tempting to just skip probing for cdroms, but unfortunately isos
+can be virtualized elsewhere - such as regular disks.
 
-Fix detection of root.
-
-Try the chrp path as a fallback if the built prefix doesn't work.
+Also fix detection of root, and try the chrp path as a fallback if the
+built prefix doesn't work.
 
 Signed-off-by: Robbie Harwood <rharwood@redhat.com>
+
+wip
 ---
- grub-core/disk/diskfilter.c      | 6 ++++++
+ grub-core/disk/mdraid1x_linux.c  | 8 +++++++-
+ grub-core/disk/mdraid_linux.c    | 5 +++++
  grub-core/kern/ieee1275/openfw.c | 2 +-
  grub-core/normal/main.c          | 5 +++++
- 3 files changed, 12 insertions(+), 1 deletion(-)
+ 4 files changed, 18 insertions(+), 2 deletions(-)
 
-diff --git a/grub-core/disk/diskfilter.c b/grub-core/disk/diskfilter.c
-index 7cdffe3ebd..68c836fc64 100644
---- a/grub-core/disk/diskfilter.c
-+++ b/grub-core/disk/diskfilter.c
-@@ -139,6 +139,12 @@ scan_disk_partition_iter (grub_disk_t disk, grub_partition_t p, void *data)
-   grub_util_info ("Scanning for DISKFILTER devices on disk %s", name);
- #endif
- 
-+  if (p != NULL && (p->parent == NULL || p->parent->len == 0))
-+    {
-+      grub_dprintf ("diskfilter", "skipping %s due to unknown parent partition length", name);
-+      return 0;
-+    }
+diff --git a/grub-core/disk/mdraid1x_linux.c b/grub-core/disk/mdraid1x_linux.c
+index 38444b02c7..08c57ae16e 100644
+--- a/grub-core/disk/mdraid1x_linux.c
++++ b/grub-core/disk/mdraid1x_linux.c
+@@ -129,7 +129,13 @@ grub_mdraid_detect (grub_disk_t disk,
+       grub_uint32_t level;
+       struct grub_diskfilter_vg *array;
+       char *uuid;
+-	
 +
-   disk->partition = p;
-   
-   for (arr = array_list; arr != NULL; arr = arr->next)
++#ifdef __powerpc__
++      /* Firmware will yell at us for reading too far. */
++      if (minor_version == 0)
++        continue;
++#endif
++
+       if (size == GRUB_DISK_SIZE_UNKNOWN && minor_version == 0)
+ 	continue;
+ 	
+diff --git a/grub-core/disk/mdraid_linux.c b/grub-core/disk/mdraid_linux.c
+index e40216f511..98fcfb1be6 100644
+--- a/grub-core/disk/mdraid_linux.c
++++ b/grub-core/disk/mdraid_linux.c
+@@ -189,6 +189,11 @@ grub_mdraid_detect (grub_disk_t disk,
+   grub_uint32_t level;
+   struct grub_diskfilter_vg *ret;
+ 
++#ifdef __powerpc__
++  /* Firmware will yell at us for reading too far. */
++  return NULL;
++#endif
++
+   /* The sector where the mdraid 0.90 superblock is stored, if available.  */
+   size = grub_disk_native_sectors (disk);
+   if (size == GRUB_DISK_SIZE_UNKNOWN)
 diff --git a/grub-core/kern/ieee1275/openfw.c b/grub-core/kern/ieee1275/openfw.c
 index 3a6689abb1..0278054c61 100644
 --- a/grub-core/kern/ieee1275/openfw.c
