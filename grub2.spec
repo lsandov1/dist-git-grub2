@@ -14,7 +14,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	56%{?dist}
+Release:	57%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -532,6 +532,10 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Wed Feb 01 2023 Robbie Harwood <rharwood@redhat.com> - 2.06-57
+- Pull in allocator fixes from upstream
+- Resolves: #2156419
+
 * Tue Jan 31 2023 Robbie Harwood <rharwood@redhat.com> - 2.06-56
 - ppc64le: disable mdraid < 1.1
 - Resolves: #2143420
