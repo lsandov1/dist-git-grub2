@@ -139,7 +139,7 @@ case "$COMMAND" in
                 sed -i -e "s,^initrd.*,initrd ${BOOTPREFIX}${INITRD},g" "${BLS_TARGET}"
             fi
 
-            if [[ "$KERNEL_VERSION" == *\+* ]] && [ "x$GRUB_DEFAULT_TO_DEBUG" != "xtrue" ]; then
+            if [[ "$KERNEL_VERSION" == *\+debug* ]] && [ "x$GRUB_DEFAULT_TO_DEBUG" != "xtrue" ]; then
                 GRUB_UPDATE_DEFAULT_KERNEL=false
             fi
 
