@@ -68,10 +68,10 @@ index 6366442129..d04b3fe68a 100644
    testcase;
    name = example_unit_test;
 diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
-index 21d2c54185..b4aaccf7b5 100644
+index ea92468fa2..a32e6ada59 100644
 --- a/grub-core/Makefile.core.def
 +++ b/grub-core/Makefile.core.def
-@@ -2591,3 +2591,16 @@ module = {
+@@ -2592,3 +2592,16 @@ module = {
    // -Wno-type-limits comes from libtasn1's configure.ac
    cppflags = '$(CPPFLAGS_POSIX) $(CPPFLAGS_GNULIB) -I$(srcdir)/lib/libtasn1/lib -Wno-type-limits';
  };

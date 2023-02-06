@@ -15,7 +15,7 @@ Signed-off-by: Daniel Axtens <dja@axtens.net>
  4 files changed, 32 insertions(+), 3 deletions(-)
 
 diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
-index 6bddc841b8..3f3459b2c7 100644
+index 9ea5fb38f1..4a57de975e 100644
 --- a/grub-core/Makefile.core.def
 +++ b/grub-core/Makefile.core.def
 @@ -323,6 +323,7 @@ kernel = {

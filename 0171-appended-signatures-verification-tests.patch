@@ -17,10 +17,10 @@ Signed-off-by: Daniel Axtens <dja@axtens.net>
  create mode 100644 grub-core/tests/appended_signatures.h
 
 diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
-index 77321d218c..6bddc841b8 100644
+index 6404384d90..9ea5fb38f1 100644
 --- a/grub-core/Makefile.core.def
 +++ b/grub-core/Makefile.core.def
-@@ -2161,6 +2161,12 @@ module = {
+@@ -2162,6 +2162,12 @@ module = {
    common = tests/setjmp_test.c;
  };
  

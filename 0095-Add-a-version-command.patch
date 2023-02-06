@@ -43,7 +43,7 @@ index 54462e0892..7b4e1854d3 100644
  have_with_bootdir=n
  AC_ARG_WITH([bootdir],
 diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
-index 84a3d89de9..498ca11762 100644
+index 4e7d90da76..4f203533f5 100644
 --- a/grub-core/Makefile.core.def
 +++ b/grub-core/Makefile.core.def
 @@ -579,6 +579,11 @@ image = {

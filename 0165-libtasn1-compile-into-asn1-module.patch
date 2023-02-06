@@ -14,10 +14,10 @@ Signed-off-by: Daniel Axtens <dja@axtens.net>
  create mode 100644 grub-core/lib/libtasn1_wrap/wrap.c
 
 diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
-index 97347ae76f..21d2c54185 100644
+index 64cc758835..ea92468fa2 100644
 --- a/grub-core/Makefile.core.def
 +++ b/grub-core/Makefile.core.def
-@@ -2576,3 +2576,18 @@ module = {
+@@ -2577,3 +2577,18 @@ module = {
    common = commands/i386/wrmsr.c;
    enable = x86;
  };

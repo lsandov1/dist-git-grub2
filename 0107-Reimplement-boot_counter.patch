@@ -40,7 +40,7 @@ index d066652e9b..e10fe766d1 100644
    name = '01_menu_auto_hide';
    common = util/grub.d/01_menu_auto_hide.in;
 diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
-index 498ca11762..1e15345107 100644
+index 4f203533f5..ea4d59f51b 100644
 --- a/grub-core/Makefile.core.def
 +++ b/grub-core/Makefile.core.def
 @@ -398,6 +398,11 @@ kernel = {

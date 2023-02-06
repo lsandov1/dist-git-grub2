@@ -79,7 +79,7 @@ Signed-off-by: Robbie Harwood <rharwood@redhat.com>
  2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
-index 3f3459b2c7..6b00eb5557 100644
+index 4a57de975e..08ac0fb15f 100644
 --- a/grub-core/Makefile.core.def
 +++ b/grub-core/Makefile.core.def
 @@ -89,7 +89,7 @@ kernel = {

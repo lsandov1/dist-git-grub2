@@ -21,7 +21,7 @@ Signed-off-by: Peter Jones <pjones@redhat.com>
  create mode 100644 grub-core/commands/efi/env.c
 
 diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
-index 1e15345107..81fc274148 100644
+index ea4d59f51b..dc9fea6f44 100644
 --- a/grub-core/Makefile.core.def
 +++ b/grub-core/Makefile.core.def
 @@ -820,6 +820,12 @@ module = {

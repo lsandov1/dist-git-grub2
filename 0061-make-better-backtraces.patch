@@ -55,7 +55,7 @@ index 88f55e35c4..bda9fd1211 100644
  
  library = {
 diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
-index 5354f9613d..4b7c45a7b0 100644
+index 058c88ac3a..52ec0fafcd 100644
 --- a/grub-core/Makefile.core.def
 +++ b/grub-core/Makefile.core.def
 @@ -142,6 +142,12 @@ kernel = {
@@ -81,7 +81,7 @@ index 5354f9613d..4b7c45a7b0 100644
    i386 = kern/i386/dl.c;
    i386_xen = kern/i386/dl.c;
    i386_xen_pvh = kern/i386/dl.c;
-@@ -2398,15 +2401,12 @@ module = {
+@@ -2399,15 +2402,12 @@ module = {
  
  module = {
    name = backtrace;
@@ -897,7 +897,7 @@ index 03b916f053..701bf63abc 100644
  	ba	codestart
  	 mov  %o4, %o0
 diff --git a/grub-core/Makefile.am b/grub-core/Makefile.am
-index 80e7a83edf..f512573c0d 100644
+index ee88e44e97..bfd29a3bf0 100644
 --- a/grub-core/Makefile.am
 +++ b/grub-core/Makefile.am
 @@ -66,6 +66,7 @@ CLEANFILES += grub_script.yy.c grub_script.yy.h

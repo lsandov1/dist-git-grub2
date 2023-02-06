@@ -61,7 +61,7 @@ index 40c4338bce..79f45ef1e1 100644
  AC_CONFIG_HEADER([config-util.h])
  
 diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
-index 6b00eb5557..39233096f2 100644
+index 08ac0fb15f..ec1ec5083b 100644
 --- a/grub-core/Makefile.core.def
 +++ b/grub-core/Makefile.core.def
 @@ -762,6 +762,9 @@ module = {

@@ -59,7 +59,7 @@ index 1668858703..8cb4608c3d 100644
  #pragma GCC diagnostic ignored "-Wmissing-prototypes"
  #pragma GCC diagnostic ignored "-Wmissing-declarations"
 diff --git a/grub-core/kern/emu/main.c b/grub-core/kern/emu/main.c
-index 846fe9715e..3e7929cc4a 100644
+index 55ea5a11cc..12277c34d2 100644
 --- a/grub-core/kern/emu/main.c
 +++ b/grub-core/kern/emu/main.c
 @@ -16,8 +16,8 @@

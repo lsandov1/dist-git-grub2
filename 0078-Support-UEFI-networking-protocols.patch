@@ -57,10 +57,10 @@ Signed-off-by: Peter Jones <pjones@redhat.com>
  create mode 100644 include/grub/net/efi.h
 
 diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
-index 4b7c45a7b0..c40170f2dd 100644
+index 52ec0fafcd..12797336c9 100644
 --- a/grub-core/Makefile.core.def
 +++ b/grub-core/Makefile.core.def
-@@ -2299,6 +2299,12 @@ module = {
+@@ -2300,6 +2300,12 @@ module = {
    common = hook/datehook.c;
  };
  
@@ -73,7 +73,7 @@ index 4b7c45a7b0..c40170f2dd 100644
  module = {
    name = net;
    common = net/net.c;
-@@ -2312,6 +2318,12 @@ module = {
+@@ -2313,6 +2319,12 @@ module = {
    common = net/ethernet.c;
    common = net/arp.c;
    common = net/netbuff.c;

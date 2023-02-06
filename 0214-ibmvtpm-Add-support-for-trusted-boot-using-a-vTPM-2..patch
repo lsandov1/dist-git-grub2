@@ -31,7 +31,7 @@ Signed-off-by: Stefan Berger <stefanb@linux.ibm.com>
  create mode 100644 grub-core/commands/ieee1275/ibmvtpm.c
 
 diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
-index 3c0ac3b7bd..2c1608bca4 100644
+index 741a033978..e038c5e6fd 100644
 --- a/grub-core/Makefile.core.def
 +++ b/grub-core/Makefile.core.def
 @@ -1175,6 +1175,13 @@ module = {

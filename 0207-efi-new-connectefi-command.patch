@@ -64,7 +64,7 @@ Signed-off-by: Robbie Harwood <rharwood@redhat.com>
  create mode 100644 grub-core/commands/efi/connectefi.c
 
 diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
-index 39233096f2..3c0ac3b7bd 100644
+index ec1ec5083b..741a033978 100644
 --- a/grub-core/Makefile.core.def
 +++ b/grub-core/Makefile.core.def
 @@ -836,6 +836,12 @@ module = {

@@ -30,7 +30,7 @@ Signed-off-by: Robbie Harwood <rharwood@redhat.com>
  create mode 100644 grub-core/commands/appendedsig/appendedsig.c
 
 diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
-index b4aaccf7b5..77321d218c 100644
+index a32e6ada59..6404384d90 100644
 --- a/grub-core/Makefile.core.def
 +++ b/grub-core/Makefile.core.def
 @@ -980,6 +980,18 @@ module = {
