@@ -17,7 +17,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	82%{?dist}
+Release:	83%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -544,6 +544,9 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Mon Feb 06 2023 Robbie Harwood <rharwood@redhat.com> - 2.06-83
+- ppc64le: cas5, take 3
+
 * Mon Feb 06 2023 Robbie Harwood <rharwood@redhat.com> - 2.06-82
 - Fix implicit function declaration warnings
 
