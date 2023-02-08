@@ -12,7 +12,7 @@ https://bugzilla.redhat.com/show_bug.cgi?id=973205
  3 files changed, 12 insertions(+), 4 deletions(-)
 
 diff --git a/grub-core/kern/ieee1275/cmain.c b/grub-core/kern/ieee1275/cmain.c
-index 20cbbd761ec..04df9d2c667 100644
+index 20cbbd761e..04df9d2c66 100644
 --- a/grub-core/kern/ieee1275/cmain.c
 +++ b/grub-core/kern/ieee1275/cmain.c
 @@ -90,7 +90,10 @@ grub_ieee1275_find_options (void)
@@ -28,7 +28,7 @@ index 20cbbd761ec..04df9d2c667 100644
    /* Old Macs have no key repeat, newer ones have fully working one.
       The ones inbetween when repeated key generates an escaoe sequence
 diff --git a/grub-core/video/ieee1275.c b/grub-core/video/ieee1275.c
-index 17a3dbbb575..b8e4b3feb32 100644
+index 17a3dbbb57..b8e4b3feb3 100644
 --- a/grub-core/video/ieee1275.c
 +++ b/grub-core/video/ieee1275.c
 @@ -352,9 +352,12 @@ static struct grub_video_adapter grub_video_ieee1275_adapter =
@@ -48,7 +48,7 @@ index 17a3dbbb575..b8e4b3feb32 100644
  
  GRUB_MOD_FINI(ieee1275_fb)
 diff --git a/include/grub/ieee1275/ieee1275.h b/include/grub/ieee1275/ieee1275.h
-index 0a599607f31..b5a1d49bbc3 100644
+index 0a599607f3..49dbd2ebfb 100644
 --- a/include/grub/ieee1275/ieee1275.h
 +++ b/include/grub/ieee1275/ieee1275.h
 @@ -148,6 +148,8 @@ enum grub_ieee1275_flag
@@ -56,7 +56,7 @@ index 0a599607f31..b5a1d49bbc3 100644
  
    GRUB_IEEE1275_FLAG_RAW_DEVNAMES,
 +  
-+  GRUB_IEEE1275_FLAG_DISABLE_VIDEO_SUPPORT
++  GRUB_IEEE1275_FLAG_DISABLE_VIDEO_SUPPORT,
  };
  
  extern int EXPORT_FUNC(grub_ieee1275_test_flag) (enum grub_ieee1275_flag flag);
