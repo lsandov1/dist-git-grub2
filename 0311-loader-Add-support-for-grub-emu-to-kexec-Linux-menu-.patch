@@ -41,10 +41,10 @@ Reviewed-by: Daniel Kiper <daniel.kiper@oracle.com>
  create mode 100644 grub-core/loader/emu/linux.c
 
 diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
-index e038c5e6fd..02ea718652 100644
+index 741a033978..f21da23213 100644
 --- a/grub-core/Makefile.core.def
 +++ b/grub-core/Makefile.core.def
-@@ -1871,11 +1871,8 @@ module = {
+@@ -1864,11 +1864,8 @@ module = {
    riscv32 = loader/riscv/linux.c;
    riscv64 = loader/riscv/linux.c;
    emu = loader/emu/linux.c;
@@ -367,7 +367,7 @@ index ff9c48a649..01056954b9 100644
  
  #ifdef HAVE_DEVICE_MAPPER
 diff --git a/docs/grub.texi b/docs/grub.texi
-index c433240f34..825278a7f3 100644
+index a4da9c2a1b..1750b72ee9 100644
 --- a/docs/grub.texi
 +++ b/docs/grub.texi
 @@ -923,17 +923,17 @@ magic.

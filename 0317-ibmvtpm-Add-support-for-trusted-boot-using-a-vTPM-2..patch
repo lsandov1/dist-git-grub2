@@ -1,6 +1,6 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Stefan Berger <stefanb@linux.ibm.com>
-Date: Sun, 15 Mar 2020 12:37:10 -0400
+Date: Mon, 6 Feb 2023 10:03:25 -0500
 Subject: [PATCH] ibmvtpm: Add support for trusted boot using a vTPM 2.0
 
 Add support for trusted boot using a vTPM 2.0 on the IBM IEEE1275
@@ -9,6 +9,10 @@ into the TPM's PCRs 8 and 9 in the same way as the x86_64 platform
 does.
 
 This patch requires Daniel Axtens's patches for claiming more memory.
+
+Note: The tpm_init() function cannot be called from GRUB_MOD_INIT() since
+it does not find the device nodes upon module initialization and
+therefore the call to tpm_init() must be deferred to grub_tpm_measure().
 
 For vTPM support to work on PowerVM, system driver levels 1010.30
 or 1020.00 are required.
@@ -22,16 +26,19 @@ above.
 
 Cc: Eric Snowberg <eric.snowberg@oracle.com>
 Signed-off-by: Stefan Berger <stefanb@linux.ibm.com>
+Signed-off-by: Daniel Axtens <dja@axtens.net>
+Reviewed-by: Daniel Kiper <daniel.kiper@oracle.com>
+(cherry picked from commit 2aa5ef83743dfea79377309ff4f5e9c9a55de355)
 ---
  grub-core/Makefile.core.def           |   7 ++
- grub-core/commands/ieee1275/ibmvtpm.c | 152 ++++++++++++++++++++++++++++++++++
+ grub-core/commands/ieee1275/ibmvtpm.c | 155 ++++++++++++++++++++++++++++++++++
  include/grub/ieee1275/ieee1275.h      |   3 +
  docs/grub.texi                        |   3 +-
- 4 files changed, 164 insertions(+), 1 deletion(-)
+ 4 files changed, 167 insertions(+), 1 deletion(-)
  create mode 100644 grub-core/commands/ieee1275/ibmvtpm.c
 
 diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
-index 741a033978..e038c5e6fd 100644
+index f21da23213..02ea718652 100644
 --- a/grub-core/Makefile.core.def
 +++ b/grub-core/Makefile.core.def
 @@ -1175,6 +1175,13 @@ module = {
@@ -50,14 +57,14 @@ index 741a033978..e038c5e6fd 100644
    common = commands/terminal.c;
 diff --git a/grub-core/commands/ieee1275/ibmvtpm.c b/grub-core/commands/ieee1275/ibmvtpm.c
 new file mode 100644
-index 0000000000..e68b8448bc
+index 0000000000..239942d27e
 --- /dev/null
 +++ b/grub-core/commands/ieee1275/ibmvtpm.c
-@@ -0,0 +1,152 @@
+@@ -0,0 +1,155 @@
 +/*
 + *  GRUB  --  GRand Unified Bootloader
-+ *  Copyright (C) 2021  Free Software Foundation, Inc.
-+ *  Copyright (C) 2021  IBM Corporation
++ *  Copyright (C) 2022  Free Software Foundation, Inc.
++ *  Copyright (C) 2022  IBM Corporation
 + *
 + *  GRUB is free software: you can redistribute it and/or modify
 + *  it under the terms of the GNU General Public License as published by
@@ -85,7 +92,7 @@ index 0000000000..e68b8448bc
 +static grub_ieee1275_ihandle_t tpm_ihandle;
 +static grub_uint8_t tpm_version;
 +
-+#define IEEE1275_IHANDLE_INVALID ((grub_ieee1275_ihandle_t)0)
++#define IEEE1275_IHANDLE_INVALID ((grub_ieee1275_ihandle_t) 0)
 +
 +static void
 +tpm_get_tpm_version (void)
@@ -107,10 +114,11 @@ index 0000000000..e68b8448bc
 +
 +  if (!init_success)
 +    {
-+      if (grub_ieee1275_open ("/vdevice/vtpm", &tpm_ihandle) < 0) {
-+        tpm_ihandle = IEEE1275_IHANDLE_INVALID;
-+        return GRUB_ERR_UNKNOWN_DEVICE;
-+      }
++      if (grub_ieee1275_open ("/vdevice/vtpm", &tpm_ihandle) < 0)
++	{
++	  tpm_ihandle = IEEE1275_IHANDLE_INVALID;
++	  return GRUB_ERR_UNKNOWN_DEVICE;
++	}
 +
 +      init_success = 1;
 +
@@ -140,8 +148,8 @@ index 0000000000..e68b8448bc
 +    grub_ieee1275_cell_t pcrindex;
 +    grub_ieee1275_cell_t catch_result;
 +    grub_ieee1275_cell_t rc;
-+  }
-+  args;
++  };
++  struct tpm_2hash_ext_log args;
 +
 +  INIT_IEEE1275_COMMON (&args.common, "call-method", 8, 2);
 +  args.method = (grub_ieee1275_cell_t) "2hash-ext-log";
@@ -167,22 +175,20 @@ index 0000000000..e68b8448bc
 +}
 +
 +static grub_err_t
-+tpm2_log_event (unsigned char *buf,
-+		grub_size_t size, grub_uint8_t pcr,
++tpm2_log_event (unsigned char *buf, grub_size_t size, grub_uint8_t pcr,
 +		const char *description)
 +{
 +  static int error_displayed = 0;
-+  int err;
++  int rc;
 +
-+  err = ibmvtpm_2hash_ext_log (pcr, EV_IPL,
-+			       description,
-+			       grub_strlen(description) + 1,
-+			       buf, size);
-+  if (err && !error_displayed)
++  rc = ibmvtpm_2hash_ext_log (pcr, EV_IPL,
++			      description, grub_strlen(description) + 1,
++			      buf, size);
++  if (rc && !error_displayed)
 +    {
 +      error_displayed++;
 +      return grub_error (GRUB_ERR_BAD_DEVICE,
-+	      "2HASH-EXT-LOG failed: Firmware is likely too old.\n");
++			 "2HASH-EXT-LOG failed: Firmware is likely too old.\n");
 +    }
 +
 +  return GRUB_ERR_NONE;
@@ -192,7 +198,11 @@ index 0000000000..e68b8448bc
 +grub_tpm_measure (unsigned char *buf, grub_size_t size, grub_uint8_t pcr,
 +		  const char *description)
 +{
-+  grub_err_t err = tpm_init();
++  /*
++   * Call tpm_init() 'late' rather than from GRUB_MOD_INIT() so that device nodes
++   * can be found.
++   */
++  grub_err_t err = tpm_init ();
 +
 +  /* Absence of a TPM isn't a failure. */
 +  if (err != GRUB_ERR_NONE)
@@ -207,7 +217,7 @@ index 0000000000..e68b8448bc
 +  return GRUB_ERR_NONE;
 +}
 diff --git a/include/grub/ieee1275/ieee1275.h b/include/grub/ieee1275/ieee1275.h
-index e0a6c2ce1e..f4c85265fe 100644
+index 560c968460..27b9cf259b 100644
 --- a/include/grub/ieee1275/ieee1275.h
 +++ b/include/grub/ieee1275/ieee1275.h
 @@ -24,6 +24,9 @@
@@ -221,10 +231,10 @@ index e0a6c2ce1e..f4c85265fe 100644
  {
    unsigned int start;
 diff --git a/docs/grub.texi b/docs/grub.texi
-index a4da9c2a1b..c433240f34 100644
+index 1750b72ee9..825278a7f3 100644
 --- a/docs/grub.texi
 +++ b/docs/grub.texi
-@@ -6221,7 +6221,8 @@ tpm module is loaded. As such it is recommended that the tpm module be built
+@@ -6235,7 +6235,8 @@ tpm module is loaded. As such it is recommended that the tpm module be built
  into @file{core.img} in order to avoid a potential gap in measurement between
  @file{core.img} being loaded and the tpm module being loaded.
  
