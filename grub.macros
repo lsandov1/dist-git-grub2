@@ -15,7 +15,7 @@
 %endif
 
 # gnulib actively ignores CFLAGS because it's terrible
-%global cc_equals "CC=%{ccpath} -fPIE"
+%global cc_equals "CC=%{ccpath} -fPIE -Wl,-z,noexecstack"
 
 %global cflags_sed						\\\
 	sed							\\\
