@@ -9,12 +9,14 @@
 %undefine _missing_build_ids_terminate_build
 %global _configure_gnuconfig_hack 0
 
-%global gnulibversion fixes
+# It's a commit from their gnulib's development tree.  They don't do releases,
+# and it is *awful* to update this.
+%global gnulibversion 9f48fb992a3d7e96610c4ce8be969cff2d61a01b
 
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	59%{?dist}
+Release:	60%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -431,7 +433,6 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %{_datarootdir}/bash-completion/completions/grub
 %{_sbindir}/%{name}-mkconfig
 %{_sbindir}/%{name}-switch-to-blscfg
-%{_sbindir}/%{name}-rpm-sort
 %{_sbindir}/%{name}-reboot
 %{_bindir}/%{name}-file
 %{_bindir}/%{name}-menulst2cfg
@@ -532,6 +533,10 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Wed Feb 15 2023 Robbie Harwood <rharwood@redhat.com> - 2.06-60
+- Sync patches with Fedora
+- Resolves: #2007427
+
 * Wed Feb 08 2023 Robbie Harwood <rharwood@redhat.com> - 2.06-59
 - ppc64le: sync cas/tpm patchset with upstream
 - Resolves: #2143420

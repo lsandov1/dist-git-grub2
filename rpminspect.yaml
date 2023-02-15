@@ -9,15 +9,6 @@ inspections:
   patches: off
   upstream: off
 
-  # https://bugzilla.redhat.com/show_bug.cgi?id=2007427
-  manpage: off
-
-  # https://bugzilla.redhat.com/show_bug.cgi?id=2007428
-  elf: off
-
-  # https://bugzilla.redhat.com/show_bug.cgi?id=1961250
-  annocheck: off
-
   # https://bugzilla.redhat.com/show_bug.cgi?id=2007431
   permissions: off
 
