@@ -14,3 +14,9 @@ inspections:
 
   # kernel executables have debug symbols.
   debuginfo: off
+
+  # https://bugzilla.redhat.com/show_bug.cgi?id=2007428
+  elf:
+    ignore:
+      - /usr/lib/grub/i386-pc/kernel.*
+      - /usr/lib/grub/i386-pc/lnxboot.image
