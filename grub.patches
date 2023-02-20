@@ -317,3 +317,6 @@ Patch0316: 0316-ieee1275-implement-vec5-for-cas-negotiation.patch
 Patch0317: 0317-ibmvtpm-Add-support-for-trusted-boot-using-a-vTPM-2..patch
 Patch0318: 0318-powerpc-Drop-Open-Hack-Ware.patch
 Patch0319: 0319-osdep-linux-hostdisk-Modify-sector-by-sysfs-as-disk-.patch
+Patch0320: 0320-mm-Adjust-new-region-size-to-take-management-overhea.patch
+Patch0321: 0321-mm-Preallocate-some-space-when-adding-new-regions.patch
+Patch0322: 0322-mm-Avoid-complex-heap-growth-math-in-hot-path.patch
