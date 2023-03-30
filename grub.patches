@@ -325,3 +325,4 @@ Patch0324: 0324-blscfg-check-for-mounted-boot-in-emu.patch
 Patch0325: 0325-emu-linux-work-around-systemctl-kexec-returning.patch
 Patch0326: 0326-kern-ieee1275-init-Convert-plain-numbers-to-constant.patch
 Patch0327: 0327-kern-ieee1275-init-Extended-support-in-Vec5.patch
+Patch0328: 0328-tpm-Disable-the-tpm-verifier-if-the-TPM-device-is-no.patch
