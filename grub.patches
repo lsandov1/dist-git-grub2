@@ -323,3 +323,5 @@ Patch0322: 0322-mm-Avoid-complex-heap-growth-math-in-hot-path.patch
 Patch0323: 0323-hostdisk-work-around-proc-not-reporting-size.patch
 Patch0324: 0324-blscfg-check-for-mounted-boot-in-emu.patch
 Patch0325: 0325-emu-linux-work-around-systemctl-kexec-returning.patch
+Patch0326: 0326-kern-ieee1275-init-Convert-plain-numbers-to-constant.patch
+Patch0327: 0327-kern-ieee1275-init-Extended-support-in-Vec5.patch
