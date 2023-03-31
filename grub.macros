@@ -623,6 +623,7 @@ if [ %{3} -eq 0 ]; then						\
 	${RPM_BUILD_ROOT}/%{_bindir}/grub2-editenv		\\\
 		${RPM_BUILD_ROOT}/boot/grub2/grubenv create	\
 fi								\
+%{expand:%ifnarch ppc64le					\
 mkdir pxe							\
 ./grub-mknetdir							\\\
 	--directory ./grub-core					\\\
@@ -633,6 +634,7 @@ mkdir pxe							\
 	--net-directory=pxe					\\\
 	--subdir .						\
 mv pxe/*/core.0 $RPM_BUILD_ROOT/%{_libdir}/grub/%{1}/		\
+%endif}								\
 %{expand:%%do_install_protected_file grub2-%{legacy_package_arch}} \
 cd ..								\
 %{nil}
