@@ -326,3 +326,6 @@ Patch0325: 0325-emu-linux-work-around-systemctl-kexec-returning.patch
 Patch0326: 0326-kern-ieee1275-init-Convert-plain-numbers-to-constant.patch
 Patch0327: 0327-kern-ieee1275-init-Extended-support-in-Vec5.patch
 Patch0328: 0328-tpm-Disable-the-tpm-verifier-if-the-TPM-device-is-no.patch
+Patch0329: 0329-grub_dl_set_mem_attrs-fix-format-string.patch
+Patch0330: 0330-grub_dl_set_mem_attrs-add-self-check-for-the-tramp-G.patch
+Patch0331: 0331-grub_dl_load_segments-page-align-the-tramp-GOT-areas.patch
