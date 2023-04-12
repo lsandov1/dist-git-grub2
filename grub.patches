@@ -329,3 +329,4 @@ Patch0328: 0328-tpm-Disable-the-tpm-verifier-if-the-TPM-device-is-no.patch
 Patch0329: 0329-grub_dl_set_mem_attrs-fix-format-string.patch
 Patch0330: 0330-grub_dl_set_mem_attrs-add-self-check-for-the-tramp-G.patch
 Patch0331: 0331-grub_dl_load_segments-page-align-the-tramp-GOT-areas.patch
+Patch0332: 0332-emu-Add-switch-root-to-grub-emu.patch
