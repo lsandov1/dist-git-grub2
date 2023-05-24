@@ -16,7 +16,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	62%{?dist}
+Release:	63%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -533,6 +533,10 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Wed May 24 2023 Nicolas Frayer <nfrayer@redhat.com> - 2.06-63
+- util: Enable default kernel for updates
+- Resolves: #2184069
+
 * Tue May 23 2023 Javier Martinez Canillas <javierm@redhat.com> - 2.06-62
 - 20-grub-install: Explicitly check '+debug' suffix for debug kernels
 - Resolves: #2148351
