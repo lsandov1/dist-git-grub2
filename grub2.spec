@@ -16,7 +16,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	63%{?dist}
+Release:	64%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -533,6 +533,10 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Fri May 26 2023 Nicolas Frayer <nfrayer@redhat.com> - 2.06-64
+- kern/ieee1275/init: sync vec5 patchset with upstream
+- Resolves: #2183939
+
 * Wed May 24 2023 Nicolas Frayer <nfrayer@redhat.com> - 2.06-63
 - util: Enable default kernel for updates
 - Resolves: #2184069
