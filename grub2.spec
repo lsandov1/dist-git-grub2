@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	148%{?dist}
+Release:	148%{?dist}.1
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -510,6 +510,10 @@ fi
 %endif
 
 %changelog
+* Fri Jun 16 2023 Nicolas Frayer <nfrayer@redhat.com> - 2.02-148.el8_8.1
+- Sync with 8.9 (actually 2.02-150)
+- Resolves: #2207972
+
 * Mon Feb 06 2023 Robbie Harwood <rharwood@redhat.com> - 2.02-148
 - ppc64le: cas5, take 3
 - Resolves: #2139508

@@ -573,3 +573,6 @@ Patch0572: 0572-font-Assign-null_font-to-glyphs-in-ascii_font_glyph.patch
 Patch0573: 0573-normal-charset-Fix-an-integer-overflow-in-grub_unico.patch
 Patch0574: 0574-Enable-TDX-measurement-to-RTMR-register.patch
 Patch0575: 0575-Enable-shared-processor-mode-in-vector-5.patch
+Patch0576: 0576-efi-http-change-uint32_t-to-uintn_t-for-grub_efi_htt.patch
+Patch0577: 0577-ieee1275-Converting-plain-numbers-to-constants-in-Ve.patch
+Patch0578: 0578-ieee1275-extended-support-in-options-vector5.patch
