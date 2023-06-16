@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	149%{?dist}
+Release:	150%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -510,6 +510,10 @@ fi
 %endif
 
 %changelog
+* Fri Jun 16 2023 Nicolas Frayer <nfrayer@redhat.com> - 2.02-150
+- kern/ieee1275/init: sync vec5 patchset with upstream
+- Resolves: #2172111
+
 * Wed Jun 14 2023 Nicolas Frayer <nfrayer@redhat.com> - 2.02-149
 - efi/http: change uint32_t to uintn_t for grub_efi_http_message_t
 - Resolves: #2178388
