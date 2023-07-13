@@ -16,7 +16,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	66%{?dist}
+Release:	67%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -533,6 +533,12 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Mon Jul 24 2023 Nicolas Frayer <nfrayer@redhat.com> - 2.06-67
+- grub2-mkconfig: dont overwrite BLS cmdline if BLSCFG is true
+- Resolves: #2203203
+- Resolves: #2212320
+- Resolves: #2221543
+
 * Thu Jul 20 2023 Nicolas Frayer <nfrayer@redhat.com> - 2.06-66
 - build with baseline ISA flags
 - Resolves: #2215860
