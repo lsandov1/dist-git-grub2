@@ -16,7 +16,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	65%{?dist}
+Release:	66%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -533,6 +533,10 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Thu Jul 20 2023 Nicolas Frayer <nfrayer@redhat.com> - 2.06-66
+- build with baseline ISA flags
+- Resolves: #2215860
+
 * Wed Jun 07 2023 Nicolas Frayer <nfrayer@redhat.com> - 2.06-65
 - efi/http: change uint32_t to uintn_t
 - Resolves: #2207851

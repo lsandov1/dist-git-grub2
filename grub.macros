@@ -30,6 +30,7 @@
 		-e 's/-fcf-protection//g'			\\\
 		-e 's/-fasynchronous-unwind-tables//g'		\\\
 		-e 's/^/ -fno-strict-aliasing /'		\\\
+		-e 's,-march=x86-64-v[[:alnum:]._-]*,-march=x86-64,g' \\\
 		%{nil}
 
 %global host_cflags %{expand:%%(echo %{build_cflags} %{?_hardening_cflags} | %{cflags_sed})}
