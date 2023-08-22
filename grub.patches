@@ -331,3 +331,4 @@ Patch0330: 0330-grub_dl_set_mem_attrs-add-self-check-for-the-tramp-G.patch
 Patch0331: 0331-grub_dl_load_segments-page-align-the-tramp-GOT-areas.patch
 Patch0332: 0332-emu-Add-switch-root-to-grub-emu.patch
 Patch0333: 0333-util-Enable-default-kernel-for-updates.patch
+Patch0334: 0334-efi-http-change-uint32_t-to-uintn_t.patch
