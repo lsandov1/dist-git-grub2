@@ -16,7 +16,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	73%{?dist}
+Release:	74%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -533,6 +533,10 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Mon Feb 5 2024 Nicolas Frayer <nfrayer@redhat.com> - 2.06-74
+- Don't run 20-grub.install for UKIs
+- Resolves: #RHEL-21368
+
 * Thu Jan 4 2024 Nicolas Frayer <nfrayer@redhat.com> - 2.06-73
 - search command: add flag to only search root dev
 - Resolves: #RHEL-20526
