@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	150%{?dist}
+Release:	151%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -510,6 +510,10 @@ fi
 %endif
 
 %changelog
+* Mon Aug 28 2023 Nicolas Frayer <nfrayer@redhat.com> - 2.02-151
+- util: Regenerate kernelopts if missing on ppc
+- Resolves: #2051889
+
 * Fri Jun 16 2023 Nicolas Frayer <nfrayer@redhat.com> - 2.02-150
 - kern/ieee1275/init: sync vec5 patchset with upstream
 - Resolves: #2172111
