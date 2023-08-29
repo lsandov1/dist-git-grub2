@@ -16,7 +16,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	69%{?dist}
+Release:	70%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -533,6 +533,10 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Tue Aug 29 2023 Nicolas Frayer <nfrayer@redhat.com> - 2.06-70
+- grub2-mkconfig: Pass all boot params when used by anaconda
+- Resolves: #RHEL-2185
+
 * Thu Aug 24 2023 Nicolas Frayer <nfrayer@redhat.com> - 2.06-69
 - grub2-mkconfig: dont overwrite BLS cmdline if BLSCFG is true
 - This is an updated version of the 2.06-67 patch
