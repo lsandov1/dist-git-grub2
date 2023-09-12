@@ -333,3 +333,4 @@ Patch0332: 0332-emu-Add-switch-root-to-grub-emu.patch
 Patch0333: 0333-util-Enable-default-kernel-for-updates.patch
 Patch0334: 0334-efi-http-change-uint32_t-to-uintn_t.patch
 Patch0335: 0335-Add-Install-section-to-aux-systemd-units.patch
+Patch0336: 0336-arm64-Use-proper-memory-type-for-kernel-allocation.patch
