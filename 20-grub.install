@@ -54,8 +54,13 @@ EOF
 case "$COMMAND" in
     add)
         if [[ "${KERNEL_DIR}" != "/boot" ]]; then
+            # rename to match the name used in the pseudo-BLS snippet above
+            rm -f "/boot/vmlinuz-${KERNEL_VERSION}"
+            cp -aT "${KERNEL_IMAGE}" "/boot/vmlinuz-${KERNEL_VERSION}"
+            command -v restorecon &>/dev/null && \
+                restorecon -R "/boot/vmlinuz-${KERNEL_VERSION}"
+
             for i in \
-                "$KERNEL_IMAGE" \
                     "$KERNEL_DIR"/System.map \
                     "$KERNEL_DIR"/config \
                     "$KERNEL_DIR"/zImage.stub \
