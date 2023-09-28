@@ -55,8 +55,7 @@ case "$COMMAND" in
     add)
         if [[ "${KERNEL_DIR}" != "/boot" ]]; then
             # rename to match the name used in the pseudo-BLS snippet above
-            rm -f "/boot/vmlinuz-${KERNEL_VERSION}"
-            cp --preserve=timestamps -T "${KERNEL_IMAGE}" "/boot/vmlinuz-${KERNEL_VERSION}"
+            cp --remove-destination --preserve=timestamps -T "${KERNEL_IMAGE}" "/boot/vmlinuz-${KERNEL_VERSION}"
             command -v restorecon &>/dev/null && \
                 restorecon -R "/boot/vmlinuz-${KERNEL_VERSION}"
 
@@ -67,16 +66,14 @@ case "$COMMAND" in
                     "$KERNEL_DIR"/dtb
             do
                 [[ -e "$i" ]] || continue
-                rm -f "/boot/${i##*/}-${KERNEL_VERSION}"
-                cp --preserve=timestamps -T "$i" "/boot/${i##*/}-${KERNEL_VERSION}"
+                cp --remove-destination --preserve=timestamps -T "$i" "/boot/${i##*/}-${KERNEL_VERSION}"
                 command -v restorecon &>/dev/null && \
                     restorecon -R "/boot/${i##*/}-${KERNEL_VERSION}"
             done
             # hmac is .vmlinuz-<version>.hmac so needs a special treatment
             i="$KERNEL_DIR/.${KERNEL_IMAGE##*/}.hmac"
             if [[ -e "$i" ]]; then
-                rm -f "/boot/.${KERNEL_IMAGE##*/}-${KERNEL_VERSION}.hmac"
-                cp --preserve=timestamps "$i" "/boot/.${KERNEL_IMAGE##*/}-${KERNEL_VERSION}.hmac"
+                cp --remove-destination --preserve=timestamps "$i" "/boot/.${KERNEL_IMAGE##*/}-${KERNEL_VERSION}.hmac"
                 command -v restorecon &>/dev/null && \
                     restorecon "/boot/.${KERNEL_IMAGE##*/}-${KERNEL_VERSION}.hmac"
             fi
@@ -84,16 +81,14 @@ case "$COMMAND" in
             # symvers is symvers-<version>.gz symlink, needs a special treatment
             i="$KERNEL_DIR/symvers.gz"
             if [[ -e "$i" ]]; then
-                rm -f "/boot/symvers-${KERNEL_VERSION}.gz"
-                ln -s "$i" "/boot/symvers-${KERNEL_VERSION}.gz"
+                ln -fs "$i" "/boot/symvers-${KERNEL_VERSION}.gz"
                 command -v restorecon &>/dev/null && \
                     restorecon "/boot/symvers-${KERNEL_VERSION}.gz"
             fi
             # symvers is symvers-<version>.bz symlink, needs a special treatment
             i="$KERNEL_DIR/symvers.bz"
             if [[ -e "$i" ]]; then
-                rm -f "/boot/symvers-${KERNEL_VERSION}.bz"
-                ln -s "$i" "/boot/symvers-${KERNEL_VERSION}.bz"
+                ln -fs "$i" "/boot/symvers-${KERNEL_VERSION}.bz"
                 command -v restorecon &>/dev/null && \
                     restorecon "/boot/symvers-${KERNEL_VERSION}.bz"
             fi
