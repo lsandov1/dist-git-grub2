@@ -56,7 +56,7 @@ case "$COMMAND" in
         if [[ "${KERNEL_DIR}" != "/boot" ]]; then
             # rename to match the name used in the pseudo-BLS snippet above
             rm -f "/boot/vmlinuz-${KERNEL_VERSION}"
-            cp -aT "${KERNEL_IMAGE}" "/boot/vmlinuz-${KERNEL_VERSION}"
+            cp --preserve=timestamps -T "${KERNEL_IMAGE}" "/boot/vmlinuz-${KERNEL_VERSION}"
             command -v restorecon &>/dev/null && \
                 restorecon -R "/boot/vmlinuz-${KERNEL_VERSION}"
 
@@ -68,7 +68,7 @@ case "$COMMAND" in
             do
                 [[ -e "$i" ]] || continue
                 rm -f "/boot/${i##*/}-${KERNEL_VERSION}"
-                cp -aT "$i" "/boot/${i##*/}-${KERNEL_VERSION}"
+                cp --preserve=timestamps -T "$i" "/boot/${i##*/}-${KERNEL_VERSION}"
                 command -v restorecon &>/dev/null && \
                     restorecon -R "/boot/${i##*/}-${KERNEL_VERSION}"
             done
@@ -76,7 +76,7 @@ case "$COMMAND" in
             i="$KERNEL_DIR/.${KERNEL_IMAGE##*/}.hmac"
             if [[ -e "$i" ]]; then
                 rm -f "/boot/.${KERNEL_IMAGE##*/}-${KERNEL_VERSION}.hmac"
-                cp -a "$i" "/boot/.${KERNEL_IMAGE##*/}-${KERNEL_VERSION}.hmac"
+                cp --preserve=timestamps "$i" "/boot/.${KERNEL_IMAGE##*/}-${KERNEL_VERSION}.hmac"
                 command -v restorecon &>/dev/null && \
                     restorecon "/boot/.${KERNEL_IMAGE##*/}-${KERNEL_VERSION}.hmac"
             fi
@@ -158,7 +158,7 @@ case "$COMMAND" in
 
             if [ "x$GRUB_LINUX_MAKE_DEBUG" = "xtrue" ]; then
                 BLS_DEBUG="$(echo ${BLS_TARGET} | sed -e "s/${KERNEL_VERSION}/${KERNEL_VERSION}~debug/")"
-                cp -aT  "${BLS_TARGET}" "${BLS_DEBUG}"
+                cp --preserve=timestamps -T  "${BLS_TARGET}" "${BLS_DEBUG}"
                 TITLE="$(grep '^title[ \t]' "${BLS_DEBUG}" | sed -e 's/^title[ \t]*//')"
                 OPTIONS="$(echo "${BOOT_OPTIONS[*]} ${GRUB_CMDLINE_LINUX_DEBUG}" | sed -e 's/\//\\\//g')"
                 sed -i -e "s/^title.*/title ${TITLE}${GRUB_LINUX_DEBUG_TITLE_POSTFIX}/" "${BLS_DEBUG}"
