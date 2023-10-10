@@ -69,7 +69,7 @@ case "$COMMAND" in
                     "$KERNEL_DIR"/dtb
             do
                 [[ -e "$i" ]] || continue
-                cp --remove-destination --preserve=timestamps -T "$i" "/boot/${i##*/}-${KERNEL_VERSION}"
+                cp --remove-destination --preserve=timestamps -rT "$i" "/boot/${i##*/}-${KERNEL_VERSION}"
                 command -v restorecon &>/dev/null && \
                     restorecon -R "/boot/${i##*/}-${KERNEL_VERSION}"
             done
