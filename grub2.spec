@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	151%{?dist}
+Release:	152%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -510,6 +510,11 @@ fi
 %endif
 
 %changelog
+* Fri Oct 20 2023 Nicolas Frayer <nfrayer@redhat.com> - 2.02-152
+- kern/ieee1275/init: ppc64: Restrict high memory in presence
+  of fadump
+- Resolves: #RHEL-14283
+
 * Mon Aug 28 2023 Nicolas Frayer <nfrayer@redhat.com> - 2.02-151
 - util: Regenerate kernelopts if missing on ppc
 - Resolves: #2051889
