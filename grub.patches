@@ -336,3 +336,4 @@ Patch0335: 0335-Add-Install-section-to-aux-systemd-units.patch
 Patch0336: 0336-arm64-Use-proper-memory-type-for-kernel-allocation.patch
 Patch0337: 0337-Fix-missing-include-in-ofdisk.c.patch
 Patch0338: 0338-kern-ieee1275-init-ppc64-Restrict-high-memory-in-pre.patch
+Patch0339: 0339-grub-install-on-EFI-if-forced.patch
