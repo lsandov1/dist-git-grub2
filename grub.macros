@@ -15,7 +15,7 @@
 %endif
 
 # gnulib actively ignores CFLAGS because it's terrible
-%global cc_equals "CC=%{ccpath} -fPIE -Wl,-z,noexecstack"
+%global cc_equals "CC=%{ccpath} -fPIE -Wl,-z,noexecstack -Wl,--no-warn-rwx-segments"
 
 %global cflags_sed						\\\
 	sed							\\\
@@ -68,7 +68,7 @@
 	)}
 %global efi_host_ldflags %{expand:%%(echo %{host_ldflags})}
 
-%global target_ldflags %{expand:%%(echo %{build_ldflags} -static | %{ldflags_sed})}
+%global target_ldflags %{expand:%%(echo %{build_ldflags} -Wl,--no-warn-rwx-segments -static | %{ldflags_sed})}
 %global legacy_target_ldflags					\\\
 	%{expand:%%(echo %{target_ldflags} | 			\\\
 	%{ldflags_sed}						\\\
