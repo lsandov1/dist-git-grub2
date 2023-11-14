@@ -17,7 +17,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	107%{?dist}
+Release:	108%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -555,6 +555,10 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Tue Nov 14 2023 Nicolas Frayer <nfrayer@redhat.com> - 2.06-108
+- Remove [Install] section from aux systemd units
+- Related: #2247635
+
 * Tue Nov 14 2023 Hans de Goede <hdegoede@redhat.com> - 2.06-107
 - spec: Switch back to static enablement for grub services in tools package
 - spec: Add %%triggerpostun to apply grub-boot-success.timer preset
