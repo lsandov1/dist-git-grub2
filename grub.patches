@@ -578,3 +578,4 @@ Patch0577: 0577-ieee1275-Converting-plain-numbers-to-constants-in-Ve.patch
 Patch0578: 0578-ieee1275-extended-support-in-options-vector5.patch
 Patch0579: 0579-Regenerate-kernelopts-if-missing-on-ppc.patch
 Patch0580: 0580-kern-ieee1275-init-ppc64-Restrict-high-memory-in-pre.patch
+Patch0581: 0581-util-Enable-default-kernel-for-updates.patch
