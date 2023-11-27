@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	153%{?dist}
+Release:	154%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -510,6 +510,10 @@ fi
 %endif
 
 %changelog
+* Mon Nov 27 2023 Nicolas Frayer <nfrayer@redhat.com> - 2.02-154
+- Missing install script for previous commit
+- Related: #RHEL-4343
+
 * Fri Nov 24 2023 Nicolas Frayer <nfrayer@redhat.com> - 2.02-153
 - util: Enable default kernel for updates
 - Resolves: #RHEL-4343
