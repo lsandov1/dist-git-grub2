@@ -19,7 +19,7 @@ Epoch:		1
 Version:	2.06
 Release:	110%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
-License:	GPLv3+
+License:	GPL-3.0-or-later
 URL:		http://www.gnu.org/software/grub/
 Obsoletes:	grub < 1:0.98
 Source0:	https://ftp.gnu.org/gnu/grub/grub-%{tarversion}.tar.xz
