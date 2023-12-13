@@ -344,3 +344,4 @@ Patch0343: 0343-fs-xfs-Fix-issues-found-while-fuzzing-the-XFS-filesy.patch
 Patch0344: 0344-fs-xfs-Incorrect-short-form-directory-data-boundary-.patch
 Patch0345: 0345-fs-xfs-Fix-XFS-directory-extent-parsing.patch
 Patch0346: 0346-fs-xfs-Add-large-extent-counters-incompat-feature-su.patch
+Patch0347: 0347-chainloader-remove-device-path-debug-message.patch
