@@ -328,3 +328,4 @@ Patch0327: 0327-grub-mkconfig-dont-overwrite-BLS-cmdline-if-BLSCFG.patch
 Patch0328: 0328-grub2-mkconfig-Pass-all-boot-params-when-used-by-ana.patch
 Patch0329: 0329-kern-ieee1275-init-ppc64-Restrict-high-memory-in-pre.patch
 Patch0330: 0330-normal-Remove-grub_env_set-prefix-in-grub_try_normal.patch
+Patch0331: 0331-search-command-add-flag-to-only-search-root-dev.patch

@@ -16,7 +16,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	72%{?dist}
+Release:	73%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -349,7 +349,7 @@ BOOT_UUID=$(%{name}-probe --target=fs_uuid ${GRUB_HOME})
 GRUB_DIR=$(%{name}-mkrelpath ${GRUB_HOME})
 
 cat << EOF > ${EFI_HOME}/grub.cfg.stb
-search --no-floppy --fs-uuid --set=dev ${BOOT_UUID}
+search --no-floppy --root-dev-only --fs-uuid --set=dev ${BOOT_UUID}
 set prefix=(\$dev)${GRUB_DIR}
 export \$prefix
 configfile \$prefix/grub.cfg
@@ -533,6 +533,11 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Thu Jan 4 2024 Nicolas Frayer <nfrayer@redhat.com> - 2.06-73
+- search command: add flag to only search root dev
+- Resolves: #RHEL-20526
+- Resolves: #CVE-2023-4001
+
 * Thu Jan 4 2024 Nicolas Frayer <nfrayer@redhat.com> - 2.06-72
 - normal: Remove grub_env_set prefix in grub_try_normal_prefix
 - Resolves: #RHEL-1601
