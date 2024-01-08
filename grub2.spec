@@ -17,7 +17,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	114%{?dist}
+Release:	115%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPL-3.0-or-later
 URL:		http://www.gnu.org/software/grub/
@@ -554,6 +554,10 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Wed Jan 17 2024 Nicolas Frayer <nfrayer@redhat.com> - 2.06-115
+- xfs: some bios systems can't boot with one of the xfs upstream patches
+- Resolves: #2254370
+
 * Sat Jan 13 2024 Hector Martin <marcan@fedoraproject.org> - 2.06-114
 - Switch memdisk compression to lzop
 
