@@ -17,7 +17,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	116%{?dist}
+Release:	117%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPL-3.0-or-later
 URL:		http://www.gnu.org/software/grub/
@@ -554,6 +554,10 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Wed Jan 17 2024 Nicolas Frayer <nfrayer@redhat.com> - 2.06-117
+- Compiler flags: ignore incompatible types for now as it prevents
+CI builds
+
 * Wed Jan 17 2024 Nicolas Frayer <nfrayer@redhat.com> - 2.06-116
 - grub-core/commands: add flag to only search root dev
 - Resolves: #2223437

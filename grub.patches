@@ -346,3 +346,4 @@ Patch0345: 0345-fs-xfs-Add-large-extent-counters-incompat-feature-su.patch
 Patch0346: 0346-chainloader-remove-device-path-debug-message.patch
 Patch0347: 0347-normal-Remove-grub_env_set-prefix-in-grub_try_normal.patch
 Patch0348: 0348-add-flag-to-only-search-root-dev.patch
+Patch0349: 0349-Ignore-warnings-for-incompatible-types.patch
