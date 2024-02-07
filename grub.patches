@@ -348,3 +348,6 @@ Patch0347: 0347-normal-Remove-grub_env_set-prefix-in-grub_try_normal.patch
 Patch0348: 0348-add-flag-to-only-search-root-dev.patch
 Patch0349: 0349-Ignore-warnings-for-incompatible-types.patch
 Patch0350: 0350-fs-xfs-Fix-XFS-directory-extent-parsing.patch
+Patch0351: 0351-grub-set-bootflag-Conservative-partial-fix-for-CVE-2.patch
+Patch0352: 0352-grub-set-bootflag-More-complete-fix-for-CVE-2024-104.patch
+Patch0353: 0353-grub-set-bootflag-Exit-calmly-when-not-running-as-ro.patch
