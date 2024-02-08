@@ -329,3 +329,6 @@ Patch0328: 0328-grub2-mkconfig-Pass-all-boot-params-when-used-by-ana.patch
 Patch0329: 0329-kern-ieee1275-init-ppc64-Restrict-high-memory-in-pre.patch
 Patch0330: 0330-normal-Remove-grub_env_set-prefix-in-grub_try_normal.patch
 Patch0331: 0331-search-command-add-flag-to-only-search-root-dev.patch
+Patch0332: 0332-grub-set-bootflag-Conservative-partial-fix-for-CVE-2.patch
+Patch0333: 0333-grub-set-bootflag-More-complete-fix-for-CVE-2024-104.patch
+Patch0334: 0334-grub-set-bootflag-Exit-calmly-when-not-running-as-ro.patch
