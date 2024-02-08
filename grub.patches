@@ -579,3 +579,6 @@ Patch0578: 0578-ieee1275-extended-support-in-options-vector5.patch
 Patch0579: 0579-Regenerate-kernelopts-if-missing-on-ppc.patch
 Patch0580: 0580-kern-ieee1275-init-ppc64-Restrict-high-memory-in-pre.patch
 Patch0581: 0581-util-Enable-default-kernel-for-updates.patch
+Patch0582: 0582-grub-set-bootflag-Conservative-partial-fix-for-CVE-2.patch
+Patch0583: 0583-grub-set-bootflag-More-complete-fix-for-CVE-2024-104.patch
+Patch0584: 0584-grub-set-bootflag-Exit-calmly-when-not-running-as-ro.patch
