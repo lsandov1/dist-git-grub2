@@ -332,3 +332,9 @@ Patch0331: 0331-search-command-add-flag-to-only-search-root-dev.patch
 Patch0332: 0332-grub-set-bootflag-Conservative-partial-fix-for-CVE-2.patch
 Patch0333: 0333-grub-set-bootflag-More-complete-fix-for-CVE-2024-104.patch
 Patch0334: 0334-grub-set-bootflag-Exit-calmly-when-not-running-as-ro.patch
+Patch0335: 0335-fs-ntfs-Fix-an-OOB-write-when-parsing-the-ATTRIBUTE_.patch
+Patch0336: 0336-fs-ntfs-Fix-an-OOB-read-when-reading-data-from-the-r.patch
+Patch0337: 0337-fs-ntfs-Fix-an-OOB-read-when-parsing-directory-entri.patch
+Patch0338: 0338-fs-ntfs-Fix-an-OOB-read-when-parsing-bitmaps-for-ind.patch
+Patch0339: 0339-fs-ntfs-Fix-an-OOB-read-when-parsing-a-volume-label.patch
+Patch0340: 0340-fs-ntfs-Make-code-more-readable.patch

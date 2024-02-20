@@ -16,7 +16,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	75%{?dist}
+Release:	76%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -533,6 +533,11 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Tue Feb 20 2024 Nicolas Frayer <nfrayer@redhat.com> - 2.06-76
+- fs/ntfs: OOB write fix
+- (CVE-2023-4692)
+- Resolves: #RHEL-11567
+
 * Wed Feb 7 2024 Nicolas Frayer <nfrayer@redhat.com> - 2.06-75
 - grub-set-bootflag: Fix for CVE-2024-1048
 - (CVE-2024-1048)
