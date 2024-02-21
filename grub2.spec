@@ -38,6 +38,25 @@ Source12:	sbat.csv.in
 
 %include %{SOURCE1}
 
+%ifarch x86_64 aarch64 ppc64le
+%define sb_ca		%{_datadir}/pki/sb-certs/secureboot-ca-%{_arch}.cer
+%define sb_cer		%{_datadir}/pki/sb-certs/secureboot-grub2-%{_arch}.cer
+%endif
+
+%if 0%{?centos}
+
+%ifarch x86_64 aarch64 ppc64le
+%define sb_key		centossecureboot202
+%endif
+%else
+%ifarch x86_64 aarch64
+%define sb_key		redhatsecureboot502
+%endif
+%ifarch ppc64le
+%define sb_key		redhatsecureboot702
+%endif
+
+%endif
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	binutils
@@ -68,7 +87,7 @@ BuildRequires:	systemd-rpm-macros
 %ifarch %{efi_arch}
 BuildRequires:	pesign >= 0.99-8
 %endif
-
+BuildRequires:	system-sb-certs
 %if %{?_with_ccache: 1}%{?!_with_ccache: 0}
 BuildRequires:	ccache
 %endif
