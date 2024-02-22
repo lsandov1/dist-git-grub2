@@ -16,7 +16,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	76%{?dist}
+Release:	77%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -533,6 +533,10 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Thu Feb 22 2024 Nicolas Frayer <nfrayer@redhat.com> - 2.06-77
+- kern/dl: grub_dl_set_mem_attrs()/grub_dl_load_segments() fixes
+- Resolves: #RHEL-26322
+
 * Tue Feb 20 2024 Nicolas Frayer <nfrayer@redhat.com> - 2.06-76
 - fs/ntfs: OOB write fix
 - (CVE-2023-4692)

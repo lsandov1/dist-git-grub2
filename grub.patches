@@ -338,3 +338,6 @@ Patch0337: 0337-fs-ntfs-Fix-an-OOB-read-when-parsing-directory-entri.patch
 Patch0338: 0338-fs-ntfs-Fix-an-OOB-read-when-parsing-bitmaps-for-ind.patch
 Patch0339: 0339-fs-ntfs-Fix-an-OOB-read-when-parsing-a-volume-label.patch
 Patch0340: 0340-fs-ntfs-Make-code-more-readable.patch
+Patch0341: 0341-grub_dl_set_mem_attrs-fix-format-string.patch
+Patch0342: 0342-grub_dl_set_mem_attrs-add-self-check-for-the-tramp-G.patch
+Patch0343: 0343-grub_dl_load_segments-page-align-the-tramp-GOT-areas.patch
