@@ -1,0 +1,3 @@
+all:
+	fedpkg --release f40 srpm
+	mock -r fedora-40-x86_64 --no-clean --rebuild grub2-2.12-3.fc40.src.rpm

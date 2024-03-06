@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 set -u
+set -x
 shopt -qu globstar
 shopt -qs expand_aliases
 export LC_COLLATE=C
@@ -155,7 +156,7 @@ fi
 unset LC_ALL
 git rm -q 0*.patch
 
-fedpkg sources
+fedpkg --release f40 sources
 
 > grub.patches
 patches=$(formatpatch refs/remotes/rhboot/master..refs/remotes/rhboot/${releasever})
@@ -168,7 +169,7 @@ fi
 git add 0*.patch grub2.spec grub.patches
 if [[ ${commit} -eq 1 ]] ; then
   if [ -z "$amend" ]; then
-    fedpkg commit -s -c
+    fedpkg --release f40 commit -s -c
   else
     git commit --amend
   fi
