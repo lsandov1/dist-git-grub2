@@ -1,0 +1,24 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Peter Jones <pjones@redhat.com>
+Date: Mon, 8 Jan 2024 15:36:43 -0500
+Subject: [PATCH] Revert "nx: set the nx compatible flag in EFI grub images"
+
+This reverts commit 4ce56720d8e8c665c0c21d8116b7c4ad1ce6e9ee because it
+breaks building until a9d405613774 ("nx: set attrs in our kernel
+loaders") exists in this tree.
+---
+ util/mkimage.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/util/mkimage.c b/util/mkimage.c
+index 425d920ff92..e2bb4d4cd05 100644
+--- a/util/mkimage.c
++++ b/util/mkimage.c
+@@ -1438,7 +1438,6 @@ grub_install_generate_image (const char *dir, const char *prefix,
+ #pragma GCC diagnostic push
+ #pragma GCC diagnostic ignored "-Wdangling-pointer"
+ #endif
+-	PE_OHDR (o32, o64, dll_characteristics) = grub_host_to_target16 (GRUB_PE32_NX_COMPAT);
+ 	PE_OHDR (o32, o64, header_size) = grub_host_to_target32 (header_size);
+ 	PE_OHDR (o32, o64, entry_addr) = grub_host_to_target32 (layout.start_address);
+ 	PE_OHDR (o32, o64, image_base) = 0;

@@ -6,7 +6,7 @@
 %undefine _hardened_build
 %undefine _package_note_file
 
-%global tarversion 2.06
+%global tarversion 2.12
 %undefine _missing_build_ids_terminate_build
 %global _configure_gnuconfig_hack 0
 
@@ -16,8 +16,8 @@
 
 Name:		grub2
 Epoch:		1
-Version:	2.06
-Release:	119%{?dist}
+Version:	2.12
+Release:	1%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPL-3.0-or-later
 URL:		http://www.gnu.org/software/grub/
@@ -183,7 +183,6 @@ This subpackage provides the GRUB user-space emulation modules.
 %do_common_setup
 %if 0%{with_efi_arch}
 mkdir grub-%{grubefiarch}-%{tarversion}
-grep -A100000 '# stuff "make" creates' .gitignore > grub-%{grubefiarch}-%{tarversion}/.gitignore
 cp %{SOURCE4} grub-%{grubefiarch}-%{tarversion}/unifont.pcf.gz
 sed -e "s,@@VERSION@@,%{version},g" -e "s,@@VERSION_RELEASE@@,%{version}-%{release},g" \
     %{SOURCE12} > grub-%{grubefiarch}-%{tarversion}/sbat.csv
@@ -191,19 +190,16 @@ git add grub-%{grubefiarch}-%{tarversion}
 %endif
 %if 0%{with_alt_efi_arch}
 mkdir grub-%{grubaltefiarch}-%{tarversion}
-grep -A100000 '# stuff "make" creates' .gitignore > grub-%{grubaltefiarch}-%{tarversion}/.gitignore
 cp %{SOURCE4} grub-%{grubaltefiarch}-%{tarversion}/unifont.pcf.gz
 git add grub-%{grubaltefiarch}-%{tarversion}
 %endif
 %if 0%{with_legacy_arch}
 mkdir grub-%{grublegacyarch}-%{tarversion}
-grep -A100000 '# stuff "make" creates' .gitignore > grub-%{grublegacyarch}-%{tarversion}/.gitignore
 cp %{SOURCE4} grub-%{grublegacyarch}-%{tarversion}/unifont.pcf.gz
 git add grub-%{grublegacyarch}-%{tarversion}
 %endif
 %if 0%{with_emu_arch}
 mkdir grub-emu-%{tarversion}
-grep -A100000 '# stuff "make" creates' .gitignore > grub-emu-%{tarversion}/.gitignore
 cp %{SOURCE4} grub-emu-%{tarversion}/unifont.pcf.gz
 git add grub-emu-%{tarversion}
 %endif
@@ -554,6 +550,9 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Wed Apr 17 2024 Leo Sandoval <lsandova@redhat.com> - 2.12-1
+- Rebased to upstream 2.12
+
 * Wed Feb 7 2024 Nicolas Frayer <nfrayer@redhat.com> - 2.06-119
 - grub-set-bootflag: Fix for CVE-2024-1048
 - (CVE-2024-1048)

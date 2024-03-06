@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 set -u
+
 shopt -qu globstar
 shopt -qs expand_aliases
 export LC_COLLATE=C
