@@ -413,7 +413,7 @@ rm -f %{1}.conf							\
 			search_label serial sleep		\\\
 			squash4					\\\
 			syslinuxcfg				\\\
-			test tftp version video xfs zstd "	\
+			test tftp video xfs zstd "	\
 
 %ifarch %{efi_arch}
 %define efi_mkimage()						\
