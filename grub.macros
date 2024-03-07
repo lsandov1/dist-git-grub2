@@ -123,7 +123,7 @@
 %{?with_efi_only:%global without_efi_only 1}
 
 %ifarch %{efi_arch}
-%global efi_modules " efi_netfs efifwsetup efinet lsefi lsefimmap connectefi "
+%global efi_modules " efifwsetup efinet lsefi lsefimmap connectefi "
 %endif
 
 %ifarch x86_64 %{ix86}
