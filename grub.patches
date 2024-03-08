@@ -351,3 +351,9 @@ Patch0350: 0350-fs-xfs-Fix-XFS-directory-extent-parsing.patch
 Patch0351: 0351-grub-set-bootflag-Conservative-partial-fix-for-CVE-2.patch
 Patch0352: 0352-grub-set-bootflag-More-complete-fix-for-CVE-2024-104.patch
 Patch0353: 0353-grub-set-bootflag-Exit-calmly-when-not-running-as-ro.patch
+Patch0354: 0354-fs-ntfs-Fix-an-OOB-write-when-parsing-the-ATTRIBUTE_.patch
+Patch0355: 0355-fs-ntfs-Fix-an-OOB-read-when-reading-data-from-the-r.patch
+Patch0356: 0356-fs-ntfs-Fix-an-OOB-read-when-parsing-directory-entri.patch
+Patch0357: 0357-fs-ntfs-Fix-an-OOB-read-when-parsing-bitmaps-for-ind.patch
+Patch0358: 0358-fs-ntfs-Fix-an-OOB-read-when-parsing-a-volume-label.patch
+Patch0359: 0359-fs-ntfs-Make-code-more-readable.patch
