@@ -1,0 +1,37 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Leo Sandoval <lsandova@redhat.com>
+Date: Wed, 13 Mar 2024 15:11:15 -0600
+Subject: [PATCH] make: use the _CPU variety of build flags for PROGRAM and
+ LIBRARY
+
+Signed-off-by: Peter Jones <pjones@redhat.com>
+---
+ conf/Makefile.common | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/conf/Makefile.common b/conf/Makefile.common
+index c60f5538653..761f11ed449 100644
+--- a/conf/Makefile.common
++++ b/conf/Makefile.common
+@@ -60,14 +60,14 @@ LDFLAGS_IMAGE = $(LDFLAGS_PLATFORM) -nostdlib $(TARGET_LDFLAGS_OLDMAGIC) -Wl,-S
+ CPPFLAGS_IMAGE = $(CPPFLAGS_CPU) $(CPPFLAGS_PLATFORM)
+ CCASFLAGS_IMAGE = $(CCASFLAGS_CPU) $(CCASFLAGS_PLATFORM)
+ 
+-CFLAGS_PROGRAM =
+-LDFLAGS_PROGRAM =
+-CPPFLAGS_PROGRAM =
+-CCASFLAGS_PROGRAM =
++CFLAGS_PROGRAM = $(CFLAGS_CPU)
++LDFLAGS_PROGRAM = $(LDFLAGS_CPU)
++CPPFLAGS_PROGRAM = $(CPPFLAGS_CPU)
++CCASFLAGS_PROGRAM = $(CCASFLAGS_CPU)
+ 
+-CFLAGS_LIBRARY =
+-CPPFLAGS_LIBRARY =
+-CCASFLAGS_LIBRARY =
++CFLAGS_LIBRARY = $(CFLAGS_CPU)
++CPPFLAGS_LIBRARY = $(CPPFLAGS_CPU)
++CCASFLAGS_LIBRARY = $(CCASFLAGS_CPU)
+ 
+ # Other variables
+ 
