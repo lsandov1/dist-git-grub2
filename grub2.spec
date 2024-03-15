@@ -439,7 +439,6 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %{_unitdir}/grub-boot-indeterminate.service
 %{_unitdir}/system-update.target.wants
 %{_unitdir}/reboot.target.wants
-%{_unitdir}/systemd-logind.service.d
 %{_infodir}/grub2*
 %{_datarootdir}/grub/*
 %{_sbindir}/grub2-install
