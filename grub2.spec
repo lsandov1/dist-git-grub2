@@ -451,7 +451,6 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %{_bindir}/grub2-mkimage
 %{_bindir}/grub2-mkrelpath
 %{_bindir}/grub2-script-check
-%{_libexecdir}/grub2
 %{_datadir}/man/man?/*
 
 # exclude man pages from tools-extra
