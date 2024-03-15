@@ -442,7 +442,6 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %{_infodir}/grub2*
 %{_datarootdir}/grub/*
 %{_sbindir}/grub2-install
-%exclude %{_datarootdir}/grub/themes
 %exclude %{_datarootdir}/grub/*.h
 %{_datarootdir}/bash-completion/completions/grub
 %{_sbindir}/grub2-mkconfig
