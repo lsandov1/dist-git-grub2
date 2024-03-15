@@ -277,8 +277,6 @@ install -d -m 0755 %{buildroot}%{_unitdir}/system-update.target.wants
 install -d -m 0755 %{buildroot}%{_unitdir}/reboot.target.wants
 ln -s ../grub-boot-indeterminate.service \
 	%{buildroot}%{_unitdir}/system-update.target.wants
-ln -s ../grub2-systemd-integration.service \
-	%{buildroot}%{_unitdir}/reboot.target.wants
 
 # Don't run debuginfo on all the grub modules and whatnot; it just
 # rejects them, complains, and slows down extraction.
@@ -440,7 +438,6 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %{_userunitdir}/grub-boot-success.service
 %{_unitdir}/grub-boot-indeterminate.service
 %{_unitdir}/system-update.target.wants
-%{_unitdir}/grub2-systemd-integration.service
 %{_unitdir}/reboot.target.wants
 %{_unitdir}/systemd-logind.service.d
 %{_infodir}/grub2*
