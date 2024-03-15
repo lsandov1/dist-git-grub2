@@ -445,7 +445,6 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %exclude %{_datarootdir}/grub/*.h
 %{_datarootdir}/bash-completion/completions/grub
 %{_sbindir}/grub2-mkconfig
-%{_sbindir}/grub2-switch-to-blscfg
 %{_sbindir}/grub2-reboot
 %{_bindir}/grub2-file
 %{_bindir}/grub2-menulst2cfg
