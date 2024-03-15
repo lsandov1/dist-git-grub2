@@ -3,3 +3,4 @@ Patch0002: 0002-Revert-mm-Assert-that-we-preserve-header-vs-region-a.patch
 Patch0003: 0003-make-use-the-_CPU-variety-of-build-flags-for-PROGRAM.patch
 Patch0004: 0004-Work-around-extra_deps.lst-issue.patch
 Patch0005: 0005-configure.ac-do-not-preserve-CFLAGS-after-setting-up.patch
+Patch0006: 0006-Add-grub-set-bootflag-utility.patch
