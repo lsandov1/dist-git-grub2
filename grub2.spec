@@ -404,7 +404,6 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %doc docs/font_char_metrics.png
 
 %files tools-minimal
-%{_sbindir}/grub2-get-kernel-settings
 %{_sbindir}/grub2-probe
 %attr(4755, root, root) %{_sbindir}/grub2-set-bootflag
 %{_sbindir}/grub2-set-default
@@ -414,7 +413,6 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %{_bindir}/grub2-mount
 %attr(0644,root,root) %config(noreplace) /etc/dnf/protected.d/grub2-tools-minimal.conf
 
-%{_datadir}/man/man3/grub2-get-kernel-settings*
 %{_datadir}/man/man8/grub2-set-default*
 %{_datadir}/man/man8/grub2-set*password*
 %{_datadir}/man/man1/grub2-editenv*
@@ -466,7 +464,6 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %exclude %{_datadir}/man/man1/grub2-syslinux2cfg*
 
 # exclude man pages from tools-minimal
-%exclude %{_datadir}/man/man3/grub2-get-kernel-settings*
 %exclude %{_datadir}/man/man8/grub2-set-default*
 %exclude %{_datadir}/man/man8/grub2-set*password*
 %exclude %{_datadir}/man/man1/grub2-editenv*

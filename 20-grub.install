@@ -117,7 +117,6 @@ case "$COMMAND" in
                 done
             fi
 
-            eval "$(grub2-get-kernel-settings)" || true
             [[ -d "$BLS_DIR" ]] || mkdir -m 0700 -p "$BLS_DIR"
             BLS_ID="${MACHINE_ID}-${KERNEL_VERSION}"
             BLS_TARGET="${BLS_DIR}/${BLS_ID}.conf"
