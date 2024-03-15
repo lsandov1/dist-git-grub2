@@ -521,7 +521,6 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %exclude %{_datadir}/man/man1/grub2-glue-efi*
 %exclude %{_datadir}/man/man8/grub2-ofpathname*
 %exclude %{_datadir}/man/man8/grub2-sparc64-setup*
-%exclude %{_datarootdir}/grub/themes/starfield
 
 %if 0%{with_efi_arch}
 %{expand:%define_efi_variant_files %%{package_arch} %%{grubefiname} %%{grubeficdname} %%{grubefiarch} %%{target_cpu_name} %%{grub_target_name}}
