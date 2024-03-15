@@ -699,7 +699,6 @@ ln -s ../boot/grub2/grub.cfg					\\\
 %ifarch ppc64le							\
 %exclude %{_libdir}/grub/%{2}/%{grubelfname}			\
 %endif								\
-%exclude %{_libdir}/grub/%{2}/*.module				\
 %exclude %{_libdir}/grub/%{2}/{boot,boot_hybrid,cdboot,diskboot,lzma_decompress,pxeboot}.image \
 %exclude %{_libdir}/grub/%{2}/*.o				\
 %else								\
@@ -732,7 +731,6 @@ ln -s ../boot/grub2/grub.cfg					\\\
 %defattr(-,root,root,-)						\
 %dir %{_libdir}/grub/%{6}/					\
 %{_libdir}/grub/%{6}/*						\
-%exclude %{_libdir}/grub/%{6}/*.module				\
 %endif}								\
 								\
 %{expand:%%files %{1}-cdboot}					\
