@@ -212,3 +212,4 @@ Patch0211: 0211-remove-unused-varible.patch
 Patch0212: 0212-cast-grub_net_bootp_packet-pointer.patch
 Patch0213: 0213-libtasn1-fix-string-overflow-warning.patch
 Patch0214: 0214-Add-support-for-Linux-EFI-stub-loading.patch
+Patch0215: 0215-fix-i386_pc-on-legacycfg-module.patch
