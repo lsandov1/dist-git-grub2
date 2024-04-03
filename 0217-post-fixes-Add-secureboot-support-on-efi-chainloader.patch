@@ -4,11 +4,11 @@ Date: Wed, 3 Apr 2024 11:15:23 -0600
 Subject: [PATCH] post-fixes: Add secureboot support on efi chainloader
 
 ---
- grub-core/loader/efi/chainloader.c | 45 ++++++++++++++++++++++----------------
- 1 file changed, 26 insertions(+), 19 deletions(-)
+ grub-core/loader/efi/chainloader.c | 47 ++++++++++++++++++++++----------------
+ 1 file changed, 27 insertions(+), 20 deletions(-)
 
 diff --git a/grub-core/loader/efi/chainloader.c b/grub-core/loader/efi/chainloader.c
-index 00196114a2d..0b2b6fa0e97 100644
+index 00196114a2d..e4ac39c87b4 100644
 --- a/grub-core/loader/efi/chainloader.c
 +++ b/grub-core/loader/efi/chainloader.c
 @@ -33,6 +33,7 @@
@@ -19,7 +19,7 @@ index 00196114a2d..0b2b6fa0e97 100644
  #include <grub/efi/linux.h>
  #include <grub/efi/memory.h>
  #include <grub/command.h>
-@@ -47,7 +48,12 @@ GRUB_MOD_LICENSE ("GPLv3+");
+@@ -47,19 +48,24 @@ GRUB_MOD_LICENSE ("GPLv3+");
  
  static grub_dl_t my_mod;
  
@@ -32,7 +32,9 @@ index 00196114a2d..0b2b6fa0e97 100644
  static grub_ssize_t cmdline_len;
  static grub_efi_handle_t dev_handle;
  
-@@ -56,10 +62,10 @@ static grub_efi_status_t (*entry_point) (grub_efi_handle_t image_handle, grub_ef
+-static grub_efi_status_t (*entry_point) (grub_efi_handle_t image_handle, grub_efi_system_table_t *system_table);
++static grub_efi_status_t (__grub_efi_api *entry_point) (grub_efi_handle_t image_handle, grub_efi_system_table_t *system_table);
+ 
  static grub_err_t
  grub_chainloader_unload (void *context)
  {
