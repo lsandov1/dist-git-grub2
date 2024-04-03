@@ -213,3 +213,5 @@ Patch0212: 0212-cast-grub_net_bootp_packet-pointer.patch
 Patch0213: 0213-libtasn1-fix-string-overflow-warning.patch
 Patch0214: 0214-Add-support-for-Linux-EFI-stub-loading.patch
 Patch0215: 0215-fix-i386_pc-on-legacycfg-module.patch
+Patch0216: 0216-Add-secureboot-support-on-efi-chainloader.patch
+Patch0217: 0217-post-fixes-Add-secureboot-support-on-efi-chainloader.patch
