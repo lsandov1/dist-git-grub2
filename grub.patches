@@ -218,3 +218,4 @@ Patch0217: 0217-post-fixes-Add-secureboot-support-on-efi-chainloader.patch
 Patch0218: 0218-Make-any-of-the-loaders-that-link-in-efi-mode-honor-.patch
 Patch0219: 0219-Minimize-the-sort-ordering-for-.debug-and-rescue-ker.patch
 Patch0220: 0220-Add-grub_qdprintf-grub_dprintf-without-the-file-line.patch
+Patch0221: 0221-Make-a-gdb-dprintf-that-tells-us-load-addresses.patch
