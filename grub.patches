@@ -219,3 +219,4 @@ Patch0218: 0218-Make-any-of-the-loaders-that-link-in-efi-mode-honor-.patch
 Patch0219: 0219-Minimize-the-sort-ordering-for-.debug-and-rescue-ker.patch
 Patch0220: 0220-Add-grub_qdprintf-grub_dprintf-without-the-file-line.patch
 Patch0221: 0221-Make-a-gdb-dprintf-that-tells-us-load-addresses.patch
+Patch0222: 0222-Try-to-pick-better-locations-for-kernel-and-initrd.patch
