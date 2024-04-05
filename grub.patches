@@ -222,3 +222,6 @@ Patch0221: 0221-Make-a-gdb-dprintf-that-tells-us-load-addresses.patch
 Patch0222: 0222-Handle-multi-arch-64-on-32-boot-in-linuxefi-loader.patch
 Patch0223: 0223-Try-to-pick-better-locations-for-kernel-and-initrd.patch
 Patch0224: 0224-x86-efi-Use-bounce-buffers-for-reading-to-addresses-.patch
+Patch0225: 0225-x86-efi-Re-arrange-grub_cmd_linux-a-little-bit.patch
+Patch0226: 0226-x86-efi-Make-our-own-allocator-for-kernel-stuff.patch
+Patch0227: 0227-post-fix-x86-efi-Make-our-own-allocator-for-kernel-s.patch
