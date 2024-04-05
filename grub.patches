@@ -224,5 +224,9 @@ Patch0223: 0223-Try-to-pick-better-locations-for-kernel-and-initrd.patch
 Patch0224: 0224-x86-efi-Use-bounce-buffers-for-reading-to-addresses-.patch
 Patch0225: 0225-x86-efi-Re-arrange-grub_cmd_linux-a-little-bit.patch
 Patch0226: 0226-x86-efi-Make-our-own-allocator-for-kernel-stuff.patch
-Patch0227: 0227-post-fix-x86-efi-Make-our-own-allocator-for-kernel-s.patch
-Patch0228: 0228-x86-efi-Allow-initrd-params-cmdline-allocations-abov.patch
+Patch0227: 0227-x86-efi-Allow-initrd-params-cmdline-allocations-abov.patch
+Patch0228: 0228-efi-Set-image-base-address-before-jumping-to-the-PE-.patch
+Patch0229: 0229-x86-efi-Reduce-maximum-bounce-buffer-size-to-16-MiB.patch
+Patch0230: 0230-efilinux-Fix-integer-overflows-in-grub_cmd_initrd.patch
+Patch0231: 0231-linuxefi-fail-kernel-validation-without-shim-protoco.patch
+Patch0232: 0232-Allow-chainloading-EFI-apps-from-loop-mounts.patch
