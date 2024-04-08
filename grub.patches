@@ -230,3 +230,8 @@ Patch0229: 0229-x86-efi-Reduce-maximum-bounce-buffer-size-to-16-MiB.patch
 Patch0230: 0230-efilinux-Fix-integer-overflows-in-grub_cmd_initrd.patch
 Patch0231: 0231-linuxefi-fail-kernel-validation-without-shim-protoco.patch
 Patch0232: 0232-Allow-chainloading-EFI-apps-from-loop-mounts.patch
+Patch0233: 0233-grub-core-loader-i386-efi-linux.c-do-not-validate-ke.patch
+Patch0234: 0234-grub-core-loader-efi-chainloader.c-do-not-validate-c.patch
+Patch0235: 0235-grub-core-loader-efi-linux.c-drop-now-unused-grub_li.patch
+Patch0236: 0236-loader-efi-chainloader-grub_load_and_start_image-doe.patch
+Patch0237: 0237-loader-efi-chainloader-simplify-the-loader-state.patch
