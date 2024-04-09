@@ -235,3 +235,4 @@ Patch0234: 0234-grub-core-loader-efi-chainloader.c-do-not-validate-c.patch
 Patch0235: 0235-grub-core-loader-efi-linux.c-drop-now-unused-grub_li.patch
 Patch0236: 0236-loader-efi-chainloader-grub_load_and_start_image-doe.patch
 Patch0237: 0237-loader-efi-chainloader-simplify-the-loader-state.patch
+Patch0238: 0238-loader-efi-chainloader-Use-grub_loader_set_ex.patch
