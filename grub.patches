@@ -236,3 +236,7 @@ Patch0235: 0235-grub-core-loader-efi-linux.c-drop-now-unused-grub_li.patch
 Patch0236: 0236-loader-efi-chainloader-grub_load_and_start_image-doe.patch
 Patch0237: 0237-loader-efi-chainloader-simplify-the-loader-state.patch
 Patch0238: 0238-loader-efi-chainloader-Use-grub_loader_set_ex.patch
+Patch0239: 0239-loader-i386-efi-linux-Avoid-a-use-after-free-in-the-.patch
+Patch0240: 0240-loader-i386-efi-linux-Use-grub_loader_set_ex.patch
+Patch0241: 0241-loader-i386-efi-linux-Fix-a-memory-leak-in-the-initr.patch
+Patch0242: 0242-EFI-allocate-kernel-in-EFI_RUNTIME_SERVICES_CODE-ins.patch
