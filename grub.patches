@@ -246,3 +246,8 @@ Patch0245: 0245-efi-allocate-the-initrd-within-the-bounds-expressed-.patch
 Patch0246: 0246-efi-use-EFI_LOADER_-CODE-DATA-for-kernel-and-initrd-.patch
 Patch0247: 0247-x86-efi-Fix-an-incorrect-array-size-in-kernel-alloca.patch
 Patch0248: 0248-grub-install-on-EFI-if-forced.patch
+Patch0249: 0249-Remove-Install-section-from-aux-systemd-units.patch
+Patch0250: 0250-chainloader-remove-device-path-debug-message.patch
+Patch0251: 0251-grub-set-bootflag-Conservative-partial-fix-for-CVE-2.patch
+Patch0252: 0252-grub-set-bootflag-More-complete-fix-for-CVE-2024-104.patch
+Patch0253: 0253-grub-set-bootflag-Exit-calmly-when-not-running-as-ro.patch
