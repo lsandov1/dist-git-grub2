@@ -34,7 +34,7 @@ index e4ac39c87b4..0ec682e2988 100644
  fail:
  
 diff --git a/grub-core/loader/efi/linux.c b/grub-core/loader/efi/linux.c
-index aeb935121ba..1dbb5745c1b 100644
+index 32766bf7b19..ecb6d593cef 100644
 --- a/grub-core/loader/efi/linux.c
 +++ b/grub-core/loader/efi/linux.c
 @@ -98,6 +98,7 @@ struct grub_efi_shim_lock

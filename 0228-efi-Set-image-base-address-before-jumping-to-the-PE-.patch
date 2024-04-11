@@ -29,7 +29,7 @@ Signed-off-by: Javier Martinez Canillas <javierm@redhat.com>
  1 file changed, 14 insertions(+)
 
 diff --git a/grub-core/loader/efi/linux.c b/grub-core/loader/efi/linux.c
-index 742e8e9af35..aeb935121ba 100644
+index 742e8e9af35..32766bf7b19 100644
 --- a/grub-core/loader/efi/linux.c
 +++ b/grub-core/loader/efi/linux.c
 @@ -139,6 +139,7 @@ grub_err_t
@@ -51,12 +51,12 @@ index 742e8e9af35..aeb935121ba 100644
 +   */
 +  loaded_image = grub_efi_get_loaded_image (grub_efi_image_handle);
 +  if (loaded_image)
-+    loaded_image->image_base = kernel_addr;
++    loaded_image->image_base = kernel_address;
 +  else
 +    grub_dprintf ("linux", "Loaded Image base address could not be set\n");
 +
-+  grub_dprintf ("linux", "kernel_addr: %p handover_offset: %p params: %p\n",
-+		kernel_addr, (void *)(grub_efi_uintn_t)handover_offset, kernel_params);
++  grub_dprintf ("linux", "kernel_address: %p handover_offset: %p params: %p\n",
++		kernel_address, (void *)(grub_efi_uintn_t)handover_offset, kernel_params);
    hf = (handover_func)((char *)kernel_address + handover_offset + offset);
    hf (grub_efi_image_handle, grub_efi_system_table, kernel_params);
  

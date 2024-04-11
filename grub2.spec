@@ -17,7 +17,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.12
-Release:	18%{?dist}
+Release:	19%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPL-3.0-or-later
 URL:		http://www.gnu.org/software/grub/
@@ -554,6 +554,9 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Thu Apr 11 2024 Leo Sandoval <lsandova@redhat.com>
+- Rebased to newer upstream for f40-rebase-v4
+
 * Wed Apr 10 2024 Leo Sandoval <lsandova@redhat.com>
 - Rebased to newer upstream for f40-rebase-v4
 

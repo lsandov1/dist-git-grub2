@@ -18,7 +18,7 @@ Signed-off-by: Dimitri John Ledkov <dimitri.ledkov@canonical.com>
  2 files changed, 44 deletions(-)
 
 diff --git a/grub-core/loader/efi/linux.c b/grub-core/loader/efi/linux.c
-index 1dbb5745c1b..b197672b407 100644
+index ecb6d593cef..f5ab0128991 100644
 --- a/grub-core/loader/efi/linux.c
 +++ b/grub-core/loader/efi/linux.c
 @@ -89,48 +89,6 @@ static grub_efi_load_file2_t initrd_lf2 = {
