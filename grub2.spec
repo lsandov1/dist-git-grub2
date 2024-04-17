@@ -287,8 +287,9 @@ ln -s ../grub2-systemd-integration.service \
 %global dip RPM_BUILD_ROOT=%{finddebugroot} %{__debug_install_post}
 %define __debug_install_post (						\
 	mkdir -p %{finddebugroot}/usr					\
-	mv ${RPM_BUILD_ROOT}/usr/bin %{finddebugroot}/usr/bin		\
-	mv ${RPM_BUILD_ROOT}/usr/sbin %{finddebugroot}/usr/sbin		\
+	mv %{buildroot}/usr/bin %{finddebugroot}/usr/bin		\
+	[ "%{_sbindir}" != "%{_bindir}" ] &&				\\\
+		mv %{buildroot}/usr/sbin %{finddebugroot}/usr/sbin	\
 	%{dip}								\
 	install -m 0755 -d %{buildroot}/usr/lib/ %{buildroot}/usr/src/	\
 	cp -al %{finddebugroot}/usr/lib/debug/				\\\
@@ -296,7 +297,8 @@ ln -s ../grub2-systemd-integration.service \
 	cp -al %{finddebugroot}/usr/src/debug/				\\\
 		%{buildroot}/usr/src/debug/ )				\
 	mv %{finddebugroot}/usr/bin %{buildroot}/usr/bin		\
-	mv %{finddebugroot}/usr/sbin %{buildroot}/usr/sbin		\
+	[ "%{_sbindir}" != "%{_bindir}" ] &&				\\\
+		mv %{finddebugroot}/usr/sbin %{buildroot}/usr/sbin	\
 	%{nil}
 
 %undefine buildsubdir
@@ -482,7 +484,6 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %exclude %{_datadir}/man/man1/grub2-render-label*
 
 %if %{with_legacy_arch}
-%{_sbindir}/grub2-install
 %ifarch x86_64
 %{_sbindir}/grub2-bios-setup
 %else
