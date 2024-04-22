@@ -6,7 +6,7 @@
 %undefine _hardened_build
 %undefine _package_note_file
 
-%global tarversion 2.06
+%global tarversion 2.12
 %undefine _missing_build_ids_terminate_build
 %global _configure_gnuconfig_hack 0
 
@@ -16,8 +16,8 @@
 
 Name:		grub2
 Epoch:		1
-Version:	2.06
-Release:	121%{?dist}
+Version:	2.12
+Release:	1%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPL-3.0-or-later
 URL:		http://www.gnu.org/software/grub/
@@ -555,6 +555,9 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Mon Apr 22 2024 Leo Sandoval <lsandova@redhat.com>
+- Rebased to newer upstream for fedora-41
+
 * Fri Apr 12 2024 Nicolas Frayer <nfrayer@redhat.com> - 2.06-121
 - fs/xfs: Handle non-continuous data blocks in directory extents
 - Related: #2254370

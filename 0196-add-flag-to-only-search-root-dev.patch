@@ -1,0 +1,84 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Marta Lewandowska <mlewando@redhat.com>
+Date: Mon, 9 Oct 2023 08:53:18 +0200
+Subject: [PATCH] add flag to only search root dev
+
+fixes bz#2223437
+
+Signed-off-by: Marta Lewandowska <mlewando@redhat.com>
+---
+ grub-core/commands/search.c      | 8 ++++++++
+ grub-core/commands/search_wrap.c | 5 +++++
+ include/grub/search.h            | 3 ++-
+ 3 files changed, 15 insertions(+), 1 deletion(-)
+
+diff --git a/grub-core/commands/search.c b/grub-core/commands/search.c
+index 263f1501cdf..1e7c7ebc7d6 100644
+--- a/grub-core/commands/search.c
++++ b/grub-core/commands/search.c
+@@ -59,6 +59,7 @@ static int
+ iterate_device (const char *name, void *data)
+ {
+   struct search_ctx *ctx = data;
++  const char *root_dev;
+   int found = 0;
+ 
+   /* Skip floppy drives when requested.  */
+@@ -86,6 +87,13 @@ iterate_device (const char *name, void *data)
+       grub_device_close (dev);
+     }
+ 
++  /* Skip it if it's not the root device when requested. */
++  root_dev = grub_env_get ("root");
++  if (ctx->flags & SEARCH_FLAGS_ROOTDEV_ONLY &&
++      (name[0] != root_dev[0] || name[1] != root_dev[1] ||
++       name[2] != root_dev[2]))
++    return 0;
++
+ #ifdef DO_SEARCH_FS_UUID
+ #define compare_fn grub_strcasecmp
+ #else
+diff --git a/grub-core/commands/search_wrap.c b/grub-core/commands/search_wrap.c
+index 318581f3b1e..4fe6440c65b 100644
+--- a/grub-core/commands/search_wrap.c
++++ b/grub-core/commands/search_wrap.c
+@@ -41,6 +41,7 @@ static const struct grub_arg_option options[] =
+      ARG_TYPE_STRING},
+     {"no-floppy",	'n', 0, N_("Do not probe any floppy drive."), 0, 0},
+     {"efidisk-only",	0, 0, N_("Only probe EFI disks."), 0, 0},
++    {"root-dev-only",  'r', 0, N_("Only probe root device."), 0, 0},
+     {"hint",	        'h', GRUB_ARG_OPTION_REPEATABLE,
+      N_("First try the device HINT. If HINT ends in comma, "
+ 	"also try subpartitions"), N_("HINT"), ARG_TYPE_STRING},
+@@ -75,6 +76,7 @@ enum options
+     SEARCH_SET,
+     SEARCH_NO_FLOPPY,
+     SEARCH_EFIDISK_ONLY,
++    SEARCH_ROOTDEV_ONLY,
+     SEARCH_HINT,
+     SEARCH_HINT_IEEE1275,
+     SEARCH_HINT_BIOS,
+@@ -189,6 +191,9 @@ grub_cmd_search (grub_extcmd_context_t ctxt, int argc, char **args)
+   if (state[SEARCH_EFIDISK_ONLY].set)
+     flags |= SEARCH_FLAGS_EFIDISK_ONLY;
+ 
++  if (state[SEARCH_ROOTDEV_ONLY].set)
++    flags |= SEARCH_FLAGS_ROOTDEV_ONLY;
++
+   if (state[SEARCH_LABEL].set)
+     grub_search_label (id, var, flags, hints, nhints);
+   else if (state[SEARCH_FS_UUID].set)
+diff --git a/include/grub/search.h b/include/grub/search.h
+index ffd2411ca1a..9343c66b134 100644
+--- a/include/grub/search.h
++++ b/include/grub/search.h
+@@ -23,7 +23,8 @@ enum search_flags
+   {
+     SEARCH_FLAGS_NONE		= 0,
+     SEARCH_FLAGS_NO_FLOPPY	= 1,
+-    SEARCH_FLAGS_EFIDISK_ONLY	= 2
++    SEARCH_FLAGS_EFIDISK_ONLY	= 2,
++    SEARCH_FLAGS_ROOTDEV_ONLY	= 4
+   };
+ 
+ void grub_search_fs_file (const char *key, const char *var,
