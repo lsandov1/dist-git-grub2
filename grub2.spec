@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	148%{?dist}.1
+Release:	149%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -510,6 +510,10 @@ fi
 %endif
 
 %changelog
+* Mon May 6 2024 Leo Sandoval <lsandova@redhat.com> - 2.02-149
+- grub-mkconfig.in: turn off executable owner bit
+- Resolves: #RHEL-16478
+
 * Fri Jun 16 2023 Nicolas Frayer <nfrayer@redhat.com> - 2.02-148.el8_8.1
 - Sync with 8.9 (actually 2.02-150)
 - Resolves: #2207972

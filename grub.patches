@@ -576,3 +576,4 @@ Patch0575: 0575-Enable-shared-processor-mode-in-vector-5.patch
 Patch0576: 0576-efi-http-change-uint32_t-to-uintn_t-for-grub_efi_htt.patch
 Patch0577: 0577-ieee1275-Converting-plain-numbers-to-constants-in-Ve.patch
 Patch0578: 0578-ieee1275-extended-support-in-options-vector5.patch
+Patch0579: 0579-grub-mkconfig.in-turn-off-executable-owner-bit.patch
