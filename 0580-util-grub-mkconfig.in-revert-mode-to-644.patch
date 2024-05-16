@@ -1,0 +1,19 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Leo Sandoval <lsandova@redhat.com>
+Date: Thu, 16 May 2024 14:42:08 -0600
+Subject: [PATCH] util/grub-mkconfig.in: revert mode to 644
+
+By mistake, PR [1] changed the permission bits to 755 so revert it to
+644 again.
+
+[1] https://github.com/rhboot/grub2/pull/165
+
+Signed-off-by: Leo Sandoval <lsandova@redhat.com>
+---
+ util/grub-mkconfig.in | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ mode change 100755 => 100644 util/grub-mkconfig.in
+
+diff --git a/util/grub-mkconfig.in b/util/grub-mkconfig.in
+old mode 100755
+new mode 100644
