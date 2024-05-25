@@ -17,7 +17,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	122%{?dist}
+Release:	123%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPL-3.0-or-later
 URL:		http://www.gnu.org/software/grub/
@@ -555,6 +555,10 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Tue May 28 2024 Leo Sandoval <lsandova@redhat.com> - 2.06.123
+- grub-mkconfig.in: turn off executable owner bit
+- Resolves: #2281464
+
 * Thu May 23 2024 Nicolas Frayer <nfrayer@redhat.com> - 2.06-122
 - cmd/search: Rework of CVE-2023-4001 fix
 - Related: #2224951
