@@ -16,7 +16,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	79%{?dist}
+Release:	80%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -338,9 +338,11 @@ fi
 if test ! -f ${EFI_HOME}/grub.cfg; then
     # there's no config in ESP, create one
     grub2-mkconfig -o ${EFI_HOME}/grub.cfg
+    cp -a ${EFI_HOME}/grub.cfg ${EFI_HOME}/grub.cfg.rpmsave
+    cp -a ${EFI_HOME}/grub.cfg ${GRUB_HOME}/
 fi
 
-if grep -q "configfile" ${EFI_HOME}/grub.cfg; then
+if grep -q "configfile" ${EFI_HOME}/grub.cfg && grep -q "root-dev-only" ${EFI_HOME}/grub.cfg; then
     exit 0 # already unified, nothing to do
 fi
 
@@ -360,8 +362,6 @@ if test -f ${EFI_HOME}/grubenv; then
     mv --force ${EFI_HOME}/grubenv ${GRUB_HOME}/grubenv
 fi
 
-cp -a ${EFI_HOME}/grub.cfg ${EFI_HOME}/grub.cfg.rpmsave
-cp -a ${EFI_HOME}/grub.cfg ${GRUB_HOME}/
 mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 
 %files common -f grub.lang
@@ -533,6 +533,10 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Tue May 28 2024 Nicolas Frayer <nfrayer@redhat.com> - 2.06-80
+- Added more code for the previous CVE fix
+- Related: #RHEL-39405
+
 * Tue May 28 2024 Nicolas Frayer <nfrayer@redhat.com> - 2.06-79
 - cmd/search: Rework of CVE-2023-4001 fix
 - Resolves: #RHEL-39405
