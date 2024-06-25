@@ -17,7 +17,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	131%{?dist}
+Release:	132%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPL-3.0-or-later
 URL:		http://www.gnu.org/software/grub/
@@ -377,6 +377,10 @@ if test ! -f ${GRUB_HOME}/grub.cfg; then
     # there's no config in GRUB_HOME, create one
     grub2-mkconfig -o ${GRUB_HOME}/grub.cfg
     cp -a ${EFI_HOME}/grub.cfg ${EFI_HOME}/grub.cfg.rpmsave
+fi
+
+# need to move grub.cfg to correct dir for major version upgrade
+if ! grep -q "configfile" ${EFI_HOME}/grub.cfg; then
     cp -a ${EFI_HOME}/grub.cfg ${GRUB_HOME}/
 else
     # otherwise just check mode is correct, if not, fix it
@@ -582,6 +586,10 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Mon Sep 23 2024 Marta Lewandowska <mlewando@redhat.com> - 2.06-132
+- grub.cfg: Fix an issue when doing a major version upgrade
+- Related: #RHEL-56733
+
 * Mon Sep 23 2024 Nicolas Frayer <nfrayer@redhat.com> - 2.06-131
 - Added more code for the previous CVE fix (CVE-2023-4001)
 - Related: #RHEL-56733
