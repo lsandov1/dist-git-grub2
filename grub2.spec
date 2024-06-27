@@ -16,7 +16,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	81%{?dist}
+Release:	82%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -537,6 +537,10 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Thu Jun 27 2024 Nicolas Frayer <nfrayer@redhat.com> - 2.06-82
+- Bump to assign correct tag
+- Related: #RHEL-40362
+
 * Tue Jun 25 2024 Marta Lewandowska <mlewando@redhat.com> - 2.06-81
 - grub.cfg: Fix an issue when doing a major version upgrade
 - Resolves: #RHEL-40362
