@@ -343,3 +343,4 @@ Patch0342: 0342-grub_dl_set_mem_attrs-add-self-check-for-the-tramp-G.patch
 Patch0343: 0343-grub_dl_load_segments-page-align-the-tramp-GOT-areas.patch
 Patch0344: 0344-grub-install-on-EFI-if-forced.patch
 Patch0345: 0345-cmd-search-Rework-of-CVE-2023-4001-fix.patch
+Patch0346: 0346-grub-mkconfig.in-turn-off-executable-owner-bit.patch
