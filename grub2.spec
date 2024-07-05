@@ -17,7 +17,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	124%{?dist}
+Release:	125%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPL-3.0-or-later
 URL:		http://www.gnu.org/software/grub/
@@ -347,6 +347,8 @@ fi
 
 %posttrans common
 set -eu
+set -x
+export PS4='# ${BASH_SOURCE}:${LINENO}: ${FUNCNAME[0]}() - [${SHLVL},${BASH_SUBSHELL},$?] '
 
 EFI_HOME=%{efi_esp_dir}
 GRUB_HOME=/boot/grub2
@@ -555,6 +557,9 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Tue May 28 2024 Leo Sandoval <lsandova@redhat.com> - 2.06.125
+- dumb changelog
+
 * Tue Jul 2 2024 Nicolas Frayer <nfrayer@redhat.com> - 2.06-124
 - KVM/PowerVM: Add support for KVM on PowerVM
 - Resolved: #2294883
