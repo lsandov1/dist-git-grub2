@@ -6,7 +6,7 @@
 %undefine _hardened_build
 %undefine _package_note_file
 
-%global tarversion 2.06
+%global tarversion 2.12
 %undefine _missing_build_ids_terminate_build
 %global _configure_gnuconfig_hack 0
 
@@ -16,8 +16,8 @@
 
 Name:		grub2
 Epoch:		1
-Version:	2.06
-Release:	127%{?dist}
+Version:	2.12
+Release:	1%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPL-3.0-or-later
 URL:		http://www.gnu.org/software/grub/
@@ -560,6 +560,9 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Mon Aug 5 2024 Leo Sandoval <lsandova@redhat.com> - 2.12-1
+- Rebased to release grub2-2.12
+
 * Fri Aug 2 2024 Leo Sandoval <lsandova@redhat.com> - 2.06-127
 - Set /boot/grub2/grub.cfg to 0600 mode if present
 
