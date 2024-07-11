@@ -16,7 +16,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	83%{?dist}
+Release:	84%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -537,6 +537,10 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Thu Jul 11 2024 Nicolas Frayer <nfrayer@redhat.com> - 2.06-84
+- install/ppc64le: run grub2-mkconfig regardless of petitboot version
+- Resolves: #RHEL-45161
+
 * Mon Jul 1 2024 Leo Sandoval <lsandova@redhat.com> - 2.06-83
 - grub-mkconfig.in: turn off executable owner bit
 - Resolves: RHEL-45870
