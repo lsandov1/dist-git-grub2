@@ -537,7 +537,7 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
-* Tue Jul 16 2024 Nicolas Frayer <nfrayer@redhat.com> - 2.06-85
+* Tue Jul 16 2024 Nicolas Frayer <nfrayer@redhat.com> - 2.06-86
 - chainloader: Remove unexpected "/EndEntire"
 - Resolves: #RHEL-4380
 
