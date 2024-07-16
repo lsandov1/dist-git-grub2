@@ -361,3 +361,4 @@ Patch0360: 0360-fs-xfs-Handle-non-continuous-data-blocks-in-director.patch
 Patch0361: 0361-cmd-search-Rework-of-CVE-2023-4001-fix.patch
 Patch0362: 0362-grub-mkconfig.in-turn-off-executable-owner-bit.patch
 Patch0363: 0363-kern-ieee1275-init-Add-IEEE-1275-Radix-support-for-K.patch
+Patch0364: 0364-grub2-mkconfig-Ensure-grub-cfg-stub-is-not-overwritt.patch

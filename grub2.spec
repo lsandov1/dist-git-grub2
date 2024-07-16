@@ -17,7 +17,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	124%{?dist}
+Release:	125%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPL-3.0-or-later
 URL:		http://www.gnu.org/software/grub/
@@ -555,6 +555,9 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Tue Jul 16 2024 Nicolas Frayer <nfrayer@redhat.com> - 2.06-125
+- grub2-mkconfig: Prevent mkconfig from overwriting grub cfg stub
+
 * Tue Jul 2 2024 Nicolas Frayer <nfrayer@redhat.com> - 2.06-124
 - KVM/PowerVM: Add support for KVM on PowerVM
 - Resolved: #2294883
