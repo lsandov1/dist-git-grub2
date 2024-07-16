@@ -16,7 +16,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	85%{?dist}
+Release:	86%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -537,6 +537,10 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Tue Jul 16 2024 Nicolas Frayer <nfrayer@redhat.com> - 2.06-85
+- chainloader: Remove unexpected "/EndEntire"
+- Resolves: #RHEL-4380
+
 * Tue Jul 16 2024 Nicolas Frayer <nfrayer@redhat.com> - 2.06-85
 - grub2-mkconfig: Prevent mkconfig from overwriting grub cfg stub
 - Resolves: #RHEL-32099

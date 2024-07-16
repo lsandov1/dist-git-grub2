@@ -345,3 +345,4 @@ Patch0344: 0344-grub-install-on-EFI-if-forced.patch
 Patch0345: 0345-cmd-search-Rework-of-CVE-2023-4001-fix.patch
 Patch0346: 0346-grub-mkconfig.in-turn-off-executable-owner-bit.patch
 Patch0347: 0347-grub2-mkconfig-Ensure-grub-cfg-stub-is-not-overwritt.patch
+Patch0348: 0348-chainloader-remove-device-path-debug-message.patch
