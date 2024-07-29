@@ -589,7 +589,8 @@ install -d -m 0700 ${RPM_BUILD_ROOT}%{_sysconfdir}/sysconfig	\
 touch ${RPM_BUILD_ROOT}%{_sysconfdir}/default/grub		\
 ln -sf ../default/grub						\\\
 	${RPM_BUILD_ROOT}%{_sysconfdir}/sysconfig/grub		\
-touch ${RPM_BUILD_ROOT}/boot/%{name}/grub.cfg			\
+touch grub.cfg							\
+install -m 0600 grub.cfg ${RPM_BUILD_ROOT}/boot/%{name}/	\
 %{nil}
 
 %define define_legacy_variant_files()				\
@@ -626,7 +627,7 @@ touch ${RPM_BUILD_ROOT}/boot/%{name}/grub.cfg			\
 %attr(0700,root,root)%{efi_esp_dir}/%{2}			\
 %dir %attr(0700,root,root)%{efi_esp_dir}/fonts			\
 %dir %attr(0700,root,root)/boot/loader/entries			\
-%ghost %config(noreplace) %attr(0600,root,root)%{efi_esp_dir}/grub.cfg	\
+%ghost %config(noreplace) %attr(0700,root,root)%{efi_esp_dir}/grub.cfg	\
 %config(noreplace) %verify(not size mode md5 mtime) /boot/grub2/grubenv	\
 %ghost %config(noreplace) %attr(0700,root,root)%{efi_esp_dir}/grubenv	\
 %{expand:%if 0%{?without_efi_modules}				\
