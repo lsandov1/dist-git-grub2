@@ -16,7 +16,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	84%{?dist}
+Release:	85%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -344,6 +344,7 @@ fi
 # need to move grub.cfg to correct dir for major version upgrade
 if ! grep -q "configfile" ${EFI_HOME}/grub.cfg; then
     cp -a ${EFI_HOME}/grub.cfg ${GRUB_HOME}/
+    chmod 0600 ${GRUB_HOME}/grub.cfg
 fi
 
 if grep -q "configfile" ${EFI_HOME}/grub.cfg && grep -q "root-dev-only" ${EFI_HOME}/grub.cfg; then
@@ -537,6 +538,10 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Mon Jul 29 2024 Leo Sandoval <lsandova@redhat.com> - 2.06-85
+- grub.cfg: Fix rpm grub.cfg verification issues
+- Resolves: #RHEL-45871
+
 * Wed Jul 3 2024 Leo Sandoval <lsandova@redhat.com> - 2.06-84
 - Bump to assign the correct tag
 - Related: RHEL-45871
