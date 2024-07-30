@@ -16,7 +16,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	86%{?dist}
+Release:	87%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPLv3+
 URL:		http://www.gnu.org/software/grub/
@@ -335,15 +335,15 @@ if ! mountpoint -q ${ESP_PATH}; then
     exit 0 # no ESP mounted, nothing to do
 fi
 
-if test ! -f ${EFI_HOME}/grub.cfg; then
-    # there's no config in ESP, create one
-    grub2-mkconfig -o ${EFI_HOME}/grub.cfg
-    cp -a ${EFI_HOME}/grub.cfg ${EFI_HOME}/grub.cfg.rpmsave
+if test ! -f ${GRUB_HOME}/grub.cfg; then
+    # there's no config in GRUB home, create one
+    grub2-mkconfig -o ${GRUB_HOME}/grub.cfg
 fi
 
 # need to move grub.cfg to correct dir for major version upgrade
 if ! grep -q "configfile" ${EFI_HOME}/grub.cfg; then
     cp -a ${EFI_HOME}/grub.cfg ${GRUB_HOME}/
+    chmod 0600 ${GRUB_HOME}/grub.cfg
 fi
 
 if grep -q "configfile" ${EFI_HOME}/grub.cfg && grep -q "root-dev-only" ${EFI_HOME}/grub.cfg; then
@@ -537,6 +537,10 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Mon Jul 30 2024 Leo Sandoval <lsandova@redhat.com> - 2.06.87
+- grub.cfg: Fix rpm grub.cfg verification issues
+- Resolves: #/RHEL-45870
+
 * Tue Jul 16 2024 Nicolas Frayer <nfrayer@redhat.com> - 2.06-86
 - chainloader: Remove unexpected "/EndEntire"
 - Resolves: #RHEL-4380
