@@ -17,7 +17,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	121%{?dist}
+Release:	122%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPL-3.0-or-later
 URL:		http://www.gnu.org/software/grub/
@@ -573,6 +573,10 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Wed Jul 31 2024 Andrew Lukoshko <alukoshko@almalinux.org> - 2.06-122
+- grub2-mkconfig: Simplify os_name detection
+- Resolves: #RHEL-32099
+
 * Tue Jul 16 2024 Nicolas Frayer <nfrayer@redhat.com> - 2.06-121
 - grub2-mkconfig: Prevent mkconfig from overwriting grub cfg stub
 - Resolves: #RHEL-32099

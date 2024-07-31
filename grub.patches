@@ -349,3 +349,4 @@ Patch0348: 0348-add-flag-to-only-search-root-dev.patch
 Patch0349: 0349-Ignore-warnings-for-incompatible-types.patch
 Patch0350: 0350-fs-xfs-Fix-XFS-directory-extent-parsing.patch
 Patch0351: 0351-grub2-mkconfig-Ensure-grub-cfg-stub-is-not-overwritt.patch
+Patch0352: 0352-grub2-mkconfig-Simplify-os_name-detection.patch
