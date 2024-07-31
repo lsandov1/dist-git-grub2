@@ -17,7 +17,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	122%{?dist}
+Release:	123%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPL-3.0-or-later
 URL:		http://www.gnu.org/software/grub/
@@ -230,7 +230,7 @@ git commit -m "After making subdirs"
 
 %build
 %if 0%{with_efi_arch}
-%{expand:%do_primary_efi_build %%{grubefiarch} %%{grubefiname} %%{grubeficdname} %%{_target_platform} %%{efi_target_cflags} %%{efi_host_cflags}}
+%{expand:%do_primary_efi_build %%{grubefiarch} %%{grubefiname} %%{grubeficdname} %%{_target_platform} %%{efi_target_cflags} %%{efi_host_cflags} %{sb_ca} %{sb_cer} %{sb_key}}
 %endif
 %if 0%{with_alt_efi_arch}
 %{expand:%do_alt_efi_build %%{grubaltefiarch} %%{grubaltefiname} %%{grubalteficdname} %%{_alt_target_platform} %%{alt_efi_target_cflags} %%{alt_efi_host_cflags}}
@@ -573,6 +573,11 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Wed Jul 31 2024 Nicolas Frayer <nfrayer@redhat.com> - 2.06-123
+- Use the set of macros provided by system-sb-certs for signing
+- Resolves: #RHEL-51867
+- Resolves: #RHELBLD-15314
+
 * Wed Jul 31 2024 Andrew Lukoshko <alukoshko@almalinux.org> - 2.06-122
 - grub2-mkconfig: Simplify os_name detection
 - Resolves: #RHEL-32099
