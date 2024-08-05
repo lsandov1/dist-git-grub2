@@ -17,7 +17,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	124%{?dist}
+Release:	125%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPL-3.0-or-later
 URL:		http://www.gnu.org/software/grub/
@@ -233,7 +233,7 @@ git commit -m "After making subdirs"
 %{expand:%do_primary_efi_build %%{grubefiarch} %%{grubefiname} %%{grubeficdname} %%{_target_platform} %%{efi_target_cflags} %%{efi_host_cflags} %{sb_ca} %{sb_cer} %{sb_key}}
 %endif
 %if 0%{with_alt_efi_arch}
-%{expand:%do_alt_efi_build %%{grubaltefiarch} %%{grubaltefiname} %%{grubalteficdname} %%{_alt_target_platform} %%{alt_efi_target_cflags} %%{alt_efi_host_cflags}}
+%{expand:%do_alt_efi_build %%{grubaltefiarch} %%{grubaltefiname} %%{grubalteficdname} %%{_alt_target_platform} %%{alt_efi_target_cflags} %%{alt_efi_host_cflags} %{sb_ca} %{sb_cer} %{sb_key}}
 %endif
 %if 0%{with_legacy_arch}
 %{expand:%do_legacy_build %%{grublegacyarch}}
@@ -573,6 +573,10 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Mon Aug 5 2024 Peter Jones <pjones@redhat.com> - 2.06-125
+- spec/macros: Modified spec and macros files for RHEL10 signing
+- Related: #RHEL-51867
+
 * Thu Aug 1 2024 Nicolas Frayer <nfrayer@redhat.com> - 2.06-124
 - grub2-mkconfig: Remove mountpoint check
 - Related: #RHEL-32099
