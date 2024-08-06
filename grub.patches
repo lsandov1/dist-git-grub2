@@ -269,3 +269,5 @@ Patch0268: 0268-Set-non-executable-stack-sections-on-EFI-assembly-fi.patch
 Patch0269: 0269-grub-mkconfig.in-turn-off-executable-owner-bit.patch
 Patch0270: 0270-kern-ieee1275-init-Add-IEEE-1275-Radix-support-for-K.patch
 Patch0271: 0271-grub2-mkconfig-Ensure-grub-cfg-stub-is-not-overwritt.patch
+Patch0272: 0272-grub2-mkconfig-Simplify-os_name-detection.patch
+Patch0273: 0273-grub-mkconfig-Remove-check-for-mount-point-for-grub-.patch
