@@ -17,7 +17,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.12
-Release:	3%{?dist}
+Release:	4%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPL-3.0-or-later
 URL:		http://www.gnu.org/software/grub/
@@ -49,7 +49,7 @@ BuildRequires:	efi-srpm-macros
 BuildRequires:	flex
 BuildRequires:	freetype-devel
 BuildRequires:	freetype-devel
-BuildRequires:	fuse-devel
+BuildRequires:	fuse3-devel
 BuildRequires:	gcc
 BuildRequires:	gettext-devel
 BuildRequires:	git
@@ -560,6 +560,9 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Thu Aug 08 2024 Peter Robinson <pbrobinson@fedoraproject.org> 2.12-4
+- Build using fuse3
+
 * Tue Aug 6 2024 Leo Sandoval <lsandova@redhat.com> - 2.12-3
 - Remove 'efi: Use shim's loader protocol for EFI image verification'
 
