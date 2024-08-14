@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	156%{?dist}
+Release:	157%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -510,6 +510,10 @@ fi
 %endif
 
 %changelog
+* Wed Aug 14 2024 Leo Sandoval <lsandova@redhat.com> - 2.02-157
+- 20-grub-install: fix SELinux security type context for BLS
+- Resolves: #RHEL-4395
+
 * Tue Feb 20 2024 Nicolas Frayer <nfrayer@redhat.com> - 2.02-156
 - fs/ntfs: OOB write fix
 - (CVE-2023-4692)
