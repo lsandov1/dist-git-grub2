@@ -270,3 +270,5 @@ Patch0269: 0269-kern-ieee1275-init-Add-IEEE-1275-Radix-support-for-K.patch
 Patch0270: 0270-grub2-mkconfig-Ensure-grub-cfg-stub-is-not-overwritt.patch
 Patch0271: 0271-grub2-mkconfig-Simplify-os_name-detection.patch
 Patch0272: 0272-grub-mkconfig-Remove-check-for-mount-point-for-grub-.patch
+Patch0273: 0273-efi-api.h-include-missing-__grub_efi_api-macros-on-E.patch
+Patch0274: 0274-grub-core-net-arp.c-fix-variable-name.patch
