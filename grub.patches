@@ -277,3 +277,4 @@ Patch0276: 0276-efi-loader-Check-if-NX-is-required-in-grub_efi_linux.patch
 Patch0277: 0277-Stop-grub.efi-from-always-printing-dynamic_load_symb.patch
 Patch0278: 0278-acpi-Fix-out-of-bounds-access-in-grub_acpi_xsdt_find.patch
 Patch0279: 0279-cmd-search-Fix-a-possible-NULL-ptr-dereference.patch
+Patch0280: 0280-Enable-building-blscfg-module-on-xen-and-xen_pvh.patch

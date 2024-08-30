@@ -17,7 +17,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.12
-Release:	13%{?dist}
+Release:	14%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPL-3.0-or-later
 URL:		http://www.gnu.org/software/grub/
@@ -160,6 +160,12 @@ This subpackage provides tools for support of all platforms.
 %if 0%{with_legacy_arch}
 %{expand:%define_legacy_variant %%{legacy_package_arch}}
 %endif
+%if 0%{with_xen_arch}
+%{expand:%define_xen_variant %%{xen_package_arch} -o}
+%endif
+%if 0%{with_xen_pvh_arch}
+%{expand:%define_xen_pvh_variant %%{xen_pvh_package_arch} -o}
+%endif
 
 %if 0%{with_emu_arch}
 %package emu
@@ -207,6 +213,22 @@ grep -A100000 '# stuff "make" creates' .gitignore > grub-emu-%{tarversion}/.giti
 cp %{SOURCE4} grub-emu-%{tarversion}/unifont.pcf.gz
 git add grub-emu-%{tarversion}
 %endif
+%if 0%{with_xen_arch}
+mkdir grub-%{grubxenarch}-%{tarversion}
+grep -A100000 '# stuff "make" creates' .gitignore > grub-%{grubxenarch}-%{tarversion}/.gitignore
+cp %{SOURCE4} grub-%{grubxenarch}-%{tarversion}/unifont.pcf.gz
+sed -e "s,@@VERSION@@,%{version},g" -e "s,@@VERSION_RELEASE@@,%{version}-%{release},g" \
+    %{SOURCE12} > grub-%{grubxenarch}-%{tarversion}/sbat.csv
+git add grub-%{grubxenarch}-%{tarversion}
+%endif
+%if 0%{with_xen_pvh_arch}
+mkdir grub-%{grubxenpvharch}-%{tarversion}
+grep -A100000 '# stuff "make" creates' .gitignore > grub-%{grubxenpvharch}-%{tarversion}/.gitignore
+cp %{SOURCE4} grub-%{grubxenpvharch}-%{tarversion}/unifont.pcf.gz
+sed -e "s,@@VERSION@@,%{version},g" -e "s,@@VERSION_RELEASE@@,%{version}-%{release},g" \
+    %{SOURCE12} > grub-%{grubxenpvharch}-%{tarversion}/sbat.csv
+git add grub-%{grubxenpvharch}-%{tarversion}
+%endif
 git commit -m "After making subdirs"
 
 %build
@@ -221,6 +243,12 @@ git commit -m "After making subdirs"
 %endif
 %if 0%{with_emu_arch}
 %{expand:%do_emu_build}
+%endif
+%if 0%{with_xen_arch}
+%{expand:%do_xen_build %%{grubxenarch} %%{_target_platform} %%{xen_target_cflags} %%{xen_host_cflags}}
+%endif
+%if 0%{with_xen_pvh_arch}
+%{expand:%do_xen_pvh_build %%{grubxenpvharch} %%{_target_platform} %%{xen_pvh_target_cflags} %%{xen_pvh_host_cflags}}
 %endif
 %ifarch ppc64le
 %{expand:%do_ieee1275_build_images %%{grublegacyarch} %{grubelfname} %{sb_cer} %{sb_key}}
@@ -250,6 +278,12 @@ rm -fr $RPM_BUILD_ROOT
 %endif
 %if 0%{with_emu_arch}
 %{expand:%do_emu_install %%{package_arch}}
+%endif
+%if 0%{with_xen_arch}
+%{expand:%do_xen_install %%{grubxenarch}}
+%endif
+%if 0%{with_xen_pvh_arch}
+%{expand:%do_xen_pvh_install %%{grubxenpvharch}}
 %endif
 rm -f $RPM_BUILD_ROOT%{_infodir}/dir
 ln -s grub2-set-password ${RPM_BUILD_ROOT}/%{_sbindir}/grub2-setpassword
@@ -550,6 +584,12 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %if 0%{with_legacy_arch}
 %{expand:%define_legacy_variant_files %%{legacy_package_arch} %%{grublegacyarch}}
 %endif
+%if 0%{with_xen_arch}
+%{expand:%define_xen_variant_files %%{xen_package_arch} %%{xen_grub_target_name}}
+%endif
+%if 0%{with_xen_pvh_arch}
+%{expand:%define_xen_pvh_variant_files %%{xen_pvh_package_arch} %%{xen_pvh_grub_target_name}}
+%endif
 
 %if 0%{with_emu_arch}
 %files emu
@@ -562,6 +602,9 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Wed Nov 20 2024 Nicolas Frayer <nfrayer@redhat.com> 2.12-14
+- Build modules for Xen PV and PVH
+
 * Fri Nov 15 2024 Nicolas Frayer <nfrayer@redhat.com> 2.12-13
 - posttrans: added check for efi_home/grub.cfg
 - Resolves: #2326502
