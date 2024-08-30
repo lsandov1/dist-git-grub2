@@ -17,7 +17,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	126%{?dist}
+Release:	127%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPL-3.0-or-later
 URL:		http://www.gnu.org/software/grub/
@@ -573,6 +573,10 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Fri Aug 30 2024 Nicolas Frayer <nfrayer@redhat.com> - 2.06-127
+- Sync with rhel9 for critical patches
+- Resolves: #RHEL-56733
+
 * Wed Aug 28 2024 Nicolas Frayer <nfrayer@redhat.com> - 2.06-126
 - grub-mkconfig dont overwrite BLS cmdline if BLSCFG
 - Resolves: #RHEL-53848
