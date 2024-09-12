@@ -15,7 +15,12 @@
 %endif
 
 # gnulib actively ignores CFLAGS because it's terrible
-%global cc_equals "CC=%{ccpath} -fPIE -Wl,-z,noexecstack -Wl,--no-warn-rwx-segments"
+# build aarch64 gnulib with branch protection
+%ifarch aarch64
+%global cc_equals "CC=%{ccpath} -fPIE -Wl,-z,noexecstack -mbranch-protection=standard"
+%else
+%global cc_equals "CC=%{ccpath} -fPIE -Wl,-z,noexecstack"
+%endif
 
 %global cflags_sed						\\\
 	sed							\\\
