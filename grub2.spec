@@ -17,7 +17,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	129%{?dist}
+Release:	130%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPL-3.0-or-later
 URL:		http://www.gnu.org/software/grub/
@@ -582,6 +582,10 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Wed Sep 18 2024 Nicolas Frayer <nfrayer@redhat.com> - 2.06-130
+- aarch64/macros: Re-added flags that disappeared with previous commit
+- Related: #RHEL-58821
+
 * Thu Sep 12 2024 Nicolas Frayer <nfrayer@redhat.com> - 2.06-129
 - aarch64/macros: Build gnulib with -mbranch-protection=standard
 - Resolves: #RHEL-58821
