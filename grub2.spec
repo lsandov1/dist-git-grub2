@@ -17,7 +17,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.06
-Release:	132%{?dist}
+Release:	133%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPL-3.0-or-later
 URL:		http://www.gnu.org/software/grub/
@@ -373,25 +373,22 @@ if ! mountpoint -q ${ESP_PATH}; then
     exit 0 # no ESP mounted, nothing to do
 fi
 
-if test ! -f ${GRUB_HOME}/grub.cfg; then
-    # there's no config in GRUB_HOME, create one
+# if no GRUB_HOME/grub.cfg file exists, create one, otherwise just check mode is correct
+if ! test -f ${GRUB_HOME}/grub.cfg; then
     grub2-mkconfig -o ${GRUB_HOME}/grub.cfg
-    cp -a ${EFI_HOME}/grub.cfg ${EFI_HOME}/grub.cfg.rpmsave
-fi
-
-# need to move grub.cfg to correct dir for major version upgrade
-if ! grep -q "configfile" ${EFI_HOME}/grub.cfg; then
-    cp -a ${EFI_HOME}/grub.cfg ${GRUB_HOME}/
 else
-    # otherwise just check mode is correct, if not, fix it
     GRUB_CFG_MODE=$(stat --format="%a" ${GRUB_HOME}/grub.cfg)
     if ! test "${GRUB_CFG_MODE}" = "600"; then
         chmod 0600 ${GRUB_HOME}/grub.cfg
     fi
 fi
 
-# make sure ${EFI_HOME}/grub.cfg is present before grepping it
 if test -f ${EFI_HOME}/grub.cfg; then
+    # need to move grub.cfg to correct dir for major version upgrade
+    if ! grep -q "configfile" ${EFI_HOME}/grub.cfg; then
+        cp -a ${EFI_HOME}/grub.cfg ${GRUB_HOME}/
+    fi
+
     if grep -q "configfile" ${EFI_HOME}/grub.cfg && grep -q "root-dev-only" ${EFI_HOME}/grub.cfg; then
         exit 0 #Already unified
     fi
@@ -586,6 +583,10 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Mon Sep 23 2024 Leo Sandoval <lsandova@redhat.com> - 2.06-133
+- posttrans: condition EFI_HOME/grub.cfg cmds if stub is present
+- Resolves: #RHEL-59796
+
 * Mon Sep 23 2024 Marta Lewandowska <mlewando@redhat.com> - 2.06-132
 - grub.cfg: Fix an issue when doing a major version upgrade
 - Related: #RHEL-56733
