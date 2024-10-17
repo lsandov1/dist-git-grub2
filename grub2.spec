@@ -17,7 +17,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.12
-Release:	9%{?dist}
+Release:	10%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPL-3.0-or-later
 URL:		http://www.gnu.org/software/grub/
@@ -560,6 +560,10 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Thu Oct 17 2024 Nicolas Frayer <nfrayer@redhat.com> 2.12-10
+- acpi: Fix out of bounds access in grub_acpi_xsdt_find_table()
+- Resolves: #2317048
+
 * Thu Oct 3 2024 Nicolas Frayer <nfrayer@redhat.com> 2.12-9
 - Stop grub.efi from always printing "dynamic_load_symbols %p\n" during boot
 - Resolves: #2316279
