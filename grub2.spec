@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	158%{?dist}
+Release:	159%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -523,6 +523,10 @@ fi
 %endif
 
 %changelog
+* Tue Nov 12 2024 Leo Sandoval <lsandova@redhat.com> - 2.02-159
+- Fix default behavior when GRUB_ENABLE_BLSCFG is not present
+- Resolves: #RHEL-4319
+
 * Thu Sep 19 2024 Leo Sandoval <lsandova@redhat.com> - 2.02-158
 - grub-mkconfig.in: turn off executable owner bit
 - Resolves: #RHEL-58835
