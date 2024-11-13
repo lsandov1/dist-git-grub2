@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	159%{?dist}
+Release:	160%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -523,6 +523,10 @@ fi
 %endif
 
 %changelog
+* Wed Nov 13 2024 Leo Sandoval <lsandova@redhat.com> - 2.02-160
+- Remove BLS fake config in case of kernel removal
+- Resolves: #RHEL-4316
+
 * Tue Nov 12 2024 Leo Sandoval <lsandova@redhat.com> - 2.02-159
 - Fix default behavior when GRUB_ENABLE_BLSCFG is not present
 - Resolves: #RHEL-4319
