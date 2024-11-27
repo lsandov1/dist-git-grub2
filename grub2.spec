@@ -17,7 +17,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.12
-Release:	16%{?dist}
+Release:	17%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPL-3.0-or-later
 URL:		http://www.gnu.org/software/grub/
@@ -602,6 +602,9 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Wed Nov 27 2024 Marta Lewandowska <mlewando@redhat.com> - 2.12-17
+- 99-grub-mkconfig.install: on PPC systems, remove petiboot's version checks
+
 * Wed Nov 27 2024 Marta Lewandowska <mlewando@redhat.com> - 2.12-16
 - 99-grub-mkconfig.install: Disable BLS and run grub2-mkconfig when GRUB_ENABLE_BLSCFG is disable
 - Resolves: #2325960
