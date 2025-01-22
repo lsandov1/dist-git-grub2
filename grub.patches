@@ -283,3 +283,5 @@ Patch0282: 0282-kern-riscv-efi-init-Use-time-register-in-grub_efi_ge.patch
 Patch0283: 0283-Use-medany-instead-of-large-model-for-RISCV.patch
 Patch0284: 0284-fs-xfs-Fix-large-extent-counters-incompat-feature-su.patch
 Patch0285: 0285-term-nns8250-spcr-return-if-redirection-is-disabled.patch
+Patch0286: 0286-commands-legacycfg-Avoid-closing-file-twice.patch
+Patch0287: 0287-disk-ahci.c-remove-conditional-operator-for-endtime.patch
