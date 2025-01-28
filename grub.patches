@@ -285,3 +285,4 @@ Patch0284: 0284-fs-xfs-Fix-large-extent-counters-incompat-feature-su.patch
 Patch0285: 0285-term-nns8250-spcr-return-if-redirection-is-disabled.patch
 Patch0286: 0286-commands-legacycfg-Avoid-closing-file-twice.patch
 Patch0287: 0287-disk-ahci.c-remove-conditional-operator-for-endtime.patch
+Patch0288: 0288-commands-bli-Fix-crash-in-get_part_uuid.patch
