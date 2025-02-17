@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	160%{?dist}
+Release:	161%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -523,6 +523,12 @@ fi
 %endif
 
 %changelog
+* Tue Feb 18 2025 Leo Sandoval <lsandova@redhat.com> - 2.02-161
+- Add Several CVE fixes
+- Resolves CVE-2024-45775 CVE-2025-0624
+- Resolves: #RHEL-75735
+- Resolves: #RHEL-79837
+
 * Wed Nov 13 2024 Leo Sandoval <lsandova@redhat.com> - 2.02-160
 - Remove BLS fake config in case of kernel removal
 - Resolves: #RHEL-4316
