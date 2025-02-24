@@ -17,7 +17,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.12
-Release:	24%{?dist}
+Release:	25%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPL-3.0-or-later
 URL:		http://www.gnu.org/software/grub/
@@ -605,6 +605,9 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg || :
 %endif
 
 %changelog
+* Mon Feb 24 2025 Leo Sandoval <lsandova@redhat.com> - 2.02-25
+- efi: Use shim's loader protocol for EFI image verification and loading
+
 * Tue Feb 18 2025 Leo Sandoval <lsandova@redhat.com> - 2.02-24
 - Add Several CVE fixes
 - Resolves: CVE-2024-45781 CVE-2024-45783 CVE-2024-45778
