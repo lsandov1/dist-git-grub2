@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	162%{?dist}
+Release:	163%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -523,6 +523,10 @@ fi
 %endif
 
 %changelog
+* Thu Apr 3 2025 Nicolas Frayer <nfrayer@redhat.com> - 2.02-163
+- fs/xfs: Synced xfs to latest
+- Resolves: #RHEL-85627
+
 * Tue Mar 25 2025 Nicolas Frayer <nfrayer@redhat.com> - 2.02-162
 - ieee1275/ofnet: Fix grub_malloc() removed after added safe
 - Remove 'fs/ntfs: Implement attribute verification' patch
