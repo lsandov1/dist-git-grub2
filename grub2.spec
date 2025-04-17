@@ -7,7 +7,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.02
-Release:	164%{?dist}
+Release:	165%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 Group:		System Environment/Base
 License:	GPLv3+
@@ -523,6 +523,10 @@ fi
 %endif
 
 %changelog
+* Thu Apr 17 2025 Nicolas Frayer <nfrayer@redhat.com> - 2.02-165
+- fs/ext2: Rework of OOB read patch
+- Resolves: #RHEL-86553
+
 * Fri Apr 4 2025 Leo Sandoval <lsandova@redhat.com> - 2.02-164
 - Bump NVR to sign the build
 - Resolves: #RHEL-85627
