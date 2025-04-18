@@ -363,3 +363,5 @@ Patch0363: 0363-powerpc-increase-MIN-RMA-size-for-CAS-negotiation.patch
 Patch0364: 0364-script-execute-Don-t-let-trailing-blank-lines-determ.patch
 Patch0365: 0365-normal-menu-Check-return-code-of-the-script-when-exe.patch
 Patch0366: 0366-ieee1275-ofnet-Fix-grub_malloc-removed-after-added-s.patch
+Patch0367: 0367-grub-mkimage-Create-new-ELF-note-for-SBAT.patch
+Patch0368: 0368-grub-mkimage-Add-SBAT-metadata-into-ELF-note-for-Pow.patch
