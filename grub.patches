@@ -367,3 +367,11 @@ Patch0367: 0367-grub-mkimage-Create-new-ELF-note-for-SBAT.patch
 Patch0368: 0368-grub-mkimage-Add-SBAT-metadata-into-ELF-note-for-Pow.patch
 Patch0369: 0369-10_linux.in-escape-kernel-option-characters-properly.patch
 Patch0370: 0370-blscfg-check-if-variable-is-escaped-before-consideri.patch
+Patch0371: 0371-kern-rescue_reader-Block-the-rescue-mode-until-the-C.patch
+Patch0372: 0372-commands-search-Introduce-the-cryptodisk-only-argume.patch
+Patch0373: 0373-disk-diskfilter-Introduce-the-cryptocheck-command.patch
+Patch0374: 0374-commands-search-Add-the-diskfilter-support.patch
+Patch0375: 0375-docs-Document-available-crypto-disks-checks.patch
+Patch0376: 0376-disk-cryptodisk-Add-the-erase-secrets-function.patch
+Patch0377: 0377-disk-cryptodisk-Wipe-the-passphrase-from-memory.patch
+Patch0378: 0378-cryptocheck-Add-quiet-option.patch
