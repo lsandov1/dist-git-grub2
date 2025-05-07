@@ -365,3 +365,5 @@ Patch0365: 0365-normal-menu-Check-return-code-of-the-script-when-exe.patch
 Patch0366: 0366-ieee1275-ofnet-Fix-grub_malloc-removed-after-added-s.patch
 Patch0367: 0367-grub-mkimage-Create-new-ELF-note-for-SBAT.patch
 Patch0368: 0368-grub-mkimage-Add-SBAT-metadata-into-ELF-note-for-Pow.patch
+Patch0369: 0369-10_linux.in-escape-kernel-option-characters-properly.patch
+Patch0370: 0370-blscfg-check-if-variable-is-escaped-before-consideri.patch
