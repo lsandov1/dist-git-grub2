@@ -27,3 +27,4 @@ configfile \$prefix/grub.cfg
 EOF
 
 mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
+chmod 0600 ${EFI_HOME}/grub.cfg
