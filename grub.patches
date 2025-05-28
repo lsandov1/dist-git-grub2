@@ -375,3 +375,5 @@ Patch0375: 0375-docs-Document-available-crypto-disks-checks.patch
 Patch0376: 0376-disk-cryptodisk-Add-the-erase-secrets-function.patch
 Patch0377: 0377-disk-cryptodisk-Wipe-the-passphrase-from-memory.patch
 Patch0378: 0378-cryptocheck-Add-quiet-option.patch
+Patch0379: 0379-loader-efi-chainloader-Fix-double-free.patch
+Patch0380: 0380-loader-efi-chainloader-Fix-null-pointer-dereference.patch
