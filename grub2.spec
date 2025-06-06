@@ -17,7 +17,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.12
-Release:	20%{?dist}
+Release:	21%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPL-3.0-or-later
 URL:		http://www.gnu.org/software/grub/
@@ -583,6 +583,10 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Fri Jun 6 2025 Leo Sandoval <lsandova@redhat.com> 2.12-21
+- Bump version (see CS-2896)
+- Resolves: #RHEL-94342
+
 * Mon Jun 2 2025 Leo Sandoval <lsandova@redhat.com> 2.12-20
 - Handle special kernel parameter characters properly
 - Resolves: #RHEL-94342
