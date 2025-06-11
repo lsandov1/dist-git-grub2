@@ -436,6 +436,7 @@ rm -r build-aux m4						\
 	--target=%{1}						\\\
 	--with-grubdir=grub2					\\\
 	--program-transform-name=s,grub,grub2,		\\\
+	--enable-stack-protector=strong			\\\
 	--disable-werror || ( cat config.log ; exit 1 )		\
 git add .							\
 git commit -m "After efi configure"				\
@@ -456,6 +457,7 @@ git commit -m "After efi configure"				\
 	--target=%{1}						\\\
 	--with-grubdir=grub2					\\\
 	--program-transform-name=s,grub,grub2,		\\\
+	--enable-stack-protector=strong			\\\
 	--disable-werror || ( cat config.log ; exit 1 )		\
 git add .							\
 git commit -m "After xen configure"				\
@@ -476,6 +478,7 @@ git commit -m "After xen configure"				\
 	--target=%{1}						\\\
 	--with-grubdir=grub2					\\\
 	--program-transform-name=s,grub,grub2,		\\\
+	--enable-stack-protector=strong			\\\
 	--disable-werror || ( cat config.log ; exit 1 )		\
 git add .							\
 git commit -m "After xen_pvh configure"				\
@@ -650,6 +653,7 @@ cd grub-%{1}-%{tarversion}					\
 	--target=%{_target_platform}				\\\
 	--with-grubdir=grub2					\\\
 	--program-transform-name=s,grub,grub2,		\\\
+	--enable-stack-protector=strong			\\\
 	--disable-werror || ( cat config.log ; exit 1 )		\
 git add .							\
 git commit -m "After legacy configure"				\
@@ -667,6 +671,7 @@ cd grub-emu-%{tarversion}					\
 	--with-platform=emu					\\\
 	--with-grubdir=grub2					\\\
 	--program-transform-name=s,grub,grub2,		\\\
+	--enable-stack-protector=strong			\\\
 	--disable-werror || ( cat config.log ; exit 1 )		\
 git add .							\
 git commit -m "After emu configure"				\
