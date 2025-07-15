@@ -1,0 +1,28 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Leo Sandoval <lsandova@redhat.com>
+Date: Tue, 15 Jul 2025 14:24:05 -0600
+Subject: [PATCH] mm.c: do not update mem attrs even if EFI protocol is present
+
+A temporal workaround while a real fix is being elaborated.
+
+Resolves: #RHEL-97086
+
+Signed-off-by: Gerd Hoffman <ghoffman@redhat.com>
+Signed-off-by: Leo Sandoval <lsandova@redhat.com>
+---
+ grub-core/kern/efi/mm.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/grub-core/kern/efi/mm.c b/grub-core/kern/efi/mm.c
+index 464fe1c3c0..80af7b4dfc 100644
+--- a/grub-core/kern/efi/mm.c
++++ b/grub-core/kern/efi/mm.c
+@@ -892,7 +892,7 @@ grub_update_mem_attrs (grub_addr_t addr, grub_size_t size,
+   grub_err_t err;
+ 
+   proto = grub_efi_locate_protocol (&protocol_guid, 0);
+-  if (!proto)
++  if (1 /* !proto */)
+     return GRUB_ERR_NONE;
+ 
+   err = grub_get_mem_attrs (addr, size, &before);
