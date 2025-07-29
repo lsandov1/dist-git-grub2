@@ -378,3 +378,4 @@ Patch0378: 0378-cryptocheck-Add-quiet-option.patch
 Patch0379: 0379-loader-efi-chainloader-Fix-double-free.patch
 Patch0380: 0380-loader-efi-chainloader-Fix-null-pointer-dereference.patch
 Patch0381: 0381-osdep-linux-getroot-Detect-DDF-container-similar-to-.patch
+Patch0382: 0382-Set-correctly-the-memory-attributes-for-the-kernel-P.patch
