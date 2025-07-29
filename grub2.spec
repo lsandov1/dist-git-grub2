@@ -17,7 +17,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.12
-Release:	23%{?dist}
+Release:	24%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPL-3.0-or-later
 URL:		http://www.gnu.org/software/grub/
@@ -35,6 +35,7 @@ Source9:	strtoull_test.c
 Source10:	20-grub.install
 Source11:	grub.patches
 Source12:	sbat.csv.in
+Source13:	gen_grub_cfgstub
 
 %include %{SOURCE1}
 
@@ -395,22 +396,12 @@ if test -f ${EFI_HOME}/grub.cfg; then
 fi
 
 # create a stub grub2 config in EFI
-BOOT_UUID=$(grub2-probe --target=fs_uuid ${GRUB_HOME})
-GRUB_DIR=$(grub2-mkrelpath ${GRUB_HOME})
-
-cat << EOF > ${EFI_HOME}/grub.cfg.stb
-search --no-floppy --root-dev-only --fs-uuid --set=dev ${BOOT_UUID}
-set prefix=(\$dev)${GRUB_DIR}
-export \$prefix
-configfile \$prefix/grub.cfg
-EOF
+gen_grub_cfgstub $GRUB_HOME $EFI_HOME || :
 
 if test -f ${EFI_HOME}/grubenv; then
     cp -a ${EFI_HOME}/grubenv ${EFI_HOME}/grubenv.rpmsave
     mv --force ${EFI_HOME}/grubenv ${GRUB_HOME}/grubenv
 fi
-
-mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 
 %files common -f grub.lang
 %dir %{_libdir}/grub/
@@ -583,6 +574,10 @@ mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
 %endif
 
 %changelog
+* Tue Jul 29 2025 Nicolas Frayer <nfrayer@redhat.com> 2.12-24
+- spec/posttrans: move grub config stub creation out of spec
+- Resolves: #RHEL-69943
+
 * Tue Jul 15 2025 Leo Sandoval <lsandova@redhat.com> 2.12-23
 - Set correctly the memory attributes for the kernel PE sections
 - Resolves: #RHEL-97086
