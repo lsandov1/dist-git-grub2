@@ -1,0 +1,65 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Leo Sandoval <lsandova@redhat.com>
+Date: Fri, 1 Aug 2025 11:56:53 -0600
+Subject: [PATCH] Add __stack_chk_fail function for non-EFI archs
+
+This function allows to include '-fstack-protector-strong' compiler
+flag for non-EFI archs. Also fixes a configure.ac condition where only
+disables stack protection when stack protector is not possible.
+
+Signed-off-by: Leo Sandoval <lsandova@redhat.com>
+---
+ configure.ac          | 4 +---
+ grub-core/kern/main.c | 8 ++++++++
+ include/grub/misc.h   | 4 ++++
+ 3 files changed, 13 insertions(+), 3 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index a6a6957fbd..a803d21a3e 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1466,9 +1466,7 @@ AC_ARG_ENABLE([stack-protector],
+ 	      [],
+ 	      [enable_stack_protector=no])
+ if test "x$enable_stack_protector" = xno; then
+-  if test "x$ssp_possible" = xyes; then
+-    # Need that, because some distributions ship compilers that include
+-    # `-fstack-protector' in the default specs.
++  if test "x$ssp_possible" != xyes; then
+     TARGET_CFLAGS="$TARGET_CFLAGS -fno-stack-protector"
+   fi
+ elif test "x$platform" != xefi; then
+diff --git a/grub-core/kern/main.c b/grub-core/kern/main.c
+index 2e6b79ee3d..aeafbbff9c 100644
+--- a/grub-core/kern/main.c
++++ b/grub-core/kern/main.c
+@@ -39,6 +39,14 @@
+ static bool cli_disabled = false;
+ static bool cli_need_auth = false;
+ 
++#ifndef GRUB_MACHINE_EFI
++void __attribute__ ((noreturn))
++__stack_chk_fail (void)
++{
++  grub_abort();
++}
++#endif
++
+ grub_addr_t
+ grub_modules_get_end (void)
+ {
+diff --git a/include/grub/misc.h b/include/grub/misc.h
+index 0429339ef3..751eb992ca 100644
+--- a/include/grub/misc.h
++++ b/include/grub/misc.h
+@@ -446,6 +446,10 @@ extern bool EXPORT_FUNC(grub_is_cli_disabled) (void);
+ extern bool EXPORT_FUNC(grub_is_cli_need_auth) (void);
+ extern void EXPORT_FUNC(grub_cli_set_auth_needed) (void);
+ 
++#ifndef GRUB_MACHINE_EFI
++extern void __attribute__ ((noreturn)) EXPORT_FUNC (__stack_chk_fail) (void);
++#endif
++
+ /* Must match softdiv group in gentpl.py.  */
+ #if !defined(GRUB_MACHINE_EMU) && (defined(__arm__) || defined(__ia64__) || \
+     (defined(__riscv) && (__riscv_xlen == 32)))

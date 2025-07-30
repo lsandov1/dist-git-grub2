@@ -17,7 +17,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.12
-Release:	25%{?dist}
+Release:	26%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPL-3.0-or-later
 URL:		http://www.gnu.org/software/grub/
@@ -574,6 +574,10 @@ fi
 %endif
 
 %changelog
+* Thu Jul 31 2025 Leo Sandoval <lsandova@redhat.com> 2.12-26
+- Enable strong stack protector on EFI configurations
+- Resolves: #RHEL-89464
+
 * Thu Jul 31 2025 Leo Sandoval <lsandova@redhat.com> 2.12-25
 - 20-grub.install: Skip BLS removal when entry type is type2
 - Resolves: #RHEL-104167
