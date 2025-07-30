@@ -27,7 +27,7 @@
 		-e 's/-O. //g'					\\\
 		-e 's/-fplugin=annobin//g'			\\\
 		-e 's,-specs=[[:alnum:]/_-]*annobin[[:alnum:]_-]*,,g' \\\
-		-e 's/-fstack-protector[[:alpha:]-]\\+//g'	\\\
+		-e 's/-fno-stack-protector//g'			\\\
 		-e 's/-[^ ]*D_FORTIFY_SOURCE=[[:digit:]][^ ]*\\+//g'	\\\
 		-e 's/--param=ssp-buffer-size=4//g'		\\\
 		-e 's/-mregparm=3/-mregparm=4/g'		\\\
@@ -37,7 +37,8 @@
 		-e 's/^/ -fno-strict-aliasing /'		\\\
 		%{nil}
 
-%global host_cflags_ %{expand:%%(echo %{build_cflags} %{?_hardening_cflags} | %{cflags_sed})} -fstack-protector-strong
+%global host_cflags_ %{expand:%%(echo %{build_cflags} %{?_hardening_cflags} | %{cflags_sed})}
+%global host_cflags %{host_cflags_} -fstack-protector-strong
 %ifarch x86_64
 %global host_cflags %{host_cflags_} -fcf-protection
 %else
@@ -52,6 +53,7 @@
 %global efi_host_cflags %{expand:%%(echo %{host_cflags})}
 
 %global target_cflags %{expand:%%(echo %{build_cflags} | %{cflags_sed})}
+%global target_cflags %{target_cflags} -fstack-protector-strong
 %global legacy_target_cflags					\\\
 	%{expand:%%(echo %{target_cflags} | 			\\\
 	%{cflags_sed}						\\\

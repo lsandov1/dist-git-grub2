@@ -17,7 +17,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.12
-Release:	24%{?dist}
+Release:	25%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPL-3.0-or-later
 URL:		http://www.gnu.org/software/grub/
@@ -574,6 +574,10 @@ fi
 %endif
 
 %changelog
+* Wed Jul 30 2025 Leo Sandoval <lsandova@redhat.com> 2.12-25
+- Enable strong stack protector on EFI configurations
+- Resolves: #RHEL-89464
+
 * Tue Jul 29 2025 Nicolas Frayer <nfrayer@redhat.com> 2.12-24
 - spec/posttrans: move grub config stub creation out of spec
 - Resolves: #RHEL-69943
