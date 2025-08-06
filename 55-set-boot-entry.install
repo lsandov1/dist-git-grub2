@@ -17,21 +17,21 @@ case "$COMMAND" in
                 BLS_DIR="/boot/loader/entries"
                 BLS_TARGET="${BLS_DIR}/${BLS_ID}.conf"
 
-                LINUX="$(grep '^linux[ \t]' "${BLS_TARGET}" | sed -e 's,^linux[ \t]*,,')"
-                INITRD="$(grep '^initrd[ \t]' "${BLS_TARGET}" | sed -e 's,^initrd[ \t]*,,')"
-                ROOTPREFIX="$(dirname "/boot${LINUX}")"
+                LINUX="$(grep '^linux[ \t]' "${BLS_TARGET}" | sed -e 's,^linux[ \t]*,,' | awk '{print $1}')"
+                INITRD="$(grep '^initrd[ \t]' "${BLS_TARGET}" | sed -e 's,^initrd[ \t]*,,' | awk '{print $1}')"
 
-                if [ ! -e "${ROOTPREFIX}${INITRD}" ]; then
-                    echo "${INITRD} not found"
-                    exit 1
-                fi
-                if ! lsinitrd ${ROOTPREFIX}${INITRD} > /dev/null; then
-                    echo "Error: ${INITRD} appears to be corrupt."
-                    exit 1
-                fi
-                if [ ! -e "${ROOTPREFIX}${LINUX}" ]; then
-                    echo "Error: ${LINUX} not found."
-                    exit 1
+                ROOTPREFIX=""
+                [ -z "$(grub2-mkrelpath /boot)" ] && ROOTPREFIX="/boot"
+
+                if [ -e "${ROOTPREFIX}${LINUX}" -a -n "${INITRD}" ]; then
+                    if [ ! -e "${ROOTPREFIX}${INITRD}" ]; then
+                        echo "Error: ${INITRD} not found"
+                        exit 1
+                    fi
+                    if ! lsinitrd ${ROOTPREFIX}${INITRD} > /dev/null; then
+                        echo "Error: ${INITRD} appears to be corrupt."
+                        exit 1
+                    fi
                 fi
 
                 grub2-editenv - unset "tmp_saved_entry"
