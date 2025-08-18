@@ -25,11 +25,11 @@ case "$COMMAND" in
 
                 if [ -e "${ROOTPREFIX}${LINUX}" -a -n "${INITRD}" ]; then
                     if [ ! -e "${ROOTPREFIX}${INITRD}" ]; then
-                        echo "Error: ${INITRD} not found"
+                        echo "Error: ${ROOTPREFIX}${INITRD} not found."
                         exit 1
                     fi
                     if ! lsinitrd ${ROOTPREFIX}${INITRD} > /dev/null; then
-                        echo "Error: ${INITRD} appears to be corrupt."
+                        echo "Error: ${ROOTPREFIX}${INITRD} appears to be corrupt."
                         exit 1
                     fi
                 fi

@@ -17,7 +17,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.12
-Release:	41%{?dist}
+Release:	42%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPL-3.0-or-later
 URL:		http://www.gnu.org/software/grub/
@@ -36,7 +36,7 @@ Source10:	20-grub.install
 Source11:	grub.patches
 Source12:	sbat.csv.in
 Source13:	gen_grub_cfgstub
-Source14:	55-set-boot-entry.install
+Source14:	95-set-boot-entry.install
 
 %include %{SOURCE1}
 
@@ -437,7 +437,7 @@ fi
 %dir %{_datarootdir}/grub/
 %attr(0700,root,root) %dir %{_sysconfdir}/grub.d
 %{_prefix}/lib/kernel/install.d/20-grub.install
-%{_prefix}/lib/kernel/install.d/55-set-boot-entry.install
+%{_prefix}/lib/kernel/install.d/95-set-boot-entry.install
 %{_prefix}/lib/kernel/install.d/99-grub-mkconfig.install
 %dir %{_datarootdir}/grub
 %exclude %{_datarootdir}/grub/*
@@ -609,6 +609,10 @@ fi
 %endif
 
 %changelog
+* Wed Aug 20 2025 Jan Stancek <jstancek@redhat.com> - 2.12-42
+- move 55-set-boot-entry.install to 95
+- Related: #2389020
+
 * Mon Aug 11 2025 Marta Lewandowska <mlewando@redhat.com> - 2.12-41
 - Phase 1 of the bootloader updates proposal implementation
 - https://fedoraproject.org/wiki/Changes/BootLoaderUpdatesPhase1
