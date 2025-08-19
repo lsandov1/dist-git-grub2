@@ -15,10 +15,6 @@ EFI_HOME=$2
 BOOT_UUID=$(grub2-probe --target=fs_uuid "${GRUB_HOME}")
 GRUB_DIR=$(grub2-mkrelpath "${GRUB_HOME}")
 
-echo "Generating grub stub config for drive " "${BOOT_UUID}"
-echo "GRUB_DIR=" "${GRUB_DIR}"
-echo "EFI_HOME=" "${EFI_HOME}"
-
 cat << EOF > "${EFI_HOME}"/grub.cfg.stb
 search --no-floppy --root-dev-only --fs-uuid --set=dev ${BOOT_UUID}
 set prefix=(\$dev)${GRUB_DIR}
