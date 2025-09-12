@@ -3,4 +3,9 @@ product_versions:
   - rhel-10
 decision_context: osci_compose_gate
 rules:
-  - !PassingTestCaseRule {test_case_name: rtt.gating.functional}
+  - !PassingTestCaseRule {test_case_name: baseos-ci.brew-build.tier1-x86_64-legacy.functional}
+  - !PassingTestCaseRule {test_case_name: baseos-ci.brew-build.tier1-x86_64-efi.functional}
+  - !PassingTestCaseRule {test_case_name: baseos-ci.brew-build.tier1-ppc64le-of.functional}
+  - !PassingTestCaseRule {test_case_name: baseos-ci.brew-build.tier1-ppc64le-opal.functional}
+  - !PassingTestCaseRule {test_case_name: baseos-ci.brew-build.tier1-aarch64-efi.functional}
+  - !PassingTestCaseRule {test_case_name: osci.brew-build./grub2/rhivos-bootonce.functional}

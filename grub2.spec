@@ -17,7 +17,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.12
-Release:	29%{?dist}
+Release:	30%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPL-3.0-or-later
 URL:		http://www.gnu.org/software/grub/
@@ -574,6 +574,11 @@ fi
 %endif
 
 %changelog
+* Fri Sep 12 2025 Nicolas Frayer <nfrayer@redhat.com> 2.12-30
+- gating.yaml: Update gating tests as there was a change in where
+test composes are kept
+- Resolves: #RHEL-114488
+
 * Mon Sep 08 2025 Leo Sandoval <lsandova@redhat.com> 2.12-29
 - Fix the fallback mechanism when menu entries fail to boot
 - Resolves: RHEL-113024
