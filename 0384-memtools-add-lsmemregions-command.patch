@@ -1,0 +1,123 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Leo Sandoval <lsandova@redhat.com>
+Date: Thu, 25 Sep 2025 15:10:31 -0600
+Subject: [PATCH] memtools: add lsmemregions command
+
+Prints memory regions and region free/alloc sizes. As the rest of
+the memtools, this is useful when working with memory.
+
+Signed-off-by: Leo Sandoval <lsandova@redhat.com>
+---
+ grub-core/commands/memtools.c | 17 ++++++++++++++++-
+ grub-core/kern/mm.c           | 37 +++++++++++++++++++++++++++++++++++++
+ include/grub/mm.h             |  1 +
+ 3 files changed, 54 insertions(+), 1 deletion(-)
+
+diff --git a/grub-core/commands/memtools.c b/grub-core/commands/memtools.c
+index ae0a9bec35..0829949dbc 100644
+--- a/grub-core/commands/memtools.c
++++ b/grub-core/commands/memtools.c
+@@ -53,6 +53,18 @@ grub_cmd_lsfreemem (grub_command_t cmd __attribute__ ((unused)),
+   return 0;
+ }
+ 
++static grub_err_t
++grub_cmd_lsmemregions (grub_command_t cmd __attribute__ ((unused)),
++		 int argc __attribute__ ((unused)),
++		 char **args __attribute__ ((unused)))
++
++{
++#ifndef GRUB_MACHINE_EMU
++  grub_mm_dump_regions ();
++#endif
++
++  return 0;
++}
+ 
+ static grub_err_t
+ grub_cmd_stress_big_allocs (grub_command_t cmd __attribute__ ((unused)),
+@@ -132,7 +144,7 @@ grub_cmd_stress_big_allocs (grub_command_t cmd __attribute__ ((unused)),
+   return GRUB_ERR_NONE;
+ }
+ 
+-static grub_command_t cmd_lsmem, cmd_lsfreemem, cmd_sba;
++static grub_command_t cmd_lsmem, cmd_lsfreemem, cmd_lsmemregions, cmd_sba;
+ 
+ GRUB_MOD_INIT (memtools)
+ {
+@@ -140,6 +152,8 @@ GRUB_MOD_INIT (memtools)
+ 				     0, N_("List free and allocated memory blocks."));
+   cmd_lsfreemem = grub_register_command ("lsfreemem", grub_cmd_lsfreemem,
+ 					 0, N_("List free memory blocks."));
++  cmd_lsmemregions = grub_register_command ("lsmemregions", grub_cmd_lsmemregions,
++					 0, N_("List memory regions."));
+   cmd_sba = grub_register_command ("stress_big_allocs", grub_cmd_stress_big_allocs,
+ 				   0, N_("Stress test large allocations."));
+ }
+@@ -148,5 +162,6 @@ GRUB_MOD_FINI (memtools)
+ {
+   grub_unregister_command (cmd_lsmem);
+   grub_unregister_command (cmd_lsfreemem);
++  grub_unregister_command (cmd_lsmemregions);
+   grub_unregister_command (cmd_sba);
+ }
+diff --git a/grub-core/kern/mm.c b/grub-core/kern/mm.c
+index 819bc5126a..093df0779e 100644
+--- a/grub-core/kern/mm.c
++++ b/grub-core/kern/mm.c
+@@ -786,6 +786,43 @@ grub_mm_dump (unsigned lineno)
+   grub_printf ("\n");
+ }
+ 
++void
++grub_mm_dump_regions (void)
++{
++  grub_mm_region_t r;
++  grub_mm_header_t p;
++  grub_size_t num_blocks, sum_free, sum_alloc;
++
++  for (r = grub_mm_base; r; r = r->next)
++    {
++      num_blocks = 0;
++      sum_free = 0;
++      sum_alloc = 0;
++
++      for (p = (grub_mm_header_t) ALIGN_UP ((grub_addr_t) (r + 1),
++					    GRUB_MM_ALIGN);
++	   (grub_addr_t) p < (grub_addr_t) (r+1) + r->size;
++	   p++, num_blocks++)
++	{
++	  switch (p->magic)
++	    {
++	    case GRUB_MM_FREE_MAGIC:
++	      sum_free += p->size;
++	      break;
++	    case GRUB_MM_ALLOC_MAGIC:
++	      sum_alloc += p->size;
++	      break;
++	    }
++	}
++
++      grub_printf ("Region %p (size %" PRIuGRUB_SIZE " blocks %" PRIuGRUB_SIZE " free %" PRIuGRUB_SIZE " alloc %" PRIuGRUB_SIZE ")\n\n",
++		   r, r->size, num_blocks, sum_free << GRUB_MM_ALIGN_LOG2, sum_alloc << GRUB_MM_ALIGN_LOG2);
++
++    }
++
++  grub_printf ("\n");
++}
++
+ void *
+ grub_debug_calloc (const char *file, int line, grub_size_t nmemb, grub_size_t size)
+ {
+diff --git a/include/grub/mm.h b/include/grub/mm.h
+index 8ee1fc7171..a9f457bd9e 100644
+--- a/include/grub/mm.h
++++ b/include/grub/mm.h
+@@ -98,6 +98,7 @@ extern int EXPORT_VAR(grub_mm_debug);
+ 
+ void EXPORT_FUNC(grub_mm_dump_free) (void);
+ void EXPORT_FUNC(grub_mm_dump) (unsigned lineno);
++void EXPORT_FUNC(grub_mm_dump_regions) (void);
+ 
+ #define grub_calloc(nmemb, size)	\
+   grub_debug_calloc (GRUB_FILE, __LINE__, nmemb, size)

@@ -434,6 +434,7 @@ rm -r build-aux m4						\
 	TARGET_CFLAGS="%{2}"					\\\
 	TARGET_CPPFLAGS="-I$(pwd)"				\\\
 	TARGET_LDFLAGS="%{efi_target_ldflags}"			\\\
+	--enable-mm-debug                                       \\\
 	--with-rpm-version=%{version}-%{release}		\\\
 	--with-platform=efi					\\\
 	--with-utils=host					\\\
@@ -527,7 +528,7 @@ rm -f %{1}.conf							\
 			halt hfsplus http increment iso9660	\\\
 			jpeg loadenv loopback linux lvm luks	\\\
 			luks2					\\\
-			memdisk					\\\
+			memdisk memtools			\\\
 			mdraid09 mdraid1x minicmd net		\\\
 			normal part_apple part_msdos part_gpt	\\\
 			password_pbkdf2 pgp png reboot regexp	\\\
