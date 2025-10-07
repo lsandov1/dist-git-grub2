@@ -17,7 +17,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.12
-Release:	30%{?dist}
+Release:	31%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPL-3.0-or-later
 URL:		http://www.gnu.org/software/grub/
@@ -51,7 +51,7 @@ Source13:	gen_grub_cfgstub
 %endif
 %else
 %ifarch x86_64 aarch64
-%define sb_key		redhatsecureboot502
+%define sb_key		redhatsecureboot802
 %endif
 %ifarch ppc64le
 %define sb_key		redhatsecureboot702
@@ -574,6 +574,10 @@ fi
 %endif
 
 %changelog
+* Tue Oct 7 2025 Nicolas Frayer <nfrayer@redhat.com> 2.12-31
+- spec: Update signing key to redhatsecureboot802
+- Resolves: #RHEL-116730
+
 * Fri Sep 12 2025 Nicolas Frayer <nfrayer@redhat.com> 2.12-30
 - gating.yaml: Update gating tests as there was a change in where
 test composes are kept
