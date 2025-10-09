@@ -17,7 +17,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.12
-Release:	31%{?dist}
+Release:	32%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPL-3.0-or-later
 URL:		http://www.gnu.org/software/grub/
@@ -574,6 +574,10 @@ fi
 %endif
 
 %changelog
+* Thu Oct 9 2025 Leo Sandoval <lsandova@redhat.com> 2.12-32
+- Do not strip annobin spec
+- Related: #RHEL-89464
+
 * Tue Oct 7 2025 Nicolas Frayer <nfrayer@redhat.com> 2.12-31
 - spec: Update signing key to redhatsecureboot802
 - Resolves: #RHEL-116730
