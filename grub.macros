@@ -50,7 +50,7 @@
 	)}
 %global efi_host_cflags %{expand:%%(echo %{host_cflags})}
 
-%global target_cflags %{expand:%%(echo %{build_cflags} | %{cflags_sed})}
+%global target_cflags %{expand:%%(echo %{build_cflags} | %{cflags_sed})} -fstack-protector-strong
 %global legacy_target_cflags					\\\
 	%{expand:%%(echo %{target_cflags} | 			\\\
 	%{cflags_sed}						\\\
