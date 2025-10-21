@@ -553,9 +553,7 @@ cd grub-emu-%{tarversion}					\
 	--disable-werror || ( cat config.log ; exit 1 )		\
 git add .							\
 git commit -m "After emu configure"				\
-make %{?_smp_mflags} ascii.h widthspec.h			\
-make %{?_smp_mflags} -C grub-core/lib/gnulib			\
-make %{?_smp_mflags} -C grub-core				\
+make %{?_smp_mflags} 						\
 cd ..								\
 %{nil}
 
