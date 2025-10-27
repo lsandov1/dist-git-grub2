@@ -380,10 +380,10 @@ Patch0380: 0380-loader-efi-chainloader-Fix-null-pointer-dereference.patch
 Patch0381: 0381-osdep-linux-getroot-Detect-DDF-container-similar-to-.patch
 Patch0382: 0382-Set-correctly-the-memory-attributes-for-the-kernel-P.patch
 Patch0383: 0383-Include-function-name-on-debug-print-function.patch
-Patch0384: 0001-kern-misc-Implement-grub_strtok.patch
-Patch0385: 0002-blsuki-Add-blscfg-command-to-parse-Boot-Loader-Speci.patch
-Patch0386: 0003-util-misc.c-Change-offset-type-for-grub_util_write_i.patch
-Patch0387: 0004-blsuki-Check-for-mounted-boot-in-emu.patch
-Patch0388: 0005-blsuki-Add-uki-command-to-load-Unified-Kernel-Image-.patch
-Patch0389: 0006-posix_wrap-Tweaks-in-preparation-for-libtasn1.patch
+Patch0384: 0384-kern-misc-Implement-grub_strtok.patch
+Patch0385: 0385-blsuki-Add-blscfg-command-to-parse-Boot-Loader-Speci.patch
+Patch0386: 0386-util-misc.c-Change-offset-type-for-grub_util_write_i.patch
+Patch0387: 0387-blsuki-Check-for-mounted-boot-in-emu.patch
+Patch0388: 0388-blsuki-Add-uki-command-to-load-Unified-Kernel-Image-.patch
+Patch0389: 0389-posix_wrap-Tweaks-in-preparation-for-libtasn1.patch
 
