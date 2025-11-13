@@ -386,4 +386,4 @@ Patch0386: 0386-util-misc.c-Change-offset-type-for-grub_util_write_i.patch
 Patch0387: 0387-blsuki-Check-for-mounted-boot-in-emu.patch
 Patch0388: 0388-blsuki-Add-uki-command-to-load-Unified-Kernel-Image-.patch
 Patch0389: 0389-posix_wrap-Tweaks-in-preparation-for-libtasn1.patch
-
+Patch0390: 0390-blsuki-do-not-register-blscfg-command.patch
