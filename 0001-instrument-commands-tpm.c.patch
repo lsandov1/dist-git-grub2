@@ -1,0 +1,29 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Leo Sandoval <lsandova@redhat.com>
+Date: Tue, 25 Nov 2025 15:16:48 -0600
+Subject: [PATCH] instrument commands/tpm.c
+
+---
+ grub-core/commands/tpm.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/grub-core/commands/tpm.c b/grub-core/commands/tpm.c
+index 324423ef86..1337ab541a 100644
+--- a/grub-core/commands/tpm.c
++++ b/grub-core/commands/tpm.c
+@@ -42,6 +42,7 @@ grub_tpm_verify_init (grub_file_t io,
+ static grub_err_t
+ grub_tpm_verify_write (void *context, void *buf, grub_size_t size)
+ {
++  grub_dprintf ("tpm-oom", "context: %s buf: %p size: %d\n", context, buf, size);
+   grub_err_t status = grub_tpm_measure (buf, size, GRUB_BINARY_PCR, context);
+ 
+   if (status == GRUB_ERR_NONE)
+@@ -102,6 +103,7 @@ GRUB_MOD_INIT (tpm)
+    * that whatever discovered "device nodes" before this GRUB_MOD_INIT() is
+    * called, enables the ibmvtpm driver to see the device nodes.
+    */
++  grub_dprintf ("tpm-oom", "tpm present? %d\n", grub_tpm_present());
+   if (!grub_tpm_present())
+     return;
+   grub_verifier_register (&grub_tpm_verifier);

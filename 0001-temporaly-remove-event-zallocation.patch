@@ -1,0 +1,40 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Leo Sandoval <lsandova@redhat.com>
+Date: Wed, 26 Nov 2025 12:12:14 -0600
+Subject: [PATCH] temporaly remove event zallocation
+
+---
+ grub-core/commands/efi/tpm.c | 20 --------------------
+ 1 file changed, 20 deletions(-)
+
+diff --git a/grub-core/commands/efi/tpm.c b/grub-core/commands/efi/tpm.c
+index f250c30dbc..baf3ce3064 100644
+--- a/grub-core/commands/efi/tpm.c
++++ b/grub-core/commands/efi/tpm.c
+@@ -242,26 +242,6 @@ grub_cc_log_event (unsigned char *buf, grub_size_t size, grub_uint8_t pcr,
+       return;
+     }
+ 
+-  event = grub_zalloc (sizeof (grub_efi_cc_event_t) +
+-		       grub_strlen (description) + 1);
+-  if (event == NULL)
+-    {
+-      grub_error (GRUB_ERR_OUT_OF_MEMORY, N_("cannot allocate CC event buffer"));
+-      return;
+-    }
+-
+-  event->Header.HeaderSize = sizeof (grub_efi_cc_event_header_t);
+-  event->Header.HeaderVersion = GRUB_EFI_CC_EVENT_HEADER_VERSION;
+-  event->Header.MrIndex = mr;
+-  event->Header.EventType = EV_IPL;
+-  event->Size = sizeof (*event) + grub_strlen (description) + 1;
+-  grub_strcpy ((char *) event->Event, description);
+-
+-  status = cc->hash_log_extend_event (cc, 0,
+-				      (grub_efi_physical_address_t)(grub_addr_t) buf,
+-				      (grub_efi_uint64_t) size, event);
+-  grub_free (event);
+-
+   if (status != GRUB_EFI_SUCCESS)
+     grub_efi_log_event_status (status);
+ }

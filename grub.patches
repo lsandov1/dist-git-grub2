@@ -387,3 +387,5 @@ Patch0387: 0387-blsuki-Check-for-mounted-boot-in-emu.patch
 Patch0388: 0388-blsuki-Add-uki-command-to-load-Unified-Kernel-Image-.patch
 Patch0389: 0389-posix_wrap-Tweaks-in-preparation-for-libtasn1.patch
 Patch0390: 0390-blsuki-do-not-register-blscfg-command.patch
+Patch1000: 0001-instrument-commands-tpm.c.patch
+Patch1001: 0001-temporaly-remove-event-zallocation.patch
