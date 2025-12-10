@@ -708,6 +708,7 @@ find . '(' -iname gdb_grub					\\\
 	')'							\\\
 	-exec cp {} $RPM_BUILD_ROOT/usr/lib/grub/%{grubaltefiarch}/ \\\; \
 find $RPM_BUILD_ROOT -type f -iname "*.mod*" -exec chmod a-x {} '\;'	\
+install -d -m 0700 ${RPM_BUILD_ROOT}%{grub_efi_dir}/		\
 install -m 700 %{2} $RPM_BUILD_ROOT%{grub_efi_dir}/%{2} \
 install -m 700 %{3} $RPM_BUILD_ROOT%{grub_efi_dir}/%{3} \
 %{expand:%%do_install_protected_file grub2-%{alt_package_arch}} \
@@ -726,6 +727,7 @@ fi								\
 find $RPM_BUILD_ROOT -iname "*.module" -exec chmod a-x {} '\;'	\
 ln -s ../boot/grub2/grub.cfg					\\\
 	$RPM_BUILD_ROOT%{_sysconfdir}/grub2-efi.cfg		\
+install -d -m 0700 ${RPM_BUILD_ROOT}%{grub_efi_dir}/		\
 install -m 700 %{2} $RPM_BUILD_ROOT%{grub_efi_dir}/%{2}	\
 install -m 700 %{3} $RPM_BUILD_ROOT%{grub_efi_dir}/%{3}	\
 %ifarch %{arm}							\
@@ -830,7 +832,6 @@ cp docs/grub.info $RPM_BUILD_ROOT%{_infodir}/grub2.info	\
 cp docs/grub-dev.info						\\\
 	$RPM_BUILD_ROOT%{_infodir}/grub2-dev.info		\
 install -d -m 0700 ${RPM_BUILD_ROOT}%{efi_esp_dir}/		\
-install -d -m 0700 ${RPM_BUILD_ROOT}%{grub_efi_dir}/		\
 install -d -m 0700 ${RPM_BUILD_ROOT}/boot/grub2/		\
 install -d -m 0700 ${RPM_BUILD_ROOT}/boot/loader/entries	\
 install -d -m 0700 ${RPM_BUILD_ROOT}/boot/grub2/themes/system	\
@@ -879,6 +880,7 @@ ln -s ../boot/grub2/grub.cfg					\\\
 %config(noreplace) %{_sysconfdir}/grub2.cfg			\
 %config(noreplace) %{_sysconfdir}/grub2-efi.cfg		\
 %ghost %attr(0700,root,root) %{efi_esp_dir}/%{2} \
+%dir %attr(0700,root,root) %{grub_efi_dir}                      \
 %attr(0700,root,root) %{grub_efi_dir}/%{2} 	\
 %ifarch %{arm}							\
 %attr(0700,root,root) %verify(not mtime) %{efi_esp_boot}/BOOTARM.EFI \
