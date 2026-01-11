@@ -405,3 +405,14 @@ Patch0405: 0405-grub.d-Support-the-external-environment-block-for-au.patch
 Patch0406: 0406-grub-editenv-Make-automatic-hidden-menu-and-boot-cou.patch
 Patch0407: 0407-ieee1275-ofnet-Fix-hw_addr-variable-initialization.patch
 Patch0408: 0408-fs-xfs-Add-new-superblock-features-added-in-Linux-6..patch
+Patch0409: 0409-Revert-loader-efi-Fix-RISC-V-build.patch
+Patch0410: 0410-Revert-efi-Disallow-fallback-to-legacy-Linux-loader-.patch
+Patch0411: 0411-Partial-revert-nx-set-attrs-in-our-kernel-loaders.patch
+Patch0412: 0412-Revert-loader-efi-linux.c-read-the-kernel-image-befo.patch
+Patch0413: 0413-Revert-arm64-Use-proper-memory-type-for-kernel-alloc.patch
+Patch0414: 0414-Revert-Correct-BSS-zeroing-on-aarch64.patch
+Patch0415: 0415-Revert-arm64-Fix-EFI-loader-kernel-image-allocation.patch
+Patch0416: 0416-Revert-Add-support-for-Linux-EFI-stub-loading-on-arm.patch
+Patch0417: 0417-loader-efi-linux.c-Free-mempath-after-use.patch
+Patch0418: 0418-loader-efi-linux.c-Unload-image-on-errors.patch
+Patch0419: 0419-loader-efi-linux.c-Disable-code-not-used-on-x86-when.patch
