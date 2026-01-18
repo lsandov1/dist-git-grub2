@@ -613,6 +613,7 @@ fi
 - Related: #2427945
 - Related: #2263643
 - Fix ppc64le build (Hans de Goede)
+- Fix 20-install.sh installing the hmac under the wrong filename (Hans de Goede)
 
 * Wed Dec 10 2025 Joel Capitao <jcapitao@redhat.com> - 2.12-50
 - Do not include EFI dir in common subpackage
