@@ -403,3 +403,4 @@ Patch0403: 0403-kern-fs-Honour-file-read_hook-in-grub_fs_blocklist_r.patch
 Patch0404: 0404-util-grub.d-00_header.in-Prefer-dev-instead-of-root-.patch
 Patch0405: 0405-grub.d-Support-the-external-environment-block-for-au.patch
 Patch0406: 0406-grub-editenv-Make-automatic-hidden-menu-and-boot-cou.patch
+Patch0407: 0407-ieee1275-ofnet-Fix-hw_addr-variable-initialization.patch
