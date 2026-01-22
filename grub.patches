@@ -424,3 +424,4 @@ Patch0424: 0424-normal-main-Unregister-commands-on-module-unload.patch
 Patch0425: 0425-tests-lib-functional_test-Unregister-commands-on-mod.patch
 Patch0426: 0426-commands-usbtest-Use-correct-string-length-field.patch
 Patch0427: 0427-commands-usbtest-Ensure-string-length-is-sufficient-.patch
+Patch0428: 0428-verifiers-Allocate-EFI-pages-instead-of-grub_malloc-.patch
