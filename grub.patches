@@ -416,3 +416,11 @@ Patch0416: 0416-Revert-Add-support-for-Linux-EFI-stub-loading-on-arm.patch
 Patch0417: 0417-loader-efi-linux.c-Free-mempath-after-use.patch
 Patch0418: 0418-loader-efi-linux.c-Unload-image-on-errors.patch
 Patch0419: 0419-loader-efi-linux.c-Disable-code-not-used-on-x86-when.patch
+Patch0420: 0420-commands-test-Fix-error-in-recursion-depth-calculati.patch
+Patch0421: 0421-kern-file-Call-grub_dl_unref-after-fs-fs_close.patch
+Patch0422: 0422-net-net-Unregister-net_set_vlan-command-on-unload.patch
+Patch0423: 0423-gettext-gettext-Unregister-gettext-command-on-module.patch
+Patch0424: 0424-normal-main-Unregister-commands-on-module-unload.patch
+Patch0425: 0425-tests-lib-functional_test-Unregister-commands-on-mod.patch
+Patch0426: 0426-commands-usbtest-Use-correct-string-length-field.patch
+Patch0427: 0427-commands-usbtest-Ensure-string-length-is-sufficient-.patch
