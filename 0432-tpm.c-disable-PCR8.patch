@@ -1,0 +1,27 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Leo Sandoval <lsandova@redhat.com>
+Date: Tue, 24 Feb 2026 10:43:20 -0600
+Subject: [PATCH] tpm.c: disable PCR8
+
+The proposed change allows predictable GRUB config measurements which in
+turn feasible remote attestation.
+
+Signed-off-by: Leo Sandoval <lsandova@redhat.com>
+---
+ grub-core/commands/tpm.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/grub-core/commands/tpm.c b/grub-core/commands/tpm.c
+index b3ddbe5d3a..85e904a692 100644
+--- a/grub-core/commands/tpm.c
++++ b/grub-core/commands/tpm.c
+@@ -57,6 +57,9 @@ grub_tpm_verify_init (grub_file_t io,
+ {
+   *context = io->name;
+   *flags |= GRUB_VERIFY_FLAGS_SINGLE_CHUNK;
++
++  grub_tpm_disable_pcr (GRUB_STRING_PCR);
++
+   return GRUB_ERR_NONE;
+ }
+ 

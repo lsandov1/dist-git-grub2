@@ -20,6 +20,8 @@ search --no-floppy --root-dev-only --fs-uuid --set=dev ${BOOT_UUID}
 set prefix=(\$dev)${GRUB_DIR}
 export \$prefix
 configfile \$prefix/grub.cfg
+
+uki
 EOF
 
 mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
