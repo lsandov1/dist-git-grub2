@@ -1,0 +1,82 @@
+%global grub_efi_cc_dir %{grub_evr_dir}/EFI/%{os_id}/cc
+
+%global efi_cc_modules  " all_video boot blscfg btrfs blsuki	\\\
+			cat configfile cryptodisk		\\\
+			echo ext2 f2fs fat font			\\\
+			gcry_rijndael gcry_rsa gcry_serpent	\\\
+			gcry_sha256 gcry_twofish gcry_whirlpool	\\\
+			gfxmenu gfxterm gzio			\\\
+			halt hfsplus http increment iso9660	\\\
+			jpeg loadenv loopback linux lvm luks	\\\
+			luks2					\\\
+			memdisk					\\\
+			mdraid09 mdraid1x minicmd net		\\\
+			normal part_apple part_msdos part_gpt	\\\
+			password_pbkdf2 pgp png reboot regexp	\\\
+			search search_fs_uuid search_fs_file	\\\
+			search_label serial sleep		\\\
+			squash4					\\\
+			syslinuxcfg				\\\
+			test tftp version video xfs zstd "	\
+
+%define define_efi_cc_variant(o)						\
+%{expand:%%package %{1}-cc}						\
+Summary:	GRUB for EFI systems.					\
+Requires:	efi-filesystem						\
+Requires:	grub2-common = %{evr}					\
+Requires:	grub2-tools-minimal >= %{evr}				\
+Requires:	grub2-tools = %{evr}					\
+Provides:	grub2-efi-cc= %{evr}					\
+%{?legacy_provides:Provides:	grub2 = %{evr}}			\
+%{-o:Obsoletes:	grub2-efi < %{evr}}					\
+									\
+%{expand:%%description %{1}-cc}						\
+%{desc}									\
+This subpackage provides support for Confidential Computing %{1} systems.			\
+									\
+%{expand:%%{?!buildsubdir:%%define buildsubdir grub-%{1}-%{tarversion}-cc}}\
+
+%define do_primary_efi_cc_build()					\
+cd grub-%{1}-%{tarversion}-cc					\
+%{expand:%%do_efi_configure %%{4} %%{5} %%{6}}			\
+%do_efi_build_all						\
+%{expand:%%do_efi_cc_build_images %{grub_target_name} %{2} %{3} ./ } \
+cd ..								\
+%{nil}
+
+%define do_efi_cc_build_images()					\
+GRUB_MODULES=%{efi_cc_modules}					\
+%{expand:%%{efi_mkimage %{1} %{2} %{3} %{4}}}			\
+%{nil}
+
+%define do_efi_cc_install()					\
+cd grub-%{1}-%{tarversion}-cc					\
+make DESTDIR=$RPM_BUILD_ROOT install				\
+if [ -f $RPM_BUILD_ROOT%{_infodir}/grub.info ]; then		\
+	rm -f $RPM_BUILD_ROOT%{_infodir}/grub.info		\
+fi								\
+if [ -f $RPM_BUILD_ROOT%{_infodir}/grub-dev.info ]; then	\
+	rm -f $RPM_BUILD_ROOT%{_infodir}/grub-dev.info		\
+fi								\
+find $RPM_BUILD_ROOT -iname "*.module" -exec chmod a-x {} '\;'	\
+install -d -m 0700 ${RPM_BUILD_ROOT}%{grub_efi_cc_dir}/		\
+install -m 700 %{2} $RPM_BUILD_ROOT%{grub_efi_cc_dir}/%{2}	\
+install -m 700 %{3} $RPM_BUILD_ROOT%{grub_efi_cc_dir}/%{3}	\
+install -D -m 700 %{SOURCE16}					\\\
+    ${RPM_BUILD_ROOT}/usr/bin/gen_grub_cc_cfgstub		\
+%{expand:%%do_install_protected_file grub2-%{package_arch}-cc}	\
+cd ..								\
+%{nil}
+
+%define define_efi_cc_variant_files()				\
+%{expand:%%files %{1}-cc}						\
+%defattr(-,root,root,-)						\
+%dir %attr(0700,root,root) %{grub_efi_cc_dir}                      \
+%attr(0700,root,root) %{grub_efi_cc_dir}/%{2} 	\
+%attr(0700,root,root)/usr/bin/gen_grub_cc_cfgstub			\
+%ghost %config(noreplace) %attr(0600,root,root)%{grub_efi_cc_dir}/grub.cfg	\
+%attr(0644,root,root) %config(noreplace) /etc/dnf/protected.d/grub2-%{1}-cc.conf \
+%{expand:%if 0%{?without_efi_modules}				\
+%exclude %{_libdir}/grub/%{6}					\
+%exclude %{_libdir}/grub/%{6}/*					\
+%endif}								\

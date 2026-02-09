@@ -1,0 +1,19 @@
+#!/bin/sh
+set -eu
+
+if [ $# -ne 1 ]
+  then
+    echo "Missing argument"
+    echo "Usage: script.sh EFI_HOME"
+    exit 1
+fi
+
+EFI_HOME=$1
+
+cat << EOF > "${EFI_HOME}"/grub.cfg.stb
+set disable_grub_string_pcr
+uki
+EOF
+
+mv ${EFI_HOME}/grub.cfg.stb ${EFI_HOME}/grub.cfg
+chmod 0600 ${EFI_HOME}/grub.cfg
