@@ -1,0 +1,35 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Leo Sandoval <lsandova@redhat.com>
+Date: Tue, 24 Feb 2026 10:43:20 -0600
+Subject: [PATCH] tpm.c: disable GRUB_STRING_PCR in case
+ disable_grub_string_pcr env is present
+
+Signed-off-by: Leo Sandoval <lsandova@redhat.com>
+---
+ grub-core/commands/tpm.c | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+diff --git a/grub-core/commands/tpm.c b/grub-core/commands/tpm.c
+index b3ddbe5d3a..01339e969b 100644
+--- a/grub-core/commands/tpm.c
++++ b/grub-core/commands/tpm.c
+@@ -57,6 +57,19 @@ grub_tpm_verify_init (grub_file_t io,
+ {
+   *context = io->name;
+   *flags |= GRUB_VERIFY_FLAGS_SINGLE_CHUNK;
++
++  const char *disable_pcr;
++
++  disable_pcr = grub_env_get ("disable_grub_string_pcr");
++
++  if (disable_pcr)
++    {
++        grub_dprintf ("tpm", "disable_pcr %s\n", disable_pcr);
++	grub_tpm_disable_pcr (GRUB_STRING_PCR);
++    }
++  else
++      grub_dprintf ("tpm", "disable_pcr is NULL\n");
++
+   return GRUB_ERR_NONE;
+ }
+ 
