@@ -38,7 +38,7 @@ Source12:	sbat.csv.in
 Source13:	gen_grub_cfgstub
 Source14:	95-set-boot-entry.install
 Source15:	grub-cc.macros
-Source16:	gen_grub_cc_cfgstub
+Source16:	grub-cc.cfg
 
 %include %{SOURCE1}
 %include %{SOURCE15}
@@ -435,14 +435,6 @@ set -eu
 if [[ ! -e "/run/ostree-booted" ]]; then
     cp -a %{grub_efi_dir}/. %{efi_esp_dir} || :
 fi
-
-%posttrans efi-%{efiarch}-cc
-set -eu
-
-EFI_HOME=%{grub_efi_cc_dir}
-
-gen_grub_cc_cfgstub $EFI_HOME || :
-
 %endif
 
 %files common -f grub.lang
