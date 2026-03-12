@@ -428,4 +428,4 @@ Patch0428: 0428-verifiers-Allocate-EFI-pages-instead-of-grub_malloc-.patch
 Patch0429: 0429-term-serial.c-default-efi0-as-serial-port-if-present.patch
 Patch0430: 0430-commands-tpm.c-include-PCR-check-enable-disable-func.patch
 Patch0431: 0431-commands-efi-tpm.c-check-if-PCR-is-enable-before-TPM.patch
-Patch0432: 0432-tpm.c-disable-GRUB_STRING_PCR-in-case-disable_grub_s.patch
+Patch0432: 0432-tpm.c-disable-PCR8-measurements-at-the-configuration.patch

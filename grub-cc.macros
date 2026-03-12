@@ -45,9 +45,32 @@ This subpackage provides support for Confidential Computing %{1} systems.			\
 %{expand:%%{?!buildsubdir:%%define buildsubdir grub-%{1}-%{tarversion}-cc}}\
 
 %define do_primary_efi_cc_build()					\
-cd grub-%{1}-%{tarversion}					\
+cd grub-%{1}-%{tarversion}-cc					\
+%{expand:%%do_efi_cc_configure %%{4} %%{5} %%{6}}			\
+%do_efi_build_all						\
 %{expand:%%do_efi_cc_build_images %{grub_target_name} %{2} %{3} ./ } \
 cd ..								\
+%{nil}
+
+%define do_efi_cc_configure()					\
+%configure							\\\
+	%{cc_equals}						\\\
+	HOST_CFLAGS="%{3}"					\\\
+	HOST_CPPFLAGS="-I$(pwd)"				\\\
+	HOST_LDFLAGS="%{efi_host_ldflags}"			\\\
+	TARGET_CFLAGS="%{2}"					\\\
+	TARGET_CPPFLAGS="-I$(pwd)"				\\\
+	TARGET_LDFLAGS="%{efi_target_ldflags}"			\\\
+	--with-rpm-version=%{version}-%{release}		\\\
+	--with-platform=efi					\\\
+	--with-utils=host					\\\
+	--with-pcr8-disabled=yes				\\\
+	--target=%{1}						\\\
+	--with-grubdir=grub2					\\\
+	--program-transform-name=s,grub,grub2,		\\\
+	--disable-werror || ( cat config.log ; exit 1 )		\
+git add .							\
+git commit -m "After efi confidential computing configure"				\
 %{nil}
 
 %define do_efi_cc_build_images()					\
@@ -71,6 +94,7 @@ mksquashfs memdisk memdisk.squashfs -comp lzo			\
 %{4}./grub-mkimage -O %{1} -o %{3}.orig				\\\
 	-d grub-core						\\\
 	--sbat %{4}./sbat.csv					\\\
+	-c '%{SOURCE16}'                                        \\\
 	-m memdisk.squashfs					\\\
 	-p /EFI/BOOT						\\\
 	${GRUB_MODULES}						\
@@ -84,7 +108,7 @@ mksquashfs memdisk memdisk.squashfs -comp lzo			\
 %{nil}
 
 %define do_efi_cc_install()					\
-cd grub-%{1}-%{tarversion}					\
+cd grub-%{1}-%{tarversion}-cc					\
 install -d -m 0700 ${RPM_BUILD_ROOT}%{grub_efi_cc_dir}/		\
 install -m 700 %{2} $RPM_BUILD_ROOT%{grub_efi_cc_dir}/%{2}	\
 %{expand:%%do_install_protected_file grub2-%{package_arch}-cc}	\
@@ -96,7 +120,6 @@ cd ..								\
 %defattr(-,root,root,-)						\
 %dir %attr(0700,root,root) %{grub_efi_cc_dir}                      \
 %attr(0700,root,root) %{grub_efi_cc_dir}/%{2} 	\
-%ghost %config(noreplace) %attr(0600,root,root)%{grub_efi_cc_dir}/grub.cfg	\
 %attr(0644,root,root) %config(noreplace) /etc/dnf/protected.d/grub2-%{1}-cc.conf \
 %{expand:%if 0%{?without_efi_modules}				\
 %exclude %{_libdir}/grub/%{6}					\

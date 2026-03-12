@@ -200,6 +200,12 @@ cp %{SOURCE4} grub-%{grubefiarch}-%{tarversion}/unifont.pcf.gz
 sed -e "s,@@VERSION@@,%{version},g" -e "s,@@VERSION_RELEASE@@,%{version}-%{release},g" \
     %{SOURCE12} > grub-%{grubefiarch}-%{tarversion}/sbat.csv
 git add grub-%{grubefiarch}-%{tarversion}
+mkdir grub-%{grubefiarch}-%{tarversion}-cc
+grep -A100000 '# stuff "make" creates' .gitignore > grub-%{grubefiarch}-%{tarversion}-cc/.gitignore
+cp %{SOURCE4} grub-%{grubefiarch}-%{tarversion}-cc/unifont.pcf.gz
+sed -e "s,@@VERSION@@,%{version},g" -e "s,@@VERSION_RELEASE@@,%{version}-%{release},g" \
+    %{SOURCE12} > grub-%{grubefiarch}-%{tarversion}-cc/sbat.csv
+git add grub-%{grubefiarch}-%{tarversion}-cc
 %endif
 %if 0%{with_alt_efi_arch}
 mkdir grub-%{grubaltefiarch}-%{tarversion}
