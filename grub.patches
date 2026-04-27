@@ -430,3 +430,4 @@ Patch0430: 0430-commands-tpm.c-include-PCR-check-enable-disable-func.patch
 Patch0431: 0431-commands-efi-tpm.c-check-if-PCR-is-enable-before-TPM.patch
 Patch0432: 0432-tpm.c-disable-PCR8-measurements-at-the-configuration.patch
 Patch0433: 0433-Add-support-for-efi-keyword.patch
+Patch0434: 0434-tpm-Disable-any-GRUB_STRING_PCR-command-measurement.patch

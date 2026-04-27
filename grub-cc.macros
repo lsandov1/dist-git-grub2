@@ -3,23 +3,17 @@
 %global grubeficcname grub%{efiarch}-cc.efi
 %global grubeficccdname gcd%{efiarch}-cc.efi
 
-%global grub_cc_modules  " all_video boot blscfg blsuki	\\\
-			cat configfile cryptodisk		\\\
-			echo fat font				\\\
-			gcry_rijndael gcry_rsa gcry_serpent	\\\
-			gcry_sha256 gcry_twofish gcry_whirlpool	\\\
-			gfxmenu gfxterm gzio			\\\
-			halt increment				\\\
-			loadenv loopback linux lvm luks	\\\
-			luks2					\\\
-			memdisk				\\\
-			minicmd				\\\
+%global grub_cc_modules  " all_video blscfg blsuki	\\\
+			configfile			\\\
+			echo fat				\\\
+			gfxmenu gfxterm				\\\
+			increment				\\\
+			linux					\\\
 			normal part_msdos part_gpt		\\\
-			password_pbkdf2 pgp reboot regexp	\\\
+			password_pbkdf2			\\\
 			search search_fs_uuid search_fs_file	\\\
 			search_label serial sleep		\\\
-			syslinuxcfg				\\\
-			test version video zstd "	\
+			test version video "	\
 
 %global efi_cc_modules " efi_netfs efifwsetup efinet lsefi lsefimmap connectefi bli "
 
@@ -60,6 +54,7 @@ cd ..								\
 	TARGET_CFLAGS="%{2}"					\\\
 	TARGET_CPPFLAGS="-I$(pwd)"				\\\
 	TARGET_LDFLAGS="%{efi_target_ldflags}"			\\\
+	PACKAGE_STRING="GRUB CC %{version}-%{release}"		\\\
 	--with-rpm-version=%{version}-%{release}		\\\
 	--with-platform=efi					\\\
 	--with-utils=host					\\\
