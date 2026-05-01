@@ -304,7 +304,7 @@ Obsoletes:	grub2 < %{evr}					\
 Requires:	grub2-common = %{evr}					\
 Requires:	grub2-tools-minimal = %{evr}				\
 Requires:	grub2-%{1}-modules = %{evr}				\
-Requires:	gettext-runtime which file				\
+Requires:	gettext-runtime file					\
 Requires:	grub2-tools = %{evr}					\
 Requires(pre):	dracut							\
 Requires(post): dracut							\
