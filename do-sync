@@ -62,10 +62,13 @@ pushd $git_dir > /dev/null
 
     dist_git_sync_branch=${git_branch}-dist-git-$(date +"%Y-%m-%d-%H_%M_%S")
     git checkout -q -b "$dist_git_sync_branch" "$git_base_commit"
-    while read -r line; do
-        p=$(echo "$line" | awk '{print $2}')
-        git am -q "$dist_git_dir/$p" 2>/dev/null
-    done < $dist_git_dir/grub.patches
+
+    # This automatically assigns the first word, e.g. Patch0XXX to 'ignored' and the second to 'p'
+    while read -r ignored p || [ -n "$p" ]; do
+	if [ -n "$p" ]; then
+            git am -q "$dist_git_dir/$p" 2>/dev/null
+	fi
+    done < "$dist_git_dir/grub.patches"
 
     # brach current git_branch based on upstream git_branch
     git branch -D "$git_branch" 2>/dev/null || true
