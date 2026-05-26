@@ -432,3 +432,4 @@ Patch0432: 0432-tpm.c-disable-PCR8-measurements-at-the-configuration.patch
 Patch0433: 0433-Add-support-for-efi-keyword.patch
 Patch0434: 0434-tpm-Disable-any-GRUB_STRING_PCR-command-measurement.patch
 Patch0435: 0435-util-grub-editenv-remove-stale-env_block-on-unsuppor.patch
+Patch0436: 0436-Change-login-error-message.patch
