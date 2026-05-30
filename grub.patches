@@ -441,3 +441,4 @@ Patch0441: 0441-ieee1275-change-the-logic-of-ieee1275_get_devargs.patch
 Patch0442: 0442-ieee1275-ofpath-enable-NVMeoF-logical-device-transla.patch
 Patch0443: 0443-ieee1275-support-added-for-multiple-nvme-bootpaths.patch
 Patch0444: 0444-ieee1275-add-support-for-NVMeoFC.patch
+Patch0445: 0445-grub-get-kernel-settings-Treate-kernel-uki-dtbloader.patch
