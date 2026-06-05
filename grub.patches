@@ -433,3 +433,5 @@ Patch0433: 0433-Add-support-for-efi-keyword.patch
 Patch0434: 0434-tpm-Disable-any-GRUB_STRING_PCR-command-measurement.patch
 Patch0435: 0435-util-grub-editenv-remove-stale-env_block-on-unsuppor.patch
 Patch0436: 0436-Change-login-error-message.patch
+Patch0437: 0437-mdraid-fix-metadata-1.0-detection-in-userspace-utils-on-IEEE1275.patch
+Patch0438: 0438-grub-install-use-search.fs_uuid-for-RAID1-on-IEEE1275.patch

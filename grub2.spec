@@ -17,7 +17,7 @@
 Name:		grub2
 Epoch:		1
 Version:	2.12
-Release:	62%{?dist}
+Release:	63%{?dist}
 Summary:	Bootloader with support for Linux, Multiboot and more
 License:	GPL-3.0-or-later
 URL:		http://www.gnu.org/software/grub/
@@ -621,6 +621,10 @@ fi
 %endif
 
 %changelog
+* Mon Jun 15 2026 Rolv Apneseth <rapneset@redhat.com> - 2.12-63
+- mdraid: fix metadata 1.0 detection in userspace utilities on IEEE1275
+- grub-install: use search.fs_uuid for RAID1 on IEEE1275
+
 * Thu Jun 04 2026 Josue Hernandez <josherna@redhat.com> - 2.12-62
 - Bump to re-run signing
 
