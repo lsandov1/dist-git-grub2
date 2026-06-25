@@ -435,3 +435,9 @@ Patch0435: 0435-util-grub-editenv-remove-stale-env_block-on-unsuppor.patch
 Patch0436: 0436-Change-login-error-message.patch
 Patch0437: 0437-mdraid-fix-metadata-1.0-detection-in-userspace-utils-on-IEEE1275.patch
 Patch0438: 0438-grub-install-use-search.fs_uuid-for-RAID1-on-IEEE1275.patch
+Patch0439: 0439-ieee1275-powerpc-implements-fibre-channel-discovery-.patch
+Patch0440: 0440-ieee1275-implement-FCP-methods-for-WWPN-and-LUNs.patch
+Patch0441: 0441-ieee1275-change-the-logic-of-ieee1275_get_devargs.patch
+Patch0442: 0442-ieee1275-ofpath-enable-NVMeoF-logical-device-transla.patch
+Patch0443: 0443-ieee1275-support-added-for-multiple-nvme-bootpaths.patch
+Patch0444: 0444-ieee1275-add-support-for-NVMeoFC.patch
