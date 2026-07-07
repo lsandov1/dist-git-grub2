@@ -424,7 +424,6 @@ Patch0424: 0424-normal-main-Unregister-commands-on-module-unload.patch
 Patch0425: 0425-tests-lib-functional_test-Unregister-commands-on-mod.patch
 Patch0426: 0426-commands-usbtest-Use-correct-string-length-field.patch
 Patch0427: 0427-commands-usbtest-Ensure-string-length-is-sufficient-.patch
-Patch0428: 0428-verifiers-Allocate-EFI-pages-instead-of-grub_malloc-.patch
 Patch0429: 0429-term-serial.c-default-efi0-as-serial-port-if-present.patch
 Patch0430: 0430-commands-tpm.c-include-PCR-check-enable-disable-func.patch
 Patch0431: 0431-commands-efi-tpm.c-check-if-PCR-is-enable-before-TPM.patch
@@ -442,3 +441,4 @@ Patch0442: 0442-ieee1275-ofpath-enable-NVMeoF-logical-device-transla.patch
 Patch0443: 0443-ieee1275-support-added-for-multiple-nvme-bootpaths.patch
 Patch0444: 0444-ieee1275-add-support-for-NVMeoFC.patch
 Patch0445: 0445-grub-get-kernel-settings-Treate-kernel-uki-dtbloader.patch
+Patch0446: 0446-mm-try-allocating-regions-above-defined-limit-as-las.patch
