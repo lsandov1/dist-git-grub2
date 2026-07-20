@@ -833,7 +833,6 @@ cp docs/grub-dev.info						\\\
 	$RPM_BUILD_ROOT%{_infodir}/grub2-dev.info		\
 install -d -m 0700 ${RPM_BUILD_ROOT}%{efi_esp_dir}/		\
 install -d -m 0700 ${RPM_BUILD_ROOT}/boot/grub2/		\
-install -d -m 0700 ${RPM_BUILD_ROOT}/boot/loader/entries	\
 install -d -m 0700 ${RPM_BUILD_ROOT}/boot/grub2/themes/system	\
 install -d -m 0700 ${RPM_BUILD_ROOT}%{_sysconfdir}/default	\
 install -d -m 0700 ${RPM_BUILD_ROOT}%{_sysconfdir}/sysconfig	\
@@ -851,7 +850,6 @@ ln -s ../boot/grub2/grub.cfg					\\\
 %defattr(-,root,root,-)						\
 %config(noreplace) %{_sysconfdir}/grub2.cfg			\
 %ghost %config(noreplace) %attr(0600,root,root)/boot/grub2/grub.cfg	\
-%dir %attr(0700,root,root)/boot/loader/entries			\
 %attr(0644,root,root) %config(noreplace) /etc/dnf/protected.d/grub2-%{1}.conf \
 %ifarch ppc64le							\
 %dir %{_libdir}/grub/%{2}/					\
@@ -887,7 +885,6 @@ ln -s ../boot/grub2/grub.cfg					\\\
 %endif								\
 %attr(0700,root,root)/boot/grub2/fonts			\
 %attr(0700,root,root)/usr/bin/gen_grub_cfgstub			\
-%dir %attr(0700,root,root)/boot/loader/entries			\
 %ghost %config(noreplace) %attr(0600,root,root)/boot/grub2/grub.cfg	\
 %ghost %config(noreplace) %attr(0700,root,root)%{efi_esp_dir}/grub.cfg	\
 %ghost %config(noreplace) %attr(0600,root,root)%{grub_efi_dir}/grub.cfg	\
