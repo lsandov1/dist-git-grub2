@@ -425,11 +425,7 @@ Patch0425: 0425-tests-lib-functional_test-Unregister-commands-on-mod.patch
 Patch0426: 0426-commands-usbtest-Use-correct-string-length-field.patch
 Patch0427: 0427-commands-usbtest-Ensure-string-length-is-sufficient-.patch
 Patch0429: 0429-term-serial.c-default-efi0-as-serial-port-if-present.patch
-Patch0430: 0430-commands-tpm.c-include-PCR-check-enable-disable-func.patch
-Patch0431: 0431-commands-efi-tpm.c-check-if-PCR-is-enable-before-TPM.patch
-Patch0432: 0432-tpm.c-disable-PCR8-measurements-at-the-configuration.patch
 Patch0433: 0433-Add-support-for-efi-keyword.patch
-Patch0434: 0434-tpm-Disable-any-GRUB_STRING_PCR-command-measurement.patch
 Patch0435: 0435-util-grub-editenv-remove-stale-env_block-on-unsuppor.patch
 Patch0436: 0436-Change-login-error-message.patch
 Patch0437: 0437-mdraid-fix-metadata-1.0-detection-in-userspace-utils-on-IEEE1275.patch
@@ -442,3 +438,4 @@ Patch0443: 0443-ieee1275-support-added-for-multiple-nvme-bootpaths.patch
 Patch0444: 0444-ieee1275-add-support-for-NVMeoFC.patch
 Patch0445: 0445-grub-get-kernel-settings-Treate-kernel-uki-dtbloader.patch
 Patch0446: 0446-mm-try-allocating-regions-above-defined-limit-as-las.patch
+Patch0447: 0447-tpm-Only-skip-TPM-string-PCR-measurements-with-expli.patch
